@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "eslint-config-formidable",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "filenames/match-regex": "off",
+    "filenames/no-index": "off"
+  }
+}
