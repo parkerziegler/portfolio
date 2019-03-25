@@ -18,7 +18,8 @@
     "emotion-theming": "^10.0.7",
     "next": "^8.0.1",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react-dom": "^16.8.1",
+    "react-spring": "^8.0.18"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
