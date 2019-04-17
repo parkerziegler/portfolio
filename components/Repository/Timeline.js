@@ -10,74 +10,40 @@ const StyledTimeline = styled.div`
   width: calc(100% + 16rem);
 `;
 
-const lineConfig = {
-  x: 600,
-  from: { x: 0 },
+const offsetConfig = {
+  offset: 0,
+  from: { offset: 600 },
   config: {
-    friction: 50
+    friction: 50,
+    duration: 1000
   }
 };
 
-const circleConfig = {
-  opacity: 1,
-  from: { opacity: 0 }
-};
-
 const Timeline = () => {
-  const { x: purpleX } = useSpring(lineConfig);
-  const { x: orangeX } = useSpring({
-    ...lineConfig,
+  const { offset: purpleOffset } = useSpring(offsetConfig);
+  const { offset: orangeOffset } = useSpring({
+    ...offsetConfig,
     delay: 500
   });
-  const { opacity: one } = useSpring({ ...circleConfig, delay: 100 });
-  const { opacity: two } = useSpring({ ...circleConfig, delay: 500 });
-  const { opacity: three } = useSpring({ ...circleConfig, delay: 800 });
 
   return (
     <StyledTimeline>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150">
-        <animated.line
-          x1="0"
-          y1="11"
-          x2={purpleX}
-          y2="11"
+        <animated.path
+          d="M 0,11 h 95 q 5,-6.5 10,0 h 190 q 5,-6.5 10 0 h 190 q 5,-6.5 10,0 h 100"
           stroke={theme.colors.purple}
-          strokeWidth="0.2rem"
+          strokeWidth="0.15rem"
+          fill="transparent"
+          strokeDasharray={700}
+          strokeDashoffset={purpleOffset}
         />
-        <animated.line
-          x1="0"
-          y1="14"
-          x2={orangeX}
-          y2="14"
+        <animated.path
+          d="M 0,14 h 95 q 5,6.5 10,0 h 190 q 5,6.5 10 0 h 190 q 5,6.5 10,0 h 100"
           stroke={theme.colors.orange}
-          strokeWidth="0.2rem"
-        />
-        <animated.circle
-          cx="100"
-          cy="12.5"
-          r="0.5rem"
-          stroke={theme.colors.teal}
-          fill={theme.colors.white}
-          strokeOpacity={one}
-          fillOpacity={one}
-        />
-        <animated.circle
-          cx="300"
-          cy="12.5"
-          r="0.5rem"
-          stroke={theme.colors.teal}
-          fill={theme.colors.white}
-          strokeOpacity={two}
-          fillOpacity={two}
-        />
-        <animated.circle
-          cx="500"
-          cy="12.5"
-          r="0.5rem"
-          stroke={theme.colors.teal}
-          fill={theme.colors.white}
-          strokeOpacity={three}
-          fillOpacity={three}
+          strokeWidth="0.15rem"
+          fill="transparent"
+          strokeDasharray={700}
+          strokeDashoffset={orangeOffset}
         />
         <filter id="dropshadow" height="130%">
           <feGaussianBlur in="SourceAlpha" stdDeviation="2" />

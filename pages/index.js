@@ -9,7 +9,7 @@ import Section from '../components/Shared/Section';
 import SectionHeader from '../components/Shared/SectionHeader';
 import Underline from '../components/Shared/Underline';
 import Text from '../components/Shared/Text';
-import Timeline from '../components/Repository/Timeline';
+import Map from '../components/Map/Map';
 
 const Index = () => (
   <ThemeProvider theme={theme}>
@@ -18,41 +18,32 @@ const Index = () => (
       <main>
         <Section
           css={css`
-            max-width: 75%;
-            margin: auto;
+            align-items: center;
           `}
         >
-          <SectionHeader
-            css={css`
-              flex-basis: 60%;
-            `}
-          >
+          <SectionHeader>
             <Underline>Hey, I&apos;m Parker.</Underline>
           </SectionHeader>
-          <Text>
+          <Text
+            css={css`
+              max-width: 50%;
+            `}
+          >
             {' '}
             I am a <b>software engineer</b> and <b>cartographer</b> based in
             Seattle, WA. My passions lie at the intersection of software
             development, map making, storytelling, and community organizing.{' '}
             <br /> <b>I 💖open source.</b>
           </Text>
+          <Map />
         </Section>
-        <Section
-          css={css`
-            flex-direction: column;
-          `}
-        >
+        {/* <Section>
           <SectionHeader>
             <Underline>What I&apos;m Up To</Underline>
           </SectionHeader>
           <Timeline />
-          {/* <Card>Just here for fun!</Card> */}
         </Section>
-        <Section
-          css={css`
-            flex-direction: column;
-          `}
-        >
+        <Section>
           <SectionHeader>
             <Underline>A Bit About Me</Underline>
           </SectionHeader>
@@ -62,7 +53,7 @@ const Index = () => (
             software for rad folks, and support my fellow developers in becoming
             better engineers and kinder people.
           </Text>
-        </Section>
+        </Section> */}
       </main>
     </Page>
   </ThemeProvider>

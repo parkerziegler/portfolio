@@ -8,5 +8,6 @@
         "labelFormat": "[local]"
       }
     ]
-  ]
+  ],
+  "plugins": ["emotion"]
 }
