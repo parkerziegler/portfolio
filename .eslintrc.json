@@ -6,6 +6,7 @@
   ],
   "rules": {
     "filenames/match-regex": "off",
-    "filenames/no-index": "off"
+    "filenames/no-index": "off",
+    "func-style": ["error", "declaration", { "allowArrowFunctions": true }]
   }
 }

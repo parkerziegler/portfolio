@@ -20,6 +20,10 @@ export default class Document extends NextDocument {
             href="https://fonts.googleapis.com/css?family=Zilla+Slab"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css?family=Fira+Mono&display=swap"
+            rel="stylesheet"
+          />
           <style>{`
             html {
               font-size: 10px;

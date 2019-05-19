@@ -11,7 +11,8 @@ const theme = {
   },
   fonts: {
     sans: "'Open Sans', sans-serif",
-    serif: "'Zilla Slab', serif"
+    serif: "'Zilla Slab', serif",
+    mono: "'Fira Mono', monospace"
   }
 };
 
