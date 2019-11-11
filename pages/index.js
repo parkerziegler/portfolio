@@ -4,13 +4,14 @@ import { ThemeProvider } from 'emotion-theming';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
-import theme from '../styles/Theme';
+import theme, { mq } from '../styles/Theme';
 import Page from '../components/Shared/Page';
 import Header from '../components/Header/Header';
 import Section from '../components/Shared/Section';
 import SectionHeader from '../components/Shared/SectionHeader';
 import Underline from '../components/Shared/Underline';
 import Text from '../components/Shared/Text';
+import SocialIcon from '../components/Shared/SocialIcon';
 import Map from '../components/Map/Map';
 import CardGrid from '../components/RepositoryHTML/CardGrid';
 import Card from '../components/RepositoryHTML/Card';
@@ -20,12 +21,11 @@ const contributionsQuery = gql`
     user(login: "parkerziegler") {
       pullRequests(
         states: [OPEN, MERGED]
-        last: 4
+        last: 6
         orderBy: { field: CREATED_AT, direction: ASC }
       ) {
         nodes {
           id
-          bodyHTML
           url
           title
           repository {
@@ -54,6 +54,13 @@ const Index = () => (
           <Text
             css={css`
               max-width: 50%;
+              ${mq[0]} {
+                max-width: 100%;
+              }
+
+              ${mq[1]} {
+                max-width: 100%;
+              }
             `}
           >
             {' '}
@@ -97,17 +104,10 @@ const Index = () => (
               return (
                 <CardGrid>
                   {data.user.pullRequests.nodes.map(
-                    ({
-                      repository: { nameWithOwner },
-                      bodyHTML,
-                      url,
-                      title,
-                      id
-                    }) => (
+                    ({ repository: { nameWithOwner }, url, title, id }) => (
                       <Card
                         nameWithOwner={nameWithOwner}
                         url={url}
-                        bodyHTML={bodyHTML}
                         title={title}
                         key={id}
                       />
@@ -117,6 +117,37 @@ const Index = () => (
               );
             }}
           </Query>
+        </Section>
+        <Section>
+          <SectionHeader
+            css={css`
+              align-self: center;
+            `}
+          >
+            <Underline>🔬 Find Me</Underline>
+            <div
+              css={css`
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              `}
+            >
+              <SocialIcon
+                href="https://twitter.com/parker_ziegler"
+                path="/twitter.svg"
+              />
+              <SocialIcon
+                href="https://github.com/parkerziegler"
+                path="/github.svg"
+                height="6rem"
+              />
+              <SocialIcon
+                href="https://codesandbox.io/u/parkerziegler"
+                path="/codesandbox.svg"
+                height="7rem"
+              />
+            </div>
+          </SectionHeader>
         </Section>
       </main>
     </Page>

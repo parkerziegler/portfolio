@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 const theme = {
   colors: {
     white: '#fff',
@@ -13,7 +14,12 @@ const theme = {
     sans: "'Open Sans', sans-serif",
     serif: "'Zilla Slab', serif",
     mono: "'Fira Mono', monospace"
-  }
+  },
+  breakpoints: [500, 700, 900]
 };
+
+export const mq = theme.breakpoints.map(
+  (bp) => `@media only screen and (max-width: ${bp}px)`
+);
 
 export default theme;

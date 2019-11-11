@@ -56,7 +56,7 @@ const PulsingPlace = styled(animated.circle)`
 `;
 
 const places = [
-  { label: 'Now – Seattle, WA', cx: 100, cy: 40, x: 100, y: 10 },
+  { label: 'Now – Seattle, WA', cx: 100, cy: 40, x: 105, y: 25 },
   {
     label: 'Birthplace – Salt Lake City, UT',
     cx: 225,
@@ -91,7 +91,7 @@ const Map = () => {
 
   useEffect(() => {
     fetchUSJson();
-  }, []);
+  }, [fetchUSJson]);
 
   const springs = useSprings(
     paths.length,
@@ -133,48 +133,51 @@ const Map = () => {
   );
 
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 960 600"
-      height="500"
-      width="600"
+    <div
+      css={css`
+        width: 100%;
+        max-width: 60rem;
+        min-width: 30rem;
+      `}
     >
-      {paths.map(({ d, id }, i) => (
-        <State d={d} key={id} style={springs[i]} />
-      ))}
-      {places.map(({ cx, cy, label, x, y }, i) => {
-        const ref = deriveRef(i);
-        const width = ref.current
-          ? ref.current.getComputedTextLength() + 10
-          : 0;
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600">
+        {paths.map(({ d, id }, i) => (
+          <State d={d} key={id} style={springs[i]} />
+        ))}
+        {places.map(({ cx, cy, label, x, y }, i) => {
+          const ref = deriveRef(i);
+          const width = ref.current
+            ? ref.current.getComputedTextLength() + 10
+            : 0;
 
-        return (
-          <g key={label}>
-            <PlaceBacking
-              x={x - 5}
-              y={y - 15}
-              rx="5"
-              width={width}
-              height={20}
-              style={placeSprings[i]}
-            />
-            <PlaceLabel x={x} y={y} ref={ref} style={placeSprings[i]}>
-              {label}
-            </PlaceLabel>
-            <Place cx={cx} cy={cy} style={placeSprings[i]} r="5" />
-            <PulsingPlace
-              cx={cx}
-              cy={cy}
-              style={placeSprings[i]}
-              r="5"
-              css={css`
-                transform-origin: ${cx}px ${cy}px;
-              `}
-            />
-          </g>
-        );
-      })}
-    </svg>
+          return (
+            <g key={label}>
+              <PlaceBacking
+                x={x - 5}
+                y={y - 15}
+                rx="5"
+                width={width}
+                height={20}
+                style={placeSprings[i]}
+              />
+              <PlaceLabel x={x} y={y} ref={ref} style={placeSprings[i]}>
+                {label}
+              </PlaceLabel>
+              <Place cx={cx} cy={cy} style={placeSprings[i]} r="5" />
+              <PulsingPlace
+                cx={cx}
+                cy={cy}
+                style={placeSprings[i]}
+                r="5"
+                css={css`
+                  transform-origin: ${cx}px ${cy}px;
+                `}
+              />
+            </g>
+          );
+        })}
+      </svg>
+    </div>
   );
 };
 

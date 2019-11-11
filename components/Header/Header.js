@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import theme from '../../styles/Theme';
+import theme, { mq } from '../../styles/Theme';
 import Nav from './Nav';
 import SiteTitle from './SiteTitle';
 import Link from './Link';
@@ -18,13 +18,20 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   flex: 1 1 auto;
-  height: 8rem;
   padding: 2rem 8rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
   background-image: ${(props) =>
     `linear-gradient(0.25turn, ${props.theme.colors.purple}, ${
       props.theme.colors.orange
     })`};
+
+  ${mq[0]} {
+    flex-direction: column;
+  }
+
+  ${mq[1]} {
+    flex-direction: column;
+  }
 `;
 
 const Header = () => (

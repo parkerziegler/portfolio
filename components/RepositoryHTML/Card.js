@@ -22,6 +22,7 @@ const CardGradientBlock = styled.div`
   background: ${({ theme }) => theme.colors.white};
   border-radius: 0.5rem;
   overflow: auto;
+  flex: 1;
 `;
 
 const RepoName = styled.a`
@@ -36,21 +37,13 @@ const PRTitle = styled.span`
   font-weight: 700;
 `;
 
-const PRBodyHTML = styled.div`
-  font-size: 1.2rem;
-  max-height: 10rem;
-  overflow: auto;
-  padding: 0.5rem 0.5rem 0.5rem 0;
-`;
-
-const Card = ({ nameWithOwner, url, bodyHTML, title }) => (
+const Card = ({ nameWithOwner, url, title }) => (
   <CardGradient>
     <CardGradientBlock>
       <RepoName href={url} target="_blank" rel="noopener noreferrer">
         {nameWithOwner}
       </RepoName>
       <PRTitle>{title}</PRTitle>
-      <PRBodyHTML dangerouslySetInnerHTML={{ __html: bodyHTML }} />
     </CardGradientBlock>
   </CardGradient>
 );
@@ -58,7 +51,6 @@ const Card = ({ nameWithOwner, url, bodyHTML, title }) => (
 Card.propTypes = {
   nameWithOwner: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  bodyHTML: PropTypes.node,
   title: PropTypes.string.isRequired
 };
 
