@@ -1,18 +1,12 @@
-import styled from '@emotion/styled';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { mq } from '../../styles/Theme';
+const Nav = ({ children }) => {
+  return <nav className="flex items-center stack-horizontal">{children}</nav>;
+};
 
-const Nav = styled.nav`
-  display: flex;
-  align-items: center;
-
-  ${mq[0]} {
-    margin-top: 1rem;
-  }
-
-  ${mq[1]} {
-    margin-top: 1rem;
-  }
-`;
+Nav.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default Nav;

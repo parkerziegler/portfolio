@@ -1,29 +1,12 @@
-import styled from '@emotion/styled';
-import { keyframes } from '@emotion/core';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const highlight = keyframes`
-  from {
-    background-size: 0% 10%
-  }
+const Underline = ({ children }) => {
+  return <span className="gradient-underline m-0 font-serif">{children}</span>;
+};
 
-  to {
-    background-size: 100% 10%;
-  }
-`;
-
-const Underline = styled.span`
-  background-image: ${({ theme }) =>
-    `linear-gradient(120deg, ${theme.colors.pink}, ${theme.colors.yellow})`};
-  font-family: ${({ theme }) => theme.fonts.serif};
-  background-repeat: no-repeat;
-  background-position: 0% 85%;
-  background-size: 100% 10%;
-  animation-duration: 1s;
-  animation-delay: 500ms;
-  animation-timing-function: ease-in;
-  animation-fill-mode: both;
-  animation-name: ${highlight};
-  margin: 0;
-`;
+Underline.propTypes = {
+  children: PropTypes.string.isRequired
+};
 
 export default Underline;

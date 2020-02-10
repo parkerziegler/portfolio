@@ -1,9 +1,12 @@
-import styled from '@emotion/styled';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const SectionHeader = styled.h2`
-  font-size: 5rem;
-  font-family: ${({ theme }) => theme.fonts.serif};
-  margin: 0;
-`;
+const SectionHeader = ({ children }) => {
+  return <h2 className="font-serif text-6xl m-0">{children}</h2>;
+};
+
+SectionHeader.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default SectionHeader;

@@ -1,0 +1,7 @@
+.stack-vertical > * + * {
+  margin-top: 1rem;
+}
+
+.stack-horizontal > * + * {
+  margin-left: 1rem;
+}

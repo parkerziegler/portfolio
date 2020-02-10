@@ -1,15 +1,23 @@
-import styled from '@emotion/styled';
+import React from 'react';
+import PropTypes from 'prop-types';
+import cn from 'classnames';
 
-import { mq } from '../../styles/Theme';
+const Section = ({ className, children }) => {
+  return (
+    <section
+      className={cn([
+        'flex flex-col p-16 sm:py-16 sm:px-32',
+        className && className
+      ])}
+    >
+      {children}
+    </section>
+  );
+};
 
-const Section = styled.section`
-  display: flex;
-  padding: 4rem 8rem;
-  flex-direction: column;
-
-  ${mq[0]} {
-    padding: 4rem;
-  }
-`;
+Section.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired
+};
 
 export default Section;

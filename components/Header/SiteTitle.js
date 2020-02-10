@@ -1,12 +1,16 @@
-import styled from '@emotion/styled';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const SiteTitle = styled.h1`
-  background-color: #000;
-  margin: 0;
-  color: #fff;
-  font-size: 2.6rem;
-  padding: 0.5rem 1rem;
-  font-family: ${({ theme }) => theme.fonts.sans};
-`;
+const SiteTitle = ({ children }) => {
+  return (
+    <h1 className="bg-black m-0 text-white px-4 py-2 text-5xl font-sans mb-4 sm:mb-0">
+      {children}
+    </h1>
+  );
+};
+
+SiteTitle.propTypes = {
+  children: PropTypes.string.isRequired
+};
 
 export default SiteTitle;

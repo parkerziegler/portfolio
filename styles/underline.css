@@ -1,0 +1,21 @@
+.gradient-underline {
+  background-image: linear-gradient(120deg, #fa709a, #fee140);
+  background-repeat: no-repeat;
+  background-position: 0% 85%;
+  background-size: 100% 10%;
+  animation-duration: 1s;
+  animation-delay: 500ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: both;
+  animation-name: highlight;
+}
+
+@keyframes highlight {
+  from {
+    background-size: 0% 10%;
+  }
+
+  to {
+    background-size: 100% 10%;
+  }
+}

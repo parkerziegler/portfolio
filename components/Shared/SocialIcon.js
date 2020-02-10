@@ -1,27 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import cn from 'classnames';
 
-const StyledLink = styled.a`
-  display: flex;
-  justify-content: center;
-  width: 10rem;
-`;
-
-const StyledIcon = styled.img`
-  height: ${({ height }) => `${height || '10rem'}`};
-`;
-
-const SocialIcon = ({ href, path, height }) => (
-  <StyledLink href={href} target="_blank" rel="noopener noreferrer">
-    <StyledIcon src={path} height={height} />
-  </StyledLink>
+const SocialIcon = ({ href, path, compact = false }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex justify-center w-40"
+  >
+    <img src={path} className={cn([compact && 'transform scale-70', 'h-40'])} />
+  </a>
 );
 
 SocialIcon.propTypes = {
   href: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
-  height: PropTypes.string
+  compact: PropTypes.bool
 };
 
 export default SocialIcon;

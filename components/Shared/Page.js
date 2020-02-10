@@ -1,11 +1,12 @@
-import styled from '@emotion/styled';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Page = styled.section`
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-`;
+const Page = ({ children }) => {
+  return <main className="absolute inset-0">{children}</main>;
+};
+
+Page.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default Page;
