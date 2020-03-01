@@ -22,6 +22,19 @@ module.exports = {
       scale: {
         '70': '0.7'
       }
+    },
+    fill: (theme) => {
+      return {
+        transparent: 'transparent',
+        purple: theme('colors.purple'),
+        white: theme('colors.white')
+      };
+    },
+    stroke: (theme) => {
+      return {
+        black: theme('colors.black'),
+        purple: theme('colors.purple')
+      };
     }
   },
   variants: {

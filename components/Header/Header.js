@@ -9,7 +9,7 @@ const Header = () => (
   <div className="flex flex-col">
     <header
       className={`flex flex-col sm:flex-row items-center justify-between
-      flex-auto px-32 py-8 shadow bg-image-gradient`}
+      flex-auto px-32 py-8 shadow gradient-main`}
     >
       <SiteTitle>Parker Ziegler</SiteTitle>
       <Nav>

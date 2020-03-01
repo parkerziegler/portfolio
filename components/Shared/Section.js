@@ -5,10 +5,7 @@ import cn from 'classnames';
 const Section = ({ className, children }) => {
   return (
     <section
-      className={cn([
-        'flex flex-col p-16 sm:py-16 sm:px-32',
-        className && className
-      ])}
+      className={cn(['flex flex-col p-16 sm:py-16 sm:px-32', className])}
     >
       {children}
     </section>

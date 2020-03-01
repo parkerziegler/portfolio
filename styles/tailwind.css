@@ -3,6 +3,8 @@
 @import 'tailwindcss/utilities';
 
 @import './link.css';
-@import './bg-image.css';
+@import './gradients.css';
 @import './stack.css';
 @import './underline.css';
+@import './animations.css';
+@import './mixins.css';
