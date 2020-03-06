@@ -17,7 +17,9 @@ module.exports = {
         mono: "'Fira Mono', monospace"
       },
       maxWidth: {
-        '3/4': '75%'
+        '3/4': '75%',
+        '2/3': '66.666%',
+        '1/2': '50%'
       },
       scale: {
         '70': '0.7'
