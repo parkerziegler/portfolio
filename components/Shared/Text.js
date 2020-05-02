@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
-const Text = ({ children }) => {
-  return <p className="font-serif text-3xl m-4">{children}</p>;
+const Text = ({ children, className }) => {
+  return (
+    <p className={cn('font-serif text-2xl md:text-3xl', className)}>
+      {children}
+    </p>
+  );
 };
 
 Text.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string
 };
 
 export default Text;

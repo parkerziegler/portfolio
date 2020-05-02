@@ -1,0 +1,9 @@
+.bg-dotted-purple {
+  position: relative;
+  background-position: 0 0;
+  background-size: 0.5rem 0.5rem;
+  background-image: radial-gradient(
+    theme('colors.purple') 25%,
+    transparent 25%
+  );
+}

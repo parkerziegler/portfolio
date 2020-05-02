@@ -12,11 +12,11 @@ module.exports = {
         black: '#222222'
       },
       fontFamily: {
-        sans: "'Open Sans', sans-serif",
         serif: "'Zilla Slab', serif",
         mono: "'Fira Mono', monospace"
       },
       maxWidth: {
+        '5/6': '83.333%',
         '3/4': '75%',
         '2/3': '66.666%',
         '1/2': '50%'

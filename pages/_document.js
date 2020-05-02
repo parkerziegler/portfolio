@@ -13,10 +13,6 @@ export default class Document extends NextDocument {
         <Head>
           {this.props.styleTags}
           <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans"
-            rel="stylesheet"
-          />
-          <link
             href="https://fonts.googleapis.com/css?family=Zilla+Slab"
             rel="stylesheet"
           />

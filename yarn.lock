@@ -1377,6 +1377,13 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
+"@urql/core@^1.10.5":
+  version "1.10.7"
+  resolved "https://registry.yarnpkg.com/@urql/core/-/core-1.10.7.tgz#4632088a9abd5884e08726242261ea39d3cdda40"
+  integrity sha512-KOeX6TpU0ui7WDaP3ZgXJnRRPbjPz31jECYixgc+vxo7rQVVFkRkB7qzfusYzeCYAruMz7vzoOPT22UTxKcU/g==
+  dependencies:
+    wonka "^4.0.9"
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
@@ -5419,12 +5426,13 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-next-urql@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/next-urql/-/next-urql-0.3.0.tgz#63c58a8dd4a859b8036e9b05074b7f10fb681ad2"
-  integrity sha512-1pzIR4D8aLsQ9K9ItHNtfTiSJxlkjMLR47aw3b0kSSxMtec5lRDyzSkK6syfOKABAuiQG2catddUN482J67PFQ==
+next-urql@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/next-urql/-/next-urql-0.3.6.tgz#22b3efc8bb3a3d573aa81ec3d1a1946ed284493d"
+  integrity sha512-yOLaZ7VBN7TXZ1E5XUmwupXDxQuRwv+5oe3meU7PJm11JANWmK3VixApgN+7g+RH6hGGm3flg3V5wBGqJQMomA==
   dependencies:
     react-ssr-prepass "^1.1.2"
+    urql ">=1.9.4"
 
 next@^9.2.2:
   version "9.2.2"
@@ -6743,11 +6751,6 @@ react-ssr-prepass@^1.1.2:
   dependencies:
     object-is "^1.0.2"
 
-react-wonka@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/react-wonka/-/react-wonka-2.0.1.tgz#75bdf03dbad8ceb8c1066216f635f05ce2b642a5"
-  integrity sha512-mM2UH2gnK5LLzaqVWd6JCLrB1vO3I4PN/sQZbjvzsjms4vSv+nKwelNUftM0KeC+LtTPC4GGsuxyu2XJnsCUTw==
-
 react@^16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
@@ -7081,7 +7084,7 @@ sax@^1.2.4:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
-"scheduler@>= 0.16.0", scheduler@^0.18.0:
+scheduler@^0.18.0:
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.18.0.tgz#5901ad6659bc1d8f3fdaf36eb7a67b0d6746b1c4"
   integrity sha512-agTSHR1Nbfi6ulI0kYNK0203joW2Y5W4po4l+v03tOoiJKpTBbxpNhWDvqc/4IcOw+KLmSiQLTasZ4cab2/UWQ==
@@ -7960,14 +7963,13 @@ url@0.11.0, url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-urql@^1.8.2:
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/urql/-/urql-1.8.2.tgz#66fcd111c346c45e647b7905fc6291e044425b06"
-  integrity sha512-ilTTkRxQrY1H9kz8YPFjE4Npe9J540uxT4tUb5kTP1Cs+xJCjxKcqIVPZtRkrLw/1pUM5vKxg4a3I2GYFLmHoQ==
+urql@>=1.9.4:
+  version "1.9.5"
+  resolved "https://registry.yarnpkg.com/urql/-/urql-1.9.5.tgz#6458738c029c4ed3692cb3ac9c1ba4d4260e37b9"
+  integrity sha512-CzkOSAaS5KuP+Sx2rPLOrfMiziGhKwj9syaoG6/fqoCtUeAZaXirKYKSJPUu5u9WDvjJzcTqtpICaCw++cHZsA==
   dependencies:
-    react-wonka "^2.0.1"
-    scheduler ">= 0.16.0"
-    wonka "^4.0.7"
+    "@urql/core" "^1.10.5"
+    wonka "^4.0.9"
 
 use-subscription@1.1.1:
   version "1.1.1"
@@ -8145,10 +8147,10 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2 || 2"
 
-wonka@^4.0.7:
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/wonka/-/wonka-4.0.7.tgz#b4934685bd2449367bd72ce7770bfe3e6cc8a68b"
-  integrity sha512-Uhyl2cgWCUksYtU0Jt8MSzKUqK4BVUrewWxnn1YlKL3Zco4sDcCUDkbgH0i762HJs1rtsq03cfzsCWxJKaDgVg==
+wonka@^4.0.9:
+  version "4.0.9"
+  resolved "https://registry.yarnpkg.com/wonka/-/wonka-4.0.9.tgz#b21d93621e1d5f3b45ca96d99d03711c7c1f7c55"
+  integrity sha512-he7Nn1254ToUN03zLbJok6QxKdRJd46/QHm8nUcJNViXQnCutCuUgAbZvzoxrX+VXzGb4sCFolC4XhkHsmvdaA==
 
 wordwrap@~1.0.0:
   version "1.0.0"

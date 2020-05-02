@@ -2,14 +2,16 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { withUrqlClient } from 'next-urql';
 import { useQuery } from 'urql';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 
 import Section from '../components/Shared/Section';
 import SectionHeader from '../components/Shared/SectionHeader';
 import Underline from '../components/Shared/Underline';
-import RepositoryCard from '../components/Repository/RepositoryCard';
+import RepositoryCard from '../components/Cards/RepositoryCard';
 import Text from '../components/Shared/Text';
 import Statistic from '../components/Contributions/Statistic';
+import PixelCard from '../components/Cards/PixelCard';
+import { useIntersection } from '../hooks/useIntersection';
 
 const projectToBadgePath = {
   renature: '/renature.svg',
@@ -83,8 +85,31 @@ const variants = {
   hidden: false
 };
 
+const observerOptions = {
+  root: null,
+  rootMargin: '0px 0px 0px 0px',
+  threshold: 0.25
+};
+
 const Code = () => {
   const [result] = useQuery({ query: repositoriesQuery });
+
+  const intersectionRef = React.useRef(null);
+  const intersection = useIntersection(
+    intersectionRef.current,
+    observerOptions
+  );
+  const controls = useAnimation();
+
+  React.useEffect(() => {
+    if (intersection?.isIntersecting) {
+      controls.start({
+        opacity: 1
+      });
+    } else {
+      controls.start({ opacity: 0 });
+    }
+  }, [intersection]);
 
   if (result.fetching) {
     return null;
@@ -164,9 +189,50 @@ const Code = () => {
                 .totalContributions
             }
             description="Contributions in the last year."
-            color="teal"
+            color="purple"
           />
         </div>
+      </Section>
+      <Section className="stack-vertical lg:max-w-5/6 mx-auto">
+        <SectionHeader>
+          <Underline>Other OSS</Underline>
+        </SectionHeader>
+        <motion.div
+          className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+          ref={intersectionRef}
+          animate={controls}
+          initial={{ opacity: 0 }}
+        >
+          {result.data.viewer.repositoriesContributedTo.edges
+            .filter(({ node: { name } }) => {
+              return (
+                name !== 'renature' && name !== 'urql' && name !== 'reason-urql'
+              );
+            })
+            .slice(0, 6)
+            .map(
+              ({
+                node: {
+                  name,
+                  description,
+                  primaryLanguage,
+                  stargazers: { totalCount: starCount },
+                  forkCount
+                }
+              }) => {
+                return (
+                  <PixelCard
+                    key={name}
+                    name={name}
+                    description={description}
+                    primaryLanguage={primaryLanguage}
+                    starCount={starCount}
+                    forkCount={forkCount}
+                  />
+                );
+              }
+            )}
+        </motion.div>
       </Section>
     </main>
   );

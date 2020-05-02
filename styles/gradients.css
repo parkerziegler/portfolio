@@ -36,7 +36,3 @@
     transparent 20%
   );
 }
-
-.gradient-dotted-teal {
-  background-image: radial-gradient(theme('colors.teal') 20%, transparent 20%);
-}
