@@ -88,7 +88,8 @@ const Index = () => {
             <InlineLink href="https://github.com/parkerziegler">
               open source tools
             </InlineLink>{' '}
-            to help others build better software to empower their communities.
+            to help others build better software and bring delightful
+            experiences to their communities.
           </Text>
           <Text>
             I also believe <strong>place</strong> shapes every part of who we
@@ -147,7 +148,7 @@ const Index = () => {
         </div>
       </Section>
       <Section className="items-center">
-        <div className="md:max-w-3/4">
+        <div className="md:max-w-3/4 stack-vertical">
           <SectionHeader centered>
             <Underline>Find Me</Underline>
           </SectionHeader>

@@ -1,38 +1,14 @@
 .link::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  border: 2px solid transparent;
-  width: 0px;
-  height: 0px;
-  box-sizing: border-box;
-}
-
-.link::after {
-  content: '';
-  position: absolute;
   bottom: 0;
-  right: 0;
-  border: 2px solid transparent;
-  width: 0px;
-  height: 0px;
-  box-sizing: border-box;
+  left: 0;
+  width: 0;
+  height: 0.2rem;
+  background: theme('colors.purple');
+  transition: width 300ms ease-in-out;
 }
 
 .link:hover::before {
   width: 100%;
-  height: 100%;
-  border-top-color: #7b16ff;
-  border-right-color: #7b16ff;
-  transition: width 200ms ease-out, height 200ms ease-out 200ms;
-}
-
-.link:hover::after {
-  width: 100%;
-  height: 100%;
-  border-bottom-color: #7b16ff;
-  border-left-color: #7b16ff;
-  transition: border-color 0s ease-out 400ms, width 200ms ease-out 400ms,
-    height 200ms ease-out 600ms;
 }

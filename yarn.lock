@@ -5426,10 +5426,10 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-next-urql@^0.3.6:
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/next-urql/-/next-urql-0.3.6.tgz#22b3efc8bb3a3d573aa81ec3d1a1946ed284493d"
-  integrity sha512-yOLaZ7VBN7TXZ1E5XUmwupXDxQuRwv+5oe3meU7PJm11JANWmK3VixApgN+7g+RH6hGGm3flg3V5wBGqJQMomA==
+next-urql@^0.3.7:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/next-urql/-/next-urql-0.3.7.tgz#e9d4597b0a834319cef89f5daf830eea96254a23"
+  integrity sha512-XfsUC4lNFY3G2NyhB14Q1uRlWBhjck4kwxhnlS2h2qu03R8edsYbUrekhNii5QWKTxcIQJjjrbxE8SCXpcgLjg==
   dependencies:
     react-ssr-prepass "^1.1.2"
     urql ">=1.9.4"

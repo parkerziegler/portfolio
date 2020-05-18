@@ -5,18 +5,20 @@ export const maps = [
   {
     title:
       'The Road to Vision Zero: Traffic Crashes and Poverty in New York City',
-    mapSrc: '/maps/transalt-vision-zero-map.png',
-    mapAlt: 'Transporation Alternatives x Azavea Vision Zero Map',
+    src: '/maps/transalt-vision-zero-map.png',
+    alt: 'Transporation Alternatives x Azavea Vision Zero Map',
+    link:
+      'https://summer-of-maps.github.io/2016-TransAlt-TrafficCrashVisualization/',
     children: (
       <>
         This web application, developed as part of{' '}
         <InlineLink href="https://www.summerofmaps.com/about/">
-          Azavea & apos; s Summer of Maps fellowship
+          Azavea&apos;s Summer of Maps fellowship
         </InlineLink>
         , is designed to help users explore and visualize relationships between
-        traffic crashes and poverty in New York City.After significant pressure
+        traffic crashes and poverty in New York City. After significant pressure
         from community organizations, local businesses, and victims of traffic
-        violence, Mayor Bill De Blasio launched the city & apos; s{' '}
+        violence, Mayor Bill De Blasio launched the city&apos;s{' '}
         <InlineLink href="https://www1.nyc.gov/content/visionzero/pages/">
           Vision Zero campaign
         </InlineLink>{' '}
@@ -25,24 +27,24 @@ export const maps = [
           Sweden&apos;s Vision Zero design initiative
         </InlineLink>
         , is based on the principle that no loss of life on our streets is
-        acceptable.However, Vision Zero NYC makes no direct mention of exploring
-        relationships between the density of crashes in different parts of the
-        city and socioeconomic and demographic variables like poverty rate,
-        median income, unemployment, or population density.This{' '}
+        acceptable. However, Vision Zero NYC makes no direct mention of
+        exploring relationships between the density of crashes in different
+        parts of the city and socioeconomic and demographic variables like
+        poverty rate, median income, unemployment, or population density. This{' '}
         <InlineLink href="https://www.citylab.com/transportation/2012/05/why-elderly-children-and-poor-are-greater-risk-traffic-deaths/2011/">
           despite the fact that researchers are uncovering statistically
           significant relationships showing a higher incidence of traffic
           crashes in lower income communities of color
         </InlineLink>
         , mainly as a result of poor urban design and a lack of appropriate
-        transportation infrastructure.This application, built on{' '}
+        transportation infrastructure. This application, built on{' '}
         <InlineLink href="https://d3js.org/">D3</InlineLink>,{' '}
         <InlineLink href="https://carto.com/"> CARTO</InlineLink>,{' '}
         <InlineLink href="https://leafletjs.com/"> Leaflet</InlineLink>, and{' '}
         <InlineLink href="https://jquery.com/">jQuery</InlineLink>, attempts to
         fill this gap in the Vision Zero literature by visualizing these
         relationships both geographically and statistically in a single
-        integrated interface.Take a look at{' '}
+        integrated interface. Take a look at{' '}
         <InlineLink href="https://github.com/summer-of-maps/2016-TransAlt-TrafficCrashVisualization">
           the source
         </InlineLink>{' '}
@@ -51,8 +53,139 @@ export const maps = [
     )
   },
   {
-    mapSrc: '/maps/aasd-map.jpg',
-    mapAlt:
+    items: [
+      {
+        src: '/maps/ecotrust-lidar-canopy-cover.png',
+        alt: "A map of Portland's urban canopy captured using LiDAR in 2014."
+      },
+      {
+        src: '/maps/ecotrust-block-groups-canopy-cover.png',
+        alt: "A map of Portland's urban canopy by Census Block Group in 2014."
+      },
+      {
+        src: '/maps/ecotrust-block-groups-targets.png',
+        alt:
+          "A map of Portland's urban canopy cover compared to city targets by Census Block Group in 2014."
+      },
+      {
+        src: '/maps/ecotrust-neighborhoods-canopy-cover.png',
+        alt: "A map of Portland's urban canopy by neighborhood in 2014."
+      },
+      {
+        src: '/maps/ecotrust-neighborhoods-targets.png',
+        alt:
+          "A map of Portland's urban canopy cover compared to city targets by neighborhood in 2014."
+      },
+      {
+        src: '/maps/ecotrust-zoning-res-canopy-cover.png',
+        alt: "A map of Portland's urban canopy by Residential Zone in 2014."
+      },
+      {
+        src: '/maps/ecotrust-zoning-res-targets.png',
+        alt:
+          "A map of Portland's urban canopy cover compared to city targets by Residential Zone in 2014."
+      },
+      {
+        src: '/maps/ecotrust-zoning-ci-canopy-cover.png',
+        alt:
+          "A map of Portland's urban canopy by Commercial and Industrial Zone in 2014."
+      },
+      {
+        src: '/maps/ecotrust-zoning-ci-targets.png',
+        alt:
+          "A map of Portland's urban canopy cover compared to city targets by Commercial and Industrial Zone in 2014."
+      },
+      {
+        src: '/maps/ecotrust-zoning-os-canopy-cover.png',
+        alt: "A map of Portland's urban canopy by Open Space Zone in 2014."
+      },
+      {
+        src: '/maps/ecotrust-zoning-os-targets.png',
+        alt:
+          "A map of Portland's urban canopy cover compared to city targets by Open Space Zone in 2014."
+      }
+    ],
+    title:
+      " Mapping Portland's Urban Canopy: A Collaboration Between Ecotrust and Azavea",
+    children: (
+      <>
+        This set of maps, designed for{' '}
+        <InlineLink href="https://ecotrust.org/">Ecotrust</InlineLink> and the{' '}
+        <InlineLink href="https://www.portlandoregon.gov/parks/41487">
+          Portland Urban Forestry Commission
+        </InlineLink>{' '}
+        as part of{' '}
+        <InlineLink href="https://www.summerofmaps.com/">
+          Azavea&apos;s Summer of Maps
+        </InlineLink>{' '}
+        fellowship, takes an in-depth look at the state of Portland&apos;s urban
+        canopy in 2014. The maps in this series fall into two main sets. The
+        first shows the percent canopy cover of different areal units across the
+        city. The second set focuses on the proximity of each areal unit to
+        target canopy goals set in the{' '}
+        <InlineLink href="https://www.portlandoregon.gov/parks/38306?a=1846412004">
+          Urban Forestry Management Plan
+        </InlineLink>
+        , helping to identify areas of the city that remain substantially
+        underforested. Maps were generated using ArcGIS and final cartographic
+        work was performed in Adobe Illustrator. To get a more holistic sense of
+        this project, check out{' '}
+        <InlineLink href="https://www.summerofmaps.com/projects/2016-ecotrust">
+          the project description on Azavea&apos;s website
+        </InlineLink>
+        . Special thanks to Esther Needham, Data Analytics Project Manager at
+        Azavea, for her mentorship on this project.
+      </>
+    )
+  },
+  {
+    items: [
+      {
+        src: '/maps/ecotrust-change-detection-layout.png',
+        alt:
+          "A summary report of how Portland's urban canopy has changed from 2007 to 2014."
+      },
+      {
+        src: '/maps/ecotrust-change-detection-layout-2.png',
+        alt:
+          "A summary report examining the rate of growth of Portland's urban canopy at 2 year intervals between 2007 and 2014."
+      },
+      {
+        src: '/maps/ecotrust-change-detection-layout-3.png',
+        alt:
+          "A summary report examining progress towards canopy targets in Portland's urban canopy in 2014."
+      }
+    ],
+    title:
+      "Detecting Change in Portland's Urban Canopy: A Collaboration between Ecotrust and Azavea",
+    children: (
+      <>
+        These two layouts, designed for{' '}
+        <InlineLink href="https://ecotrust.org/">Ecotrust</InlineLink> and the{' '}
+        <InlineLink href="https://www.portlandoregon.gov/parks/41487">
+          Portland Urban Forestry Commission
+        </InlineLink>
+        as part of{' '}
+        <InlineLink href="http://www.summerofmaps.com/">
+          Azavea&apos;s Summer of Maps fellowship
+        </InlineLink>
+        , help to tell two fascinating stories about Portland&apos;s urban
+        forest. The first – a result of high resolution change detection
+        analysis using a combination of LiDAR and NAIP multispectral imagery –
+        visualizes how Portland&apos;s urban forest has evolved at multiple
+        geographic and temporal scales. The second – a result of geographically
+        weighted regression – attempts to pinpoint some of the main drivers and
+        correlates of canopy distribution, including race, education, home
+        ownership, and population density. Maps were generated using ArcGIS,
+        graphics were generated using the R statistical programming language,
+        both were polished in Adobe Illustrator, and the layouts designed in
+        Adobe InDesign.
+      </>
+    )
+  },
+  {
+    src: '/maps/aasd-map.jpg',
+    alt:
       'Communities in the Clouds: Landscape, Agriculture, and Access in the Peruvian Andes',
     title:
       'Communities in the Clouds: Landscape, Agriculture, and Access in the Peruvian Andes',

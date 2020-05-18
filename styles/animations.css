@@ -42,3 +42,14 @@
 .transition-underline:hover {
   background-size: 100% 100%;
 }
+
+/* Saturation animation for carousel. */
+.saturate {
+  filter: saturate(0);
+  transition: all 300ms ease-out;
+}
+
+.saturate:hover {
+  transform: scale(1.05);
+  filter: saturate(1);
+}

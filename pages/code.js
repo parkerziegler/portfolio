@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { withUrqlClient } from 'next-urql';
 import { useQuery } from 'urql';
 import { motion, useAnimation } from 'framer-motion';
+import fetch from 'isomorphic-unfetch';
 
 import Section from '../components/Shared/Section';
 import SectionHeader from '../components/Shared/SectionHeader';
@@ -102,6 +103,7 @@ const Code = () => {
   const controls = useAnimation();
 
   React.useEffect(() => {
+    console.log('Effect being run', intersection);
     if (intersection?.isIntersecting) {
       controls.start({
         opacity: 1
@@ -242,5 +244,6 @@ export default withUrqlClient({
   url: 'https://api.github.com/graphql',
   fetchOptions: {
     headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
-  }
+  },
+  fetch
 })(Code);

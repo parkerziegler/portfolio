@@ -5,8 +5,8 @@ import NextLink from 'next/link';
 const Link = ({ href, children }) => (
   <NextLink href={href}>
     <a
-      className={`link text-white px-4 py-2 text-3xl font-sans no-underline
-    relative transition-colors duration-750 hover:text-purple`}
+      className={`link text-white p-2 text-3xl font-sans no-underline
+    relative`}
     >
       {children}
     </a>

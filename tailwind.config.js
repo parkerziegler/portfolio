@@ -21,8 +21,17 @@ module.exports = {
         '2/3': '66.666%',
         '1/2': '50%'
       },
+      minWidth: {
+        'half-screen': '50vw'
+      },
       scale: {
         '70': '0.7'
+      },
+      height: {
+        'half-screen': '50vh'
+      },
+      minHeight: {
+        'half-screen': '50vh'
       }
     },
     fill: (theme) => {
