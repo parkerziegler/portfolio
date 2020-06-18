@@ -6,33 +6,33 @@
   "author": "Parker Ziegler <parker.ziegler@formidable.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "compile:blogs": "node ./scripts/parse-mdx-blogs.js",
+    "start:dev": "next",
+    "dev": "run-s compile:blogs start:dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint {components,pages,styles}/**/*.js"
   },
   "dependencies": {
-    "@emotion/babel-preset-css-prop": "^10.0.9",
-    "@emotion/core": "^10.0.7",
-    "@emotion/styled": "^10.0.7",
+    "@mdx-js/loader": "^1.6.4",
+    "@mdx-js/react": "^1.6.4",
+    "@next/mdx": "^9.4.2",
     "autoprefixer": "^9.7.4",
-    "babel-plugin-emotion": "^10.0.7",
     "classnames": "^2.2.6",
     "d3": "^5.9.2",
     "dotenv": "^8.0.0",
-    "emotion-theming": "^10.0.7",
     "framer-motion": "^1.8.4",
     "graphql": "^14.3.0",
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.2.2",
-    "next-urql": "^0.3.7",
+    "next": "^9.4.2",
+    "next-urql": "^0.3.8",
     "postcss-import": "^12.0.1",
+    "prism-react-renderer": "^1.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-is": "^16.12.0",
-    "react-spring": "^8.0.27",
-    "tailwindcss": "^1.2.0",
+    "tailwindcss": "^1.4.6",
     "topojson": "^3.0.2"
   },
   "devDependencies": {
@@ -47,7 +47,11 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^2.2.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.16.4",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "remark": "^12.0.0",
+    "remark-mdx": "^1.6.5",
+    "to-vfile": "^6.1.0"
   }
 }

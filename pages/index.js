@@ -10,8 +10,8 @@ import Underline from '../components/Shared/Underline';
 import Text from '../components/Shared/Text';
 import SocialIcon from '../components/Shared/SocialIcon';
 import Map from '../components/Map/PlaceMap';
-import Card from '../components/Cards/PRCard';
-import CardGrid from '../components/Cards/PRCardGrid';
+import PRCard from '../components/Cards/PRCard';
+import PRCardGrid from '../components/Cards/PRCardGrid';
 import InlineLink from '../components/Shared/InlineLink';
 import LangSection from '../components/Shared/LangSection';
 
@@ -113,7 +113,7 @@ const Index = () => {
           becoming better engineers and kinder people. Here are some of my
           recent pull requests.
         </Text>
-        <CardGrid>
+        <PRCardGrid>
           {result.data.user.pullRequests.nodes.map(
             ({
               repository: { nameWithOwner, primaryLanguage },
@@ -121,7 +121,7 @@ const Index = () => {
               title,
               id
             }) => (
-              <Card
+              <PRCard
                 key={id}
                 nameWithOwner={nameWithOwner}
                 url={url}
@@ -130,7 +130,7 @@ const Index = () => {
               />
             )
           )}
-        </CardGrid>
+        </PRCardGrid>
       </Section>
       <Section className="items-center">
         <div className="md:max-w-3/4 stack-vertical">

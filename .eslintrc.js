@@ -18,5 +18,8 @@ module.exports = {
   },
   env: {
     browser: true
+  },
+  globals: {
+    __dirname: true
   }
 };

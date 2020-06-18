@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="947px" height="183px" viewBox="0 0 947 183" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>friction_simulation</title>
+    <defs>
+        <pattern id="pattern-1" width="48" height="48" x="-48" y="-48" patternUnits="userSpaceOnUse">
+            <use xlink:href="#image-2"></use>
+        </pattern>
+        <image id="image-2" width="48" height="48" xlink:href="data:image/png;base64,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"></image>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="friction_simulation">
+            <rect id="Rectangle" stroke="#AC43D9" stroke-width="2" fill-opacity="0.5" fill="#AC43D9" fill-rule="nonzero" x="86" y="66" width="90" height="90" rx="8"></rect>
+            <g id="Group" stroke-linecap="square" transform="translate(21.000000, 92.000000)" stroke="#D91A73">
+                <path d="M48.5,0.5 L24.5,0.5 M48.5,9.5 L12.5,9.5 M48.5,19.5 L0.5,19.5 M48.5,28.5 L7.5,28.5 M48.5,37.5 L19.5,37.5" id="Shape"></path>
+            </g>
+            <rect id="Rectangle" stroke="#AC43D9" stroke-width="2" fill-opacity="0.25" fill="#AC43D9" fill-rule="nonzero" x="309" y="66" width="90" height="90" rx="8"></rect>
+            <g id="Group" stroke-linecap="square" transform="translate(266.000000, 92.000000)" stroke="#D91A73">
+                <path d="M26.5,0.5 L12.5,0.5 M26.5,9.5 L6.5,9.5 M26.5,19.5 L0.5,19.5 M26.5,28.5 L9.5,28.5 M26.5,37.5 L18.5,37.5" id="Shape"></path>
+            </g>
+            <rect id="Rectangle" stroke="#AC43D9" stroke-width="2" fill-opacity="0.25" fill="#AC43D9" fill-rule="nonzero" x="619" y="66" width="90" height="90" rx="8"></rect>
+            <g id="Group" stroke-linecap="square" transform="translate(591.000000, 92.000000)" stroke="#D91A73">
+                <path d="M11.5,0.5 L7.5,0.5 M11.5,9.5 L3.5,9.5 M11.5,19.5 L0.5,19.5 M11.5,28.5 L3.5,28.5 M11.5,37.5 L7.5,37.5" id="Shape"></path>
+            </g>
+            <g id="c-link" transform="translate(77.000000, 157.000000)" fill="url(#pattern-1)" fill-rule="nonzero">
+                <polygon id="c" points="0 0 842 0 842 26 0 26"></polygon>
+            </g>
+            <g id="c-link" transform="translate(77.000000, 157.000000)" fill="#D91A73" fill-opacity="0.5" fill-rule="nonzero">
+                <polygon id="c" points="0 0 842 0 842 26 0 26"></polygon>
+            </g>
+            <rect id="Rectangle" stroke="#AC43D9" stroke-width="2" fill-opacity="0.5" fill="#AC43D9" fill-rule="nonzero" x="819" y="66" width="90" height="90" rx="8"></rect>
+            <g id="Group" fill="#000000" fill-rule="nonzero" font-family="SpaceMono-Regular, Space Mono" font-size="16" font-weight="normal">
+                <text id="Block-is-Moving-with">
+                    <tspan x="34.484" y="18">Block is Moving with</tspan>
+                </text>
+                <text id="Velocity-on-a-Rough-Surface">
+                    <tspan x="0.879" y="36">Velocity on a Rough Surface</tspan>
+                </text>
+            </g>
+            <g id="Group" transform="translate(428.000000, 3.000000)" fill="#000000" fill-rule="nonzero" font-family="SpaceMono-Regular, Space Mono" font-size="16" font-weight="normal">
+                <text id="Block-Decelerates">
+                    <tspan x="0.387" y="18">Block Decelerates</tspan>
+                </text>
+                <text id="From-Friction">
+                    <tspan x="19.59" y="36">From Friction</tspan>
+                </text>
+            </g>
+            <g id="Group" transform="translate(759.000000, 9.000000)" fill="#000000" fill-rule="nonzero" font-family="SpaceMono-Regular, Space Mono" font-size="16" font-weight="normal">
+                <text id="Block-Comes-to-Rest">
+                    <tspan x="0.285" y="18">Block Comes to Rest</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

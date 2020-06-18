@@ -9,12 +9,14 @@ const PRCard = ({ nameWithOwner, url, title, primaryLanguage }) => (
           {nameWithOwner}
         </p>
         <p className="mb-2 text-2xl">{title}</p>
-        <span
-          className="text-white rounded-md text-xl self-start p-2 mt-auto"
-          style={{ background: primaryLanguage.color }}
-        >
-          {primaryLanguage.name}
-        </span>
+        {primaryLanguage ? (
+          <span
+            className="text-white rounded-md text-xl self-start p-2 mt-auto"
+            style={{ background: primaryLanguage.color }}
+          >
+            {primaryLanguage.name}
+          </span>
+        ) : null}
       </div>
     </div>
   </a>
@@ -26,7 +28,7 @@ PRCard.propTypes = {
   title: PropTypes.string.isRequired,
   primaryLanguage: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    color: PropTypes.number.isRequired
+    color: PropTypes.string.isRequired
   })
 };
 

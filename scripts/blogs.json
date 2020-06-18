@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Building Physics-Based Animations with renature",
+    "slug": "building-physics-based-animations-with-renature",
+    "date": "January 20, 2020",
+    "tags": [
+      { "icon": "/react-logo.svg", "tag": "React" },
+      { "icon": "✨", "tag": "Animation" }
+    ],
+    "introText": "Three weeks ago , we at Formidable unveiled an exciting open source project we\"ve been working on as part of our OSS Fellowship Program – renature . renature is a physics-based animation library for React focused on building delightful UI animations using natural world forces like gravity, friction, and fluid resistance."
+  },
+  {
+    "title": "Introducing Renature: Experimenting with Physics for UI Animation",
+    "slug": "introducing-renature-experimenting-with-physics-for-ui-animation",
+    "date": "December 18, 2019",
+    "tags": [
+      { "icon": "/react-logo.svg", "tag": "React" },
+      { "icon": "✨", "tag": "Animation" }
+    ],
+    "introText": "At the beginning of December Formidable kicked off its inaugural open source fellowship . The Fellowship Program gives one employee per quarter the opportunity to pursue a novel technical idea, full-time, over the course of six weeks. The shape this idea takes is left up to the selected applicant; it can be a new open source library, a design tool like our stunning UX Deck , or technical writing that explores new practices in our ever-evolving field."
+  },
+  {
+    "title": "End to End Testing React Applications with Cypress",
+    "slug": "end-to-end-testing-react-applications-with-cypress",
+    "date": "May 20, 2019",
+    "tags": [
+      { "icon": "⚠️", "tag": "Testing" },
+      { "icon": "/react-logo.svg", "tag": "React" },
+      { "icon": "/cypress-logo.svg", "tag": "Cypress" }
+    ],
+    "introText": "Cypress has been creating a lot of buzz in the JavaScript ecosystem recently, promising a simple yet powerful API for writing integration and end-to-end tests. With an open source core written in JavaScript, you can test anything that runs in a browser, regardless of language or framework (think Reason, WASM, or Svelte). Cypress is unique in that it operates in the same run-loop as your application—client code and test code are embedded in separate iframes right next to each other and communicate over websockets. Pretty clever!"
+  },
+  {
+    "title": "Mapping in React and D3",
+    "slug": "mapping-in-react-and-d3",
+    "date": "August 29, 2017",
+    "tags": [{ "icon": "/react-logo.svg", "tag": "React" }],
+    "introText": ""
+  }
+]

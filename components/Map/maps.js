@@ -53,6 +53,73 @@ export const maps = [
     )
   },
   {
+    title:
+      'The Road to Vision Zero: Correlating Class, Race, and Traffic Safety in New York City',
+    items: [
+      {
+        src: '/maps/ta-traffic-crashes-nyc.png',
+        alt:
+          'A heat map of traffic crashes in New York City between 2013 and 2015.'
+      },
+      {
+        src: '/maps/ta-traffic-crashes-bronx.png',
+        alt:
+          'A heat map of traffic crashes in the Bronx, New York City between 2013 and 2015.'
+      },
+      {
+        src: '/maps/ta-traffic-crashes-brooklyn.png',
+        alt:
+          'A heat map of traffic crashes in Brooklyn, New York between 2013 and 2015.'
+      },
+      {
+        src: '/maps/ta-traffic-crashes-manhattan.png',
+        alt:
+          'A heat map of traffic crashes in Manhattan, New York City between 2013 and 2015.'
+      },
+      {
+        src: '/maps/ta-traffic-crashes-queens.png',
+        alt:
+          'A heat map of traffic crashes in Queens, New York between 2013 and 2015.'
+      },
+      {
+        src: '/maps/ta-traffic-crashes-si.png',
+        alt:
+          'A heat map of traffic crashes on Staten Island, New York between 2013 and 2015.'
+      }
+    ],
+    children: (
+      <div className="stack-md">
+        <p>
+          This set of maps, designed for{' '}
+          <InlineLink href="https://www.transalt.org/">
+            Transportation Alternatives
+          </InlineLink>{' '}
+          as part of{' '}
+          <InlineLink href="http://www.summerofmaps.com/about/">
+            Azavea&apos;s Summer of Maps fellowship
+          </InlineLink>
+          , seeks to 1) identify clusters of traffic crashes in New York City
+          between 2013 and 2015 and 2) theorize relationships between the
+          density of crashes and local measures of poverty. The results of this
+          spatial analysis show a clear trend – areas with higher concentrations
+          of traffic crashes tend to have higher poverty rates, lower median
+          incomes, and be more densely populated.
+        </p>
+        <p>
+          The collection includes a citywide analysis with economic profiles of
+          each borough alongside analysis of vulnerable city council districts
+          within each borough. To get a more holistic sense of this project,
+          check out the{' '}
+          <InlineLink href="https://www.summerofmaps.com/projects/2016-transportation-alternatives">
+            project description on Azavea&apos;s website
+          </InlineLink>
+          . Special thanks to Daniel McGlone, Senior GIS Analyst at Azavea, for
+          his mentorship on this project.
+        </p>
+      </div>
+    )
+  },
+  {
     items: [
       {
         src: '/maps/ecotrust-lidar-canopy-cover.png',

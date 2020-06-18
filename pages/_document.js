@@ -13,11 +13,11 @@ export default class Document extends NextDocument {
         <Head>
           {this.props.styleTags}
           <link
-            href="https://fonts.googleapis.com/css?family=Zilla+Slab"
+            href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap"
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Fira+Mono&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
             rel="stylesheet"
           />
           <style>{`

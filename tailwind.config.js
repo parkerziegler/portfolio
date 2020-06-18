@@ -9,17 +9,19 @@ module.exports = {
         teal: '#57b4ad',
         pink: '#fa709a',
         yellow: '#fee140',
-        black: '#222222'
+        black: '#222222',
+        'purple-100': '#faf5ff'
       },
       fontFamily: {
         serif: "'Zilla Slab', serif",
-        mono: "'Fira Mono', monospace"
+        mono: "'Space Mono', monospace"
       },
       maxWidth: {
         '5/6': '83.333%',
         '3/4': '75%',
         '2/3': '66.666%',
-        '1/2': '50%'
+        '1/2': '50%',
+        '1/8': '12.5%'
       },
       minWidth: {
         'half-screen': '50vw'

@@ -34,7 +34,7 @@ const MapThumbnail = ({ src, alt, selectedSrc, onClick }) => {
           inline: 'start'
         });
       }}
-      className="h-64 object-cover saturate cursor-pointer"
+      className="h-32 md:h-48 lg:h-64 object-cover saturate cursor-pointer"
       ref={thumbnailNode}
       style={
         selectedSrc === src
@@ -66,7 +66,7 @@ const MapCarousel = ({ maps = [], title, before, children }) => {
     <div className="grid grid-cols-12 gap-4 lg:gap-8">
       <div
         className={cn(
-          'col-span-12 lg:col-span-4 flex items-center justify-center self-end bg-dotted-purple shadow-purple p-8',
+          'col-span-12 lg:col-span-4 flex items-center justify-center self-end bg-dotted-purple shadow-purple p-8 mb-4 lg:mb-0',
           !before && 'lg:col-start-9 lg:shadow-purple--reverse'
         )}
       >

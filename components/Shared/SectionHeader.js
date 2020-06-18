@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-const SectionHeader = ({ centered, children }) => {
+const SectionHeader = ({ centered = false, className, children }) => {
   return (
-    <h2 className={cn(['font-serif text-6xl m-0', centered && 'text-center'])}>
+    <h2
+      className={cn([
+        'font-serif text-6xl m-0',
+        centered && 'text-center',
+        className
+      ])}
+    >
       {children}
     </h2>
   );
@@ -12,6 +18,7 @@ const SectionHeader = ({ centered, children }) => {
 
 SectionHeader.propTypes = {
   centered: PropTypes.bool,
+  className: PropTypes.string,
   children: PropTypes.node.isRequired
 };
 

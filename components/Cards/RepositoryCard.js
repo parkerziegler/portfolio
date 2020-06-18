@@ -39,7 +39,7 @@ const RepositoryCard = ({
     >
       <div className="gradient-main flex p-2 m-auto rounded-lg font-mono w-full gradient-main-box-shadow">
         <div className="flex flex-column stack-vertical p-4 rounded-md bg-white flex-auto overflow-auto">
-          <h1 className="text-4xl text-center">{name}</h1>
+          <h2 className="text-4xl text-center">{name}</h2>
           <img src={badgePath} className="h-64" />
           <p className="text-xl">{description}</p>
           <div className="flex flex-wrap">

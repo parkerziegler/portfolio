@@ -10,3 +10,5 @@
 @import './mixins.css';
 @import './backgrounds.css';
 @import './box-shadows.css';
+@import './masonry-grid.css';
+@import './ellipsis.css';

@@ -5,3 +5,89 @@
 .stack-horizontal > * + * {
   margin-left: 1rem;
 }
+
+@responsive {
+  .stack-xs > * {
+    margin-top: 0;
+  }
+
+  .stack-xs > * + * {
+    margin-top: 0.5rem;
+  }
+
+  .stack-sm > * {
+    margin-top: 0;
+  }
+
+  .stack-sm > * + * {
+    margin-top: 1rem;
+  }
+
+  .stack-md > * {
+    margin-top: 0;
+  }
+
+  .stack-md > * + * {
+    margin-top: 2rem;
+  }
+
+  .stack-lg > * {
+    margin-top: 0;
+  }
+
+  .stack-lg > * + * {
+    margin-top: 3rem;
+  }
+
+  .stack-xl > * {
+    margin-top: 0;
+  }
+
+  .stack-xl > * + * {
+    margin-top: 5rem;
+  }
+
+  .stack-xs-h > * {
+    margin-left: 0;
+  }
+
+  .stack-xs-h > * + * {
+    margin-left: 0.5rem;
+  }
+
+  .stack-sm-h > * {
+    margin-left: 0;
+  }
+
+  .stack-sm-h > * + * {
+    margin-left: 1rem;
+  }
+
+  .stack-md-h > * {
+    margin-left: 0;
+  }
+
+  .stack-md-h > * + * {
+    margin-left: 2rem;
+  }
+
+  .stack-lg-h > * {
+    margin-left: 0;
+  }
+
+  .stack-lg-h > * + * {
+    margin-left: 3rem;
+  }
+
+  .stack-xl-h > * {
+    margin-left: 0;
+  }
+
+  .stack-xl-h > * + * {
+    margin-left: 5rem;
+  }
+
+  .stack-none-h > * + * {
+    margin-left: 0;
+  }
+}
