@@ -1,0 +1,214 @@
+import BlogPost from '../../components/Blog/BlogPost';
+import { TAGS } from '../../utils/constants';
+
+export const meta = {
+  title: 'Mapping in React and D3',
+  slug: 'mapping-in-react-and-d3',
+  date: 'August 29, 2017',
+  tags: ['react', 'd3']
+};
+
+<BlogPost tags={[TAGS.react, TAGS.d3]}>
+
+# Mapping in React and D3
+
+A lot of folks today are talking about [React](https://reactjs.org/), the
+Javascript framework that lets you build performant apps and UIs quickly and
+efficiently. I use React almost everyday at my job and in my own open source
+projects, often pairing it with [Redux](https://redux.js.org/) for state management.
+
+But as a cartographer, my ultimate assessment of any framework comes down to its ability to help me make beautiful, engaging maps and visualizations. I've worked quite a bit with the ArcGIS Javascript API in React to make slippy maps, but I haven't fallen in love with it. D3, on the other hand (which ranks among my favorite libraries out there), is a lot more fun to play with in React. It's also a good bit more difficult to work with because of how differently it interacts with the DOM. While React uses a virtual DOM model to parse UI updates and render the proper HTML as a function of props and state, D3 just operates directly on the DOM, adding and removing elements as you please. This makes D3 quite a bit more opinionated than React. In this piece, I'll go over the two main strategies I've found for working with, and mapping with, D3 and React.
+
+Before we get started, please take a read of one of [my favorite pieces](https://medium.com/@Elijah_Meeks/interactive-applications-with-react-d3-f76f7b3ebc71) on this subject, which will be particularly useful for those of you who are new to React. Done? No really, go read it. It'll help you understand what is to follow. Sweet, on to the good stuff!
+
+## Controlling the DOM
+
+When mapping with D3 and React, I like to say that you can either write React code the D3 way or write D3 code the React way. By this I mean to say that you need to let one of these frameworks drive how you handle the DOM in any given situation. Of course, just as nothing in life is an either / or (more often, it's an &), this doesn't preclude you from using both techniques in a single app – on the contrary, I think these two methods are suited to solving different problems. Let's look at two examples, starting with writing React code the D3 way. Our task will be rendering a simple legend for a choropleth map. Let's take a look.
+
+```js
+// import React
+import * as React from 'react';
+// import d3 - run npm install --save d3 to add
+// d3 to your node_modules
+import * as d3 from 'd3';
+
+class MapLegend extends React.Component {
+  constructor() {
+    super();
+    // props, bound methods of your React component
+    // etc. can go in here
+  }
+
+  componentDidMount() {
+    // time to make a legend here
+    // start by storing all color values in an array
+    const colorLegend = [
+      'rgb(247,251,255)',
+      'rgb(222,235,247)',
+      'rgb(198,219,239)',
+      'rgb(158,202,225)',
+      'rgb(107,174,214)',
+      'rgb(66,146,198)',
+      'rgb(33,113,181)',
+      'rgb(8,81,156)'
+    ];
+
+    // get the svg that just mounted - this is componentDidMount()
+    // so this function gets fired just after render()
+    const svgLegend = d3.select('#legend');
+
+    // now just inject standard D3 code
+    svgLegend
+      .append('g')
+      .attr('transform', 'translate(500, 525)')
+      .selectAll('rect')
+      .data(colorLegend)
+      .enter()
+      .append('rect')
+      .attr('fill', function(_, i) {
+        return colorLegend[i];
+      })
+      .attr('x', function(_, i) {
+        return i * 30;
+      })
+      .attr('y', 30)
+      .attr('width', 30)
+      .attr('height', 20);
+
+    // add a title
+    svgLegend
+      .append('text')
+      .attr('transform', 'translate(500, 525)')
+      .attr('font-size', '12px')
+      .attr('font-family', 'HelveticaNeue-Bold, Helvetica, sans-serif')
+      .attr('y', 20)
+      .text('Shootings Per Million');
+
+    // add numbers as labels
+    let labelsLegend = [
+      '0-1',
+      '1-3',
+      '3-5',
+      '5-7',
+      '7-10',
+      '10-12',
+      '12-15',
+      '>15'
+    ];
+
+    svgLegend
+      .append('g')
+      .attr('transform', 'translate(500, 525)')
+      .selectAll('text')
+      .data(labelsLegend)
+      .enter()
+      .append('text')
+      .attr('font-size', '10px')
+      .attr('font-family', 'HelveticaNeue-Light, Helvetica, sans-serif')
+      .attr('x', function(_, i) {
+        return i * 30;
+      })
+      .attr('y', 60)
+      .text(function(d) {
+        return d;
+      });
+  }
+
+  render() {
+    return <svg id="legend" />;
+  }
+}
+
+export default MapLegend;
+```
+
+So let's discuss what's going on here. Essentially, we are just using React to render a blank SVG container for us, rather than leaving that to D3. This is useful because it turns this SVG into a component, which – using ES6 classes – has lifecycle methods we can hijack to do anything we want. In this case, using componentDidMount() is the proper choice because it guarantees that the empty SVG is in the DOM before we execute any D3 code to act on it. The contents of the componentDidMount() method should look familiar to anyone who has worked with D3. Here we simply obtain a reference to our SVG in the DOM, append a `<g>` tag to house the `<rect>`'s that will make up our legend, add the proper color and text label to each rectangle, and add a title to the legend. Pretty simple, but pretty powerful. I call this writing React code the D3 way because we're really letting D3 drive the way this component renders. React is essentially just providing us an SVG shell into which D3 can put anything we want. Of course, since this legend is now a component, we can generalize it – say by turning the colorLegend or labelsLegend arrays into props that can render anything we hand off to the component.
+
+The other way of doing things is what I like to call writing D3 code the React way. Taking this approach, React takes the reins of explicitly rendering things, to the point where `<path>` or `<circle>` elements become components. Let's take a look at how to render a simple map of the United States using this approach.
+
+```js
+import * as React from 'react';
+import * as d3 from 'd3';
+// import topojson so we work with topologically clean geographic files
+// this will improve performance and reduce load time
+import * as topojson from 'topojson';
+// and import a custom component called State
+// we'll get to this a bit later
+import State from './State';
+
+class Map extends React.Component {
+  constructor() {
+    super();
+    this.state = { us: [] };
+    this.generateStatePath = this.generateStatePath.bind(this);
+  }
+
+  componentDidMount() {
+    // send off a request for the topojson data
+    d3.json("https://d3js.org/us-10m.v1.json", (error, us) => {
+      if (error) throw error;
+
+      // store the data in state
+      this.setState({
+        us
+      });
+    });
+  }
+
+  // let's define a method for rendering paths for each state
+  generateStatePath(geoPath, data) {
+    return data.map(feature, i) => {
+      // generate the SVG path from the geometry
+      const path = geoPath(feature);
+      return <State path={path} key={i} />;
+    }):
+  }
+
+  render() {
+    // create a geographic path renderer
+    const geoPath = d3.geoPath();
+    const data = this.state.us;
+
+    // call the generateStatePaths method
+    const statePaths = this.generateStatePaths(geoPath, data);
+
+    return (
+      <svg id='map-container'>
+        <g id='states-container'>
+          {statePaths}
+        </g>
+      </svg>
+    );
+  }
+}
+```
+
+Alright, so let's dig into this piece of code. Here we are actually generating the JSX for our states inside of a separate method on our component called generateStatePath. You'll notice `generateStatePath` takes two arguments - `geoPath` and `data`. `geoPath` is just D3's geographic path generator. It what allows us to work dynamically with things like projected coordinate systems in D3 (which is pretty darn sweet for those of us who've spent many a day in hell reprojecting static maps in ArcGIS). The second argument is our data - in this case, our data is a 10m resolution topojson file of every state in the United States, which we fetch using the `d3.json` method and store in the component's state. Notice I make a comment about using Redux to store the topojson data rather than the component's state. The case for this is that your topojson is available to any component in your application, which becomes very useful for doing analysis or making different maps with the same root data.
+
+The `generateStatePath` function then simply maps over every feature in the dataset, returning a State component for each. The result is an array of State components, which get rendered inside our `<g>` tag. Let's check out what this State component looks like.
+
+```js
+import * as React from 'react';
+
+const State = ({ path }) => {
+  return (
+    <path
+      className="states"
+      d={path}
+      fill="#6C7680"
+      stroke="#FFFFFF"
+      strokeWidth={0.25}
+    />
+  );
+};
+
+export default State;
+```
+
+Our State component is really just an SVG path that gets rendered using the path prop handed down by our parent Map component. That path gets generated in the call to `d3.geoPath(feature)`, which takes the input state feature as a GeoJSON object and outputs an SVG path that can be rendered on our page. You'll notice here we're applying the Stateless Functional Component paradigm to our component. Rather than using an ES6 class, we define our component as a function, which simply returns some JSX based on the props we provide it as an argument.
+
+Here I suggest we're writing D3 code the React way because we're applying React's component hierarchy philosophy to rendering our D3 elements. What I appreciate about this approach is the ability to control the rendering of HTML elements at a very precise level – down to the point where we can write custom functions to handle all sorts of UI scenarios. These elements are now also subject to React's diffing algorithm, meaning that updates to data stored in Redux or in the component's state will trigger updates to these elements on the UI. With something like [`react-transition-group`](https://github.com/reactjs/react-transition-group), you can begin to implement all of the beautiful magic behind D3 transitions using React!
+
+If you're curious to see some of this code in action, check out [this Github repo](https://github.com/parkerziegler/d3-react-map). This is an app I've been developing to help make sense of crowdsourced police shootings data gathered by the Guardian. An older, pure D3 / JS version of the app can be seen [here](https://parkerziegler.github.io/d3-policeshootings-map/). I wanted to test myself to see if I could develop the same (or better) experience in React, using other cool technologies like [Sass](https://sass-lang.com) and [redux-sagas](https://github.com/redux-saga/redux-saga). In my next post, I'll talk a bit about techniques for responsive typography in map focused layouts using Sass maps. More to come as well on async data loading using redux-sagas and axios. Thanks as always for reading.
+
+</BlogPost>

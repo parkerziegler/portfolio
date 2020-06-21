@@ -6,7 +6,7 @@ const PixelCard = ({
   description,
   primaryLanguage,
   starCount,
-  forkCount
+  forkCount,
 }) => {
   return (
     <div className="flex flex-col bg-dotted-purple p-8 stack-vertical">
@@ -41,10 +41,10 @@ PixelCard.propTypes = {
   description: PropTypes.string.isRequired,
   primaryLanguage: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired
+    color: PropTypes.string.isRequired,
   }),
   starCount: PropTypes.number.isRequired,
-  forkCount: PropTypes.number.isRequired
+  forkCount: PropTypes.number.isRequired,
 };
 
 export default PixelCard;

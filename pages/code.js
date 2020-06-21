@@ -4,6 +4,7 @@ import { withUrqlClient } from 'next-urql';
 import { useQuery } from 'urql';
 import { motion, useAnimation } from 'framer-motion';
 import fetch from 'isomorphic-unfetch';
+import { useInView } from 'react-intersection-observer';
 
 import Section from '../components/Shared/Section';
 import SectionHeader from '../components/Shared/SectionHeader';
@@ -12,12 +13,11 @@ import RepositoryCard from '../components/Cards/RepositoryCard';
 import Text from '../components/Shared/Text';
 import Statistic from '../components/Contributions/Statistic';
 import PixelCard from '../components/Cards/PixelCard';
-import { useIntersection } from '../hooks/useIntersection';
 
 const projectToBadgePath = {
   renature: '/renature.svg',
   urql: '/urql.svg',
-  reasonUrql: '/reason-urql.svg'
+  reasonUrql: '/reason-urql.svg',
 };
 
 const repositoriesQuery = gql`
@@ -81,37 +81,29 @@ const repositoriesQuery = gql`
 
 const variants = {
   visible: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
   },
-  hidden: false
-};
-
-const observerOptions = {
-  root: null,
-  rootMargin: '0px 0px 0px 0px',
-  threshold: 0.25
+  hidden: false,
 };
 
 const Code = () => {
   const [result] = useQuery({ query: repositoriesQuery });
-
-  const intersectionRef = React.useRef(null);
-  const intersection = useIntersection(
-    intersectionRef.current,
-    observerOptions
-  );
+  const [ref, inView] = useInView({
+    threshold: 0.25,
+  });
   const controls = useAnimation();
 
   React.useEffect(() => {
-    console.log('Effect being run', intersection);
-    if (intersection?.isIntersecting) {
+    if (inView) {
       controls.start({
-        opacity: 1
+        opacity: 1,
       });
     } else {
-      controls.start({ opacity: 0 });
+      controls.start({
+        opacity: 0,
+      });
     }
-  }, [intersection]);
+  }, [inView]);
 
   if (result.fetching) {
     return null;
@@ -133,7 +125,7 @@ const Code = () => {
           }
         </Text>
         <motion.div
-          className="flex flex-col md:flex-row stack-vertical md:clear-stack-vertical md:stack-horizontal"
+          className="grid grid-cols-12 gap-8"
           animate="visible"
           initial="hidden"
           variants={variants}
@@ -148,7 +140,7 @@ const Code = () => {
                 stargazers: { totalCount: starCount },
                 forkCount,
                 primaryLanguage,
-                url
+                url,
               } = result.data[project];
 
               return (
@@ -159,8 +151,8 @@ const Code = () => {
                   topics={repositoryTopics.edges.map(
                     ({
                       node: {
-                        topic: { name: topic }
-                      }
+                        topic: { name: topic },
+                      },
                     }) => topic
                   )}
                   starCount={starCount}
@@ -174,7 +166,7 @@ const Code = () => {
         </motion.div>
       </Section>
       <Section>
-        <div className="flex flex-col md:flex-row stack-vertical md:clear-stack-vertical md:stack-horizontal">
+        <div className="grid grid-cols-12 gap-8">
           <Statistic
             number={result.data.viewer.repositoriesContributedTo.totalCount}
             description="Public repositories contributed to (excluding my own)."
@@ -201,7 +193,7 @@ const Code = () => {
         </SectionHeader>
         <motion.div
           className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
-          ref={intersectionRef}
+          ref={ref}
           animate={controls}
           initial={{ opacity: 0 }}
         >
@@ -219,8 +211,8 @@ const Code = () => {
                   description,
                   primaryLanguage,
                   stargazers: { totalCount: starCount },
-                  forkCount
-                }
+                  forkCount,
+                },
               }) => {
                 return (
                   <PixelCard
@@ -240,10 +232,15 @@ const Code = () => {
   );
 };
 
-export default withUrqlClient({
-  url: 'https://api.github.com/graphql',
-  fetchOptions: {
-    headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
-  },
-  fetch
-})(Code);
+export default withUrqlClient(
+  () => ({
+    url: 'https://api.github.com/graphql',
+    fetchOptions: {
+      headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
+    },
+    fetch,
+  }),
+  {
+    ssr: true,
+  }
+)(Code);

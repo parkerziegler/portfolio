@@ -7,6 +7,10 @@
   box-shadow: 0.6rem -0.6px 1.2rem #ededed, 0.6rem -0.6px 1.2rem #ffffff;
 }
 
+.gradient-thoughts {
+  background-image: linear-gradient(120deg, #fa709a, #fee140);
+}
+
 @keyframes across {
   0% {
     clip-path: inset(0 100% 0 0);

@@ -6,7 +6,7 @@ const Nav = ({ children }) => {
 };
 
 Nav.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default Nav;

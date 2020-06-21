@@ -7,16 +7,16 @@ const variants = {
     y: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 1000, velocity: -100 }
-    }
+      y: { stiffness: 1000, velocity: -100 },
+    },
   },
   hidden: {
     y: 50,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000 }
-    }
-  }
+      y: { stiffness: 1000 },
+    },
+  },
 };
 
 const RepositoryCard = ({
@@ -27,17 +27,25 @@ const RepositoryCard = ({
   forkCount,
   topics,
   badgePath,
-  url
+  url,
 }) => {
   return (
     <motion.a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="md:w-2/6"
+      className="col-span-12 md:col-span-4 self-stretch"
       variants={variants}
+      whileHover={{
+        scale: 1.03,
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 260,
+        damping: 20,
+      }}
     >
-      <div className="gradient-main flex p-2 m-auto rounded-lg font-mono w-full gradient-main-box-shadow">
+      <div className="gradient-main flex p-2 m-auto rounded-lg font-mono gradient-main-box-shadow h-full">
         <div className="flex flex-column stack-vertical p-4 rounded-md bg-white flex-auto overflow-auto">
           <h2 className="text-4xl text-center">{name}</h2>
           <img src={badgePath} className="h-64" />
@@ -81,13 +89,13 @@ RepositoryCard.propTypes = {
   description: PropTypes.string.isRequired,
   primaryLanguage: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired
+    color: PropTypes.string.isRequired,
   }).isRequired,
   starCount: PropTypes.number.isRequired,
   forkCount: PropTypes.number.isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   badgePath: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
 };
 
 export default RepositoryCard;

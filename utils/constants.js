@@ -1,22 +1,22 @@
-const TAGS = {
+export const TAGS = {
   testing: {
     icon: '⚠️',
-    tag: 'Testing'
+    tag: 'Testing',
   },
   react: {
     icon: '/react-logo.svg',
-    tag: 'React'
+    tag: 'React',
   },
   cypress: {
     icon: '/cypress-logo.svg',
-    tag: 'Cypress'
+    tag: 'Cypress',
   },
   animation: {
     icon: '✨',
-    tag: 'Animation'
-  }
-};
-
-module.exports = {
-  TAGS
+    tag: 'Animation',
+  },
+  d3: {
+    icon: '/d3-logo.svg',
+    tag: 'D3',
+  },
 };

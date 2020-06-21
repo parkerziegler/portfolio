@@ -6,7 +6,7 @@ const Underline = ({ children }) => {
 };
 
 Underline.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.string.isRequired,
 };
 
 export default Underline;

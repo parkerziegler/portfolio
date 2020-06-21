@@ -23,7 +23,7 @@ const Tag = ({ icon, className, children }) => {
 Tag.propTypes = {
   icon: PropTypes.string.isRequired,
   className: PropTypes.string,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default Tag;

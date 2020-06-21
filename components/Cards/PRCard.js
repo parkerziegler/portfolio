@@ -1,9 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 const PRCard = ({ nameWithOwner, url, title, primaryLanguage }) => (
-  <a href={url} target="_blank" rel="noopener noreferrer">
-    <div className="gradient-main flex p-2 m-auto rounded-lg font-mono h-full w-full gradient-main-box-shadow grow">
+  <motion.a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{
+      scale: 1.05,
+    }}
+    transition={{
+      type: 'spring',
+      stiffness: 260,
+      damping: 20,
+    }}
+  >
+    <div className="gradient-main flex p-2 m-auto rounded-lg font-mono h-full w-full gradient-main-box-shadow">
       <div className="flex flex-col p-4 rounded-md bg-white flex-auto overflow-auto">
         <p className="mb-2 block text-2xl font-bold underline">
           {nameWithOwner}
@@ -19,7 +32,7 @@ const PRCard = ({ nameWithOwner, url, title, primaryLanguage }) => (
         ) : null}
       </div>
     </div>
-  </a>
+  </motion.a>
 );
 
 PRCard.propTypes = {
@@ -28,8 +41,8 @@ PRCard.propTypes = {
   title: PropTypes.string.isRequired,
   primaryLanguage: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired
-  })
+    color: PropTypes.string.isRequired,
+  }),
 };
 
 export default PRCard;

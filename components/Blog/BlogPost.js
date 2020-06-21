@@ -12,7 +12,7 @@ const BlogPost = ({ tags, children }) => {
         <div
           className="flex pt-16 px-16 sm:px-32 stack-xs-h md:absolute md:mt-24 md:flex-col md:stack-sm md:pt-0 md:px-0 md:stack-none-h md:max-w-1/8"
           style={{
-            left: `${100 - 75 / 2 / 2}%`
+            left: `${100 - 75 / 2 / 2}%`,
           }}
         >
           {tags.map(({ tag, icon }) => (
@@ -28,7 +28,13 @@ const BlogPost = ({ tags, children }) => {
 };
 
 BlogPost.propTypes = {
-  children: PropTypes.node.isRequired
+  tags: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.string.isRequired,
+      tag: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default BlogPost;

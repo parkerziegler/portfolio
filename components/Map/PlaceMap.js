@@ -11,12 +11,12 @@ const variants = {
   visible: (i) => {
     return {
       opacity: 1,
-      transition: { delay: i * 0.05 }
+      transition: { delay: i * 0.05 },
     };
   },
   hidden: {
-    opacity: 0
-  }
+    opacity: 0,
+  },
 };
 
 const Map = () => {
@@ -32,7 +32,7 @@ const Map = () => {
       const geoPaths = states.map((feature) => ({
         id: feature.id,
         d: path(feature),
-        centroid: path.centroid(feature)[0]
+        centroid: path.centroid(feature)[0],
       }));
 
       setPaths(geoPaths.sort((a, b) => a.centroid - b.centroid));

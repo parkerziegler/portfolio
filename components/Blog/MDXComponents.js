@@ -16,7 +16,7 @@ const H1 = ({ children }) => (
 );
 
 H1.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 const H2 = ({ children }) => (
@@ -26,7 +26,7 @@ const H2 = ({ children }) => (
 );
 
 H2.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 const InlineCode = ({ children }) => (
@@ -36,10 +36,10 @@ const InlineCode = ({ children }) => (
 );
 
 InlineCode.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
-const Code = ({ children, className }) => {
+const Code = ({ children, className = '' }) => {
   const language = className.replace(/language-/, '');
   return (
     <Highlight
@@ -66,13 +66,18 @@ const Code = ({ children, className }) => {
   );
 };
 
+Code.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+
 const components = {
   h1: H1,
   h2: H2,
   p: Text,
   a: InlineLink,
   inlineCode: InlineCode,
-  code: Code
+  code: Code,
 };
 
 export default components;

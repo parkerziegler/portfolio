@@ -14,13 +14,13 @@ const Extension = () => {
           <stop
             offset="0%"
             style={{
-              stopColor: '#7b16ff'
+              stopColor: '#7b16ff',
             }}
           />
           <stop
             offset="100%"
             style={{
-              stopColor: '#ff9c0d'
+              stopColor: '#ff9c0d',
             }}
           />
         </linearGradient>

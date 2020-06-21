@@ -15,7 +15,7 @@ const SiteTitle = ({ children }) => {
 };
 
 SiteTitle.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.string.isRequired,
 };
 
 export default SiteTitle;

@@ -7,15 +7,13 @@ import Text from '../Shared/Text';
 
 const variants = {
   visible: {
-    transform: 'scale(1)',
-    opacity: 1,
-    filter: 'saturate(1)'
+    transform: 'translateY(-2rem)',
+    filter: 'saturate(1)',
   },
   hidden: {
-    transform: 'scale(0.5)',
-    opacity: 0,
-    filter: 'saturate(0)'
-  }
+    transform: 'translateY(0)',
+    filter: 'saturate(0)',
+  },
 };
 
 const MapThumbnail = ({ src, alt, selectedSrc, onClick }) => {
@@ -31,7 +29,7 @@ const MapThumbnail = ({ src, alt, selectedSrc, onClick }) => {
         thumbnailNode.current.scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
-          inline: 'start'
+          inline: 'start',
         });
       }}
       className="h-32 md:h-48 lg:h-64 object-cover saturate cursor-pointer"
@@ -50,9 +48,9 @@ MapThumbnail.propTypes = {
   alt: PropTypes.string.isRequired,
   selectedSrc: PropTypes.shape({
     src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired
+    alt: PropTypes.string.isRequired,
   }).isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 const MapCarousel = ({ maps = [], title, before, children }) => {
@@ -90,7 +88,11 @@ const MapCarousel = ({ maps = [], title, before, children }) => {
           initial="hidden"
           animate="visible"
           variants={variants}
-          transition={{ duration: 0.3 }}
+          transition={{
+            type: 'spring',
+            stiffness: 260,
+            damping: 20,
+          }}
           className="block min-w-screen max-w-full scroll-snap-align-start object-cover shadow-lg"
         />
         <nav className="flex overflow-y-hidden stack-horizontal">
@@ -123,12 +125,12 @@ MapCarousel.propTypes = {
   maps: PropTypes.arrayOf(
     PropTypes.shape({
       src: PropTypes.string.isRequired,
-      alt: PropTypes.string.isRequired
+      alt: PropTypes.string.isRequired,
     })
   ),
   title: PropTypes.string.isRequired,
   before: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default MapCarousel;
