@@ -5,7 +5,7 @@ export const meta = {
   title: 'Building Physics-Based Animations with renature',
   slug: 'building-physics-based-animations-with-renature',
   date: 'January 20, 2020',
-  tags: ['react', 'animation'],
+  tags: ['react', 'animation']
 };
 
 <BlogPost tags={[TAGS.react, TAGS.animation]}>
@@ -31,16 +31,16 @@ If we look at the API for our `useFriction` hook, we'll see that the parameters 
 ```typescript
 const [props] = useFriction<HTMLDivElement>({
   from: {
-    transform: 'scale(1) rotate(0deg)',
+    transform: 'scale(1) rotate(0deg)'
   },
   to: {
-    transform: 'scale(1.5) rotate(720deg)',
+    transform: 'scale(1.5) rotate(720deg)'
   },
   config: {
     mu: 0.5, // Oh look! The coefficient of friction, µ.
     mass: 300, // The mass of our moving object. We can use this to calculate the normal force.
-    initialVelocity: 10, // The initial velocity of our sliding object.
-  },
+    initialVelocity: 10 // The initial velocity of our sliding object.
+  }
 });
 ```
 
@@ -107,7 +107,7 @@ const applyForce = (
   return {
     acceleration,
     velocity: nextVelocity,
-    position: nextPosition,
+    position: nextPosition
   };
 };
 ```
@@ -134,7 +134,7 @@ const animate = ({ mu, mass, initialVelocity }: FrictionParams) => {
   let state = {
     acceleration: 0,
     velocity: initialVelocity,
-    position: 0,
+    position: 0
   };
 
   /**
@@ -180,16 +180,16 @@ Let's say you have a `useFriction` hook set up, like so:
 ```typescript
 const [props] = useFriction<HTMLDivElement>({
   from: {
-    transform: 'rotate(0deg)',
+    transform: 'rotate(0deg)'
   },
   to: {
-    transform: 'rotate(180deg)',
+    transform: 'rotate(180deg)'
   },
   config: {
     mu: 0.5,
     mass: 20,
-    initialVelocity: 1.5,
-  },
+    initialVelocity: 1.5
+  }
 });
 ```
 

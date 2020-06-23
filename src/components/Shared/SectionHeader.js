@@ -8,7 +8,7 @@ const SectionHeader = ({ centered = false, className, children }) => {
       className={cn([
         'font-serif text-6xl m-0',
         centered && 'text-center',
-        className,
+        className
       ])}
     >
       {children}
@@ -19,7 +19,7 @@ const SectionHeader = ({ centered = false, className, children }) => {
 SectionHeader.propTypes = {
   centered: PropTypes.bool,
   className: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default SectionHeader;

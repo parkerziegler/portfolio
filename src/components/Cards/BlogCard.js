@@ -9,16 +9,16 @@ const variants = {
     y: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 1000, velocity: -100 },
-    },
+      y: { stiffness: 1000, velocity: -100 }
+    }
   },
   hidden: {
     y: 50,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000 },
-    },
-  },
+      y: { stiffness: 1000 }
+    }
+  }
 };
 
 const BlogCard = ({ title, slug, date, tags = [], introText, index }) => {
@@ -29,10 +29,10 @@ const BlogCard = ({ title, slug, date, tags = [], introText, index }) => {
         className="cursor-pointer"
         whileHover={{
           rotateX: ['0deg', '20deg', '0deg'],
-          scale: [1, 1.015, 1.03],
+          scale: [1, 1.015, 1.03]
         }}
         transition={{
-          duration: 0.4,
+          duration: 0.4
         }}
       >
         <div className="flex h-full bg-gradient--primary shadow-lg p-2 rounded-lg">
@@ -74,11 +74,11 @@ BlogCard.propTypes = {
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       tag: PropTypes.string.isRequired,
-      icon: PropTypes.string.isRequired,
+      icon: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
   introText: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default BlogCard;

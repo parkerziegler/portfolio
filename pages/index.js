@@ -20,7 +20,7 @@ const LANGUAGES = [
   { src: '/ts-logo.svg', alt: 'TypeScript' },
   { src: '/reason-logo.svg', alt: 'ReasonML' },
   { src: '/css-logo.svg', alt: 'CSS' },
-  { src: '/graphql-logo.svg', alt: 'GraphQL' },
+  { src: '/graphql-logo.svg', alt: 'GraphQL' }
 ];
 
 const FRAMEWORKS = [
@@ -28,7 +28,7 @@ const FRAMEWORKS = [
   { src: '/next-logo.svg', alt: 'NextJS' },
   { src: '/redux-logo.svg', alt: 'Redux' },
   { src: '/jest-logo.svg', alt: 'Jest ' },
-  { src: '/sass-logo.svg', alt: 'Sass' },
+  { src: '/sass-logo.svg', alt: 'Sass' }
 ];
 
 const contributionsQuery = gql`
@@ -60,7 +60,7 @@ const contributionsQuery = gql`
 const Index = () => {
   const [result] = useQuery({
     query: contributionsQuery,
-    variables: { login: 'parkerziegler' },
+    variables: { login: 'parkerziegler' }
   });
 
   if (result.fetching) {
@@ -119,7 +119,7 @@ const Index = () => {
               repository: { nameWithOwner, primaryLanguage },
               url,
               title,
-              id,
+              id
             }) => (
               <PRCard
                 key={id}
@@ -176,9 +176,9 @@ export default withUrqlClient(
   () => ({
     url: 'https://api.github.com/graphql',
     fetchOptions: {
-      headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
+      headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
     },
-    fetch,
+    fetch
   }),
   { ssr: true }
 )(Index);

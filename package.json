@@ -9,8 +9,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint {components,pages,utils}/**/*.js",
-    "format": "prettier --write {components,pages,utils}/**/*.js"
+    "lint": "eslint 'pages/*.js' 'src/**/*.js'",
+    "format": "prettier --write 'pages/**/*.{js,mdx}' 'src/**/*.js'"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.4",

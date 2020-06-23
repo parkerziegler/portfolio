@@ -10,9 +10,9 @@ import BlogCard from '../src/components/Cards/BlogCard';
 
 const variants = {
   visible: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
   },
-  hidden: false,
+  hidden: false
 };
 
 const Thoughts = ({ posts }) => {
@@ -59,11 +59,11 @@ Thoughts.propTypes = {
       tags: PropTypes.arrayOf(
         PropTypes.shape({
           icon: PropTypes.string.isRequired,
-          tag: PropTypes.string.isRequired,
+          tag: PropTypes.string.isRequired
         }).isRequired
-      ).isRequired,
+      ).isRequired
     }).isRequired
-  ).isRequired,
+  ).isRequired
 };
 
 export async function getStaticProps() {
@@ -88,8 +88,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: orderAndTagPosts(posts),
-    },
+      posts: orderAndTagPosts(posts)
+    }
   };
 }
 

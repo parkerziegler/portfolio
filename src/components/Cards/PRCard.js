@@ -8,12 +8,12 @@ const PRCard = ({ nameWithOwner, url, title, primaryLanguage }) => (
     target="_blank"
     rel="noopener noreferrer"
     whileHover={{
-      scale: 1.05,
+      scale: 1.05
     }}
     transition={{
       type: 'spring',
       stiffness: 260,
-      damping: 20,
+      damping: 20
     }}
   >
     <div className="bg-gradient--primary flex p-2 m-auto rounded-lg font-mono h-full w-full shadow-lg">
@@ -41,8 +41,8 @@ PRCard.propTypes = {
   title: PropTypes.string.isRequired,
   primaryLanguage: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-  }),
+    color: PropTypes.string.isRequired
+  })
 };
 
 export default PRCard;

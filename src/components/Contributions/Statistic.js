@@ -12,7 +12,7 @@ const Statistic = ({ number, description, color }) => {
         <h3
           className={cn('text-6xl font-mono', {
             'text-purple': isPurple,
-            'text-orange': isOrange,
+            'text-orange': isOrange
           })}
         >
           {number}
@@ -20,7 +20,7 @@ const Statistic = ({ number, description, color }) => {
         <div
           className={cn('bg-radial h-8 across', {
             'bg-radial--purple': isPurple,
-            'bg-radial--orange': isOrange,
+            'bg-radial--orange': isOrange
           })}
         />
       </div>
@@ -32,7 +32,7 @@ const Statistic = ({ number, description, color }) => {
 Statistic.propTypes = {
   number: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
-  color: PropTypes.oneOf(['purple', 'orange', 'teal']).isRequired,
+  color: PropTypes.oneOf(['purple', 'orange', 'teal']).isRequired
 };
 
 export default Statistic;

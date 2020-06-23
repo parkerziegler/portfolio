@@ -7,7 +7,7 @@ const LangIcon = ({ src, alt }) => {
 
 LangIcon.propTypes = {
   src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired
 };
 
 export default LangIcon;

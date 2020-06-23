@@ -17,7 +17,7 @@ import PixelCard from '../src/components/Cards/PixelCard';
 const projectToBadgePath = {
   renature: '/renature.svg',
   urql: '/urql.svg',
-  reasonUrql: '/reason-urql.svg',
+  reasonUrql: '/reason-urql.svg'
 };
 
 const repositoriesQuery = gql`
@@ -81,26 +81,26 @@ const repositoriesQuery = gql`
 
 const variants = {
   visible: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
   },
-  hidden: false,
+  hidden: false
 };
 
 const Code = () => {
   const [result] = useQuery({ query: repositoriesQuery });
   const [ref, inView] = useInView({
-    threshold: 0.15,
+    threshold: 0.15
   });
   const controls = useAnimation();
 
   React.useEffect(() => {
     if (inView) {
       controls.start({
-        opacity: 1,
+        opacity: 1
       });
     } else {
       controls.start({
-        opacity: 0,
+        opacity: 0
       });
     }
   }, [inView]);
@@ -140,7 +140,7 @@ const Code = () => {
                 stargazers: { totalCount: starCount },
                 forkCount,
                 primaryLanguage,
-                url,
+                url
               } = result.data[project];
 
               return (
@@ -151,8 +151,8 @@ const Code = () => {
                   topics={repositoryTopics.edges.map(
                     ({
                       node: {
-                        topic: { name: topic },
-                      },
+                        topic: { name: topic }
+                      }
                     }) => topic
                   )}
                   starCount={starCount}
@@ -207,8 +207,8 @@ const Code = () => {
                   description,
                   primaryLanguage,
                   stargazers: { totalCount: starCount },
-                  forkCount,
-                },
+                  forkCount
+                }
               }) => {
                 return (
                   <PixelCard
@@ -232,11 +232,11 @@ export default withUrqlClient(
   () => ({
     url: 'https://api.github.com/graphql',
     fetchOptions: {
-      headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
+      headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
     },
-    fetch,
+    fetch
   }),
   {
-    ssr: true,
+    ssr: true
   }
 )(Code);

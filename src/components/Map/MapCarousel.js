@@ -8,12 +8,12 @@ import Text from '../Shared/Text';
 const variants = {
   visible: {
     transform: 'translateY(-2rem)',
-    filter: 'saturate(1)',
+    filter: 'saturate(1)'
   },
   hidden: {
     transform: 'translateY(0)',
-    filter: 'saturate(0)',
-  },
+    filter: 'saturate(0)'
+  }
 };
 
 const MapThumbnail = ({ src, alt, selectedSrc, onClick }) => {
@@ -29,7 +29,7 @@ const MapThumbnail = ({ src, alt, selectedSrc, onClick }) => {
         thumbnailNode.current.scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
-          inline: 'start',
+          inline: 'start'
         });
       }}
       className="h-32 md:h-48 lg:h-64 object-cover saturate cursor-pointer"
@@ -48,9 +48,9 @@ MapThumbnail.propTypes = {
   alt: PropTypes.string.isRequired,
   selectedSrc: PropTypes.shape({
     src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired
   }).isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 const MapCarousel = ({ maps = [], title, before, children }) => {
@@ -91,7 +91,7 @@ const MapCarousel = ({ maps = [], title, before, children }) => {
           transition={{
             type: 'spring',
             stiffness: 260,
-            damping: 20,
+            damping: 20
           }}
           className="block min-w-screen max-w-full scroll-snap-align-start object-cover shadow-lg"
         />
@@ -125,12 +125,12 @@ MapCarousel.propTypes = {
   maps: PropTypes.arrayOf(
     PropTypes.shape({
       src: PropTypes.string.isRequired,
-      alt: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired
     })
   ),
   title: PropTypes.string.isRequired,
   before: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default MapCarousel;

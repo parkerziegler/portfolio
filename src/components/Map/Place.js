@@ -20,7 +20,7 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: pathLength * 0.05 + i * 0.5 },
+          transition: { delay: pathLength * 0.05 + i * 0.5 }
         }}
       />
       <motion.text
@@ -31,7 +31,7 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: pathLength * 0.05 + i * 0.5 },
+          transition: { delay: pathLength * 0.05 + i * 0.5 }
         }}
       >
         {label}
@@ -43,7 +43,7 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: pathLength * 0.05 + i * 0.5 },
+          transition: { delay: pathLength * 0.05 + i * 0.5 }
         }}
         r="5"
       />
@@ -54,10 +54,10 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: pathLength * 0.05 + i * 0.5 },
+          transition: { delay: pathLength * 0.05 + i * 0.5 }
         }}
         style={{
-          transformOrigin: `${cx}px ${cy}px`,
+          transformOrigin: `${cx}px ${cy}px`
         }}
         r="5"
       />
@@ -72,7 +72,7 @@ Place.propTypes = {
   y: PropTypes.number.isRequired,
   label: PropTypes.string.isRequired,
   i: PropTypes.number.isRequired,
-  pathLength: PropTypes.number.isRequired,
+  pathLength: PropTypes.number.isRequired
 };
 
 export default Place;

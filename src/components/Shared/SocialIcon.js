@@ -9,12 +9,12 @@ const SocialIcon = ({ href, path }) => (
     rel="noopener noreferrer"
     className="flex justify-center w-40"
     whileHover={{
-      scale: 1.05,
+      scale: 1.05
     }}
     transition={{
       type: 'spring',
       stiffness: 260,
-      damping: 20,
+      damping: 20
     }}
   >
     <img src={path} className="h-20" />
@@ -23,7 +23,7 @@ const SocialIcon = ({ href, path }) => (
 
 SocialIcon.propTypes = {
   href: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired
 };
 
 export default SocialIcon;

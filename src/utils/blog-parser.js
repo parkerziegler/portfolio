@@ -74,7 +74,7 @@ export function parseMeta(posts) {
     // Add the intro text.
     const withIntroText = {
       ...JSON.parse(meta),
-      introText: replaceCharacterWithCharacter("'", '"')(introText),
+      introText: replaceCharacterWithCharacter("'", '"')(introText)
     };
 
     // Return the posts.
@@ -113,7 +113,7 @@ function sortByDate(a, b) {
 function parseTags(post) {
   return {
     ...post,
-    tags: post.tags.map((t) => TAGS[t]),
+    tags: post.tags.map((t) => TAGS[t])
   };
 }
 

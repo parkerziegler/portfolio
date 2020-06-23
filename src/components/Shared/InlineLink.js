@@ -16,7 +16,7 @@ const InlineLink = ({ href, children }) => {
 
 InlineLink.propTypes = {
   href: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default InlineLink;

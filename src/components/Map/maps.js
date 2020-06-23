@@ -50,7 +50,7 @@ export const maps = [
         </InlineLink>{' '}
         on Github.
       </>
-    ),
+    )
   },
   {
     title:
@@ -59,33 +59,33 @@ export const maps = [
       {
         src: '/maps/ta-traffic-crashes-nyc.png',
         alt:
-          'A heat map of traffic crashes in New York City between 2013 and 2015.',
+          'A heat map of traffic crashes in New York City between 2013 and 2015.'
       },
       {
         src: '/maps/ta-traffic-crashes-bronx.png',
         alt:
-          'A heat map of traffic crashes in the Bronx, New York City between 2013 and 2015.',
+          'A heat map of traffic crashes in the Bronx, New York City between 2013 and 2015.'
       },
       {
         src: '/maps/ta-traffic-crashes-brooklyn.png',
         alt:
-          'A heat map of traffic crashes in Brooklyn, New York between 2013 and 2015.',
+          'A heat map of traffic crashes in Brooklyn, New York between 2013 and 2015.'
       },
       {
         src: '/maps/ta-traffic-crashes-manhattan.png',
         alt:
-          'A heat map of traffic crashes in Manhattan, New York City between 2013 and 2015.',
+          'A heat map of traffic crashes in Manhattan, New York City between 2013 and 2015.'
       },
       {
         src: '/maps/ta-traffic-crashes-queens.png',
         alt:
-          'A heat map of traffic crashes in Queens, New York between 2013 and 2015.',
+          'A heat map of traffic crashes in Queens, New York between 2013 and 2015.'
       },
       {
         src: '/maps/ta-traffic-crashes-si.png',
         alt:
-          'A heat map of traffic crashes on Staten Island, New York between 2013 and 2015.',
-      },
+          'A heat map of traffic crashes on Staten Island, New York between 2013 and 2015.'
+      }
     ],
     children: (
       <div className="stack-md">
@@ -117,60 +117,60 @@ export const maps = [
           his mentorship on this project.
         </p>
       </div>
-    ),
+    )
   },
   {
     items: [
       {
         src: '/maps/ecotrust-lidar-canopy-cover.png',
-        alt: "A map of Portland's urban canopy captured using LiDAR in 2014.",
+        alt: "A map of Portland's urban canopy captured using LiDAR in 2014."
       },
       {
         src: '/maps/ecotrust-block-groups-canopy-cover.png',
-        alt: "A map of Portland's urban canopy by Census Block Group in 2014.",
+        alt: "A map of Portland's urban canopy by Census Block Group in 2014."
       },
       {
         src: '/maps/ecotrust-block-groups-targets.png',
         alt:
-          "A map of Portland's urban canopy cover compared to city targets by Census Block Group in 2014.",
+          "A map of Portland's urban canopy cover compared to city targets by Census Block Group in 2014."
       },
       {
         src: '/maps/ecotrust-neighborhoods-canopy-cover.png',
-        alt: "A map of Portland's urban canopy by neighborhood in 2014.",
+        alt: "A map of Portland's urban canopy by neighborhood in 2014."
       },
       {
         src: '/maps/ecotrust-neighborhoods-targets.png',
         alt:
-          "A map of Portland's urban canopy cover compared to city targets by neighborhood in 2014.",
+          "A map of Portland's urban canopy cover compared to city targets by neighborhood in 2014."
       },
       {
         src: '/maps/ecotrust-zoning-res-canopy-cover.png',
-        alt: "A map of Portland's urban canopy by Residential Zone in 2014.",
+        alt: "A map of Portland's urban canopy by Residential Zone in 2014."
       },
       {
         src: '/maps/ecotrust-zoning-res-targets.png',
         alt:
-          "A map of Portland's urban canopy cover compared to city targets by Residential Zone in 2014.",
+          "A map of Portland's urban canopy cover compared to city targets by Residential Zone in 2014."
       },
       {
         src: '/maps/ecotrust-zoning-ci-canopy-cover.png',
         alt:
-          "A map of Portland's urban canopy by Commercial and Industrial Zone in 2014.",
+          "A map of Portland's urban canopy by Commercial and Industrial Zone in 2014."
       },
       {
         src: '/maps/ecotrust-zoning-ci-targets.png',
         alt:
-          "A map of Portland's urban canopy cover compared to city targets by Commercial and Industrial Zone in 2014.",
+          "A map of Portland's urban canopy cover compared to city targets by Commercial and Industrial Zone in 2014."
       },
       {
         src: '/maps/ecotrust-zoning-os-canopy-cover.png',
-        alt: "A map of Portland's urban canopy by Open Space Zone in 2014.",
+        alt: "A map of Portland's urban canopy by Open Space Zone in 2014."
       },
       {
         src: '/maps/ecotrust-zoning-os-targets.png',
         alt:
-          "A map of Portland's urban canopy cover compared to city targets by Open Space Zone in 2014.",
-      },
+          "A map of Portland's urban canopy cover compared to city targets by Open Space Zone in 2014."
+      }
     ],
     title:
       " Mapping Portland's Urban Canopy: A Collaboration Between Ecotrust and Azavea",
@@ -203,25 +203,25 @@ export const maps = [
         . Special thanks to Esther Needham, Data Analytics Project Manager at
         Azavea, for her mentorship on this project.
       </>
-    ),
+    )
   },
   {
     items: [
       {
         src: '/maps/ecotrust-change-detection-layout.png',
         alt:
-          "A summary report of how Portland's urban canopy has changed from 2007 to 2014.",
+          "A summary report of how Portland's urban canopy has changed from 2007 to 2014."
       },
       {
         src: '/maps/ecotrust-change-detection-layout-2.png',
         alt:
-          "A summary report examining the rate of growth of Portland's urban canopy at 2 year intervals between 2007 and 2014.",
+          "A summary report examining the rate of growth of Portland's urban canopy at 2 year intervals between 2007 and 2014."
       },
       {
         src: '/maps/ecotrust-change-detection-layout-3.png',
         alt:
-          "A summary report examining progress towards canopy targets in Portland's urban canopy in 2014.",
-      },
+          "A summary report examining progress towards canopy targets in Portland's urban canopy in 2014."
+      }
     ],
     title:
       "Detecting Change in Portland's Urban Canopy: A Collaboration between Ecotrust and Azavea",
@@ -248,7 +248,7 @@ export const maps = [
         both were polished in Adobe Illustrator, and the layouts designed in
         Adobe InDesign.
       </>
-    ),
+    )
   },
   {
     src: '/maps/aasd-map.jpg',
@@ -288,6 +288,6 @@ export const maps = [
         were my technical guides to achieving these effects – and quite
         wonderful guides they were.
       </>
-    ),
-  },
+    )
+  }
 ];

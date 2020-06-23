@@ -7,16 +7,16 @@ const variants = {
     y: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 1000, velocity: -100 },
-    },
+      y: { stiffness: 1000, velocity: -100 }
+    }
   },
   hidden: {
     y: 50,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000 },
-    },
-  },
+      y: { stiffness: 1000 }
+    }
+  }
 };
 
 const RepositoryCard = ({
@@ -27,7 +27,7 @@ const RepositoryCard = ({
   forkCount,
   topics,
   badgePath,
-  url,
+  url
 }) => {
   return (
     <motion.a
@@ -37,12 +37,12 @@ const RepositoryCard = ({
       className="col-span-12 md:col-span-4 self-stretch"
       variants={variants}
       whileHover={{
-        scale: 1.03,
+        scale: 1.03
       }}
       transition={{
         type: 'spring',
         stiffness: 260,
-        damping: 20,
+        damping: 20
       }}
     >
       <div className="bg-gradient--primary flex p-2 m-auto rounded-lg font-mono shadow-lg h-full">
@@ -89,13 +89,13 @@ RepositoryCard.propTypes = {
   description: PropTypes.string.isRequired,
   primaryLanguage: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired
   }).isRequired,
   starCount: PropTypes.number.isRequired,
   forkCount: PropTypes.number.isRequired,
   topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   badgePath: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export default RepositoryCard;

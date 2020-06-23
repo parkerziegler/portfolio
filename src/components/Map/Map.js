@@ -53,7 +53,7 @@ Map.propTypes = {
   alt: PropTypes.string.isRequired,
   before: PropTypes.bool.isRequired,
   link: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default Map;
