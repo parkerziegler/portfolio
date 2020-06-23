@@ -1,7 +1,0 @@
-.masonry-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-  grid-gap: 2rem;
-  grid-auto-rows: minmax(22rem, auto);
-  grid-auto-flow: dense;
-}

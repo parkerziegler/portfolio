@@ -1,11 +1,11 @@
-import BlogPost from '../../components/Blog/BlogPost';
-import { TAGS } from '../../utils/constants';
+import BlogPost from '../../src/components/Blog/BlogPost';
+import { TAGS } from '../../src/utils/constants';
 
 export const meta = {
   title: 'Introducing Renature: Experimenting with Physics for UI Animation',
   slug: 'introducing-renature-experimenting-with-physics-for-ui-animation',
   date: 'December 18, 2019',
-  tags: ['react', 'animation']
+  tags: ['react', 'animation'],
 };
 
 <BlogPost tags={[TAGS.react, TAGS.animation]}>
@@ -40,7 +40,26 @@ We're also using TypeScript in renature to handle the public-facing API, includi
 
 The first two weeks of the fellowship began with developing the mathematical foundation on which renature will be built, specifically core vector operations like add, sub, mult, div, mag, norm, and lerp. With these in place, we started creating a nice abstraction around requestAnimationFrame to act more or less like Processing's draw loop. My colleague, Max Yinger, and his writings on reactive animations were instrumental in getting this working. With these two core pieces in place, we could start modeling our first force — gravity! Some early experimentation yielded pretty cool results:
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">We&#39;ve been making awesome progress on `renature` (a new physics animation library for React) here at <a href="https://twitter.com/FormidableLabs?ref_src=twsrc%5Etfw">@FormidableLabs</a>. gravity is the first force we tackled! Here&#39;s a body with a mass of 2000kg being attracted to a body 50,000 times its size. <a href="https://t.co/d1D9eMqZeW">pic.twitter.com/d1D9eMqZeW</a></p>&mdash; parkie-doo (@parker_ziegler) <a href="https://twitter.com/parker_ziegler/status/1204157892061908993?ref_src=twsrc%5Etfw">December 9, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">
+    We&#39;ve been making awesome progress on `renature` (a new physics
+    animation library for React) here at{' '}
+    <a href="https://twitter.com/FormidableLabs?ref_src=twsrc%5Etfw">
+      @FormidableLabs
+    </a>
+    . gravity is the first force we tackled! Here&#39;s a body with a mass of
+    2000kg being attracted to a body 50,000 times its size.{' '}
+    <a href="https://t.co/d1D9eMqZeW">pic.twitter.com/d1D9eMqZeW</a>
+  </p>
+  &mdash; parkie-doo (@parker_ziegler){' '}
+  <a href="https://twitter.com/parker_ziegler/status/1204157892061908993?ref_src=twsrc%5Etfw">
+    December 9, 2019
+  </a>
+</blockquote> <script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charset="utf-8"
+></script>
 
 However, we hit an interesting stumbling block almost right away. In the real world, everything is exerting a gravitational force on everything else, at all times; the force of gravity never stops acting. This doesn't quite fit with the notion of finite animations where we often want to animate a CSS property from a starting state to a finish state. How can we reconcile this dichotomy?
 

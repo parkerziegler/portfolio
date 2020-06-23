@@ -9,7 +9,7 @@ const PixelCard = ({
   forkCount,
 }) => {
   return (
-    <div className="flex flex-col bg-dotted-purple p-8 stack-vertical">
+    <div className="flex flex-col bg-radial bg-radial--purple p-8 stack-sm">
       <p className="text-3xl font-mono bg-white p-2">{name}</p>
       <p className="text-xl font-mono bg-white p-2">{description}</p>
       <div className="flex flex-auto items-end">

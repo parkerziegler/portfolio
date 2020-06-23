@@ -7,7 +7,7 @@ const InlineLink = ({ href, children }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="transition-underline"
+      className="bg-highlight bg-gradient--secondary highlight--secondary"
     >
       <strong>{children}</strong>
     </a>

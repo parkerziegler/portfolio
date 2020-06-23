@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../styles/tailwind.css';
-import Page from '../components/Shared/Page';
-import Header from '../components/Header/Header';
+import Page from '../src/components/Shared/Page';
+import Header from '../src/components/Header/Header';
+
+import '../src/styles/tailwind.css';
 
 function App({ Component, pageProps }) {
   return (

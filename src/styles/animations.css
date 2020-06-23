@@ -1,0 +1,87 @@
+/* Pulse animation for main map. */
+@keyframes pulse {
+  from {
+    stroke-width: 0.5rem;
+    stroke-opacity: 1;
+    transform: scale(0.3);
+  }
+
+  to {
+    stroke-width: 0;
+    stroke-opacity: 0;
+    transform: scale(3);
+  }
+}
+
+.pulse {
+  fill-opacity: 0;
+  animation-duration: 2s;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-delay: 500ms;
+}
+
+/* Highlight animations for titles. */
+.highlight--primary {
+  animation: 1s ease-in 500ms both highlight;
+}
+
+@keyframes highlight {
+  from {
+    background-size: 0% 10%;
+  }
+
+  to {
+    background-size: 100% 10%;
+  }
+}
+
+/* Underline animations for inline links. */
+.highlight--secondary {
+  transition: background-size 200ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.highlight--secondary:hover {
+  background-size: 100% 100%;
+}
+
+/* Saturation animation for carousel. */
+.saturate {
+  filter: saturate(0);
+  transition: all 300ms ease-out;
+}
+
+.saturate:hover {
+  transform: scale(1.05);
+  filter: saturate(1);
+}
+
+/* Animations on header links. */
+.link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0.2rem;
+  background: theme('colors.purple');
+  transition: width 300ms ease-in-out;
+}
+
+.link:hover::before {
+  width: 100%;
+}
+
+/* Animation on statistics. */
+@keyframes across {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.across {
+  animation: 1s ease-out across infinite;
+}

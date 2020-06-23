@@ -9,7 +9,7 @@ const Map = ({ title, src, alt, before, link, children }) => {
     <div className="grid grid-cols-12 gap-4 lg:gap-8">
       <div
         className={cn(
-          'col-span-12 lg:col-span-3 flex items-center justify-center self-center bg-dotted-purple shadow-purple p-8 mb-4 lg:mb-0',
+          'col-span-12 lg:col-span-3 flex items-center justify-center self-center bg-radial bg-radial--purple shadow-purple p-8 mb-4 lg:mb-0',
           !before && 'lg:col-start-10 lg:shadow-purple--reverse'
         )}
       >
@@ -42,9 +42,7 @@ const Map = ({ title, src, alt, before, link, children }) => {
           )}
         />
       )}
-      <Text className="col-span-12 col-start-1 bg-white p-4 text-gray-800">
-        {children}
-      </Text>
+      <Text className="col-span-12 col-start-1 bg-white p-4">{children}</Text>
     </div>
   );
 };

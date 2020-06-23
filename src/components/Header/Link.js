@@ -4,10 +4,7 @@ import NextLink from 'next/link';
 
 const Link = ({ href, children }) => (
   <NextLink href={href}>
-    <a
-      className={`link text-white p-2 text-3xl font-sans no-underline
-    relative`}
-    >
+    <a className="link text-white p-2 text-3xl font-sans no-underline relative">
       {children}
     </a>
   </NextLink>

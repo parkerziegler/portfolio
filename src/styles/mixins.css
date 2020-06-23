@@ -1,11 +1,3 @@
-.stack-vertical > * + * {
-  margin-top: 1rem;
-}
-
-.stack-horizontal > * + * {
-  margin-left: 1rem;
-}
-
 @responsive {
   .stack-xs > * {
     margin-top: 0;
@@ -90,4 +82,19 @@
   .stack-none-h > * + * {
     margin-left: 0;
   }
+}
+
+.line-clamp-ellipsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  grid-gap: 2rem;
+  grid-auto-rows: minmax(22rem, auto);
+  grid-auto-flow: dense;
 }

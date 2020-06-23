@@ -45,8 +45,8 @@ const RepositoryCard = ({
         damping: 20,
       }}
     >
-      <div className="gradient-main flex p-2 m-auto rounded-lg font-mono gradient-main-box-shadow h-full">
-        <div className="flex flex-column stack-vertical p-4 rounded-md bg-white flex-auto overflow-auto">
+      <div className="bg-gradient--primary flex p-2 m-auto rounded-lg font-mono shadow-lg h-full">
+        <div className="flex flex-col stack-sm p-4 rounded-md bg-white flex-auto overflow-auto">
           <h2 className="text-4xl text-center">{name}</h2>
           <img src={badgePath} className="h-64" />
           <p className="text-xl">{description}</p>

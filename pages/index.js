@@ -4,16 +4,16 @@ import { useQuery } from 'urql';
 import { withUrqlClient } from 'next-urql';
 import fetch from 'isomorphic-unfetch';
 
-import Section from '../components/Shared/Section';
-import SectionHeader from '../components/Shared/SectionHeader';
-import Underline from '../components/Shared/Underline';
-import Text from '../components/Shared/Text';
-import SocialIcon from '../components/Shared/SocialIcon';
-import Map from '../components/Map/PlaceMap';
-import PRCard from '../components/Cards/PRCard';
-import PRCardGrid from '../components/Cards/PRCardGrid';
-import InlineLink from '../components/Shared/InlineLink';
-import LangSection from '../components/Shared/LangSection';
+import Section from '../src/components/Shared/Section';
+import SectionHeader from '../src/components/Shared/SectionHeader';
+import Underline from '../src/components/Shared/Underline';
+import Text from '../src/components/Shared/Text';
+import SocialIcon from '../src/components/Shared/SocialIcon';
+import Map from '../src/components/Map/PlaceMap';
+import PRCard from '../src/components/Cards/PRCard';
+import PRCardGrid from '../src/components/Cards/PRCardGrid';
+import InlineLink from '../src/components/Shared/InlineLink';
+import LangSection from '../src/components/Shared/LangSection';
 
 const LANGUAGES = [
   { src: '/js-logo.svg', alt: 'JavaScript' },
@@ -75,7 +75,7 @@ const Index = () => {
   return (
     <main id="main">
       <Section className="items-center">
-        <div className="md:max-w-3/4 stack-vertical">
+        <div className="md:max-w-3/4 stack-sm">
           <SectionHeader>
             <Underline>Hey, I&apos;m Parker.</Underline>
           </SectionHeader>
@@ -98,7 +98,7 @@ const Index = () => {
         </div>
         <Map />
       </Section>
-      <Section className="stack-vertical">
+      <Section className="stack-md">
         <SectionHeader>
           <Underline>What I&apos;m Up To</Underline>
         </SectionHeader>
@@ -133,7 +133,7 @@ const Index = () => {
         </PRCardGrid>
       </Section>
       <Section className="items-center">
-        <div className="md:max-w-3/4 stack-vertical">
+        <div className="md:max-w-3/4 stack-sm">
           <SectionHeader>
             <Underline>Tools I Work With</Underline>
           </SectionHeader>
@@ -148,7 +148,7 @@ const Index = () => {
         </div>
       </Section>
       <Section className="items-center">
-        <div className="md:max-w-3/4 stack-vertical">
+        <div className="md:max-w-3/4 stack-sm">
           <SectionHeader centered>
             <Underline>Find Me</Underline>
           </SectionHeader>

@@ -64,7 +64,7 @@ const MapCarousel = ({ maps = [], title, before, children }) => {
     <div className="grid grid-cols-12 gap-4 lg:gap-8">
       <div
         className={cn(
-          'col-span-12 lg:col-span-4 flex items-center justify-center self-end bg-dotted-purple shadow-purple p-8 mb-4 lg:mb-0',
+          'col-span-12 lg:col-span-4 flex items-center justify-center self-end bg-radial bg-radial--purple shadow-purple p-8 mb-4 lg:mb-0',
           !before && 'lg:col-start-9 lg:shadow-purple--reverse'
         )}
       >
@@ -95,7 +95,7 @@ const MapCarousel = ({ maps = [], title, before, children }) => {
           }}
           className="block min-w-screen max-w-full scroll-snap-align-start object-cover shadow-lg"
         />
-        <nav className="flex overflow-y-hidden stack-horizontal">
+        <nav className="flex overflow-y-hidden stack-sm-h">
           {maps.map(({ src, alt }) => {
             return (
               <MapThumbnail
@@ -111,7 +111,7 @@ const MapCarousel = ({ maps = [], title, before, children }) => {
       </div>
       <Text
         className={cn(
-          'col-span-12 lg:col-span-4 bg-white p-4 text-gray-800 self-start',
+          'col-span-12 lg:col-span-4 bg-white p-4 self-start',
           !before && 'lg:col-start-9'
         )}
       >

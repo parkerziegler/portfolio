@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import Section from '../components/Shared/Section';
-import SectionHeader from '../components/Shared/SectionHeader';
-import Underline from '../components/Shared/Underline';
-import Text from '../components/Shared/Text';
-import BlogCard from '../components/Cards/BlogCard';
+
+import Section from '../src/components/Shared/Section';
+import SectionHeader from '../src/components/Shared/SectionHeader';
+import Underline from '../src/components/Shared/Underline';
+import Text from '../src/components/Shared/Text';
+import BlogCard from '../src/components/Cards/BlogCard';
 
 const variants = {
   visible: {
@@ -17,7 +18,7 @@ const variants = {
 const Thoughts = ({ posts }) => {
   return (
     <main>
-      <Section className="stack-vertical">
+      <Section className="stack-md">
         <SectionHeader>
           <Underline>Thoughts</Underline>
         </SectionHeader>
@@ -72,7 +73,7 @@ export async function getStaticProps() {
   const { read } = require('to-vfile');
   const remark = require('remark');
   const mdx = require('remark-mdx');
-  const { parseMeta, orderAndTagPosts } = require('../utils/blog-parser');
+  const { parseMeta, orderAndTagPosts } = require('../src/utils/blog-parser');
 
   // Get all posts from the pages/thoughts directory.
   const postsPath = path.resolve(process.cwd(), './pages/thoughts');

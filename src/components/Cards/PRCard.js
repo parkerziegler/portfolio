@@ -16,7 +16,7 @@ const PRCard = ({ nameWithOwner, url, title, primaryLanguage }) => (
       damping: 20,
     }}
   >
-    <div className="gradient-main flex p-2 m-auto rounded-lg font-mono h-full w-full gradient-main-box-shadow">
+    <div className="bg-gradient--primary flex p-2 m-auto rounded-lg font-mono h-full w-full shadow-lg">
       <div className="flex flex-col p-4 rounded-md bg-white flex-auto overflow-auto">
         <p className="mb-2 block text-2xl font-bold underline">
           {nameWithOwner}

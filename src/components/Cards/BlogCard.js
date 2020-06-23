@@ -35,8 +35,8 @@ const BlogCard = ({ title, slug, date, tags = [], introText, index }) => {
           duration: 0.4,
         }}
       >
-        <div className="flex h-full gradient-main gradient-main-box-shadow p-2 rounded-lg">
-          <div className="flex flex-column stack-vertical p-4 rounded-md bg-white flex-auto overflow-auto">
+        <div className="flex h-full bg-gradient--primary shadow-lg p-2 rounded-lg">
+          <div className="flex flex-col stack-sm p-4 rounded-md bg-white flex-auto overflow-auto">
             <h2 className="text-4xl font-mono font-bold">{title}</h2>
             <p className="text-2xl font-serif line-clamp-ellipsis">
               {introText}
@@ -59,7 +59,7 @@ const BlogCard = ({ title, slug, date, tags = [], introText, index }) => {
     return (
       <div className="flex flex-col md:col-span-2">
         {cardNode}
-        <div className="gradient-thoughts flex-1 rounded-lg mt-8" />
+        <div className="bg-gradient--secondary flex-1 rounded-lg mt-8" />
       </div>
     );
   }

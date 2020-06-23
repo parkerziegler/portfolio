@@ -1,11 +1,11 @@
-import BlogPost from '../../components/Blog/BlogPost';
-import { TAGS } from '../../utils/constants';
+import BlogPost from '../../src/components/Blog/BlogPost';
+import { TAGS } from '../../src/utils/constants';
 
 export const meta = {
   title: 'Mapping in React and D3',
   slug: 'mapping-in-react-and-d3',
   date: 'August 29, 2017',
-  tags: ['react', 'd3']
+  tags: ['react', 'd3'],
 };
 
 <BlogPost tags={[TAGS.react, TAGS.d3]}>
@@ -50,7 +50,7 @@ class MapLegend extends React.Component {
       'rgb(107,174,214)',
       'rgb(66,146,198)',
       'rgb(33,113,181)',
-      'rgb(8,81,156)'
+      'rgb(8,81,156)',
     ];
 
     // get the svg that just mounted - this is componentDidMount()
@@ -65,10 +65,10 @@ class MapLegend extends React.Component {
       .data(colorLegend)
       .enter()
       .append('rect')
-      .attr('fill', function(_, i) {
+      .attr('fill', function (_, i) {
         return colorLegend[i];
       })
-      .attr('x', function(_, i) {
+      .attr('x', function (_, i) {
         return i * 30;
       })
       .attr('y', 30)
@@ -93,7 +93,7 @@ class MapLegend extends React.Component {
       '7-10',
       '10-12',
       '12-15',
-      '>15'
+      '>15',
     ];
 
     svgLegend
@@ -105,11 +105,11 @@ class MapLegend extends React.Component {
       .append('text')
       .attr('font-size', '10px')
       .attr('font-family', 'HelveticaNeue-Light, Helvetica, sans-serif')
-      .attr('x', function(_, i) {
+      .attr('x', function (_, i) {
         return i * 30;
       })
       .attr('y', 60)
-      .text(function(d) {
+      .text(function (d) {
         return d;
       });
   }
