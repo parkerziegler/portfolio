@@ -6,13 +6,13 @@ import { motion, useAnimation } from 'framer-motion';
 import fetch from 'isomorphic-unfetch';
 import { useInView } from 'react-intersection-observer';
 
-import Section from '../components/Shared/Section';
-import SectionHeader from '../components/Shared/SectionHeader';
-import Underline from '../components/Shared/Underline';
-import RepositoryCard from '../components/Cards/RepositoryCard';
-import Text from '../components/Shared/Text';
-import Statistic from '../components/Contributions/Statistic';
-import PixelCard from '../components/Cards/PixelCard';
+import Section from '../src/components/Shared/Section';
+import SectionHeader from '../src/components/Shared/SectionHeader';
+import Underline from '../src/components/Shared/Underline';
+import RepositoryCard from '../src/components/Cards/RepositoryCard';
+import Text from '../src/components/Shared/Text';
+import Statistic from '../src/components/Contributions/Statistic';
+import PixelCard from '../src/components/Cards/PixelCard';
 
 const projectToBadgePath = {
   renature: '/renature.svg',
@@ -89,7 +89,7 @@ const variants = {
 const Code = () => {
   const [result] = useQuery({ query: repositoriesQuery });
   const [ref, inView] = useInView({
-    threshold: 0.25,
+    threshold: 0.15,
   });
   const controls = useAnimation();
 
@@ -115,7 +115,7 @@ const Code = () => {
 
   return (
     <main>
-      <Section className="stack-vertical">
+      <Section className="stack-md">
         <SectionHeader>
           <Underline>Featured Open Source</Underline>
         </SectionHeader>
@@ -163,10 +163,6 @@ const Code = () => {
                 />
               );
             })}
-        </motion.div>
-      </Section>
-      <Section>
-        <div className="grid grid-cols-12 gap-8">
           <Statistic
             number={result.data.viewer.repositoriesContributedTo.totalCount}
             description="Public repositories contributed to (excluding my own)."
@@ -185,9 +181,9 @@ const Code = () => {
             description="Contributions in the last year."
             color="purple"
           />
-        </div>
+        </motion.div>
       </Section>
-      <Section className="stack-vertical lg:max-w-5/6 mx-auto">
+      <Section className="stack-md lg:max-w-5/6 mx-auto">
         <SectionHeader>
           <Underline>Other OSS</Underline>
         </SectionHeader>
