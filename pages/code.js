@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
-import { withUrqlClient } from 'next-urql';
-import { useQuery } from 'urql';
+import { createClient } from 'urql';
 import { motion, useAnimation } from 'framer-motion';
 import fetch from 'isomorphic-unfetch';
 import { useInView } from 'react-intersection-observer';
@@ -86,8 +86,7 @@ const variants = {
   hidden: false
 };
 
-const Code = () => {
-  const [result] = useQuery({ query: repositoriesQuery });
+const Code = ({ repositories }) => {
   const [ref, inView] = useInView({
     threshold: 0.15
   });
@@ -104,14 +103,6 @@ const Code = () => {
       });
     }
   }, [inView]);
-
-  if (result.fetching) {
-    return null;
-  }
-
-  if (result.error) {
-    return null;
-  }
 
   return (
     <main>
@@ -130,7 +121,7 @@ const Code = () => {
           initial="hidden"
           variants={variants}
         >
-          {Object.keys(result.data)
+          {Object.keys(repositories)
             .filter((d) => d !== 'viewer')
             .map((project) => {
               const {
@@ -141,7 +132,7 @@ const Code = () => {
                 forkCount,
                 primaryLanguage,
                 url
-              } = result.data[project];
+              } = repositories[project];
 
               return (
                 <RepositoryCard
@@ -164,18 +155,18 @@ const Code = () => {
               );
             })}
           <Statistic
-            number={result.data.viewer.repositoriesContributedTo.totalCount}
+            number={repositories.viewer.repositoriesContributedTo.totalCount}
             description="Public repositories contributed to (excluding my own)."
             color="purple"
           />
           <Statistic
-            number={result.data.viewer.pullRequests.totalCount}
+            number={repositories.viewer.pullRequests.totalCount}
             description="Public pull requests merged."
             color="orange"
           />
           <Statistic
             number={
-              result.data.viewer.contributionsCollection.contributionCalendar
+              repositories.viewer.contributionsCollection.contributionCalendar
                 .totalContributions
             }
             description="Contributions in the last year."
@@ -193,7 +184,7 @@ const Code = () => {
           animate={controls}
           initial={{ opacity: 0 }}
         >
-          {result.data.viewer.repositoriesContributedTo.edges
+          {repositories.viewer.repositoriesContributedTo.edges
             .filter(({ node: { name } }) => {
               return (
                 name !== 'renature' && name !== 'urql' && name !== 'reason-urql'
@@ -228,15 +219,74 @@ const Code = () => {
   );
 };
 
-export default withUrqlClient(
-  () => ({
+export async function getStaticProps() {
+  const client = createClient({
     url: 'https://api.github.com/graphql',
     fetchOptions: {
       headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
     },
     fetch
+  });
+
+  const repositories = await client.query(repositoriesQuery).toPromise();
+
+  return {
+    props: {
+      repositories: repositories.data
+    }
+  };
+}
+
+const Repository = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  primaryLanguage: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired
   }),
-  {
-    ssr: true
-  }
-)(Code);
+  stargazers: PropTypes.shape({
+    totalCount: PropTypes.number.isRequired
+  }).isRequired,
+  forkCount: PropTypes.number.isRequired,
+  repositoryTopics: PropTypes.shape({
+    edges: PropTypes.arrayOf(
+      PropTypes.shape({
+        node: PropTypes.shape({
+          topic: PropTypes.shape({
+            name: PropTypes.string.isRequired
+          }).isRequired
+        }).isRequired
+      }).isRequired
+    ).isRequired
+  }).isRequired
+}).isRequired;
+
+const Viewer = PropTypes.shape({
+  repositoriesContributedTo: PropTypes.shape({
+    totalCount: PropTypes.number.isRequired,
+    edges: PropTypes.arrayOf(
+      PropTypes.shape({
+        node: Repository
+      }).isRequired
+    ).isRequired
+  }).isRequired,
+  pullRequests: PropTypes.shape({
+    totalCount: PropTypes.number.isRequired
+  }).isRequired,
+  contributionsCollection: PropTypes.shape({
+    contributionCalendar: PropTypes.shape({
+      totalContributions: PropTypes.number.isRequired
+    }).isRequired
+  }).isRequired
+}).isRequired;
+
+Code.propTypes = {
+  repositories: PropTypes.shape({
+    renature: Repository,
+    urql: Repository,
+    reasonUrql: Repository,
+    viewer: Viewer
+  }).isRequired
+};
+
+export default Code;

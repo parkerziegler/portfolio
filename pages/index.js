@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
-import { useQuery } from 'urql';
-import { withUrqlClient } from 'next-urql';
+import { createClient } from 'urql';
 import fetch from 'isomorphic-unfetch';
 
 import Section from '../src/components/Shared/Section';
@@ -57,21 +57,7 @@ const contributionsQuery = gql`
   }
 `;
 
-const Index = () => {
-  const [result] = useQuery({
-    query: contributionsQuery,
-    variables: { login: 'parkerziegler' }
-  });
-
-  if (result.fetching) {
-    return null;
-  }
-
-  if (result.error) {
-    // TODO add an error page.
-    return null;
-  }
-
+const Index = ({ user }) => {
   return (
     <main id="main">
       <Section className="items-center">
@@ -114,7 +100,7 @@ const Index = () => {
           recent pull requests.
         </Text>
         <PRCardGrid>
-          {result.data.user.pullRequests.nodes.map(
+          {user.pullRequests.nodes.map(
             ({
               repository: { nameWithOwner, primaryLanguage },
               url,
@@ -172,13 +158,46 @@ const Index = () => {
   );
 };
 
-export default withUrqlClient(
-  () => ({
+export async function getStaticProps() {
+  const client = createClient({
     url: 'https://api.github.com/graphql',
     fetchOptions: {
       headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
     },
     fetch
-  }),
-  { ssr: true }
-)(Index);
+  });
+
+  const contributions = await client
+    .query(contributionsQuery, {
+      login: 'parkerziegler'
+    })
+    .toPromise();
+
+  return {
+    props: {
+      user: contributions.data.user
+    }
+  };
+}
+
+const PullRequest = PropTypes.shape({
+  repository: PropTypes.shape({
+    nameWithOwner: PropTypes.string.isRequired,
+    primaryLanguage: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired
+    })
+  }).isRequired,
+  url: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
+}).isRequired;
+
+Index.propTypes = {
+  user: PropTypes.shape({
+    pullRequests: PropTypes.shape({
+      nodes: PropTypes.arrayOf(PullRequest).isRequired
+    }).isRequired
+  }).isRequired
+};
+
+export default Index;
