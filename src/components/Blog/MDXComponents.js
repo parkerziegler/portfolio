@@ -29,6 +29,16 @@ H2.propTypes = {
   children: PropTypes.node.isRequired
 };
 
+const H3 = ({ children }) => (
+  <Heading tag="h3" className="text-4xl border-b-2 border-orange self-start">
+    {children}
+  </Heading>
+);
+
+H3.propTypes = {
+  children: PropTypes.node.isRequired
+};
+
 const InlineCode = ({ children }) => (
   <code className="bg-purple-100 text-purple p-2 rounded text-2xl">
     {children}
@@ -74,6 +84,7 @@ Code.propTypes = {
 const components = {
   h1: H1,
   h2: H2,
+  h3: H3,
   p: Text,
   a: InlineLink,
   inlineCode: InlineCode,
