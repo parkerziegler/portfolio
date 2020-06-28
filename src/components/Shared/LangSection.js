@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import LangIcon from './LangIcon';
 
 const LangSection = ({ title, langs }) => {
-  console.log({ langs });
   return (
     <div>
       <h3 className="text-4xl text-center font-serif mb-4">{title}</h3>
