@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
+import { LANGUAGES } from '../../utils/constants';
+
 const PRCard = ({ nameWithOwner, url, title, primaryLanguage }) => (
   <motion.a
     href={url}
@@ -23,12 +25,14 @@ const PRCard = ({ nameWithOwner, url, title, primaryLanguage }) => (
         </p>
         <p className="mb-2 text-2xl">{title}</p>
         {primaryLanguage ? (
-          <span
-            className="text-white rounded-md text-xl self-start p-2 mt-auto"
-            style={{ background: primaryLanguage.color }}
-          >
-            {primaryLanguage.name}
-          </span>
+          <div className="flex items-end stack-sm-h mt-auto py-2">
+            <img
+              src={LANGUAGES[primaryLanguage.name].src}
+              alt={LANGUAGES[primaryLanguage.name].alt}
+              className="h-8 w-8"
+            />
+            <span className="text-black text-xl">{primaryLanguage.name}</span>
+          </div>
         ) : null}
       </div>
     </div>

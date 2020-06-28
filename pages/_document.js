@@ -9,8 +9,13 @@ export default class Document extends NextDocument {
 
   render() {
     return (
-      <html>
+      <html lang="en">
         <Head>
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+          ></meta>
           {this.props.styleTags}
           <link
             href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap"

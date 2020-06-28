@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
-const SocialIcon = ({ href, path }) => (
+const SocialIcon = ({ href, path, alt }) => (
   <motion.a
     href={href}
     target="_blank"
@@ -17,13 +17,14 @@ const SocialIcon = ({ href, path }) => (
       damping: 20
     }}
   >
-    <img src={path} className="h-20" />
+    <img src={path} alt={alt} className="h-20" />
   </motion.a>
 );
 
 SocialIcon.propTypes = {
   href: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired
+  path: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired
 };
 
 export default SocialIcon;
