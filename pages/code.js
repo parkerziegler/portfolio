@@ -174,7 +174,7 @@ const Code = ({ repositories }) => {
           />
         </motion.div>
       </Section>
-      <Section className="stack-md lg:max-w-5/6 mx-auto">
+      <Section className="stack-md mx-auto">
         <SectionHeader>
           <Underline>Other OSS</Underline>
         </SectionHeader>

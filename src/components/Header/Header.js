@@ -6,8 +6,8 @@ import Extension from './Extension';
 
 const Header = () => (
   <div className="flex flex-col">
-    <header className="flex flex-col sm:flex-row items-center justify-between flex-auto px-32 py-8 shadow-lg bg-gradient--primary">
-      <SiteTitle>Parker Ziegler</SiteTitle>
+    <header className="flex items-center justify-between flex-auto px-16 sm:px-32 md:px-40 py-8 shadow-lg bg-gradient--primary">
+      <SiteTitle />
       <nav>
         <ul className="flex items-center stack-md-h">
           <li>

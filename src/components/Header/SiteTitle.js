@@ -1,21 +1,49 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import rough from 'roughjs/bundled/rough.cjs';
 
-const SiteTitle = ({ children }) => {
+const SiteTitle = () => {
+  const bgRef = useRef(null);
+
+  useEffect(() => {
+    if (bgRef?.current) {
+      const rc = rough.svg(bgRef);
+      bgRef.current.appendChild(
+        rc.rectangle(0, 0, 200, 55, {
+          fill: '#000000',
+          hachureAngle: 60, // angle of hachure,
+          hachureGap: 1
+        })
+      );
+
+      const text = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'text'
+      );
+      text.textContent = 'Parker Ziegler';
+      text.setAttribute('x', '8');
+      text.setAttribute('y', '36');
+      text.setAttribute(
+        'style',
+        "font: 3rem 'Zilla Slab', serif; fill: #ffffff"
+      );
+      bgRef.current.appendChild(text);
+    }
+  }, []);
+
   return (
     <Link href="/">
       <a>
-        <h1 className="bg-black m-0 text-white px-4 py-2 text-5xl font-sans mb-4 sm:mb-0">
-          {children}
-        </h1>
+        <svg
+          ref={bgRef}
+          height="55"
+          width="200"
+          viewBox="0 0 200 55"
+          className="fill-current text-white -ml-4"
+        ></svg>
       </a>
     </Link>
   );
-};
-
-SiteTitle.propTypes = {
-  children: PropTypes.string.isRequired
 };
 
 export default SiteTitle;
