@@ -81,6 +81,26 @@ Code.propTypes = {
   className: PropTypes.string
 };
 
+const OL = ({ children }) => (
+  <ol className="text-3xl list-decimal font-serif pl-16">{children}</ol>
+);
+
+OL.propTypes = {
+  children: PropTypes.node.isRequired
+};
+
+const Image = ({ src, alt }) => (
+  <div className="flex flex-col items-center mb-12 stack-sm">
+    <img src={src} alt={alt} />
+    <span className="text-2xl font-sans text-gray-600">{alt}</span>
+  </div>
+);
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired
+};
+
 const components = {
   h1: H1,
   h2: H2,
@@ -88,7 +108,9 @@ const components = {
   p: Text,
   a: InlineLink,
   inlineCode: InlineCode,
-  code: Code
+  code: Code,
+  ol: OL,
+  img: Image
 };
 
 export default components;

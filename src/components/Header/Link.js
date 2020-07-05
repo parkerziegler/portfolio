@@ -5,33 +5,33 @@ import rough from 'roughjs/bundled/rough.cjs';
 
 const Link = ({ href, children }) => {
   const linkRef = useRef(null);
-  const underlineRef = useRef(null);
+  const svgRef = useRef(null);
 
   useEffect(() => {
-    if (linkRef?.current && underlineRef?.current) {
+    if (linkRef.current && svgRef.current) {
       const width = linkRef.current.offsetWidth;
-      underlineRef.current.setAttribute('width', `${width}`);
-      underlineRef.current.setAttribute('viewBox', `0 0 ${width} 6`);
+      svgRef.current.setAttribute('width', `${width}`);
+      svgRef.current.setAttribute('viewBox', `0 0 ${width} 6`);
 
-      const rc = rough.svg(underlineRef.current);
-      underlineRef.current.appendChild(
-        rc.line(0, 3, width, 3, { stroke: '#7b16ff' })
+      const rc = rough.svg(svgRef.current);
+      svgRef.current.appendChild(
+        rc.line(0, 3, width, 3, { stroke: '#ffffff' })
       );
     }
   }, []);
 
   return (
-    <>
+    <li>
       <NextLink href={href}>
         <a
           ref={linkRef}
-          className="link text-white p-2 text-3xl font-serif no-underline relative"
+          className="text-white p-2 text-5xl sm:text-4xl font-serif no-underline relative"
         >
           {children}
         </a>
       </NextLink>
-      <svg ref={underlineRef} height="6" />
-    </>
+      <svg ref={svgRef} height="6"></svg>
+    </li>
   );
 };
 

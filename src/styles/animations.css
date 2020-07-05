@@ -65,7 +65,7 @@
   left: 0;
   width: 0;
   height: 0.2rem;
-  background: theme('colors.purple');
+  background: theme('colors.white');
   transition: width 300ms ease-in-out;
 }
 

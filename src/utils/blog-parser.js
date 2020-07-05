@@ -74,7 +74,7 @@ export function parseMeta(posts) {
     // Add the intro text.
     const withIntroText = {
       ...JSON.parse(meta),
-      introText: replaceCharacterWithCharacter("'", '"')(introText)
+      introText
     };
 
     // Return the posts.

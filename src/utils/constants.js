@@ -18,6 +18,10 @@ export const TAGS = {
   d3: {
     icon: '/d3-logo.svg',
     tag: 'D3'
+  },
+  gis: {
+    icon: '🗺️',
+    tag: 'GIS'
   }
 };
 
@@ -36,3 +40,18 @@ export const FRAMEWORKS = {
   Jest: { src: '/jest-logo.svg', alt: 'Jest ' },
   Sass: { src: '/sass-logo.svg', alt: 'Sass' }
 };
+
+export const NAV_ITEMS = [
+  {
+    route: '/code',
+    displayText: 'Code'
+  },
+  {
+    route: '/maps',
+    displayText: 'Maps'
+  },
+  {
+    route: '/thoughts',
+    displayText: 'Thoughts'
+  }
+];
