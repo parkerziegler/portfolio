@@ -7,11 +7,9 @@ import Text from '../Shared/Text';
 
 const variants = {
   visible: {
-    transform: 'translateY(-2rem)',
     filter: 'saturate(1)'
   },
   hidden: {
-    transform: 'translateY(0)',
     filter: 'saturate(0)'
   }
 };
@@ -94,6 +92,7 @@ const MapCarousel = ({ maps = [], title, before, children }) => {
             damping: 20
           }}
           className="block min-w-screen max-w-full scroll-snap-align-start object-cover shadow-lg"
+          loading="lazy"
         />
         <nav className="flex overflow-y-hidden stack-sm-h">
           {maps.map(({ src, alt }) => {

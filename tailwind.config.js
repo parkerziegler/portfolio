@@ -30,10 +30,14 @@ module.exports = {
         '70': '0.7'
       },
       height: {
-        'half-screen': '50vh'
+        'half-screen': '50vh',
+        '160': '40rem'
       },
       minHeight: {
         'half-screen': '50vh'
+      },
+      opacity: {
+        '90': 0.9
       }
     },
     fill: (theme) => {
@@ -51,7 +55,7 @@ module.exports = {
     }
   },
   variants: {
-    textColor: ['hover'],
+    textColor: ['hover', 'responsive'],
     borderColor: ['hover'],
     maxWidth: ['responsive']
   },

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CardGrid = ({ children }) => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+const PRCardGrid = ({ children }) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 z-10">
     {children}
   </div>
 );
 
-CardGrid.propTypes = {
+PRCardGrid.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-export default CardGrid;
+export default PRCardGrid;

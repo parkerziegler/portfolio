@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import { useInView } from 'react-intersection-observer';
+
 import Heading from '../Shared/Heading';
 import Text from '../Shared/Text';
 
 const Map = ({ title, src, alt, before, link, children }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: '200px 0px'
+  });
+
   return (
     <div className="grid grid-cols-12 gap-4 lg:gap-8">
       <div
@@ -29,18 +36,20 @@ const Map = ({ title, src, alt, before, link, children }) => {
             'col-span-12 lg:col-span-9 lg:col-start-1 lg:row-start-1',
             before && 'lg:col-start-4'
           )}
+          ref={ref}
         >
-          <img src={src} alt={alt} />
+          {inView ? <img src={src} alt={alt} loading="lazy" /> : null}
         </a>
       ) : (
-        <img
-          src={src}
-          alt={alt}
+        <div
           className={cn(
             'col-span-12 lg:col-span-9 lg:col-start-1 lg:row-start-1 shadow-lg',
             before && 'lg:col-start-4'
           )}
-        />
+          ref={ref}
+        >
+          {inView ? <img src={src} alt={alt} loading="lazy" /> : null}
+        </div>
       )}
       <Text className="col-span-12 col-start-1 bg-white p-4">{children}</Text>
     </div>

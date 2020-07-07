@@ -64,7 +64,7 @@ const listItemVariants = {
 const MobileMenu = React.forwardRef(({ toggle }, ref) => {
   return (
     <>
-      <button className="sm:hidden relative z-10" onClick={toggle} ref={ref}>
+      <button className="sm:hidden relative z-20" onClick={toggle} ref={ref}>
         <svg width="23" height="23" viewBox="0 0 23 23">
           <Path
             variants={{
@@ -89,14 +89,16 @@ const MobileMenu = React.forwardRef(({ toggle }, ref) => {
         </svg>
       </button>
       <motion.div
-        className="sm:hidden absolute top-0 left-0 right-0 bottom-0 bg-purple opacity-75"
+        className="sm:hidden absolute h-screen top-0 left-0 right-0 bottom-0 bg-purple opacity-90 z-10"
         variants={sidebarVariants}
       >
-        <motion.ul variants={listVariants} className="pt-40 pl-8">
+        <motion.ul variants={listVariants} className="pt-40 pl-8 stack-md">
           {NAV_ITEMS.map(({ route, displayText }) => {
             return (
               <motion.li key={route} variants={listItemVariants}>
-                <Link href={route}>{displayText}</Link>
+                <Link href={route} onClick={toggle}>
+                  {displayText}
+                </Link>
               </motion.li>
             );
           })}

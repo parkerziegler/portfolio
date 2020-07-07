@@ -15,6 +15,7 @@ import PRCard from '../src/components/Cards/PRCard';
 import PRCardGrid from '../src/components/Cards/PRCardGrid';
 import InlineLink from '../src/components/Shared/InlineLink';
 import LangSection from '../src/components/Shared/LangSection';
+import SkewBg from '../src/components/Shared/SkewBg';
 import { LANGUAGES, FRAMEWORKS } from '../src/utils/constants';
 
 const contributionsQuery = gql`
@@ -79,10 +80,11 @@ const Index = ({ user }) => {
           <Map />
         </Section>
         <Section className="stack-md">
-          <SectionHeader>
+          <SkewBg />
+          <SectionHeader className="z-10 text-white">
             <Underline>What I&apos;m Up To</Underline>
           </SectionHeader>
-          <Text>
+          <Text className="z-10 text-white">
             I currently work with the wonderful and talented folks at{' '}
             <InlineLink href="https://formidable.com/">Formidable</InlineLink>,
             where I contribute to our{' '}
@@ -130,12 +132,13 @@ const Index = ({ user }) => {
             </div>
           </div>
         </Section>
-        <Section className="items-center">
-          <div className="md:max-w-3/4 stack-sm">
-            <SectionHeader centered>
+        <Section className="h-">
+          <SkewBg color="teal" tiltDirection="forward" height="sm" />
+          <div className="md:max-w-3/4 stack-sm self-center z-10">
+            <SectionHeader centered className="z-10 text-white">
               <Underline>Find Me</Underline>
             </SectionHeader>
-            <div className="flex items-center">
+            <div className="flex items-center z-10">
               <SocialIcon
                 href="https://twitter.com/parker_ziegler"
                 path="/twitter.svg"
