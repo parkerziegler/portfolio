@@ -31,6 +31,7 @@ module.exports = {
       },
       height: {
         'half-screen': '50vh',
+        '80': '20rem',
         '160': '40rem'
       },
       minHeight: {

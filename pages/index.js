@@ -132,7 +132,7 @@ const Index = ({ user }) => {
             </div>
           </div>
         </Section>
-        <Section className="h-">
+        <Section className="h-80 relative overflow-hidden">
           <SkewBg color="teal" tiltDirection="forward" height="sm" />
           <div className="md:max-w-3/4 stack-sm self-center z-10">
             <SectionHeader centered className="z-10 text-white">

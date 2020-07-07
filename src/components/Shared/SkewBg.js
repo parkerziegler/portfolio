@@ -14,9 +14,9 @@ const SkewBg = ({
         {
           '-skew-y-3 -translate-y-8 sm:-translate-y-6':
             tiltDirection === 'backward',
-          'skew-y-3 -translate-y-4 sm:-translate-y-2':
+          'skew-y-3 -translate-y-8 sm:-translate-y-6':
             tiltDirection === 'forward',
-          'h-64': height === 'sm',
+          'h-80': height === 'sm',
           'h-160': height === 'lg'
         }
       )}
