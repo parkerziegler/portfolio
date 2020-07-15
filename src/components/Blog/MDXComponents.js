@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import nightOwl from 'prism-react-renderer/themes/nightOwl';
-import cn from 'classnames';
+import cs from 'classnames';
+
 import SectionHeader from '../Shared/SectionHeader';
 import Underline from '../Shared/Underline';
 import Text from '../Shared/Text';
@@ -39,13 +40,14 @@ H3.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const InlineCode = ({ children }) => (
-  <code className="bg-purple-100 text-purple p-2 rounded text-2xl">
+export const InlineCode = ({ className = 'bg-purple-100', children }) => (
+  <code className={cs('text-purple p-2 rounded text-2xl', className)}>
     {children}
   </code>
 );
 
 InlineCode.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node.isRequired
 };
 
@@ -60,7 +62,7 @@ const Code = ({ children, className = '' }) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
-          className={cn(className, 'rounded-lg text-2xl overflow-auto')}
+          className={cs(className, 'rounded-lg text-2xl overflow-auto')}
           style={{ ...style, padding: '20px' }}
         >
           {tokens.map((line, i) => (

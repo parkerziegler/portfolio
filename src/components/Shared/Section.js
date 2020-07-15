@@ -6,7 +6,7 @@ const Section = ({ className, children }) => {
   return (
     <section
       className={cn([
-        'flex flex-col px-8 py-12 sm:py-16 sm:px-32 md:px-40',
+        'relative flex flex-col px-8 py-12 sm:py-16 sm:px-32 md:px-40',
         className
       ])}
     >

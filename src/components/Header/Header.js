@@ -44,7 +44,6 @@ const Header = () => {
           />
         </motion.nav>
       </header>
-      {/* <Extension /> */}
     </div>
   );
 };

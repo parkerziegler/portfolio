@@ -9,10 +9,13 @@ import { useInView } from 'react-intersection-observer';
 import Section from '../src/components/Shared/Section';
 import SectionHeader from '../src/components/Shared/SectionHeader';
 import Underline from '../src/components/Shared/Underline';
+import SkewBg from '../src/components/Shared/SkewBg';
 import RepositoryCard from '../src/components/Cards/RepositoryCard';
 import Text from '../src/components/Shared/Text';
 import Statistic from '../src/components/Contributions/Statistic';
 import PixelCard from '../src/components/Cards/PixelCard';
+import ProjectScreen from '../src/components/Projects/ProjectScreen';
+import { InlineCode } from '../src/components/Blog/MDXComponents';
 
 const projectToBadgePath = {
   renature: '/renature.svg',
@@ -176,7 +179,7 @@ const Code = ({ repositories }) => {
       </Section>
       <Section className="stack-md mx-auto">
         <SectionHeader>
-          <Underline>Other OSS</Underline>
+          <Underline>More OSS</Underline>
         </SectionHeader>
         <motion.div
           className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
@@ -214,6 +217,52 @@ const Code = ({ repositories }) => {
               }
             )}
         </motion.div>
+      </Section>
+      <Section className="stack-md">
+        <SkewBg color="orange" />
+        <SectionHeader>
+          <Underline>Projects</Underline>
+        </SectionHeader>
+        <ProjectScreen
+          projectTitle={
+            <>
+              <InlineCode className="bg-transparent text-5xl text-electric-teal">
+                renature
+              </InlineCode>{' '}
+              <br />
+              Docs Site
+            </>
+          }
+          projectDescription={
+            <>
+              I built the{' '}
+              <InlineCode className="bg-transparent text-electric-teal">
+                renature
+              </InlineCode>{' '}
+              documentation site in tandem with my colleague Savannah Adams, who
+              was an awesome design lead for the site.
+              <br />
+              <br />
+              The project is built on{' '}
+              <InlineCode className="bg-transparent text-electric-teal">
+                react-static
+              </InlineCode>{' '}
+              and{' '}
+              <InlineCode className="bg-transparent text-electric-teal">
+                styled-components
+              </InlineCode>
+              , with a custom Markdown parser for the documentation pieces
+              written by my colleague Phil Plückthun. Live code examples are
+              written using
+              <InlineCode className="bg-transparent text-electric-teal">
+                react-live
+              </InlineCode>
+              . All Sketch diagrams are handmade with 🧡 by me!
+            </>
+          }
+          src="/projects/renature-docs.png"
+          alt="The documentation site for renature, a physics-based animation-library for React."
+        />
       </Section>
     </main>
   );

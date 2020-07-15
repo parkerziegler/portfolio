@@ -5,12 +5,13 @@ module.exports = {
         white: '#ffffff',
         purple: '#7b16ff',
         orange: '#ff9c0d',
-        blue: '#42a8de',
         teal: '#57b4ad',
+        'deep-blue': '#011627',
         pink: '#fa709a',
         yellow: '#fee140',
         black: '#222222',
-        'purple-100': '#faf5ff'
+        'purple-100': '#faf5ff',
+        'electric-teal': '#09cbcb'
       },
       fontFamily: {
         serif: "'Zilla Slab', serif",

@@ -86,3 +86,28 @@
 .across {
   animation: 1s ease-out across infinite;
 }
+
+/* Arrow animations. */
+@keyframes wiggle {
+  0% {
+    transform: translateX(0rem);
+  }
+
+  50% {
+    transform: translateX(-0.5rem);
+  }
+
+  100% {
+    transform: translateX(0rem);
+  }
+}
+
+.with-arrow::after {
+  content: '';
+  display: inline-block;
+  background: url('./arrow.svg');
+  height: 1.6rem;
+  width: 1.6rem;
+  margin-left: 0.5rem;
+  animation: 1s ease-out wiggle infinite;
+}

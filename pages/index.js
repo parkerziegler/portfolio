@@ -81,10 +81,10 @@ const Index = ({ user }) => {
         </Section>
         <Section className="stack-md">
           <SkewBg />
-          <SectionHeader className="z-10 text-white">
+          <SectionHeader className="text-white">
             <Underline>What I&apos;m Up To</Underline>
           </SectionHeader>
-          <Text className="z-10 text-white">
+          <Text className="text-white">
             I currently work with the wonderful and talented folks at{' '}
             <InlineLink href="https://formidable.com/">Formidable</InlineLink>,
             where I contribute to our{' '}
@@ -114,7 +114,7 @@ const Index = ({ user }) => {
             )}
           </PRCardGrid>
         </Section>
-        <Section className="items-center">
+        <Section className="items-center mt-12">
           <div className="md:max-w-3/4 stack-sm">
             <SectionHeader>
               <Underline>Tools I Work With</Underline>
@@ -132,13 +132,13 @@ const Index = ({ user }) => {
             </div>
           </div>
         </Section>
-        <Section className="h-80 relative overflow-hidden">
-          <SkewBg color="teal" tiltDirection="forward" height="sm" />
-          <div className="md:max-w-3/4 stack-sm self-center z-10">
-            <SectionHeader centered className="z-10 text-white">
+        <Section>
+          <SkewBg color="teal" overflow="hidden" />
+          <div className="md:max-w-3/4 stack-sm self-center">
+            <SectionHeader centered className="text-white">
               <Underline>Find Me</Underline>
             </SectionHeader>
-            <div className="flex items-center z-10">
+            <div className="flex items-center">
               <SocialIcon
                 href="https://twitter.com/parker_ziegler"
                 path="/twitter.svg"
