@@ -133,9 +133,8 @@ const Index = ({ user }) => {
           </div>
         </Section>
         <Section>
-          <SkewBg color="teal" overflow="hidden" />
           <div className="md:max-w-3/4 stack-sm self-center">
-            <SectionHeader centered className="text-white">
+            <SectionHeader centered>
               <Underline>Find Me</Underline>
             </SectionHeader>
             <div className="flex items-center">

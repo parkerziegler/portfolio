@@ -15,7 +15,7 @@ import Text from '../src/components/Shared/Text';
 import Statistic from '../src/components/Contributions/Statistic';
 import PixelCard from '../src/components/Cards/PixelCard';
 import ProjectScreen from '../src/components/Projects/ProjectScreen';
-import { InlineCode } from '../src/components/Blog/MDXComponents';
+import { PROJECTS } from '../src/utils/constants';
 
 const projectToBadgePath = {
   renature: '/renature.svg',
@@ -218,51 +218,14 @@ const Code = ({ repositories }) => {
             )}
         </motion.div>
       </Section>
-      <Section className="stack-md">
-        <SkewBg color="orange" />
-        <SectionHeader>
+      <Section className="stack-lg">
+        <SkewBg tiltDirection="forward" />
+        <SectionHeader className="text-white">
           <Underline>Projects</Underline>
         </SectionHeader>
-        <ProjectScreen
-          projectTitle={
-            <>
-              <InlineCode className="bg-transparent text-5xl text-electric-teal">
-                renature
-              </InlineCode>{' '}
-              <br />
-              Docs Site
-            </>
-          }
-          projectDescription={
-            <>
-              I built the{' '}
-              <InlineCode className="bg-transparent text-electric-teal">
-                renature
-              </InlineCode>{' '}
-              documentation site in tandem with my colleague Savannah Adams, who
-              was an awesome design lead for the site.
-              <br />
-              <br />
-              The project is built on{' '}
-              <InlineCode className="bg-transparent text-electric-teal">
-                react-static
-              </InlineCode>{' '}
-              and{' '}
-              <InlineCode className="bg-transparent text-electric-teal">
-                styled-components
-              </InlineCode>
-              , with a custom Markdown parser for the documentation pieces
-              written by my colleague Phil Plückthun. Live code examples are
-              written using
-              <InlineCode className="bg-transparent text-electric-teal">
-                react-live
-              </InlineCode>
-              . All Sketch diagrams are handmade with 🧡 by me!
-            </>
-          }
-          src="/projects/renature-docs.png"
-          alt="The documentation site for renature, a physics-based animation-library for React."
-        />
+        {PROJECTS.map((project) => (
+          <ProjectScreen key={project.projectId} {...project} />
+        ))}
       </Section>
     </main>
   );

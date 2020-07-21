@@ -1,3 +1,21 @@
+const plugin = require('tailwindcss/plugin');
+
+function justifySelfPlugin({ addUtilities }) {
+  const utilities = {
+    '.justify-self-start': {
+      'justify-self': 'start'
+    },
+    '.justify-self-center': {
+      'justify-self': 'center'
+    },
+    '.justify-self-end': {
+      'justify-self': 'end'
+    }
+  };
+
+  addUtilities(utilities);
+}
+
 module.exports = {
   theme: {
     extend: {
@@ -61,5 +79,5 @@ module.exports = {
     borderColor: ['hover'],
     maxWidth: ['responsive']
   },
-  plugins: []
+  plugins: [plugin(justifySelfPlugin)]
 };
