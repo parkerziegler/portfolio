@@ -27,6 +27,10 @@ export const TAGS = {
   gis: {
     icon: '🗺️',
     tag: 'GIS'
+  },
+  carto: {
+    icon: '/carto-logo.svg',
+    tag: 'CARTO'
   }
 };
 

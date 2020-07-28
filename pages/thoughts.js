@@ -27,12 +27,12 @@ const Thoughts = ({ posts }) => {
           things that are puzzling me. Here are some of my recent pieces.
         </Text>
         <motion.div
-          className="masonry-grid"
+          className="grid grid-cols-12 gap-12"
           variants={variants}
           initial="hidden"
           animate="visible"
         >
-          {posts.map(({ title, slug, date, tags, introText }, i) => (
+          {posts.map(({ title, slug, date, tags, introText }) => (
             <BlogCard
               key={slug}
               title={title}
@@ -40,7 +40,6 @@ const Thoughts = ({ posts }) => {
               date={date}
               tags={tags}
               introText={introText}
-              index={i}
             />
           ))}
         </motion.div>

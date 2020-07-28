@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+
 import Tag from '../Blog/Tag';
 
 const variants = {
@@ -21,28 +22,31 @@ const variants = {
   }
 };
 
-const BlogCard = ({ title, slug, date, tags = [], introText, index }) => {
-  const cardNode = (
+const BlogCard = ({ title, slug, tags = [], introText }) => {
+  return (
     <Link href={`/thoughts/${slug}`}>
       <motion.a
         variants={variants}
-        className="cursor-pointer"
+        className="cursor-pointer col-span-12 md:col-span-6"
         whileHover={{
-          rotateX: ['0deg', '20deg', '0deg'],
-          scale: [1, 1.015, 1.03]
+          scale: 1.05
+        }}
+        whileTap={{
+          scale: 0.95
         }}
         transition={{
-          duration: 0.4
+          type: 'spring',
+          stiffness: 260,
+          damping: 20
         }}
       >
         <div className="flex h-full bg-gradient--primary shadow-lg p-2 rounded-lg">
-          <div className="flex flex-col stack-sm p-4 rounded-md bg-white flex-auto overflow-auto">
-            <h2 className="text-4xl font-mono font-bold">{title}</h2>
-            <p className="text-2xl font-serif line-clamp-ellipsis">
+          <div className="flex flex-col p-4 rounded-md bg-white flex-auto overflow-auto">
+            <h2 className="text-4xl font-serif font-bold">{title}</h2>
+            <p className="text-2xl font-serif line-clamp-ellipsis leading-snug tracking-normal my-8">
               {introText}
             </p>
-            <p className="text-2xl font-mono">{date}</p>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap mt-auto">
               {tags.map(({ tag, icon }) => (
                 <Tag key={tag} icon={icon} className="m-2">
                   {tag}
@@ -54,31 +58,18 @@ const BlogCard = ({ title, slug, date, tags = [], introText, index }) => {
       </motion.a>
     </Link>
   );
-
-  if (index % 4 === 0) {
-    return (
-      <div className="flex flex-col md:col-span-2">
-        {cardNode}
-        <div className="bg-gradient--secondary flex-1 rounded-lg mt-8" />
-      </div>
-    );
-  }
-
-  return cardNode;
 };
 
 BlogCard.propTypes = {
   title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       tag: PropTypes.string.isRequired,
       icon: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  introText: PropTypes.string.isRequired,
-  className: PropTypes.string
+  introText: PropTypes.string.isRequired
 };
 
 export default BlogCard;
