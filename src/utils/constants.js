@@ -31,6 +31,10 @@ export const TAGS = {
   carto: {
     icon: '/carto-logo.svg',
     tag: 'CARTO'
+  },
+  speaking: {
+    icon: '🗣️',
+    tag: 'Speaking'
   }
 };
 

@@ -84,7 +84,9 @@ Code.propTypes = {
 };
 
 const OL = ({ children }) => (
-  <ol className="text-3xl list-decimal font-serif pl-16">{children}</ol>
+  <ol className="text-3xl leading-normal font-serif stack-md list-decimal pl-16">
+    {children}
+  </ol>
 );
 
 OL.propTypes = {

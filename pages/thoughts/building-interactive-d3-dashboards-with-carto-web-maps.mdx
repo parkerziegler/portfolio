@@ -97,7 +97,7 @@ To design my dashboard, I began by thinking carefully about user experience. Onl
 </div>
 ```
 
-![The result of the above HTML – two clean, user-friendly dropdown menus.](/blogs/building-interactive-d3-dashboards-with-carto-web-maps/carto-dropdowns.png)
+![The result of the above HTML – two clean, user-friendly dropdown menus.](/thoughts/building-interactive-d3-dashboards-with-carto-web-maps/carto-dropdowns.png)
 
 Dropdown menus are a powerful design choice because they are familiar to a lot of users and can store a lot of options that would take up too much space otherwise. Getting these buttons to do something just involves a bit of [jQuery](https://jquery.com/) directing what should happen when each option is selected. For example, in the code below, when someone chooses a borough from the zoom selector, the map should pan to that borough.
 
@@ -145,7 +145,7 @@ $('#zoom-selector').change(function () {
 });
 ```
 
-![Notice how we changed the dropdown to Brooklyn and we are now zoomed into downtown Brooklyn. jQuery is a powerful framework for handling DOM-Javascript interaction.](/blogs/building-interactive-d3-dashboards-with-carto-web-maps/carto-web-map.png)
+![Notice how we changed the dropdown to Brooklyn and we are now zoomed into downtown Brooklyn. jQuery is a powerful framework for handling DOM-Javascript interaction.](/thoughts/building-interactive-d3-dashboards-with-carto-web-maps/carto-web-map.png)
 
 ## Adding Graphics with D3
 
@@ -219,7 +219,7 @@ svg
   .attr('opacity', 0.5);
 ```
 
-![Look at that beautifully positioned data! Applying 50% transparency to the points allows overlapping data to be highlighted.](/blogs/building-interactive-d3-dashboards-with-carto-web-maps/d3-scatterplot.png)
+![Look at that beautifully positioned data! Applying 50% transparency to the points allows overlapping data to be highlighted.](/thoughts/building-interactive-d3-dashboards-with-carto-web-maps/d3-scatterplot.png)
 
 ### Making Some Axes
 
@@ -253,13 +253,13 @@ svg
   .call(yAxis);
 ```
 
-![Adding axes and a title helps to make the data readable and understandable. In this case, we see that there is a strong positive correlation between population density and crash density. But what about other variables?](/blogs/building-interactive-d3-dashboards-with-carto-web-maps/d3-axes.png)
+![Adding axes and a title helps to make the data readable and understandable. In this case, we see that there is a strong positive correlation between population density and crash density. But what about other variables?](/thoughts/building-interactive-d3-dashboards-with-carto-web-maps/d3-axes.png)
 
 ### Adding Animation
 
 At this point, we have a beautiful scatterplot, but the data is still static. The whole point of using D3 is to create graphics that change dynamically. That’s where [transitions](https://bost.ocks.org/mike/transition/) come in. Transitions are exciting, lively, and make your data come to life. We can also wire transitions in the graphics to changes in map layers, such that we get two views of the same data at once.
 
-![Notice that we have the Poverty Rate layer selected in the dropdown, the Poverty Rate layer is showing on the map, and the scatterplot is showing the relationship between Poverty Rate and Crash Density. Ah, the beauty of Integrated data views.](/blogs/building-interactive-d3-dashboards-with-carto-web-maps/d3-carto-web-map.png)
+![Notice that we have the Poverty Rate layer selected in the dropdown, the Poverty Rate layer is showing on the map, and the scatterplot is showing the relationship between Poverty Rate and Crash Density. Ah, the beauty of Integrated data views.](/thoughts/building-interactive-d3-dashboards-with-carto-web-maps/d3-carto-web-map.png)
 
 Fortunately, D3 makes transitions easy to implement. The general idea is to bind the new dataset (the values we’re transitioning to), update our scales to match this dataset, start a transition for a set duration of time, and move the circles to their new positions. Within the Javascript function that controls the dropdown menu, just add a few lines of code:
 

@@ -117,7 +117,7 @@ Awesome! By using the network as a proxy for DOM stability we can normalize diff
 
 While the above strategy works well if your application is solely comprised of calls to a REST API, it breaks down a little bit for another popular transport protocol—WebSockets. The Cypress docs are a bit cryptic on WebSocket support.
 
-![Websockets documentation for Cypress](/blogs/end-to-end-testing-react-applications-with-cypress/cypress-websockets-docs.png)
+![Websockets documentation for Cypress](/thoughts/end-to-end-testing-react-applications-with-cypress/cypress-websockets-docs.png)
 
 By this, the Cypress team means that you can still run end-to-end tests against an application backed by WebSockets. However, you're not able to `cy.wait` on a WebSocket connection or mock its return values in any way. More precisely, this means you can't `wait` until the client and server have completed [their handshake](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#The_WebSocket_handshake) and the first frame has been received from the WebSocket server. If your React application depends on data returned by those frames to render specific UI that you want to test, `cy.wait` can't really help you. So what can we do here? We can implement retry-ability ourselves with simple recursion!
 
