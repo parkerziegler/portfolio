@@ -22,7 +22,7 @@ const variants = {
   }
 };
 
-const BlogCard = ({ title, slug, tags = [], introText }) => {
+const BlogCard = ({ title, slug, tags = [], introText, date }) => {
   return (
     <Link href={`/thoughts/${slug}`}>
       <motion.a
@@ -46,12 +46,15 @@ const BlogCard = ({ title, slug, tags = [], introText }) => {
             <p className="text-2xl font-serif line-clamp-ellipsis leading-snug tracking-normal my-8">
               {introText}
             </p>
-            <div className="flex flex-wrap mt-auto">
-              {tags.map(({ tag, icon }) => (
-                <Tag key={tag} icon={icon} className="m-2">
-                  {tag}
-                </Tag>
-              ))}
+            <div className="flex justify-between items-end mt-auto">
+              <div className="flex flex-wrap">
+                {tags.map(({ tag, icon }) => (
+                  <Tag key={tag} icon={icon} className="m-2 h-16">
+                    {tag}
+                  </Tag>
+                ))}
+              </div>
+              <p className="text-2xl self-end m-2">{date}</p>
             </div>
           </div>
         </div>
@@ -69,7 +72,8 @@ BlogCard.propTypes = {
       icon: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  introText: PropTypes.string.isRequired
+  introText: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired
 };
 
 export default BlogCard;

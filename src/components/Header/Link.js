@@ -25,10 +25,9 @@ const Link = ({ href, onClick, children }) => {
       const rc = rough.svg(svgRef.current);
       svgRef.current.appendChild(
         rc.line(0, 3, width, 3, {
-          stroke:
-            pathname === href
-              ? tailwind.theme.extend.colors.purple
-              : tailwind.theme.extend.colors.white
+          stroke: pathname.includes(href)
+            ? tailwind.theme.extend.colors.purple
+            : tailwind.theme.extend.colors.white
         })
       );
     }
@@ -43,7 +42,7 @@ const Link = ({ href, onClick, children }) => {
           className={cs(
             'text-white p-2 text-5xl sm:text-4xl font-serif no-underline relative',
             {
-              'sm:text-purple': pathname === href
+              'sm:text-purple': pathname.includes(href)
             }
           )}
         >

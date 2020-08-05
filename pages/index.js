@@ -9,7 +9,6 @@ import Section from '../src/components/Shared/Section';
 import SectionHeader from '../src/components/Shared/SectionHeader';
 import Underline from '../src/components/Shared/Underline';
 import Text from '../src/components/Shared/Text';
-import SocialIcon from '../src/components/Shared/SocialIcon';
 import Map from '../src/components/Map/PlaceMap';
 import PRCard from '../src/components/Cards/PRCard';
 import PRCardGrid from '../src/components/Cards/PRCardGrid';
@@ -128,30 +127,6 @@ const Index = ({ user }) => {
               <LangSection
                 title="Frameworks"
                 langs={Object.values(FRAMEWORKS)}
-              />
-            </div>
-          </div>
-        </Section>
-        <Section>
-          <div className="md:max-w-3/4 stack-sm self-center">
-            <SectionHeader centered>
-              <Underline>Find Me</Underline>
-            </SectionHeader>
-            <div className="flex items-center">
-              <SocialIcon
-                href="https://twitter.com/parker_ziegler"
-                path="/twitter.svg"
-                alt="Parker's Twitter"
-              />
-              <SocialIcon
-                href="https://github.com/parkerziegler"
-                path="/github.svg"
-                alt="Parker's GitHub"
-              />
-              <SocialIcon
-                href="https://codesandbox.io/u/parkerziegler"
-                path="/codesandbox.svg"
-                alt="Parker's CodeSandbox"
               />
             </div>
           </div>

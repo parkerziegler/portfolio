@@ -219,7 +219,7 @@ const Code = ({ repositories }) => {
         </motion.div>
       </Section>
       <Section className="stack-lg">
-        <SkewBg tiltDirection="forward" />
+        <SkewBg tiltDirection="forward" overflow="hidden" />
         <SectionHeader className="text-white">
           <Underline>Projects</Underline>
         </SectionHeader>
