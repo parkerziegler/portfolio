@@ -1,0 +1,25 @@
+import BlogPost from '../../src/components/Blog/BlogPost';
+import { TAGS } from '../../src/utils/constants';
+
+export const meta = {
+  title: 'Writing Documentation for the AWR Custom Tool',
+  slug: 'writing-documentation-for-the-awr-custom-tool',
+  date: 'March 24, 2016',
+  tags: ['python', 'gis']
+};
+
+<BlogPost tags={[TAGS.python, TAGS.gis]}>
+
+# Writing Documentation for the AWR Custom Tool
+
+Having created a custom Python geoprocessing tool to automate the process of areal-weighted reaggregation (AWR), my next task was to write documentation articulating how the tool actually works. Documentation is obviously a critical part of development – without it, the tools we create can't readily be accessed by others. These things we've poured our heart and soul into have no broader application in the world.
+
+Having cruised around the open source GIS world these first six weeks of the semester, I can tell you that the documentation out there really varies. Some folks (i.e. [Leaflet](https://leafletjs.com/), [Mapbox](https://www.mapbox.com/), and [CartoDB](https://carto.com/)) spend considerable time making their documentation readable, user-friendly, and accessible. Other developers, particularly those who build more specialized tools and work in the deep end of computing, write documentation that assumes a considerable amount of prior knowledge. And of course, there are other developers who include just absolutely inscrutable stuff. The point here is that, just like any writing, documentation is about _knowing your audience_. This will influence how you structure your docs, the lexicon you use, and what background expertise you will assume.
+
+[Click here to access the documentation for my areal-weighted reaggregation (AWR) tool.](/thoughts/writing-documentation-for-the-awr-custom-tool/awr-documentation.pdf)
+
+When I was thinking about my own audience for the AWR documentation, I was conscious of the fact that I developed the tool in the Esri ArcGIS framework. With this in mind, I felt it was ok to assume a basic knowledge of ArcGIS or, at the very least, some GIS framework in which there exist tools, inputs, and outputs. I did, however, want to assume less knowledge when it came to Python scripting, creating new toolboxes, and pulling an external script for use in your own project. These are more complicated procedures that require time to learn – having been on the other side of this line just a few weeks ago, I know how intimidating it can be to approach documentation that requires a computer science degree to comb through. Therefore, the documentation walks users through the process of acquiring, setting up, and running the script in their own projects. Another important aspect of my documentation involves providing an explanation of what areal-weighted reaggregation (AWR) actually is. The technique is confusing conceptually, especially for beginning GIS users, and having a clear, concise explanation of what the script is doing with your data is, I think, crucial. Finally, I wanted to include a Limitations section to my docs, per the suggestion of my advisor Joseph Holler. Acknowledging where your tools fail, where they make questionable assumptions, and where they could be improved is critical to responsible knowledge-making.
+
+Ultimately, I hope this documentation helps folks use and improve upon this tool going forward. I tried to keep the documentation concise and readable while still giving enough content to comprehensively explain what I've created. If you have any thoughts on how I could improve this documentation, or the tool itself, please don't hesitate to reach out [on Twitter](https://twitter.com/parker_ziegler).
+
+</BlogPost>

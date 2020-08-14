@@ -41,7 +41,7 @@ H3.propTypes = {
 };
 
 export const InlineCode = ({ className = 'bg-purple-100', children }) => (
-  <code className={cs('text-purple p-2 rounded text-2xl', className)}>
+  <code className={cs('text-2xl font-mono text-purple p-2 rounded', className)}>
     {children}
   </code>
 );
@@ -84,12 +84,22 @@ Code.propTypes = {
 };
 
 const OL = ({ children }) => (
-  <ol className="text-3xl leading-normal font-serif stack-md list-decimal pl-16">
+  <ol className="text-3xl leading-normal font-serif stack-sm list-decimal pl-16">
     {children}
   </ol>
 );
 
 OL.propTypes = {
+  children: PropTypes.node.isRequired
+};
+
+const UL = ({ children }) => (
+  <ul className="text-3xl leading-normal font-serif stack-sm list-disc pl-16">
+    {children}
+  </ul>
+);
+
+UL.propTypes = {
   children: PropTypes.node.isRequired
 };
 
@@ -114,6 +124,7 @@ const components = {
   inlineCode: InlineCode,
   code: Code,
   ol: OL,
+  ul: UL,
   img: Image
 };
 

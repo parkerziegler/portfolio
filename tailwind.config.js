@@ -33,7 +33,7 @@ module.exports = {
       },
       fontFamily: {
         serif: "'Zilla Slab', serif",
-        mono: "'Space Mono', monospace"
+        mono: "'DM Mono', monospace"
       },
       maxWidth: {
         '5/6': '83.333%',

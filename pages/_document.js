@@ -22,7 +22,7 @@ export default class Document extends NextDocument {
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"
             rel="stylesheet"
           />
           <style>{`

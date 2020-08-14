@@ -35,6 +35,10 @@ export const TAGS = {
   speaking: {
     icon: '🗣️',
     tag: 'Speaking'
+  },
+  python: {
+    icon: '/python-logo.svg',
+    tag: 'Python'
   }
 };
 

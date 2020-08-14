@@ -23,10 +23,10 @@ const PRCard = ({ nameWithOwner, url, title, primaryLanguage }) => (
   >
     <div className="bg-gradient--primary flex p-2 m-auto rounded-lg font-mono h-full w-full shadow-lg">
       <div className="flex flex-col p-4 rounded-md bg-white flex-auto overflow-auto">
-        <p className="mb-2 block text-2xl font-bold underline">
+        <p className="mb-4 block text-2xl font-bold underline">
           {nameWithOwner}
         </p>
-        <p className="mb-2 text-2xl">{title}</p>
+        <p className="mb-4 text-2xl">{title}</p>
         {primaryLanguage ? (
           <div className="flex items-end stack-sm-h mt-auto py-2">
             <img
