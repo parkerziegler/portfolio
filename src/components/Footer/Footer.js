@@ -5,7 +5,7 @@ import Underline from '../Shared/Underline';
 import SocialIcon from '../Shared/SocialIcon';
 
 const Footer = () => (
-  <footer className="relative flex flex-col px-8 py-12 sm:py-16 sm:px-32 md:px-40">
+  <footer className="w-full max-w-view mx-auto flex flex-col px-8 py-12 sm:py-16 sm:px-32 md:px-40">
     <div className="md:max-w-3/4 stack-sm self-center">
       <SectionHeader centered>
         <Underline>Find Me</Underline>

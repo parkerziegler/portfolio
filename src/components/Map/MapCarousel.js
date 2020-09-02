@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import cn from 'classnames';
-import Heading from '../Shared/Heading';
+import cs from 'classnames';
+
+import MapTitle from './MapTitle';
 import Text from '../Shared/Text';
 
 const variants = {
@@ -30,13 +31,9 @@ const MapThumbnail = ({ src, alt, selectedSrc, onClick }) => {
           inline: 'start'
         });
       }}
-      className="h-32 md:h-48 lg:h-64 object-cover saturate cursor-pointer"
+      className="h-32 md:h-64 object-cover saturate cursor-pointer rounded-md"
       ref={thumbnailNode}
-      style={
-        selectedSrc === src
-          ? { filter: 'saturate(1)', transform: 'scale(1.05)' }
-          : {}
-      }
+      style={selectedSrc === src ? { filter: 'saturate(1)' } : {}}
     />
   );
 };
@@ -51,7 +48,14 @@ MapThumbnail.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-const MapCarousel = ({ maps = [], title, before, children }) => {
+const MapCarousel = ({
+  maps = [],
+  title,
+  link,
+  code,
+  isPortrait,
+  children
+}) => {
   const [map, setMap] = useState(maps[0]);
 
   const onClickThumbnail = (src) => {
@@ -59,24 +63,13 @@ const MapCarousel = ({ maps = [], title, before, children }) => {
   };
 
   return (
-    <div className="grid grid-cols-12 gap-4 lg:gap-8">
+    <div className="grid grid-cols-12 md:grid-rows-auto-2 gap-8 md:gap-12">
       <div
-        className={cn(
-          'col-span-12 lg:col-span-4 flex items-center justify-center self-end bg-radial bg-radial--purple shadow-purple p-8 mb-4 lg:mb-0',
-          !before && 'lg:col-start-9 lg:shadow-purple--reverse'
-        )}
-      >
-        <Heading
-          tag="h2"
-          className="text-3xl lg:text-4xl font-sans bg-white p-4"
-        >
-          <strong>{title}</strong>
-        </Heading>
-      </div>
-      <div
-        className={cn(
-          'carousel grid gap-4 lg:gap-8 col-span-12 lg:col-span-8 lg:row-start-1 lg:row-span-2 self-start',
-          before && 'lg:col-start-5'
+        className={cs(
+          'col-span-12 stack-md md:row-start-1',
+          isPortrait
+            ? 'md:row-span-2 md:col-start-7 md:col-span-6 self-start'
+            : 'md:row-span-1'
         )}
       >
         <motion.img
@@ -91,7 +84,7 @@ const MapCarousel = ({ maps = [], title, before, children }) => {
             stiffness: 260,
             damping: 20
           }}
-          className="block min-w-screen max-w-full scroll-snap-align-start object-cover shadow-lg"
+          className="block min-w-screen max-w-full scroll-snap-align-start object-cover shadow-lg rounded-md"
           loading="lazy"
         />
         <nav className="flex overflow-y-hidden stack-sm-h">
@@ -108,10 +101,11 @@ const MapCarousel = ({ maps = [], title, before, children }) => {
           })}
         </nav>
       </div>
+      <MapTitle title={title} link={link} code={code} isPortrait={isPortrait} />
       <Text
-        className={cn(
-          'col-span-12 lg:col-span-4 bg-white p-4 self-start',
-          !before && 'lg:col-start-9'
+        className={cs(
+          'col-span-12 row-start-3 md:row-start-2 bg-white',
+          isPortrait ? 'md:col-span-6' : 'md:col-span-9'
         )}
       >
         {children}
@@ -128,7 +122,9 @@ MapCarousel.propTypes = {
     })
   ),
   title: PropTypes.string.isRequired,
-  before: PropTypes.bool.isRequired,
+  link: PropTypes.string,
+  code: PropTypes.string,
+  isPortrait: PropTypes.bool,
   children: PropTypes.node.isRequired
 };
 

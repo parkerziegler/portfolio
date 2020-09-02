@@ -31,9 +31,6 @@ const BlogCard = ({ title, slug, tags = [], introText, date }) => {
         whileHover={{
           scale: 1.05
         }}
-        whileTap={{
-          scale: 0.95
-        }}
         transition={{
           type: 'spring',
           stiffness: 260,

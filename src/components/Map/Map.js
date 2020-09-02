@@ -1,57 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
+import cs from 'classnames';
 import { useInView } from 'react-intersection-observer';
 
-import Heading from '../Shared/Heading';
+import MapTitle from './MapTitle';
 import Text from '../Shared/Text';
 
-const Map = ({ title, src, alt, before, link, children }) => {
+const Map = ({ title, src, alt, link, code, isPortrait = false, children }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     rootMargin: '200px 0px'
   });
 
   return (
-    <div className="grid grid-cols-12 gap-4 lg:gap-8">
+    <div className="grid grid-cols-12 grid-rows-auto-2 gap-8 md:gap-12">
       <div
-        className={cn(
-          'col-span-12 lg:col-span-3 flex items-center justify-center self-center bg-radial bg-radial--purple shadow-purple p-8 mb-4 lg:mb-0',
-          !before && 'lg:col-start-10 lg:shadow-purple--reverse'
+        className={cs(
+          'col-span-12 shadow-lg',
+          isPortrait
+            ? 'md:row-span-2 md:col-start-7 md:col-span-6 self-start'
+            : 'md:row-span-1'
+        )}
+        ref={ref}
+      >
+        {inView ? <img src={src} alt={alt} className="rounded-md" /> : null}
+      </div>
+      <MapTitle title={title} link={link} code={code} isPortrait={isPortrait} />
+      <Text
+        className={cs(
+          'col-span-12 row-start-3 md:row-start-2 bg-white',
+          isPortrait ? 'md:col-span-6' : 'md:col-span-9'
         )}
       >
-        <Heading
-          tag="h2"
-          className="text-3xl lg:text-4xl font-sans bg-white p-4"
-        >
-          <strong>{title}</strong>
-        </Heading>
-      </div>
-      {link ? (
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(
-            'col-span-12 lg:col-span-9 lg:col-start-1 lg:row-start-1',
-            before && 'lg:col-start-4'
-          )}
-          ref={ref}
-        >
-          {inView ? <img src={src} alt={alt} loading="lazy" /> : null}
-        </a>
-      ) : (
-        <div
-          className={cn(
-            'col-span-12 lg:col-span-9 lg:col-start-1 lg:row-start-1 shadow-lg',
-            before && 'lg:col-start-4'
-          )}
-          ref={ref}
-        >
-          {inView ? <img src={src} alt={alt} loading="lazy" /> : null}
-        </div>
-      )}
-      <Text className="col-span-12 col-start-1 bg-white p-4">{children}</Text>
+        {children}
+      </Text>
     </div>
   );
 };
@@ -60,8 +42,9 @@ Map.propTypes = {
   title: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  before: PropTypes.bool.isRequired,
   link: PropTypes.string,
+  code: PropTypes.string,
+  isPortrait: PropTypes.bool,
   children: PropTypes.node.isRequired
 };
 

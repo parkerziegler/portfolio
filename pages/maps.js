@@ -13,24 +13,35 @@ const Maps = () => {
         <SectionHeader>
           <Underline>Maps</Underline>
         </SectionHeader>
-        {maps.map(({ src, alt, title, items, link, children }, i) => {
-          return items ? (
-            <MapCarousel maps={items} title={title} before={i % 2 === 0}>
-              {children}
-            </MapCarousel>
-          ) : (
-            <Map
-              key={title}
-              title={title}
-              src={src}
-              alt={alt}
-              before={i % 2 === 0}
-              link={link}
-            >
-              {children}
-            </Map>
-          );
-        })}
+        <div className="stack-xl md:stack-xxl">
+          {maps.map(
+            ({ src, alt, title, items, link, code, isPortrait, children }) => {
+              return items ? (
+                <MapCarousel
+                  maps={items}
+                  title={title}
+                  link={link}
+                  code={code}
+                  isPortrait={isPortrait}
+                >
+                  {children}
+                </MapCarousel>
+              ) : (
+                <Map
+                  key={title}
+                  title={title}
+                  src={src}
+                  alt={alt}
+                  link={link}
+                  code={code}
+                  isPortrait={isPortrait}
+                >
+                  {children}
+                </Map>
+              );
+            }
+          )}
+        </div>
       </Section>
     </main>
   );

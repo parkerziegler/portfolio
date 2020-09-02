@@ -105,9 +105,26 @@
 .with-arrow::after {
   content: '';
   display: inline-block;
-  background: url('./arrow.svg');
+  background: url('./icons/arrow.svg');
   height: 1.6rem;
   width: 1.6rem;
   margin-left: 0.5rem;
   animation: 1s ease-out wiggle infinite;
+}
+
+.with-map::before,
+.with-code::before {
+  content: '';
+  display: inline-block;
+  height: 2.4rem;
+  width: 2.4rem;
+  margin-right: 1rem;
+}
+
+.with-map::before {
+  background: url('./icons/map.svg');
+}
+
+.with-code::before {
+  background: url('./icons/github.svg');
 }

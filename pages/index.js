@@ -15,7 +15,7 @@ import PRCardGrid from '../src/components/Cards/PRCardGrid';
 import InlineLink from '../src/components/Shared/InlineLink';
 import LangSection from '../src/components/Shared/LangSection';
 import SkewBg from '../src/components/Shared/SkewBg';
-import { LANGUAGES, FRAMEWORKS } from '../src/utils/constants';
+import { LANGUAGES, TOOLS } from '../src/utils/constants';
 
 const contributionsQuery = gql`
   query contributions($login: String!) {
@@ -120,14 +120,11 @@ const Index = ({ user }) => {
             </SectionHeader>
             <Text>
               I love the frontend JavaScript ecosystem and spend most of my days
-              working with these lovely languages and frameworks:{' '}
+              working with these lovely languages and tools:{' '}
             </Text>
             <div className="flex flex-col sm:flex-row justify-evenly">
               <LangSection title="Languages" langs={Object.values(LANGUAGES)} />
-              <LangSection
-                title="Frameworks"
-                langs={Object.values(FRAMEWORKS)}
-              />
+              <LangSection title="Tools" langs={Object.values(TOOLS)} />
             </div>
           </div>
         </Section>

@@ -43,19 +43,25 @@ export const TAGS = {
 };
 
 export const LANGUAGES = {
-  JavaScript: { src: '/js-logo.svg', alt: 'JavaScript' },
-  TypeScript: { src: '/ts-logo.svg', alt: 'TypeScript' },
-  Reason: { src: '/reason-logo.svg', alt: 'Reason' },
-  CSS: { src: '/css-logo.svg', alt: 'CSS' },
-  GraphQL: { src: '/graphql-logo.svg', alt: 'GraphQL' }
+  JavaScript: { src: '/js-logo.svg', alt: 'JavaScript Logo' },
+  TypeScript: { src: '/ts-logo.svg', alt: 'TypeScript Logo' },
+  Reason: { src: '/reason-logo.svg', alt: 'Reason Logo' },
+  HTML: { src: '/html-logo.svg', alt: 'HTML Logo' },
+  CSS: { src: '/css-logo.svg', alt: 'CSS Logo' },
+  GraphQL: { src: '/graphql-logo.svg', alt: 'GraphQL Logo' },
+  WebAssembly: { src: '/wasm-logo.svg', alt: 'WebAssembly Logo' },
+  Rust: { src: '/rust-logo.svg', alt: 'Rust Logo' }
 };
 
-export const FRAMEWORKS = {
-  React: { src: '/react-logo.svg', alt: 'React' },
-  Next: { src: '/next-logo.svg', alt: 'Next.js' },
-  Redux: { src: '/redux-logo.svg', alt: 'Redux' },
-  Jest: { src: '/jest-logo.svg', alt: 'Jest ' },
-  Sass: { src: '/sass-logo.svg', alt: 'Sass' }
+export const TOOLS = {
+  React: { src: '/react-logo.svg', alt: 'React Logo' },
+  Node: { src: '/node-logo.svg', alt: 'Node Logo' },
+  Redux: { src: '/redux-logo.svg', alt: 'Redux Logo' },
+  Next: { src: '/next-logo.svg', alt: 'Next.js Logo' },
+  D3: { src: '/d3-logo.svg', alt: 'D3 Logo' },
+  Jest: { src: '/jest-logo.svg', alt: 'Jest Logo' },
+  Cypress: { src: '/cypress-logo.svg', alt: 'Cypress Logo' },
+  Sass: { src: '/sass-logo.svg', alt: 'Sass Logo' }
 };
 
 export const NAV_ITEMS = [

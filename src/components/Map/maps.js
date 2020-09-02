@@ -5,10 +5,12 @@ export const maps = [
   {
     title:
       'The Road to Vision Zero: Traffic Crashes and Poverty in New York City',
-    src: '/maps/transalt-vision-zero-map.png',
+    src: '/maps/ta-vision-zero.png',
     alt: 'Transporation Alternatives x Azavea Vision Zero Map',
     link:
       'https://summer-of-maps.github.io/2016-TransAlt-TrafficCrashVisualization/',
+    code:
+      'https://github.com/summer-of-maps/2016-TransAlt-TrafficCrashVisualization',
     children: (
       <>
         This web application, developed as part of{' '}
@@ -37,18 +39,17 @@ export const maps = [
           crashes in lower income communities of color
         </InlineLink>
         , mainly as a result of poor urban design and a lack of appropriate
-        transportation infrastructure. This application, built on{' '}
+        transportation infrastructure.
+        <br />
+        <br />
+        This application, built on{' '}
         <InlineLink href="https://d3js.org/">D3</InlineLink>,{' '}
         <InlineLink href="https://carto.com/"> CARTO</InlineLink>,{' '}
         <InlineLink href="https://leafletjs.com/"> Leaflet</InlineLink>, and{' '}
         <InlineLink href="https://jquery.com/">jQuery</InlineLink>, attempts to
         fill this gap in the Vision Zero literature by visualizing these
         relationships both geographically and statistically in a single
-        integrated interface. Take a look at{' '}
-        <InlineLink href="https://github.com/summer-of-maps/2016-TransAlt-TrafficCrashVisualization">
-          the source
-        </InlineLink>{' '}
-        on Github.
+        integrated interface.
       </>
     )
   },
@@ -87,6 +88,10 @@ export const maps = [
           'A heat map of traffic crashes on Staten Island, New York between 2013 and 2015.'
       }
     ],
+    link: '/maps/ta-report.pdf',
+    code:
+      'https://github.com/summer-of-maps/2016-TransAlt-MultipleRegressionScript',
+    isPortrait: true,
     children: (
       <div className="stack-md">
         <p>
@@ -120,6 +125,8 @@ export const maps = [
     )
   },
   {
+    title: " Mapping Portland's Urban Canopy",
+    link: '/maps/ecotrust-canopy-analysis.pdf',
     items: [
       {
         src: '/maps/ecotrust-lidar-canopy-cover.png',
@@ -172,8 +179,6 @@ export const maps = [
           "A map of Portland's urban canopy cover compared to city targets by Open Space Zone in 2014."
       }
     ],
-    title:
-      " Mapping Portland's Urban Canopy: A Collaboration Between Ecotrust and Azavea",
     children: (
       <>
         This set of maps, designed for{' '}
@@ -206,6 +211,8 @@ export const maps = [
     )
   },
   {
+    title: "Detecting Change in Portland's Urban Canopy",
+    link: '/maps/ecotrust-change-detection.pdf',
     items: [
       {
         src: '/maps/ecotrust-change-detection-layout.png',
@@ -221,10 +228,19 @@ export const maps = [
         src: '/maps/ecotrust-change-detection-layout-3.png',
         alt:
           "A summary report examining progress towards canopy targets in Portland's urban canopy in 2014."
+      },
+      {
+        src: '/maps/ecotrust-gwr-layout.png',
+        alt:
+          'A report showing the fit of a geographically weighted regression model exploring the relationship between canopy cover and various socioeconomic factors.'
+      },
+      {
+        src: '/maps/ecotrust-gwr-layout-2.png',
+        alt:
+          'A series of small multiples showing geographic variation in the strength of correlations drawn between canopy cover and various socioeconomic factors.'
       }
     ],
-    title:
-      "Detecting Change in Portland's Urban Canopy: A Collaboration between Ecotrust and Azavea",
+    isPortrait: true,
     children: (
       <>
         These two layouts, designed for{' '}
@@ -251,11 +267,57 @@ export const maps = [
     )
   },
   {
-    src: '/maps/aasd-map.jpg',
+    src: '/maps/child-migration.png',
+    alt:
+      'Unseen, Unheard, and Forgotten: Child Migration from Central America to the United States',
+    title:
+      'Unseen, Unheard, and Forgotten: Child Migration from Central America to the United States',
+    link: '/maps/child-migration.pdf',
+    isPortrait: true,
+    children: (
+      <>
+        This layout, created as part of Middlebury College&apos;s 2016
+        Cartographic Design seminar, takes a look at the migration of
+        unaccompanied children from the Central American countries of Honduras,
+        El Salvador, and Guatemala to the United States. In 2014,{' '}
+        <InlineLink href="https://www.migrationpolicy.org/programs/us-immigration-policy-program/rising-child-migration-united-states">
+          the number of unaccompanied child migrants attempting to make the
+          passage into the U.S. hit a critical spike
+        </InlineLink>
+        , pushing President Obama to call the crisis a &ldquo;humanitarian
+        situation.&rdquo;
+        <br />
+        <br />
+        In this layout, I explore three different geographies of the child
+        migration stream. The first map shows the number of child migrants
+        apprehended along each sector of the U.S. – Mexico border in 2014, with
+        orange lines representing the number of child migrants attempting to
+        cross the border and red lines representing the number of U.S. Customs
+        and Border Protection (CBP) staff. The second map zooms in to the border
+        crossing at the Rio Grande Valley, where 73% of apprehended child
+        migrants attempted the passage. The third map shows the actual migration
+        paths these children take from their homes in Central America to reach
+        the border. The graphics help to illustrate where these child migrants
+        are coming from, as well as the fluctuations in migration patterns from
+        2013 to 2015.
+        <br />
+        <br />
+        My hope with this layout is to tell a compelling, honest story about the
+        child refugees on our doorstep. In attempting to do so, I also
+        acknowledge the incompleteness of this story, and the many ways in which
+        this layout fails to represent the lived experiences of the many
+        children who attempt this dangerous journey. These maps are dedicated to
+        them.
+      </>
+    )
+  },
+  {
+    src: '/maps/aasd.png',
     alt:
       'Communities in the Clouds: Landscape, Agriculture, and Access in the Peruvian Andes',
     title:
       'Communities in the Clouds: Landscape, Agriculture, and Access in the Peruvian Andes',
+    link: '/maps/aasd.pdf',
     children: (
       <>
         This layout, made as part of Middlebury College&apos;s 2016 Cartographic
@@ -287,6 +349,67 @@ export const maps = [
         </InlineLink>{' '}
         were my technical guides to achieving these effects – and quite
         wonderful guides they were.
+      </>
+    )
+  },
+  {
+    title: 'Who Has Access to Healthy Corner Stores in Philadelphia, PA?',
+    src: '/maps/pa-food-access.png',
+    alt: 'A map exploring food access by Census tract in Philadelphia, PA.',
+    link: '/maps/pa-food-access.pdf',
+    isPortrait: true,
+    children: (
+      <>
+        This map, designed as part of the application process for Azavea&apos;s
+        2016 Summer of Maps fellowship, takes a look at access to healthy corner
+        stores in Philadelphia. Broken down by Census tracts, I used a
+        combination of distance and quality metrics to pick out those tracts
+        that are already well-served by healthy corner stores and those that are
+        severely underserved. I then aggregated these metrics in a weighted
+        access index to better quantify the data. As a community resource,
+        healthy corner stores increase residents&apos; access to fresh, local,
+        and sustainable food sources. To learn more about Philadelphia&apos;s
+        Healthy Corner Store Initiative, head{' '}
+        <InlineLink href="http://thefoodtrust.org/uploads/media_items/healthy-corner-store-overview.original.pdf">
+          here
+        </InlineLink>
+        .
+      </>
+    )
+  },
+  {
+    title: 'Eviction Notices in San Francisco, CA (1997-2015)',
+    src: '/maps/sf-eviction-map.png',
+    alt:
+      'An interactive map depicting evictions in San Francisco from 1997 to 2015.',
+    link: 'http://parkerziegler.github.io/sf-eviction-map/',
+    code: 'https://github.com/parkerziegler/sf-eviction-map',
+    children: (
+      <>
+        This map, my first foray into the world of interactive and web-based
+        cartography, combines multiple visualizations to shed light on the
+        geography of eviction in San Francisco, CA. Since the northward movement
+        of Big Tech began in the early 2010s, low-income residents have
+        increasingly been priced out and pushed out of their homes. In
+        particular, neighborhoods like the Mission, the Sunset, the Castro, and
+        the Haight-Ashbury have seen rapid and violent change, with extreme
+        increases in home value prices and monthly rent. The Ellis Act, a piece
+        of legislation giving businesses the unrestricted right to evict tenants
+        in order to &ldquo;go out of business,&rdquo; has given way to an
+        arbitrary and aggressive regime of real estate speculation backed by big
+        capital. For more information on San Francisco&apos;s eviction epidemic,
+        check out the{' '}
+        <InlineLink href="https://antievictionmap.com/">
+          Anti-Eviction Mapping Project
+        </InlineLink>
+        . Data for this map came courtesy of{' '}
+        <InlineLink href="https://data.sfgov.org/">SF Open Data</InlineLink> and
+        the U.S. Census Bureau. To learn more about how this map was made and
+        designed – and to access the code working behind it – check out{' '}
+        <InlineLink href="/thoughts/build-a-map-of-eviction-in-san-francisco-with-cartodb-js">
+          this post
+        </InlineLink>{' '}
+        over on my Thoughts page.
       </>
     )
   }

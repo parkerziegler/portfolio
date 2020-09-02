@@ -33,9 +33,11 @@ module.exports = {
       },
       fontFamily: {
         serif: "'Zilla Slab', serif",
+        sans: "'Inter', sans-serif",
         mono: "'DM Mono', monospace"
       },
       maxWidth: {
+        view: '128rem',
         '5/6': '83.333%',
         '3/4': '75%',
         '2/3': '66.666%',
@@ -58,6 +60,9 @@ module.exports = {
       },
       opacity: {
         '90': 0.9
+      },
+      gridTemplateRows: {
+        'auto-2': 'auto 1fr'
       }
     },
     fill: (theme) => {

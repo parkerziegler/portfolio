@@ -22,6 +22,10 @@ export default class Document extends NextDocument {
             rel="stylesheet"
           />
           <link
+            href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+            rel="stylesheet"
+          ></link>
+          <link
             href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"
             rel="stylesheet"
           />

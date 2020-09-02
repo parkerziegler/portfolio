@@ -30,6 +30,14 @@ See https://every-layout.dev/layouts/stack/. */
     margin-top: 5rem;
   }
 
+  .stack-xxl > * + * {
+    margin-top: 10rem;
+  }
+
+  .stack-none > * + * {
+    margin-top: 0;
+  }
+
   .stack-xs-h > *,
   .stack-sm-h > *,
   .stack-md-h > *,
