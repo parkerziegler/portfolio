@@ -15,7 +15,9 @@ const ProjectScreen = ({
         <h3 className="font-mono text-5xl col-span-4 -ml-16 pl-16 pb-4 border-b-2 border-electric-teal">
           {projectTitle}
         </h3>
-        <p className="text-3xl col-span-4">{projectDescription}</p>
+        <p className="text-3xl col-span-4 leading-normal">
+          {projectDescription}
+        </p>
         <motion.a
           href={projectLink}
           target="_blank"
@@ -23,9 +25,6 @@ const ProjectScreen = ({
           className="text-4xl text-center font-mono col-span-4 justify-self-start lg:self-start p-4 lg:px-8 lg:py-4 lg:mt-auto text-electric-teal border-electric-teal border-2 with-arrow"
           whileHover={{
             scale: 1.05
-          }}
-          whileTap={{
-            scale: 0.95
           }}
           transition={{
             type: 'spring',

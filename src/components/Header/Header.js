@@ -19,11 +19,8 @@ const Header = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <div
-      className="w-full bg-gradient--primary"
-      style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 80%)' }}
-    >
-      <header className="w-full max-w-view mx-auto flex items-center justify-between flex-auto px-16 sm:px-32 md:px-40 pt-8 pb-16">
+    <div className="w-full bg-gradient--primary header-clip-path">
+      <header className="w-full max-w-view mx-auto flex items-center justify-between flex-auto px-16 sm:px-32 md:px-40 py-8 sm:pt-8 sm:pb-16">
         <SiteTitle />
         <motion.nav
           animate={mobileMenuOpen ? 'open' : 'closed'}

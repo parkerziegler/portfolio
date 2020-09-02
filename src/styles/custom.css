@@ -1,0 +1,5 @@
+@media (min-width: 640px) {
+  .header-clip-path {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+  }
+}

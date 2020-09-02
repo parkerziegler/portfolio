@@ -46,7 +46,7 @@
   background-size: 100% 100%;
 }
 
-/* Saturation animation for carousel. */
+/* Saturation animation for map carousel. */
 .saturate {
   filter: saturate(0);
   transition: all 300ms ease-out;
@@ -55,22 +55,6 @@
 .saturate:hover {
   transform: scale(1.05);
   filter: saturate(1);
-}
-
-/* Animations on header links. */
-.link::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 0.2rem;
-  background: theme('colors.white');
-  transition: width 300ms ease-in-out;
-}
-
-.link:hover::before {
-  width: 100%;
 }
 
 /* Animation on statistics. */

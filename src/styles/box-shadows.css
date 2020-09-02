@@ -1,9 +1,0 @@
-@responsive {
-  .shadow-purple {
-    box-shadow: -1rem 1rem theme('colors.purple');
-  }
-
-  .shadow-purple--reverse {
-    box-shadow: 1rem 1rem theme('colors.purple');
-  }
-}
