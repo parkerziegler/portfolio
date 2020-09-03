@@ -10,12 +10,14 @@ const PRCard = ({ nameWithOwner, url, title, primaryLanguage }) => (
     target="_blank"
     rel="noopener noreferrer"
     whileHover={{
-      scale: 1.05
+      rotate: -3,
+      y: 5,
+      x: -5
     }}
     transition={{
       type: 'spring',
-      stiffness: 260,
-      damping: 20
+      stiffness: 300,
+      damping: 12
     }}
   >
     <div className="bg-gradient--primary flex p-2 m-auto rounded-lg font-mono h-full w-full shadow-lg">

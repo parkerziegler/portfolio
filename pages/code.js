@@ -61,7 +61,7 @@ const repositoriesQuery = gql`
       repositoriesContributedTo(
         first: 10
         orderBy: { field: STARGAZERS, direction: DESC }
-        contributionTypes: [COMMIT, PULL_REQUEST, PULL_REQUEST]
+        contributionTypes: [COMMIT, PULL_REQUEST]
       ) {
         totalCount
         edges {
@@ -91,7 +91,8 @@ const variants = {
 
 const Code = ({ repositories }) => {
   const [ref, inView] = useInView({
-    threshold: 0.15
+    threshold: 0.15,
+    triggerOnce: true
   });
   const controls = useAnimation();
 
@@ -105,7 +106,7 @@ const Code = ({ repositories }) => {
         opacity: 0
       });
     }
-  }, [inView]);
+  }, [inView, controls]);
 
   return (
     <main>

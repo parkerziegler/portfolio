@@ -7,31 +7,47 @@ import cs from 'classnames';
 
 import tailwind from '../../../tailwind.config';
 
-const Link = ({ href, onClick, children }) => {
+const { purple, white } = tailwind.theme.extend.colors;
+
+const Link = ({ href, onClick, isMobile = false, children }) => {
   const linkRef = useRef(null);
   const svgRef = useRef(null);
   const { pathname } = useRouter();
 
   useEffect(() => {
+    const roughUnderline = svgRef;
     if (linkRef.current && svgRef.current) {
-      if (svgRef.current.hasChildNodes()) {
-        svgRef.current.removeChild(svgRef.current.firstChild);
-      }
-
       const width = linkRef.current.offsetWidth;
-      svgRef.current.setAttribute('width', `${width}`);
-      svgRef.current.setAttribute('viewBox', `0 0 ${width} 6`);
+      roughUnderline.current.setAttribute('width', `${width}`);
+      roughUnderline.current.setAttribute('viewBox', `0 0 ${width} 6`);
 
-      const rc = rough.svg(svgRef.current);
-      svgRef.current.appendChild(
-        rc.line(0, 3, width, 3, {
-          stroke: pathname.includes(href)
-            ? tailwind.theme.extend.colors.purple
-            : tailwind.theme.extend.colors.white
-        })
-      );
+      const isRouteSelected = pathname.includes(href);
+
+      if (isMobile) {
+        if (isRouteSelected) {
+          const rc = rough.svg(roughUnderline.current);
+          roughUnderline.current.appendChild(
+            rc.line(0, 3, width, 3, {
+              stroke: white
+            })
+          );
+        }
+      } else {
+        const rc = rough.svg(roughUnderline.current);
+        roughUnderline.current.appendChild(
+          rc.line(0, 3, width, 3, {
+            stroke: isRouteSelected ? purple : white
+          })
+        );
+      }
     }
-  }, [pathname, href]);
+
+    return () => {
+      if (roughUnderline.current.hasChildNodes()) {
+        roughUnderline.current.removeChild(roughUnderline.current.firstChild);
+      }
+    };
+  }, [pathname, href, isMobile]);
 
   return (
     <>
@@ -57,6 +73,7 @@ const Link = ({ href, onClick, children }) => {
 Link.propTypes = {
   href: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  isMobile: PropTypes.bool,
   children: PropTypes.node.isRequired
 };
 

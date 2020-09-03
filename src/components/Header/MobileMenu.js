@@ -96,7 +96,7 @@ const MobileMenu = React.forwardRef(({ toggle }, ref) => {
           {NAV_ITEMS.map(({ route, displayText }) => {
             return (
               <motion.li key={route} variants={listItemVariants}>
-                <Link href={route} onClick={toggle}>
+                <Link href={route} onClick={toggle} isMobile>
                   {displayText}
                 </Link>
               </motion.li>

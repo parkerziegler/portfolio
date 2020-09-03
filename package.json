@@ -20,7 +20,7 @@
     "classnames": "^2.2.6",
     "d3": "^5.9.2",
     "dotenv": "^8.0.0",
-    "framer-motion": "^1.8.4",
+    "framer-motion": "^2.6.5",
     "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-unfetch": "^3.0.0",

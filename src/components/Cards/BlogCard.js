@@ -29,12 +29,14 @@ const BlogCard = ({ title, slug, tags = [], introText, date }) => {
         variants={variants}
         className="cursor-pointer col-span-12 md:col-span-6"
         whileHover={{
-          scale: 1.05
+          rotate: -3,
+          y: 5,
+          x: -5
         }}
         transition={{
           type: 'spring',
-          stiffness: 260,
-          damping: 20
+          stiffness: 300,
+          damping: 12
         }}
       >
         <div className="flex h-full bg-gradient--primary shadow-lg p-2 rounded-lg">

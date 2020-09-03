@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
+import tailwind from '../../../tailwind.config';
+
 const variants = {
   visible: {
     y: 0,
@@ -34,10 +36,12 @@ const RepositoryCard = ({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="col-span-12 md:col-span-4 self-stretch"
+      className="col-span-12 md:col-span-4 self-stretch rounded-lg"
       variants={variants}
       whileHover={{
-        scale: 1.03
+        x: 5,
+        y: -5,
+        boxShadow: `-1rem 1rem ${tailwind.theme.extend.colors.purple}`
       }}
       transition={{
         type: 'spring',
