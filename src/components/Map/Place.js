@@ -12,12 +12,10 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
     <g key={label}>
       <motion.rect
         className="fill-white"
-        x={x - 5}
-        y={y - 15}
         rx="5"
         width={width}
         height={20}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, x: x - 5, y: y - 15 }}
         animate={{
           opacity: 1,
           transition: { delay: pathLength * 0.05 + i * 0.5 }
@@ -25,10 +23,8 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
       />
       <motion.text
         className="fill-purple font-sans text-2xl"
-        x={x}
-        y={y}
         ref={placeRef}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, x, y }}
         animate={{
           opacity: 1,
           transition: { delay: pathLength * 0.05 + i * 0.5 }

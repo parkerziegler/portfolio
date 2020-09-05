@@ -7,6 +7,7 @@ export const places = [
     x: 230,
     y: 205
   },
+  { label: 'Las Cruces, NM', cx: 290, cy: 430, x: 300, y: 415 },
   { label: 'School – Middlebury, VT', cx: 855, cy: 130, x: 720, y: 100 },
   { label: 'Home – Northampton, MA', cx: 870, cy: 170, x: 760, y: 210 }
 ];
