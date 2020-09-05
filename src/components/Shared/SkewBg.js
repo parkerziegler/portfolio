@@ -9,10 +9,13 @@ const SkewBg = ({
 }) => {
   return (
     <div
-      className={cs('absolute w-full h-full top-0 -mx-8 sm:-mx-32 md:-mx-40', {
-        'overflow-visible': overflow === 'visible',
-        'overflow-hidden': overflow === 'hidden'
-      })}
+      className={cs(
+        'absolute w-full h-full full-width-breakout top-0 -mx-8 sm:-mx-32 md:-mx-40',
+        {
+          'overflow-visible': overflow === 'visible',
+          'overflow-hidden': overflow === 'hidden'
+        }
+      )}
       style={{ zIndex: -1 }}
     >
       <div

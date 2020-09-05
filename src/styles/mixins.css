@@ -78,3 +78,13 @@ See https://every-layout.dev/layouts/stack/. */
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+@media (min-width: 1280px) {
+  .full-width-breakout {
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+  }
+}

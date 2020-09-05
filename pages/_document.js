@@ -36,6 +36,7 @@ export default class Document extends NextDocument {
 
             body {
               margin: 0;
+              overflow-x: hidden;
             }
 
             * {
