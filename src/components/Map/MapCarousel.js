@@ -5,6 +5,7 @@ import cs from 'classnames';
 
 import MapTitle from './MapTitle';
 import Text from '../Shared/Text';
+import { generateSrcSet } from '../../utils/generate-src-set';
 
 const variants = {
   visible: {
@@ -15,16 +16,29 @@ const variants = {
   }
 };
 
-const MapThumbnail = ({ src, alt, selectedSrc, onClick }) => {
+const MapThumbnail = ({
+  src,
+  srcSet,
+  alt,
+  selectedSrc,
+  onClick,
+  isPortrait = false
+}) => {
   const thumbnailNode = useRef(null);
 
   return (
     <img
       key={src}
       src={src}
+      srcSet={srcSet}
+      sizes={
+        isPortrait
+          ? '(min-width: 768px) 25vw, (min-width: 1024px) calc(100vw / 6v), (min-width: 1280px) 12.5vw, 20vw'
+          : '(min-width: 768px) 33vw, (min-width: 1024px) 25vw, (min-width: 1280px) 20vw, 25vw'
+      }
       alt={alt}
       onClick={() => {
-        onClick(src);
+        onClick(src, srcSet);
         thumbnailNode.current.scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
@@ -40,12 +54,14 @@ const MapThumbnail = ({ src, alt, selectedSrc, onClick }) => {
 
 MapThumbnail.propTypes = {
   src: PropTypes.string.isRequired,
+  srcSet: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   selectedSrc: PropTypes.shape({
     src: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired
   }).isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  isPortrait: PropTypes.bool
 };
 
 const MapCarousel = ({
@@ -61,6 +77,7 @@ const MapCarousel = ({
   const onClickThumbnail = (src) => {
     setMap(maps.find((m) => m.src === src));
   };
+  const srcSet = generateSrcSet(map.src);
 
   return (
     <div className="grid grid-cols-12 md:grid-rows-auto-2 gap-8 md:gap-12">
@@ -75,6 +92,12 @@ const MapCarousel = ({
         <motion.img
           key={map.src}
           src={map.src}
+          srcSet={srcSet}
+          sizes={
+            isPortrait
+              ? '(min-width: 768px) 50vw, (min-width: 1280px) 1280px, 100vw'
+              : '(min-width: 1280px) 1280px, 100vw'
+          }
           alt={map.alt}
           initial="hidden"
           animate="visible"
@@ -93,9 +116,11 @@ const MapCarousel = ({
               <MapThumbnail
                 key={src}
                 src={src}
+                srcSet={srcSet}
                 alt={alt}
                 selectedSrc={map.src}
                 onClick={onClickThumbnail}
+                isPortrait={isPortrait}
               />
             );
           })}

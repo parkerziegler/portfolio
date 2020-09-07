@@ -15,7 +15,17 @@ const Maps = () => {
         </SectionHeader>
         <div className="stack-xl md:stack-xxl">
           {maps.map(
-            ({ src, alt, title, items, link, code, isPortrait, children }) => {
+            ({
+              src,
+              alt,
+              title,
+              items,
+              link,
+              code,
+              isPortrait,
+              shadow,
+              children
+            }) => {
               return items ? (
                 <MapCarousel
                   maps={items}
@@ -35,6 +45,7 @@ const Maps = () => {
                   link={link}
                   code={code}
                   isPortrait={isPortrait}
+                  shadow={shadow}
                 >
                   {children}
                 </Map>

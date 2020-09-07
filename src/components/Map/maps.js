@@ -5,12 +5,13 @@ export const maps = [
   {
     title:
       'The Road to Vision Zero: Traffic Crashes and Poverty in New York City',
-    src: '/maps/ta-vision-zero.png',
+    src: '/maps/ta-vision-zero/ta-vision-zero.png',
     alt: 'Transporation Alternatives x Azavea Vision Zero Map',
     link:
       'https://summer-of-maps.github.io/2016-TransAlt-TrafficCrashVisualization/',
     code:
       'https://github.com/summer-of-maps/2016-TransAlt-TrafficCrashVisualization',
+    shadow: false,
     children: (
       <>
         This web application, developed as part of{' '}
@@ -58,37 +59,39 @@ export const maps = [
       'The Road to Vision Zero: Correlating Class, Race, and Traffic Safety in New York City',
     items: [
       {
-        src: '/maps/ta-traffic-crashes-nyc.png',
+        src: '/maps/ta-traffic-crashes-nyc/ta-traffic-crashes-nyc.png',
         alt:
           'A heat map of traffic crashes in New York City between 2013 and 2015.'
       },
       {
-        src: '/maps/ta-traffic-crashes-bronx.png',
+        src: '/maps/ta-traffic-crashes-bronx/ta-traffic-crashes-bronx.png',
         alt:
           'A heat map of traffic crashes in the Bronx, New York City between 2013 and 2015.'
       },
       {
-        src: '/maps/ta-traffic-crashes-brooklyn.png',
+        src:
+          '/maps/ta-traffic-crashes-brooklyn/ta-traffic-crashes-brooklyn.png',
         alt:
           'A heat map of traffic crashes in Brooklyn, New York between 2013 and 2015.'
       },
       {
-        src: '/maps/ta-traffic-crashes-manhattan.png',
+        src:
+          '/maps/ta-traffic-crashes-manhattan/ta-traffic-crashes-manhattan.png',
         alt:
           'A heat map of traffic crashes in Manhattan, New York City between 2013 and 2015.'
       },
       {
-        src: '/maps/ta-traffic-crashes-queens.png',
+        src: '/maps/ta-traffic-crashes-queens/ta-traffic-crashes-queens.png',
         alt:
           'A heat map of traffic crashes in Queens, New York between 2013 and 2015.'
       },
       {
-        src: '/maps/ta-traffic-crashes-si.png',
+        src: '/maps/ta-traffic-crashes-si/ta-traffic-crashes-si.png',
         alt:
           'A heat map of traffic crashes on Staten Island, New York between 2013 and 2015.'
       }
     ],
-    link: '/maps/ta-report.pdf',
+    link: '/maps/ta-vision-zero/ta-vision-zero.pdf',
     code:
       'https://github.com/summer-of-maps/2016-TransAlt-MultipleRegressionScript',
     isPortrait: true,
@@ -126,55 +129,64 @@ export const maps = [
   },
   {
     title: " Mapping Portland's Urban Canopy",
-    link: '/maps/ecotrust-canopy-analysis.pdf',
+    link: '/maps/ecotrust-lidar-canopy-cover/ecotrust-lidar-canopy-cover.pdf',
     items: [
       {
-        src: '/maps/ecotrust-lidar-canopy-cover.png',
+        src:
+          '/maps/ecotrust-lidar-canopy-cover/ecotrust-lidar-canopy-cover.png',
         alt: "A map of Portland's urban canopy captured using LiDAR in 2014."
       },
       {
-        src: '/maps/ecotrust-block-groups-canopy-cover.png',
+        src:
+          '/maps/ecotrust-block-groups-canopy-cover/ecotrust-block-groups-canopy-cover.png',
         alt: "A map of Portland's urban canopy by Census Block Group in 2014."
       },
       {
-        src: '/maps/ecotrust-block-groups-targets.png',
+        src:
+          '/maps/ecotrust-block-groups-targets/ecotrust-block-groups-targets.png',
         alt:
           "A map of Portland's urban canopy cover compared to city targets by Census Block Group in 2014."
       },
       {
-        src: '/maps/ecotrust-neighborhoods-canopy-cover.png',
+        src:
+          '/maps/ecotrust-neighborhoods-canopy-cover/ecotrust-neighborhoods-canopy-cover.png',
         alt: "A map of Portland's urban canopy by neighborhood in 2014."
       },
       {
-        src: '/maps/ecotrust-neighborhoods-targets.png',
+        src:
+          '/maps/ecotrust-neighborhoods-targets/ecotrust-neighborhoods-targets.png',
         alt:
           "A map of Portland's urban canopy cover compared to city targets by neighborhood in 2014."
       },
       {
-        src: '/maps/ecotrust-zoning-res-canopy-cover.png',
+        src:
+          '/maps/ecotrust-zoning-res-canopy-cover/ecotrust-zoning-res-canopy-cover.png',
         alt: "A map of Portland's urban canopy by Residential Zone in 2014."
       },
       {
-        src: '/maps/ecotrust-zoning-res-targets.png',
+        src:
+          '/maps/ecotrust-zoning-res-targets/ecotrust-zoning-res-targets.png',
         alt:
           "A map of Portland's urban canopy cover compared to city targets by Residential Zone in 2014."
       },
       {
-        src: '/maps/ecotrust-zoning-ci-canopy-cover.png',
+        src:
+          '/maps/ecotrust-zoning-ci-canopy-cover/ecotrust-zoning-ci-canopy-cover.png',
         alt:
           "A map of Portland's urban canopy by Commercial and Industrial Zone in 2014."
       },
       {
-        src: '/maps/ecotrust-zoning-ci-targets.png',
+        src: '/maps/ecotrust-zoning-ci-targets/ecotrust-zoning-ci-targets.png',
         alt:
           "A map of Portland's urban canopy cover compared to city targets by Commercial and Industrial Zone in 2014."
       },
       {
-        src: '/maps/ecotrust-zoning-os-canopy-cover.png',
+        src:
+          '/maps/ecotrust-zoning-os-canopy-cover/ecotrust-zoning-os-canopy-cover.png',
         alt: "A map of Portland's urban canopy by Open Space Zone in 2014."
       },
       {
-        src: '/maps/ecotrust-zoning-os-targets.png',
+        src: '/maps/ecotrust-zoning-os-targets/ecotrust-zoning-os-targets.png',
         alt:
           "A map of Portland's urban canopy cover compared to city targets by Open Space Zone in 2014."
       }
@@ -212,30 +224,34 @@ export const maps = [
   },
   {
     title: "Detecting Change in Portland's Urban Canopy",
-    link: '/maps/ecotrust-change-detection.pdf',
+    link:
+      '/maps/ecotrust-change-detection-layout/ecotrust-change-detection-layout.pdf',
     items: [
       {
-        src: '/maps/ecotrust-change-detection-layout.png',
+        src:
+          '/maps/ecotrust-change-detection-layout/ecotrust-change-detection-layout.png',
         alt:
           "A summary report of how Portland's urban canopy has changed from 2007 to 2014."
       },
       {
-        src: '/maps/ecotrust-change-detection-layout-2.png',
+        src:
+          '/maps/ecotrust-change-detection-layout-2/ecotrust-change-detection-layout-2.png',
         alt:
           "A summary report examining the rate of growth of Portland's urban canopy at 2 year intervals between 2007 and 2014."
       },
       {
-        src: '/maps/ecotrust-change-detection-layout-3.png',
+        src:
+          '/maps/ecotrust-change-detection-layout-3/ecotrust-change-detection-layout-3.png',
         alt:
           "A summary report examining progress towards canopy targets in Portland's urban canopy in 2014."
       },
       {
-        src: '/maps/ecotrust-gwr-layout.png',
+        src: '/maps/ecotrust-gwr-layout/ecotrust-gwr-layout.png',
         alt:
           'A report showing the fit of a geographically weighted regression model exploring the relationship between canopy cover and various socioeconomic factors.'
       },
       {
-        src: '/maps/ecotrust-gwr-layout-2.png',
+        src: '/maps/ecotrust-gwr-layout-2/ecotrust-gwr-layout-2.png',
         alt:
           'A series of small multiples showing geographic variation in the strength of correlations drawn between canopy cover and various socioeconomic factors.'
       }
@@ -267,12 +283,12 @@ export const maps = [
     )
   },
   {
-    src: '/maps/child-migration.png',
+    src: '/maps/child-migration/child-migration.png',
     alt:
       'Unseen, Unheard, and Forgotten: Child Migration from Central America to the United States',
     title:
       'Unseen, Unheard, and Forgotten: Child Migration from Central America to the United States',
-    link: '/maps/child-migration.pdf',
+    link: '/maps/child-migration/child-migration.pdf',
     isPortrait: true,
     children: (
       <>
@@ -312,12 +328,12 @@ export const maps = [
     )
   },
   {
-    src: '/maps/aasd.png',
+    src: '/maps/aasd/aasd.png',
     alt:
       'Communities in the Clouds: Landscape, Agriculture, and Access in the Peruvian Andes',
     title:
       'Communities in the Clouds: Landscape, Agriculture, and Access in the Peruvian Andes',
-    link: '/maps/aasd.pdf',
+    link: '/maps/aasd/aasd.pdf',
     children: (
       <>
         This layout, made as part of Middlebury College&apos;s 2016 Cartographic
@@ -354,9 +370,9 @@ export const maps = [
   },
   {
     title: 'Who Has Access to Healthy Corner Stores in Philadelphia, PA?',
-    src: '/maps/pa-food-access.png',
+    src: '/maps/pa-food-access/pa-food-access.png',
     alt: 'A map exploring food access by Census tract in Philadelphia, PA.',
-    link: '/maps/pa-food-access.pdf',
+    link: '/maps/pa-food-access/pa-food-access.pdf',
     isPortrait: true,
     children: (
       <>
@@ -379,11 +395,12 @@ export const maps = [
   },
   {
     title: 'Eviction Notices in San Francisco, CA (1997-2015)',
-    src: '/maps/sf-eviction-map.png',
+    src: '/maps/sf-eviction-map/sf-eviction-map.png',
     alt:
       'An interactive map depicting evictions in San Francisco from 1997 to 2015.',
     link: 'http://parkerziegler.github.io/sf-eviction-map/',
-    code: 'https://github.com/parkerziegler/sf-eviction-map',
+    code: 'https://github.com/parkerziegler/sf-eviction-map/',
+    shadow: false,
     children: (
       <>
         This map, my first foray into the world of interactive and web-based
