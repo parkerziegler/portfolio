@@ -24,11 +24,19 @@ const PixelCard = ({
           </div>
         ) : null}
         <div className="flex flex-col items-center mr-4 p-2 bg-white">
-          <img src="/star.svg" className="h-10" />
+          <img
+            src="/star.svg"
+            alt={`${name} Stars on GitHub`}
+            className="h-10"
+          />
           <span className="text-purple text-lg">{starCount}</span>
         </div>
         <div className="flex flex-col items-center p-2 bg-white">
-          <img src="/code-fork.svg" className="h-10" />
+          <img
+            src="/code-fork.svg"
+            alt={`${name} Forks on GitHub`}
+            className="h-10"
+          />
           <span className="text-purple text-lg">{forkCount}</span>
         </div>
       </div>

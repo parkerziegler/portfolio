@@ -64,7 +64,12 @@ const listItemVariants = {
 const MobileMenu = React.forwardRef(({ toggle }, ref) => {
   return (
     <>
-      <button className="sm:hidden relative z-20" onClick={toggle} ref={ref}>
+      <button
+        className="sm:hidden relative z-20"
+        onClick={toggle}
+        ref={ref}
+        ariaLabel="Open Mobile Menu"
+      >
         <svg width="23" height="23" viewBox="0 0 23 23">
           <Path
             variants={{

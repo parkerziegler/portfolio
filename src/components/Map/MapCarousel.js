@@ -18,13 +18,13 @@ const variants = {
 
 const MapThumbnail = ({
   src,
-  srcSet,
   alt,
   selectedSrc,
   onClick,
   isPortrait = false
 }) => {
   const thumbnailNode = useRef(null);
+  const srcSet = generateSrcSet(src);
 
   return (
     <img
@@ -116,7 +116,6 @@ const MapCarousel = ({
               <MapThumbnail
                 key={src}
                 src={src}
-                srcSet={srcSet}
                 alt={alt}
                 selectedSrc={map.src}
                 onClick={onClickThumbnail}

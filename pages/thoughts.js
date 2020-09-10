@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Head from 'next/head';
 import { motion } from 'framer-motion';
 
 import Section from '../src/components/Shared/Section';
@@ -17,34 +18,45 @@ const variants = {
 
 const Thoughts = ({ posts }) => {
   return (
-    <main>
-      <Section className="stack-md">
-        <SectionHeader>
-          <Underline>Thoughts</Underline>
-        </SectionHeader>
-        <Text>
-          I write mostly about tools I like, projects I&apos;m working on, and
-          things that are puzzling me. Here are some of my recent pieces.
-        </Text>
-        <motion.div
-          className="grid grid-cols-12 gap-12"
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-        >
-          {posts.map(({ title, slug, date, tags, introText }) => (
-            <BlogCard
-              key={slug}
-              title={title}
-              slug={slug}
-              date={date}
-              tags={tags}
-              introText={introText}
-            />
-          ))}
-        </motion.div>
-      </Section>
-    </main>
+    <>
+      <Head>
+        <title>
+          Thoughts | Parker Ziegler | Software Engineer and Cartographer
+        </title>
+        <meta
+          name="description"
+          content="Musings, learnings, and tutorials written by Parker Ziegler, a software engineer and cartographer based in Seattle, WA."
+        />
+      </Head>
+      <main>
+        <Section className="stack-md">
+          <SectionHeader>
+            <Underline>Thoughts</Underline>
+          </SectionHeader>
+          <Text>
+            I write mostly about tools I like, projects I&apos;m working on, and
+            things that are puzzling me. Here are some of my recent pieces.
+          </Text>
+          <motion.div
+            className="grid grid-cols-12 gap-12"
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+          >
+            {posts.map(({ title, slug, date, tags, introText }) => (
+              <BlogCard
+                key={slug}
+                title={title}
+                slug={slug}
+                date={date}
+                tags={tags}
+                introText={introText}
+              />
+            ))}
+          </motion.div>
+        </Section>
+      </main>
+    </>
   );
 };
 

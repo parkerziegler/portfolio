@@ -384,10 +384,9 @@ export const maps = [
         severely underserved. I then aggregated these metrics in a weighted
         access index to better quantify the data. As a community resource,
         healthy corner stores increase residents&apos; access to fresh, local,
-        and sustainable food sources. To learn more about Philadelphia&apos;s
-        Healthy Corner Store Initiative, head{' '}
+        and sustainable food sources.{' '}
         <InlineLink href="http://thefoodtrust.org/uploads/media_items/healthy-corner-store-overview.original.pdf">
-          here
+          Learn more about Philadelphia&apos;s Healthy Corner Store Initiative
         </InlineLink>
         .
       </>

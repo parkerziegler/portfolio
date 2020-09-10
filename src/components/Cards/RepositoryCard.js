@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
+import cs from 'classnames';
 
 import tailwind from '../../../tailwind.config';
 
@@ -52,7 +53,7 @@ const RepositoryCard = ({
       <div className="bg-gradient--primary flex p-2 m-auto rounded-lg font-mono shadow-lg h-full">
         <div className="flex flex-col stack-sm p-4 rounded-md bg-white flex-auto overflow-auto">
           <h2 className="text-4xl text-center">{name}</h2>
-          <img src={badgePath} className="h-64" />
+          <img src={badgePath} alt={`${name} Badge`} className="h-64" />
           <p className="text-xl">{description}</p>
           <div className="flex flex-wrap">
             {topics.map((topic) => {
@@ -68,17 +69,28 @@ const RepositoryCard = ({
           </div>
           <div className="flex flex-auto items-center">
             <span
-              className="text-white rounded-md text-xl mr-auto p-2"
+              className={cs(
+                'rounded-md text-xl mr-auto p-2',
+                primaryLanguage.name === 'Reason' ? 'text-black' : 'text-white'
+              )}
               style={{ background: primaryLanguage.color }}
             >
               {primaryLanguage.name}
             </span>
             <div className="flex flex-col items-center mr-4">
-              <img src="/star.svg" className="h-10" />
+              <img
+                src="/star.svg"
+                alt={`${name} Stars on GitHub`}
+                className="h-10"
+              />
               <span className="text-purple text-lg">{starCount}</span>
             </div>
             <div className="flex flex-col items-center">
-              <img src="/code-fork.svg" className="h-10" />
+              <img
+                src="/code-fork.svg"
+                alt={`${name} Forks on GitHub`}
+                className="h-10"
+              />
               <span className="text-purple text-lg">{forkCount}</span>
             </div>
           </div>
