@@ -17,6 +17,7 @@ function justifySelfPlugin({ addUtilities }) {
 }
 
 module.exports = {
+  purge: ['./src/**/*.js', './pages/**/*.js'],
   theme: {
     extend: {
       colors: {

@@ -47,7 +47,7 @@ const ProjectScreen = ({
 
 ProjectScreen.propTypes = {
   projectTitle: PropTypes.node.isRequired,
-  projectDescription: PropTypes.string.isRequired,
+  projectDescription: PropTypes.node.isRequired,
   projectImg: PropTypes.string.isRequired,
   projectImgAlt: PropTypes.string.isRequired,
   projectLink: PropTypes.string.isRequired

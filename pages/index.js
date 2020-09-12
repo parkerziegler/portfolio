@@ -114,13 +114,13 @@ const Index = ({ user }) => {
           </PRCardGrid>
         </Section>
         <Section className="items-center mt-12">
-          <div className="md:max-w-3/4 stack-sm">
+          <div className="md:max-w-3/4 stack-md">
             <SectionHeader>
               <Underline>Tools I Work With</Underline>
             </SectionHeader>
             <Text>
               I love the frontend JavaScript ecosystem and spend most of my days
-              working with these lovely languages and tools:{' '}
+              working with these lovely languages and tools.
             </Text>
             <div className="flex flex-col sm:flex-row justify-evenly">
               <LangSection title="Languages" langs={Object.values(LANGUAGES)} />
