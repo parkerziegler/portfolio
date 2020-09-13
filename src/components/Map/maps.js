@@ -428,5 +428,74 @@ export const maps = [
         over on my Thoughts page.
       </>
     )
+  },
+  {
+    title:
+      'Drugs, Demography, and the Police: Spatially Relating Race and Arrest Density for Drug Possesion in Chicago, IL',
+    link: '/maps/chicago-drug-arrests.pdf',
+    items: [
+      {
+        src: '/maps/chicago-drug-arrests/chicago-drug-arrests-crack.png',
+        alt:
+          'A map spatially correlating race and arrest density for possession of crack cocaine in Chicago, IL.'
+      },
+      {
+        src: '/maps/chicago-drug-arrests/chicago-drug-arrests-marijuana.png',
+        alt:
+          'A map spatially correlating race and arrest density for possession of marijuana in Chicago, IL.'
+      },
+      {
+        src: '/maps/chicago-drug-arrests/chicago-drug-arrests-cocaine.png',
+        alt:
+          'A map spatially correlating race and arrest density for possession of  cocaine in Chicago, IL.'
+      }
+    ],
+    isPortrait: true,
+    children: (
+      <>
+        This map, which takes its cue from{' '}
+        <InlineLink href="http://radicalcartography.net/index.html?chicagodots">
+          Bill Rankin&apos;s dot density map of Chicago
+        </InlineLink>
+        , takes a look at the spatial relationship between race and arrest
+        density for possession of three different drugs – marijuana, powder
+        cocaine, and crack cocaine – in Chicago, Illinois. Similar to
+        Rankin&apos;s map, I used a dot density style to show the racial
+        segregation of the city; however, I altered the value of each dot to
+        represent 250 people, rather than the 25 people per dot value used by
+        Rankin. This allowed the choropleth layer underneath to come through.
+        <br />
+        <br />
+        The choropleth layer represents an arrest density for possession of the
+        highlighted drug for the month of October 2015, as reported by the
+        Chicago Police Department. I spatially aggregated the crime data by the
+        Chicago Police Department&apos;s police beats using a method known as{' '}
+        <InlineLink href="/thoughts/creating-custom-geoprocessing-tools-with-python-scripts">
+          areal weighted reaggregation (AWR)
+        </InlineLink>
+        . This allows us to see the police beats in which arrests for possession
+        of these different drugs are particularly high. The South and West Side
+        appear to experience the most aggressive policing for possession of
+        marijuana and crack cocaine, while transitional border areas between
+        Latino and white communities are more heavy policed for powder cocaine
+        possession. In general, it is startling to see how closely higher
+        policing rates are spatially correlated with communities of color.
+        Indeed, the data provide convincing evidence that racial profiling still
+        informs how the state thinks about drugs, policing, and whose behavior
+        is considered &ldquo;criminal&rdquo;.
+        <br />
+        <br />I believe it is important to give credit where credit is due, and
+        I want to recognize Professor Jeff Howarth for developing the original
+        GIS workflow to make this map. Following his lead, I made several
+        alterations and decisions of my own (with respect to normalization,
+        symbology, drugs studied, cartographic design, and operation parameters)
+        to make these maps uniquely my own. To get the data and begin mapping
+        for yourself, head over to the extensive{' '}
+        <InlineLink href="https://data.cityofchicago.org/">
+          Chicago Data Portal
+        </InlineLink>
+        .
+      </>
+    )
   }
 ];

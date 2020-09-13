@@ -1,5 +1,5 @@
 import React from 'react';
-import NextDocument, { Head, Main, NextScript } from 'next/document';
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx) {
@@ -9,7 +9,7 @@ export default class Document extends NextDocument {
 
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta
@@ -48,7 +48,7 @@ export default class Document extends NextDocument {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
