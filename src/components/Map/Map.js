@@ -11,10 +11,13 @@ const Map = ({
   title,
   src,
   alt,
+  width,
+  height,
   link,
   code,
   isPortrait = false,
   shadow = true,
+  eager = false,
   children
 }) => {
   const [ref, inView] = useInView({
@@ -48,7 +51,10 @@ const Map = ({
                 : '(min-width: 1280px) 1280px, 100vw'
             }
             alt={alt}
-            className="rounded-md"
+            width={width}
+            height={height}
+            className="rounded-md h-auto"
+            loading={eager ? 'eager' : 'auto'}
           />
         ) : null}
       </div>
@@ -69,10 +75,13 @@ Map.propTypes = {
   title: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
   link: PropTypes.string,
   code: PropTypes.string,
   isPortrait: PropTypes.bool,
   shadow: PropTypes.bool,
+  eager: PropTypes.bool,
   children: PropTypes.node.isRequired
 };
 

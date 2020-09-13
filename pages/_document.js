@@ -12,10 +12,7 @@ export default class Document extends NextDocument {
       <Html lang="en">
         <Head>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1"
-          ></meta>
+          <meta name="theme-color" content="#7b16ff" />
           {this.props.styleTags}
           <link
             href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap"
@@ -29,6 +26,10 @@ export default class Document extends NextDocument {
             href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"
             rel="stylesheet"
           />
+          <link rel="icon" type="image/png" href="/favicon/favicon-48.png" />
+          <link rel="icon" type="image/png" href="/favicon/favicon-96.png" />
+          <link rel="icon" type="image/png" href="/favicon/favicon-144.png" />
+          <link rel="icon" type="image/png" href="/favicon/favicon-192.png" />
           <style>{`
             html {
               font-size: 10px;

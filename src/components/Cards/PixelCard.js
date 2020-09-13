@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cs from 'classnames';
 
 const PixelCard = ({
   name,
@@ -16,7 +17,12 @@ const PixelCard = ({
         {primaryLanguage ? (
           <div className="bg-white mr-auto px-2 py-4">
             <span
-              className="text-white rounded-md text-xl p-2 font-mono"
+              className={cs(
+                'text-xl font-mono p-2 rounded-md',
+                primaryLanguage.name === 'JavaScript'
+                  ? 'text-black'
+                  : 'text-white'
+              )}
               style={{ background: primaryLanguage.color }}
             >
               {primaryLanguage.name}

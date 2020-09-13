@@ -107,8 +107,10 @@ const MapCarousel = ({
             stiffness: 260,
             damping: 20
           }}
-          className="block min-w-screen max-w-full scroll-snap-align-start object-cover shadow-lg rounded-md"
+          className="block min-w-screen max-w-full h-auto scroll-snap-align-start object-cover shadow-lg rounded-md"
           loading="lazy"
+          height={map.height}
+          width={map.width}
         />
         <nav className="flex overflow-y-hidden stack-sm-h">
           {maps.map(({ src, alt }) => {

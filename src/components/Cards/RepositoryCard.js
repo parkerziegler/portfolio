@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import cs from 'classnames';
 
 import tailwind from '../../../tailwind.config';
 
@@ -69,10 +68,7 @@ const RepositoryCard = ({
           </div>
           <div className="flex flex-auto items-center">
             <span
-              className={cs(
-                'rounded-md text-xl mr-auto p-2',
-                primaryLanguage.name === 'Reason' ? 'text-black' : 'text-white'
-              )}
+              className="text-white text-xl rounded-md  mr-auto p-2"
               style={{ background: primaryLanguage.color }}
             >
               {primaryLanguage.name}
