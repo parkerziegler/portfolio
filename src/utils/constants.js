@@ -39,6 +39,10 @@ export const TAGS = {
   python: {
     icon: '/python-logo.svg',
     tag: 'Python'
+  },
+  javascript: {
+    icon: '/js-logo.svg',
+    tag: 'JavaScript'
   }
 };
 
