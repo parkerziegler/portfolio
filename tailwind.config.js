@@ -24,7 +24,6 @@ module.exports = {
         white: '#ffffff',
         purple: '#7b16ff',
         orange: '#ff9c0d',
-        teal: '#57b4ad',
         'deep-blue': '#011627',
         pink: '#fa709a',
         yellow: '#fee140',
@@ -49,18 +48,18 @@ module.exports = {
         'half-screen': '50vw'
       },
       scale: {
-        '70': '0.7'
+        70: '0.7'
       },
       height: {
         'half-screen': '50vh',
-        '80': '20rem',
-        '160': '40rem'
+        80: '20rem',
+        160: '40rem'
       },
       minHeight: {
         'half-screen': '50vh'
       },
       opacity: {
-        '90': 0.9
+        90: 0.9
       },
       gridTemplateRows: {
         'auto-2': 'auto 1fr'

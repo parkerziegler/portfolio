@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 
-const root = path.resolve(__dirname, '../public/maps');
+const root = path.resolve(__dirname, '../public/thoughts');
 
 const sizes = [
   { width: 480, suffix: 'sm' },
@@ -20,7 +20,7 @@ fs.readdirSync(root).forEach((dir) => {
     fs.readdirSync(subDirectory)
       .filter(
         (file) =>
-          path.extname(file) !== '.pdf' &&
+          path.extname(file) === '.png' &&
           file !== '.DS_Store' &&
           file.match(/-sm|-md|-lg|-xl|-xxl/g) === null
       )

@@ -1,0 +1,55 @@
+import BlogPost from '../../src/components/Blog/BlogPost';
+import { TAGS } from '../../src/utils/constants';
+
+export const meta = {
+  title: 'Presenting at the Middlebury Spring Symposium',
+  slug: 'midd-spring-symposium',
+  date: 'April 18, 2016',
+  tags: ['speaking']
+};
+
+<BlogPost title={meta.title} tags={[TAGS.speaking]}>
+
+
+# Presenting at the Middlebury Spring Symposium
+
+After the high of AAG, I came back to Middlebury reinvigorated and excited to get back to work with coding. Learning Python scripting in a matter of five weeks, producing a hard coded script to solve a real-world problem, creating an abstracted geoprocessing tool for broader application, and writing my first piece of documentation all felt like significant achievements in such a short amount of time. I wanted to keep the rhythm going, to dive further into PostgreSQL and PostGIS, Javascript, interactive cartography, spatial databases, and the whole slew of crazy plans I dreamt up for myself for the rest of my semester. But before I did that, I felt it was important to share the experiences of this first half with my peers.
+
+Let me preface this section by saying that I have tremendous respect for the academic community that I am a part of at Middlebury. There is so much intellectual curiosity and passion at this institution, and Symposium day really brings that culture to light. Disciplinary boundaries break down, and suddenly you find yourself in front of a room full of people, with your friend, the English major, asking you a question about how you might design a course to engage feminist theory and creative coding. And then you turn around, just an hour later, to go hear your friends speak about Wallace Stevens, public space in Havana, Afro-Latinx identity, and just about any other topic you might dream up. At the end of Symposium day, I always find myself looking at my peers in a new light – impressed, inspired, and grateful that I've found people who care this much about what they do.
+
+Preparing for the Symposium, I thought carefully about how I would frame my ideas for an audience with such diverse intellectual backgrounds. Some folks in the crowd would be GIS educators and professors themselves, for whom this stuff might seem trivial. Others might be completely oblivious to what GIS is. Dealing with this variation is something all academics and scholars have to deal with – this would be my opportunity to do so for the first time (well, technically second – I presented two years ago as well on some research I had done on the Shahbag Riots in Bangladesh with a professor at Amherst College...but that's another story).
+
+Knowing this, I pitched my talk below the jargon-heavy level of AAG yet still above how I might explain my ideas to a friend over coffee. In this middle ground, I thought I might just be able to meet everyone where they were at. I started the presentation with my Acknowledgements section, which I think is a (sadly) rather unconventional model. However, drawing inspiration from [Mia Mingus's keynote address at the 2011 Femmes of Color Symposium in Oakland, CA](https://leavingevidence.wordpress.com/2011/08/22/moving-toward-the-ugly-a-politic-beyond-desirability/) I thought it was imperative to do this first. So many people have helped me on this journey although, ostensibly, it is an independent one. Professor Joseph Holler has patiently worked through long sections of code with me, always posing new challenges and pushing me to experiment. I relied heavily in the first half of my research on data and workflows developed by Professor Jeff Howarth and other members of the Middlebury Geography Department (including Bill Hegman, Mike Ryba, Bradley Gardener, and Patrick Culbert). And I have been inspired throughout my studies at Middlebury by Professor Kacy McKinney, who instilled in me the critical feminist politics that lie at the heart of my research. This level of support is something very few people have the fortune of receiving in life – it was only right that I acknowledge this to begin my presentation.
+
+My second section really focused in on explaining what GIS is and how code fits into it. Here I went into more depth about different programming languages, talking about the utility of Python, SQL, and Javascript for doing all sorts of fascinating things (i.e. automated geoprocessing, custom tool design, database architecture and querying, interactive and web-based cartography, etc.). This helped to give some of the more abstract ideas later in my presentation a concrete basis. From here, I moved on to actually introducing my pedagogical framework, which involves seven separate steps:
+
+1. Posing a problem that geospatial technologies can illuminate or help us to
+   understand. I am particularly attracted to problems of the social variety.
+2. Thinking about the problem first through a software-independent lens. This
+   emphasizes considering just the actual spatial relationships we want to
+   model.
+3. Reframing the problem through code – that is, how do we model relationships
+   that are spatial in nature through syntax and language?
+4. Troubleshooting the inevitable errors that emerge. Because let's be honest –
+   programming is more debugging than anything else.
+5. Abstracting the problem to imagine a scalable solution. The key here is
+   thinking about how we can write code that is intelligent enough to respond
+   to different data sets, different geographic scales, and different user
+   needs.
+6. Testing our solution through different problems and broader application.
+   Here we are obliged to ask that scary question – does our code actually hold
+   up?
+7. Visualizing our solution and sharing the tools we used to make it. Data that
+   tells a beautiful (or, more often, sobering) story needs good design.
+   Moreover, if we want others to help us tell these stories, to change minds,
+   to influence policy, and to critically engage with these same issues, then
+   we need to document and share our tools.
+
+I connected this framework to the process I had used during the first half of the semester while working with drug-related arrest data for the [City of Chicago](https://data.cityofchicago.org/). And as I reflected back on my own work, on the difficulty of actually implementing this framework for my own learning, I came to a few important conclusions (all of which went into my Implications section at the end of my presentation).
+
+The first idea comes from a geographer by the name of Sergio Rey, who brings up the idea of "seeing the code as text" (199) in his 2009 piece, "Show me the code: spatial analysis and open source." What Rey references is the idea that being able to actually examine and work with source code provides a learning experience that closely mirrors that of close reading in the humanities. I wanted to extend this idea, however, to argue that engaging with code is an even more powerful element of self-reflexivity in mapmaking, something feminist geographers like Sarah Elwood and Mei-Po Kwan write about extensively. In building something from scratch, you are forced to reckon directly with the assumptions that your creation makes, its limitations and shortcomings, and how all of these conspire to skew the story you're telling one way or another. You also have to think about how your own positionality, your worldview, affects this process from the beginning. The question then becomes: are the politics of your epistemological choices justified? How can you prevent your tools from waging epistemological violence on those you are "mapping" (as though the lived experiences of 250 people can be reduced to a point)? This point really led me to think about an idea that Mei-Po Kwan brings up in a 2002 piece on feminist visualization – that of creating "different kinds of interactions between GIS users and GIS technology." And I think this is at least partially what she means – that bringing feminist theory into traditional GIS practice should result in a new praxis, one that values multiplicity and messiness above reductive, masculinist practices and narrow, Cartesian understandings of space. Pretty heady, I know. But importantly, I think code is still a relatively unexplored avenue for doing these very things.
+
+Another key realization of my work has been that our research should drive the development of our analytical tools rather than the available tools governing our research. When we limit ourselves to working within the confines of proprietary softwares and established methodologies, we only tell certain stories and only in very particular formats. We limit the ways we can know, understand, and represent the world. Code, I think, is our pathway out of this dilemma because it puts the creative impetus back into the hands of the researcher herself. Finally, I concluded my presentation with a short diatribe on how I think code needs to be applied more directly to social justice initiatives. Within the realm of geography and GIS the possibilities are endless – examining the spatial variation and progression of eviction in gentrifying cities, understanding the complex migration patterns of global refugees, examining the ties between proximity to environmental pollutants and communities of color. While we often think of code as having a proprietary, profit-driven, capitalist economy behind it, can we imagine a paradigm in which it is actually used to subvert this system? That is something I think this work has revealed to me. That paradigm is something I firmly believe is possible. But first, it needs to be the paradigm that we are teaching our students.
+
+</BlogPost>
+

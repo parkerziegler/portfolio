@@ -8,7 +8,8 @@ export const meta = {
   tags: ['react', 'd3', 'gis']
 };
 
-<BlogPost tags={[TAGS.react, TAGS.d3, TAGS.gis]}>
+<BlogPost title={meta.title} tags={[TAGS.react, TAGS.d3, TAGS.gis]}>
+
 
 # Mapping in React and D3
 
@@ -209,6 +210,7 @@ Our State component is really just an SVG path that gets rendered using the path
 
 Here I suggest we're writing D3 code the React way because we're applying React's component hierarchy philosophy to rendering our D3 elements. What I appreciate about this approach is the ability to control the rendering of HTML elements at a very precise level – down to the point where we can write custom functions to handle all sorts of UI scenarios. These elements are now also subject to React's diffing algorithm, meaning that updates to data stored in Redux or in the component's state will trigger updates to these elements on the UI. With something like [`react-transition-group`](https://github.com/reactjs/react-transition-group), you can begin to implement all of the beautiful magic behind D3 transitions using React!
 
-If you're curious to see some of this code in action, check out [this Github repo](https://github.com/parkerziegler/d3-react-map). This is an app I've been developing to help make sense of crowdsourced police shootings data gathered by the Guardian. An older, pure D3 / JS version of the app can be seen [here](https://parkerziegler.github.io/d3-policeshootings-map/). I wanted to test myself to see if I could develop the same (or better) experience in React, using other cool technologies like [Sass](https://sass-lang.com) and [redux-sagas](https://github.com/redux-saga/redux-saga). In my next post, I'll talk a bit about techniques for responsive typography in map focused layouts using Sass maps. More to come as well on async data loading using redux-sagas and axios. Thanks as always for reading.
+If you're curious to see some of this code in action, check out [this Github repo](https://github.com/parkerziegler/d3-react-map). This is an app I've been developing to help make sense of crowdsourced police shootings data gathered by the Guardian. An older, pure D3 / JS version of the app can be seen [here](https://parkerziegler.github.io/d3-policeshootings-map/). I wanted to test myself to see if I could develop the same (or better) experience in React, using other cool technologies like [Sass](https://sass-lang.com) and [redux-saga](https://github.com/redux-saga/redux-saga). In my next post, I'll talk a bit about techniques for responsive typography in map focused layouts using Sass maps. More to come as well on async data loading using `redux-saga` and `axios`. Thanks as always for reading.
 
 </BlogPost>
+

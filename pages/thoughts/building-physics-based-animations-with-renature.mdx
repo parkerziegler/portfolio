@@ -2,17 +2,20 @@ import BlogPost from '../../src/components/Blog/BlogPost';
 import { TAGS } from '../../src/utils/constants';
 
 export const meta = {
-  title: 'Building Physics-Based Animations with renature',
+  title: 'Building Physics-Based Animations with Renature',
   slug: 'building-physics-based-animations-with-renature',
   date: 'January 20, 2020',
   tags: ['react', 'animation']
 };
 
-<BlogPost tags={[TAGS.react, TAGS.animation]}>
+<BlogPost title={meta.title} tags={[TAGS.react, TAGS.animation]}>
 
-# Building Physics-Based Animations with renature
 
-[Three weeks ago](https://formidable.com/blog/2019/renature-intro/), we at Formidable unveiled an exciting open source project we've been working on as part of our [OSS Fellowship Program](https://formidable.com/blog/2019/fellowship/) – [`renature`](https://github.com/FormidableLabs/renature). `renature` is a physics-based animation library for React focused on building delightful UI animations using natural world forces like gravity, friction, and fluid resistance.
+# Building Physics-Based Animations with Renature
+
+> This post comes from a piece I wrote on the Formidable blog. To read the post in its original context, head to the [Formidable website](https://formidable.com/blog/2020/renature-2/).
+
+[Three weeks ago](https://formidable.com/blog/2019/renature-intro/), we at Formidable unveiled an exciting open source project we've been working on as part of our [OSS Fellowship Program](https://formidable.com/blog/2019/fellowship/) – [Renature](https://github.com/FormidableLabs/renature). `renature` is a physics-based animation library for React focused on building delightful UI animations using natural world forces like gravity, friction, and fluid resistance.
 
 Since the initial announcement of the project we've made a lot of progress, adding full support for the above three forces and beginning to scaffold out an API for pausing, reversing, and replaying animations while preserving the simplicity of our tiny hooks API.
 
@@ -23,7 +26,6 @@ In this post, we're going to dig into some of the nitty gritty of how we're buil
 To understand how the `useFriction` hook will animate an element, it's useful to first understand the actual physics it's based off of — the force of friction! Friction is a familiar force for a lot of us— it's what causes your bike to slow down when you engage the brakes, or what gives your hands that nice warm feeling when you rub them together. Friction is a _dissipative_ force; it will decelerate an object over time. The force of friction is derived using the following equation:
 
 ![The standard equation of friction.](/thoughts/building-physics-based-animations-with-renature/friction-equation.svg)
-
 If it's been awhile since your high school or college physics (as it had for me), let's simplify the equation above. The **µ** ("mu") above represents the [coefficient of friction](https://www.khanacademy.org/science/ap-physics-1/ap-forces-newtons-laws/friction-ap/v/static-and-kinetic-friction-example), essentially a representation of the roughness of the surface our moving object is traveling over. The **N** represents the _normal_ force, a metric describing how much force the surface is exerting upwards on the moving object. Heavier objects (or rather, objects with a greater mass) will experience a stronger normal force than lighter objects. The final **v** character represents the [unit vector](https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:vectors/x9e81a4f98389efdf:unit-vec/v/intro-unit-vector-notation) of the moving object's velocity. This isn't super important to understand just yet. The key concept to identify here is that, combined with the leading negative sign, this equation expresses that the force of friction acts in the _opposite_ direction of the moving object's velocity. This is why moving objects slow down over time when exposed to the force of friction.
 
 If we look at the API for our `useFriction` hook, we'll see that the parameters that get passed to our hook line up with this equation quite nicely.
@@ -216,3 +218,4 @@ Finally, we want to continue to expand and improve our interpolator API. Current
 I hope this post has given you a basic understanding of some of the fundamentals we're using to make `renature` work. Special thanks to my colleague, Mariano Martinez III, for being a terrific editor, as always, on this piece. To keep up to date on `renature`'s process and follow the v0.1.0 release, follow me, [@parker_ziegler](https://twitter.com/parker_ziegler?lang=en), on Twitter, as well as the [@FormidableLabs official Twitter](https://twitter.com/FormidableLabs). We can't wait to see what you build with `renature.`
 
 </BlogPost>
+

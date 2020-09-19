@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
+import cs from 'classnames';
 
 const Tag = ({ icon, className, children }) => {
   return (
     <div
-      className={cn(
-        'flex items-center text-white rounded-md text-xl py-2 px-4 bg-purple font-mono self-stretch',
+      className={cs(
+        'text-black font-mono flex items-center self-stretch border-purple border-solid border-2 rounded-md text-xl py-2 px-4 ',
         className
       )}
     >

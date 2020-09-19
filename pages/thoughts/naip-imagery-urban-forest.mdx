@@ -1,0 +1,72 @@
+import BlogPost from '../../src/components/Blog/BlogPost';
+import { TAGS } from '../../src/utils/constants';
+
+export const meta = {
+  title: 'Using NAIP Imagery and a Texture Raster to Model the Urban Forest',
+  slug: 'naip-imagery-urban-forest',
+  date: 'September 14, 2016',
+  tags: ['gis']
+};
+
+<BlogPost title={meta.title} tags={[TAGS.gis]}>
+
+
+# Using NAIP Imagery and a Texture Raster to Model the Urban Forest
+
+> This post comes from a piece I wrote as part of Azavea's Summer of Maps program. To read the original post, head to the [Azavea website](https://www.azavea.com/blog/2016/09/14/multispectral-1m-naip-imagery-model-urban-forest/).
+
+As high-resolution satellite imagery becomes more accessible by the day, [geographers, urban planners, and ecologists have begun to explore its potential for modeling the urban forest](https://www.researchgate.net/publication/255635468_Assessing_Urban_Forest_Canopy_Cover_Using_Airborne_or_Satellite_Imagery). However, attempts at precise urban canopy classifications often run into a few predictable problems. 30m or even 15m resolution still cannot model individual street trees or isolated stands. Classification algorithms confuse grass and other scrubby vegetation for the canopy. Shadows cast by adjacent trees affect spectral returns, leading to further misclassification. In short, mapping the urban forest in an accurate, detailed, and inexpensive way remains a challenge.
+
+This post walks through a method to help increase accuracy of classification by using a texture raster to distinguish between trees and other vegetation.
+
+## What is NAIP Imagery?
+
+In 2012, Chris Behee, a GIS Analyst for the City of Bellingham, Washington, introduced [a fascinating methodology](http://www.waurisa.org/conferences/2012/presentations/11%20Chris%20Behee%20Vegetation%20Modeling%20with%20NAIP%20Color%20IR%20Imagery.pdf) for working around many of these difficulties in a presentation at the annual Washington GIS Conference. His methodology takes advantage of a rich multispectral imagery repository – [the National Agricultural Imagery Program (NAIP)](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/).
+
+For those unfamiliar with NAIP imagery, it is collected (as of 2007) in four bands – [the red (R), green (G), and blue (B) visible bands, and the near-infrared (NIR) band](http://www.fsa.usda.gov/Internet/FSA_File/fourband_infosheet_2012.pdf) – at 1m resolution for the conterminous United States.
+
+This makes it some of the highest resolution multispectral imagery that is publicly available today.
+
+![A composited NAIP image of the city of Portland, OR in 2014 displayed in true color (R = Band 1, G = Band 2, B = Band 3).](/thoughts/naip-imagery-urban-forest/portland-rgb.png)
+
+![A composited NAIP image of the city of Portland, OR in 2014 displayed in color-infrared (R = Band 4, G = Band 3, B = Band 2).](/thoughts/naip-imagery-urban-forest/portland-infrared.png)
+
+I decided to apply Behee’s methodology to my current work with [Ecotrust](http://ecotrust.org/), a Portland, Oregon-based non-profit. The project aims to use high-resolution imagery to:
+
+1. model change to Portland’s urban canopy over the last decade; and,
+2. explore correlations between the distribution of the urban canopy and socioeconomic and environmental factors.
+
+## Generating Classification Inputs
+
+Behee’s methodology is based on using the [iso cluster unsupervised classification algorithm](http://pro.arcgis.com/en/pro-app/tool-reference/spatial-analyst/iso-cluster-unsupervised-classification.htm) with six different raster inputs – the four bands of the NAIP image, a[ Normalized Differentiated Vegetation Index (NDVI)](http://earthobservatory.nasa.gov/Features/MeasuringVegetation/measuring_vegetation_2.php) raster, and a ‘texture’ raster. These last two layers are the real key to the classification. The NDVI raster is particularly adept at distinguishing between vegetated and non-vegetated surfaces. It does this by exploiting [the tendency for vegetation to reflect strongly in the NIR band](https://publiclab.org/wiki/near-infrared-imaging) compared with other land cover types. However, the NDVI raster does not distinguish between trees and other scrubby vegetation or deal with shadows. This is where the ‘texture’ raster comes in.
+
+![The NDVI of the NAIP composite displayed using a diverging color ramp. You can use the Image Analysis toolbar to automatically generate an NDVI from an input raster or manually calculate it using Raster Calculator.](/thoughts/naip-imagery-urban-forest/portland-ndvi.png)
+
+![The NDVI of the NAIP composite reclassified using a threshold. Remember that this layer gives a good indication of all vegetated surfaces, but does not distinguish trees from grass.](/thoughts/naip-imagery-urban-forest/portland-ndvi-composite.png)
+
+### The Texture Raster
+
+The idea here is that rather than relying solely on the spectral information of each individual cell in our raster, we should take into account the spectral information of [the ‘neighborhood’ around the cell](http://desktop.arcgis.com/en/arcmap/latest/extensions/spatial-analyst/performing-analysis/the-types-of-operations-in-spatial-analyst.htm). If the surrounding cells have similar values, we can assume they are reflecting light similarly and that their texture is fairly consistent (like a mowed grassy field). But if they display greater variation in their values, we can assume they are reflecting light somewhat differently and that their texture is rougher (like the crown of a mature tree). In this way, the ‘texture’ raster provides information about not only color, but shape as well.
+
+To obtain this final layer, we perform a [Focal Statistics](http://desktop.arcgis.com/en/arcmap/10.3/tools/spatial-analyst-toolbox/how-focal-statistics-works.htm) operation on both the G band and the NIR band of our NAIP image with a Range statistic and a 7 x 7 window. At 1m resolution, a 7 x 7 window corresponds roughly to the area of a mature tree crown. We finish by averaging the values of these two rasters together using Raster Calculator.
+
+![The ‘texture’ raster of the NAIP image. Notice how the Willamette River (center) appears very deep blue (low value, smooth surface) while Forest Park (left) appears a tan brown (higher value, rougher surface).](/thoughts/naip-imagery-urban-forest/portland-texture-raster.png)
+
+![A zoomed in view of the ‘texture’ raster and the original image. Notice how flat, grassy surfaces appear blue (low values), while the canopy appears tan brown (higher values).](/thoughts/naip-imagery-urban-forest/portland-texture-raster-zoom.png)
+
+## Running the Classification Algorithm
+
+[Loading these six inputs into my classification](http://desktop.arcgis.com/en/arcmap/latest/extensions/spatial-analyst/image-classification/executing-the-iso-cluster-unsupervised-classification-tool.htm) yielded some pretty exciting results. Obtaining a suitable level of precision did require requesting more classes than needed in the original unsupervised algorithm. I started with 50 classes and then [manually recombined](http://desktop.arcgis.com/en/arcmap/10.3/tools/spatial-analyst-toolbox/reclassify.htm) them to form a single canopy layer through visual inspection. I also engaged in several [post-classification smoothing techniques](http://desktop.arcgis.com/en/arcmap/latest/extensions/spatial-analyst/image-classification/processing-classified-output.htm), including applying a [Majority Filter](http://desktop.arcgis.com/en/arcmap/latest/extensions/spatial-analyst/image-classification/filtering-classified-output.htm) to take care of small holes in canopied areas and using a thresholded ‘texture’ raster as a mask to more precisely pick out trees in shadowy areas.
+
+![The output canopy layer from the NAIP imagery after post-classification smoothing and masking. Notice there are still a few holes in canopied areas of Forest Park – those pesky shadows!](/thoughts/naip-imagery-urban-forest/portland-canopy.png)
+
+![The output canopy layer overlaid on the original image (left) and the original image (right) for comparison. The classification lines up nicely with the canopy, although it does tend to overestimate crown boundaries in certain places. It also still suffers from some difficulties distinguishing shadows.](/thoughts/naip-imagery-urban-forest/portland-canopy-zoom.png)
+
+## Classification Results
+
+Ultimately, I found that Behee’s methodology, in conjunction with some post-classification smoothing and masking, created a pretty impressive canopy layer. There were lingering issues with detecting trees in shadowed parts of the image, which remains the major drawback of this approach. But compared with [the more labor intensive process of gathering training data for a supervised classification](http://desktop.arcgis.com/en/arcmap/latest/extensions/spatial-analyst/image-classification/image-classification-using-spatial-analyst.htm), this method is far more lightweight and efficient, and works well for obtaining quick and precise maps of the urban forest.
+
+You also don’t have to be a remote sensing expert to get it up and running! To obtain NAIP data for your state or city, head [here](http://gis.apfo.usda.gov/arcgis/rest/services/NAIP) or search for individual tiles on [Earth Explorer](http://earthexplorer.usgs.gov/).
+
+</BlogPost>
+
