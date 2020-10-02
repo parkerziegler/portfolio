@@ -8,6 +8,7 @@ import SectionHeader from '../src/components/Shared/SectionHeader';
 import Underline from '../src/components/Shared/Underline';
 import Text from '../src/components/Shared/Text';
 import BlogCard from '../src/components/Cards/BlogCard';
+import { useScrollToTop } from '../src/hooks/useScrollToTop';
 
 const variants = {
   visible: {
@@ -17,6 +18,8 @@ const variants = {
 };
 
 const Thoughts = ({ posts }) => {
+  useScrollToTop();
+
   return (
     <>
       <Head>

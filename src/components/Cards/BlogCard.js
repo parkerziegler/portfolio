@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
+import tailwind from '../../../tailwind.config';
 import Tag from '../Blog/Tag';
 
 const variants = {
@@ -27,11 +28,11 @@ const BlogCard = ({ title, slug, tags = [], introText, date }) => {
     <Link href={`/thoughts/${slug}`}>
       <motion.a
         variants={variants}
-        className="cursor-pointer col-span-12 md:col-span-6"
+        className="col-span-12 md:col-span-6 cursor-pointer rounded-lg"
         whileHover={{
-          rotate: -3,
-          y: 5,
-          x: -5
+          x: 5,
+          y: -5,
+          boxShadow: `-1rem 1rem ${tailwind.theme.extend.colors.purple}`
         }}
         transition={{
           type: 'spring',
@@ -53,7 +54,7 @@ const BlogCard = ({ title, slug, tags = [], introText, date }) => {
                   </Tag>
                 ))}
               </div>
-              <p className="text-2xl self-end m-2">{date}</p>
+              <p className="text-2xl font-mono self-end m-2">{date}</p>
             </div>
           </div>
         </div>

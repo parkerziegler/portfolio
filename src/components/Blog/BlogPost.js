@@ -7,30 +7,51 @@ import Section from '../Shared/Section';
 import components from './MDXComponents';
 import Tag from './Tag';
 
-const BlogPost = ({ title, tags, children }) => (
-  <>
-    <Head>
-      <title>{title}</title>
-    </Head>
-    <MDXProvider components={components}>
-      <main className="md:max-w-3/4 ml-auto mr-auto">
-        <div
-          className="flex pt-16 px-8 sm:px-32 stack-sm-h md:absolute md:mt-24 md:flex-col md:stack-sm md:pt-0 md:px-0 md:stack-none-h md:max-w-1/8"
-          style={{
-            left: `${100 - 75 / 2 / 2}%`
-          }}
-        >
-          {tags.map(({ tag, icon }) => (
-            <Tag key={tag} icon={icon}>
-              {tag}
-            </Tag>
-          ))}
-        </div>
-        <Section className="stack-md">{children}</Section>
-      </main>
-    </MDXProvider>
-  </>
-);
+const BlogPost = ({ title, tags, publishDate, children }) => {
+  const meta = (
+    <div
+      className="flex flex-col stack-sm md:absolute"
+      style={{
+        right: '-10%'
+      }}
+    >
+      <span className="font-mono text-2xl">{publishDate}</span>
+      <div className="flex md:flex-col stack-sm-h md:stack-none-h md:stack-sm">
+        {tags.map(({ tag, icon }) => (
+          <Tag key={tag} icon={icon}>
+            {tag}
+          </Tag>
+        ))}
+      </div>
+    </div>
+  );
+
+  const childrenWithMeta = React.Children.map(children, (child, i) => {
+    if (i === 0) {
+      return (
+        <>
+          {child}
+          {meta}
+        </>
+      );
+    }
+
+    return child;
+  });
+
+  return (
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <MDXProvider components={components}>
+        <main className="md:max-w-3/4 ml-auto mr-auto">
+          <Section className="stack-md">{childrenWithMeta}</Section>
+        </main>
+      </MDXProvider>
+    </>
+  );
+};
 
 BlogPost.propTypes = {
   title: PropTypes.string.isRequired,
@@ -40,6 +61,7 @@ BlogPost.propTypes = {
       tag: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
+  publishDate: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
 };
 
