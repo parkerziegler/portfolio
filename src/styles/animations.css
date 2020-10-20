@@ -23,7 +23,7 @@
 
 /* Highlight animations for titles. */
 .highlight--primary {
-  animation: 1s ease-in 500ms both highlight;
+  animation: 1s ease-in-out 500ms both highlight;
 }
 
 @keyframes highlight {

@@ -3,25 +3,93 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import gql from 'graphql-tag';
 import { createClient } from 'urql';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import fetch from 'isomorphic-unfetch';
-import { useInView } from 'react-intersection-observer';
 
 import Section from '../src/components/Shared/Section';
 import SectionHeader from '../src/components/Shared/SectionHeader';
 import Underline from '../src/components/Shared/Underline';
 import SkewBg from '../src/components/Shared/SkewBg';
-import RepositoryCard from '../src/components/Cards/RepositoryCard';
 import Text from '../src/components/Shared/Text';
-import Statistic from '../src/components/Contributions/Statistic';
+import InlineLink from '../src/components/Shared/InlineLink';
+import RepositoryCard from '../src/components/Cards/RepositoryCard';
 import PixelCard from '../src/components/Cards/PixelCard';
+import Statistic from '../src/components/Contributions/Statistic';
 import ProjectScreen from '../src/components/Projects/ProjectScreen';
-import { PROJECTS } from '../src/utils/constants';
+import ProjectInlineCode from '../src/components/Projects/ProjectInlineCode';
+
+const projects = [
+  {
+    projectId: 'renature',
+    projectTitle: (
+      <>
+        <ProjectInlineCode className="text-4xl md:text-5xl">
+          renature
+        </ProjectInlineCode>{' '}
+        Documentation Site
+      </>
+    ),
+    projectDescription: (
+      <>
+        I built the <ProjectInlineCode>renature</ProjectInlineCode>{' '}
+        documentation site as part of my broader work on the library during{' '}
+        <InlineLink href="https://formidable.com/blog/2019/fellowship/">
+          Formidable&apos;s inaugural Open Source Fellowship
+        </InlineLink>
+        .
+        <br />
+        <br />
+        The project is built on{' '}
+        <ProjectInlineCode>react-static</ProjectInlineCode> and{' '}
+        <ProjectInlineCode>styled-components</ProjectInlineCode>, with live code
+        examples powered by <ProjectInlineCode>react-live</ProjectInlineCode>.
+        Diagrams were made by me using{' '}
+        <InlineLink href="https://www.sketch.com/">Sketch</InlineLink>. Thanks
+        are due to my colleagues Eliot Adams, Phil Plückthun, Ryan Roemer, and
+        Matt Keith for their support on design and infrastructure.
+      </>
+    ),
+    projectImg: '/projects/renature-docs.png',
+    projectImgAlt:
+      'The documentation site for renature, a physics-based animation-library for React.',
+    projectLink: 'https://formidable.com/open-source/renature/'
+  },
+  {
+    projectId: 'police-shootings',
+    projectTitle: 'Police Shootings',
+    projectDescription: (
+      <>
+        I built this set of visualizations on police violence in America after
+        diving into data compiled by the Guardian in their project,{' '}
+        <InlineLink href="https://www.theguardian.com/us-news/ng-interactive/2015/jun/01/the-counted-police-killings-us-database">
+          The Counted
+        </InlineLink>
+        . This project seeks to expand their findings by combining shootings
+        data with racial data from the 5-year American Community Survey (ACS).
+        Together, these two data sources give us a clearer geographic picture of
+        how police violence affects folks of different races across the country.
+        <br />
+        <br />
+        This project is built on <ProjectInlineCode>
+          react
+        </ProjectInlineCode>, <ProjectInlineCode>redux</ProjectInlineCode>, and{' '}
+        <ProjectInlineCode>d3</ProjectInlineCode>. Much of the logic around data
+        fetching and side effects is done using{' '}
+        <ProjectInlineCode>redux-saga</ProjectInlineCode>. The temporal bar
+        charts are built using <ProjectInlineCode>victory</ProjectInlineCode>.
+      </>
+    ),
+    projectImg: '/projects/police-shootings.png',
+    projectImgAlt:
+      'A data visualization project looking at police shootings in the United State between 2015 and 2016.',
+    projectLink: 'https://parkerziegler.github.io/police-shootings/'
+  }
+];
 
 const projectToBadgePath = {
   renature: '/renature.svg',
   urql: '/urql.svg',
-  reasonUrql: '/reason-urql.svg'
+  'reason-urql': '/reason-urql.svg'
 };
 
 const repositoriesQuery = gql`
@@ -58,6 +126,18 @@ const repositoriesQuery = gql`
     reasonUrql: repository(name: "reason-urql", owner: "FormidableLabs") {
       ...repoInfo
     }
+    webpackDashboard: repository(
+      name: "webpack-dashboard"
+      owner: "FormidableLabs"
+    ) {
+      ...repoInfo
+    }
+    wonka: repository(name: "wonka", owner: "kitten") {
+      ...repoInfo
+    }
+    nextUrql: repository(name: "next-urql", owner: "FormidableLabs") {
+      ...repoInfo
+    }
     viewer {
       repositoriesContributedTo(
         first: 10
@@ -65,13 +145,8 @@ const repositoriesQuery = gql`
         contributionTypes: [COMMIT, PULL_REQUEST]
       ) {
         totalCount
-        edges {
-          node {
-            ...repoInfo
-          }
-        }
       }
-      pullRequests(states: [MERGED]) {
+      pullRequests(states: [OPEN, MERGED]) {
         totalCount
       }
       contributionsCollection {
@@ -91,23 +166,16 @@ const variants = {
 };
 
 const Code = ({ repositories }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.15,
-    triggerOnce: true
-  });
-  const controls = useAnimation();
-
-  React.useEffect(() => {
-    if (inView) {
-      controls.start({
-        opacity: 1
-      });
-    } else {
-      controls.start({
-        opacity: 0
-      });
-    }
-  }, [inView, controls]);
+  const mainOSS = [
+    repositories.renature,
+    repositories.reasonUrql,
+    repositories.urql
+  ];
+  const secondaryOSS = [
+    repositories.webpackDashboard,
+    repositories.nextUrql,
+    repositories.wonka
+  ];
 
   return (
     <>
@@ -136,107 +204,93 @@ const Code = ({ repositories }) => {
             initial="hidden"
             variants={variants}
           >
-            {Object.keys(repositories)
-              .filter((d) => d !== 'viewer')
-              .map((project) => {
-                const {
-                  name,
-                  description,
-                  repositoryTopics,
-                  stargazers: { totalCount: starCount },
-                  forkCount,
-                  primaryLanguage,
-                  url
-                } = repositories[project];
-
-                return (
-                  <RepositoryCard
-                    key={name}
-                    name={name}
-                    description={description}
-                    topics={repositoryTopics.edges.map(
-                      ({
-                        node: {
-                          topic: { name: topic }
-                        }
-                      }) => topic
-                    )}
-                    starCount={starCount}
-                    forkCount={forkCount}
-                    primaryLanguage={primaryLanguage}
-                    badgePath={projectToBadgePath[project]}
-                    url={url}
-                  />
-                );
-              })}
-            <Statistic
-              number={repositories.viewer.repositoriesContributedTo.totalCount}
-              description="Public repositories contributed to (excluding my own)."
-            />
-            <Statistic
-              number={repositories.viewer.pullRequests.totalCount}
-              description="Public pull requests merged."
-            />
+            {mainOSS.map(
+              ({
+                name,
+                description,
+                repositoryTopics,
+                stargazers: { totalCount: starCount },
+                forkCount,
+                primaryLanguage,
+                url
+              }) => (
+                <RepositoryCard
+                  key={name}
+                  name={name}
+                  description={description}
+                  topics={repositoryTopics.edges.map(
+                    ({
+                      node: {
+                        topic: { name: topic }
+                      }
+                    }) => topic
+                  )}
+                  starCount={starCount}
+                  forkCount={forkCount}
+                  primaryLanguage={primaryLanguage}
+                  badgePath={projectToBadgePath[name]}
+                  url={url}
+                />
+              )
+            )}
+            {secondaryOSS.map(
+              ({
+                name,
+                description,
+                primaryLanguage,
+                stargazers: { totalCount: starCount },
+                forkCount,
+                url
+              }) => (
+                <PixelCard
+                  key={name}
+                  name={name}
+                  description={description}
+                  primaryLanguage={primaryLanguage}
+                  starCount={starCount}
+                  forkCount={forkCount}
+                  url={url}
+                />
+              )
+            )}
+          </motion.div>
+        </Section>
+        <Section className="stack-md">
+          <SectionHeader>
+            <Underline>Contributions</Underline>
+          </SectionHeader>
+          <Text>
+            I&apos;ve been busy in open source in the last year – here are the
+            stats.
+          </Text>
+          <div className="grid grid-cols-12 gap-8">
             <Statistic
               number={
                 repositories.viewer.contributionsCollection.contributionCalendar
                   .totalContributions
               }
-              description="Contributions in the last year."
+              description="Contributions"
             />
-          </motion.div>
-        </Section>
-        <Section className="stack-md mx-auto">
-          <SectionHeader>
-            <Underline>More OSS</Underline>
-          </SectionHeader>
-          <motion.div
-            className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
-            ref={ref}
-            animate={controls}
-            initial={{ opacity: 0 }}
-          >
-            {repositories.viewer.repositoriesContributedTo.edges
-              .filter(({ node: { name } }) => {
-                return (
-                  name !== 'renature' &&
-                  name !== 'urql' &&
-                  name !== 'reason-urql'
-                );
-              })
-              .slice(0, 6)
-              .map(
-                ({
-                  node: {
-                    name,
-                    description,
-                    primaryLanguage,
-                    stargazers: { totalCount: starCount },
-                    forkCount
-                  }
-                }) => {
-                  return (
-                    <PixelCard
-                      key={name}
-                      name={name}
-                      description={description}
-                      primaryLanguage={primaryLanguage}
-                      starCount={starCount}
-                      forkCount={forkCount}
-                    />
-                  );
-                }
-              )}
-          </motion.div>
+            <Statistic
+              number={repositories.viewer.pullRequests.totalCount}
+              description="Pull Requests"
+            />
+            <Statistic
+              number={repositories.viewer.repositoriesContributedTo.totalCount}
+              description="Repos Contributed To"
+            />
+          </div>
         </Section>
         <Section className="stack-lg">
           <SkewBg tiltDirection="forward" overflow="hidden" />
           <SectionHeader className="text-white">
             <Underline>Projects</Underline>
           </SectionHeader>
-          {PROJECTS.map((project) => (
-            <ProjectScreen key={project.projectId} {...project} />
-          ))}
+          <div className="stack-xl md:stack-xxl">
+            {projects.map((project) => (
+              <ProjectScreen key={project.projectId} {...project} />
+            ))}
+          </div>
         </Section>
       </main>
     </>
@@ -309,6 +363,9 @@ Code.propTypes = {
     renature: Repository,
     urql: Repository,
     reasonUrql: Repository,
+    webpackDashboard: Repository,
+    nextUrql: Repository,
+    wonka: Repository,
     viewer: Viewer
   }).isRequired
 };

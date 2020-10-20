@@ -1,18 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import cs from 'classnames';
+
+const variants = {
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      y: { stiffness: 1000, velocity: -100 }
+    }
+  },
+  hidden: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      y: { stiffness: 1000 }
+    }
+  }
+};
 
 const PixelCard = ({
   name,
   description,
   primaryLanguage,
   starCount,
-  forkCount
+  forkCount,
+  url
 }) => {
   return (
-    <div className="flex flex-col bg-radial bg-radial--purple p-8 stack-sm">
-      <p className="text-3xl font-mono bg-white p-2">{name}</p>
-      <p className="text-xl font-mono bg-white p-2">{description}</p>
+    <motion.a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      variants={variants}
+      className="font-mono col-span-12 md:col-span-4 flex flex-col bg-radial bg-radial--purple p-8 stack-md rounded-lg shadow-md"
+    >
+      <div className="bg-white p-2 stack-sm">
+        <p className="text-3xl">{name}</p>
+        <p className="text-xl">{description}</p>
+      </div>
       <div className="flex flex-auto items-end">
         {primaryLanguage ? (
           <div className="bg-white mr-auto px-2 py-4">
@@ -46,7 +73,7 @@ const PixelCard = ({
           <span className="text-purple text-lg">{forkCount}</span>
         </div>
       </div>
-    </div>
+    </motion.a>
   );
 };
 
@@ -58,7 +85,8 @@ PixelCard.propTypes = {
     color: PropTypes.string.isRequired
   }),
   starCount: PropTypes.number.isRequired,
-  forkCount: PropTypes.number.isRequired
+  forkCount: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export default PixelCard;

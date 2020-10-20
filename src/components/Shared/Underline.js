@@ -1,9 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useInView } from 'react-intersection-observer';
+import cs from 'classnames';
 
 const Underline = ({ children }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
+
   return (
-    <span className="bg-gradient--secondary bg-highlight highlight--primary m-0 font-serif">
+    <span
+      ref={ref}
+      className={cs('bg-gradient--secondary bg-highlight m-0 font-serif', {
+        ['highlight--primary']: inView
+      })}
+    >
       {children}
     </span>
   );
