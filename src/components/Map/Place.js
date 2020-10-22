@@ -9,29 +9,33 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
     : 0;
 
   return (
-    <g key={label}>
-      <motion.rect
-        className="fill-white"
-        rx="5"
-        width={width}
-        height={20}
-        initial={{ opacity: 0, x: x - 5, y: y - 15 }}
-        animate={{
-          opacity: 1,
-          transition: { delay: pathLength * 0.05 + i * 0.5 }
-        }}
-      />
-      <motion.text
-        className="fill-purple font-sans text-2xl"
-        ref={placeRef}
-        initial={{ opacity: 0, x, y }}
-        animate={{
-          opacity: 1,
-          transition: { delay: pathLength * 0.05 + i * 0.5 }
-        }}
-      >
-        {label}
-      </motion.text>
+    <>
+      <g key={label} transform={`translate(${x}, ${y})`}>
+        <motion.rect
+          className="fill-white"
+          rx="5"
+          x="-5"
+          y="-15"
+          width={width}
+          height={20}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { delay: pathLength * 0.05 + i * 0.5 }
+          }}
+        />
+        <motion.text
+          className="fill-purple font-sans text-2xl"
+          ref={placeRef}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { delay: pathLength * 0.05 + i * 0.5 }
+          }}
+        >
+          {label}
+        </motion.text>
+      </g>
       <motion.circle
         className="fill-purple stroke-purple stroke-2"
         cx={cx}
@@ -57,7 +61,7 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
         }}
         r="5"
       />
-    </g>
+    </>
   );
 };
 

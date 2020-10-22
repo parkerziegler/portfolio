@@ -49,7 +49,7 @@ const projects = [
         Matt Keith for their support on design and infrastructure.
       </>
     ),
-    projectImg: '/projects/renature-docs.png',
+    projectImg: '/projects/renature-docs/renature-docs.png',
     projectImgAlt:
       'The documentation site for renature, a physics-based animation-library for React.',
     projectLink: 'https://formidable.com/open-source/renature/'
@@ -79,7 +79,7 @@ const projects = [
         charts are built using <ProjectInlineCode>victory</ProjectInlineCode>.
       </>
     ),
-    projectImg: '/projects/police-shootings.png',
+    projectImg: '/projects/police-shootings/police-shootings.png',
     projectImgAlt:
       'A data visualization project looking at police shootings in the United State between 2015 and 2016.',
     projectLink: 'https://parkerziegler.github.io/police-shootings/'

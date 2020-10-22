@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { generateSrcSet } from '../../utils/generate-src-set';
+
 const ProjectScreen = ({
   projectTitle,
   projectDescription,
@@ -29,8 +31,12 @@ const ProjectScreen = ({
       <img
         src={projectImg}
         alt={projectImgAlt}
+        srcSet={generateSrcSet(projectImg)}
+        sizes="(min-width: 1024px) 600px, 75%"
         className="col-span-12 lg:col-span-8"
         loading="lazy"
+        height="600"
+        width="600"
       />
     </div>
   );

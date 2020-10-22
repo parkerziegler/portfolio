@@ -50,25 +50,31 @@ const RepositoryCard = ({
       }}
     >
       <div className="bg-gradient--primary flex p-2 m-auto rounded-lg font-mono shadow-lg h-full">
-        <div className="flex flex-col stack-sm p-4 rounded-md bg-white flex-auto overflow-auto">
+        <div className="flex flex-col items-center stack-sm p-4 rounded-md bg-white flex-auto overflow-auto">
           <h2 className="text-4xl text-center">{name}</h2>
-          <img src={badgePath} alt={`${name} Badge`} className="h-64" />
+          <img
+            src={badgePath}
+            alt={`${name} Badge`}
+            className="h-64"
+            height="160"
+            width="160"
+          />
           <p className="text-xl">{description}</p>
           <div className="flex flex-wrap">
             {topics.map((topic) => {
               return (
                 <span
                   key={topic}
-                  className="bg-purple text-white p-2 m-2 rounded-md text-lg"
+                  className="bg-purple text-white p-2 m-2 ml-0 rounded-md text-lg"
                 >
                   {topic}
                 </span>
               );
             })}
           </div>
-          <div className="flex flex-auto items-center">
+          <div className="flex flex-auto self-stretch items-center">
             <span
-              className="text-white text-xl rounded-md  mr-auto p-2"
+              className="text-white text-xl rounded-md mr-auto p-2"
               style={{ background: primaryLanguage.color }}
             >
               {primaryLanguage.name}
@@ -78,6 +84,8 @@ const RepositoryCard = ({
                 src="/star.svg"
                 alt={`${name} Stars on GitHub`}
                 className="h-10"
+                height="25"
+                width="25"
               />
               <span className="text-purple text-lg">{starCount}</span>
             </div>
@@ -86,6 +94,8 @@ const RepositoryCard = ({
                 src="/code-fork.svg"
                 alt={`${name} Forks on GitHub`}
                 className="h-10"
+                height="25"
+                width="25"
               />
               <span className="text-purple text-lg">{forkCount}</span>
             </div>
