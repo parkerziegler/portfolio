@@ -13,17 +13,17 @@ const Footer = () => (
       <div className="flex items-center">
         <SocialIcon
           href="https://twitter.com/parker_ziegler"
-          path="/twitter.svg"
+          path="/logos/twitter-logo.svg"
           alt="Parker's Twitter"
         />
         <SocialIcon
           href="https://github.com/parkerziegler"
-          path="/github.svg"
+          path="/logos/github-logo.svg"
           alt="Parker's GitHub"
         />
         <SocialIcon
           href="https://codesandbox.io/u/parkerziegler"
-          path="/codesandbox.svg"
+          path="/logos/codesandbox-logo.svg"
           alt="Parker's CodeSandbox"
         />
       </div>

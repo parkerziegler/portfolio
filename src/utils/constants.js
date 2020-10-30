@@ -4,11 +4,11 @@ export const TAGS = {
     tag: 'Testing'
   },
   react: {
-    icon: '/react-logo.svg',
+    icon: '/logos/react-logo.svg',
     tag: 'React'
   },
   cypress: {
-    icon: '/cypress-logo.svg',
+    icon: '/logos/cypress-logo.svg',
     tag: 'Cypress'
   },
   animation: {
@@ -16,7 +16,7 @@ export const TAGS = {
     tag: 'Animation'
   },
   d3: {
-    icon: '/d3-logo.svg',
+    icon: '/logos/d3-logo.svg',
     tag: 'D3'
   },
   gis: {
@@ -24,7 +24,7 @@ export const TAGS = {
     tag: 'GIS'
   },
   carto: {
-    icon: '/carto-logo.svg',
+    icon: '/logos/carto-logo.svg',
     tag: 'CARTO'
   },
   speaking: {
@@ -32,35 +32,35 @@ export const TAGS = {
     tag: 'Speaking'
   },
   python: {
-    icon: '/python-logo.svg',
+    icon: '/logos/python-logo.svg',
     tag: 'Python'
   },
   javascript: {
-    icon: '/js-logo.svg',
+    icon: '/logos/js-logo.svg',
     tag: 'JavaScript'
   }
 };
 
 export const LANGUAGES = {
-  JavaScript: { src: '/js-logo.svg', alt: 'JavaScript Logo' },
-  TypeScript: { src: '/ts-logo.svg', alt: 'TypeScript Logo' },
-  Reason: { src: '/reason-logo.svg', alt: 'Reason Logo' },
-  HTML: { src: '/html-logo.svg', alt: 'HTML Logo' },
-  CSS: { src: '/css-logo.svg', alt: 'CSS Logo' },
-  GraphQL: { src: '/graphql-logo.svg', alt: 'GraphQL Logo' },
-  WebAssembly: { src: '/wasm-logo.svg', alt: 'WebAssembly Logo' },
-  Rust: { src: '/rust-logo.svg', alt: 'Rust Logo' }
+  JavaScript: { src: '/logos/js-logo.svg', alt: 'JavaScript Logo' },
+  TypeScript: { src: '/logos/ts-logo.svg', alt: 'TypeScript Logo' },
+  Reason: { src: '/logos/reason-logo.svg', alt: 'Reason Logo' },
+  HTML: { src: '/logos/html-logo.svg', alt: 'HTML Logo' },
+  CSS: { src: '/logos/css-logo.svg', alt: 'CSS Logo' },
+  GraphQL: { src: '/logos/graphql-logo.svg', alt: 'GraphQL Logo' },
+  WebAssembly: { src: '/logos/wasm-logo.svg', alt: 'WebAssembly Logo' },
+  Rust: { src: '/logos/rust-logo.svg', alt: 'Rust Logo' }
 };
 
 export const TOOLS = {
-  React: { src: '/react-logo.svg', alt: 'React Logo' },
-  Node: { src: '/node-logo.svg', alt: 'Node Logo' },
-  Redux: { src: '/redux-logo.svg', alt: 'Redux Logo' },
-  Next: { src: '/next-logo.svg', alt: 'Next.js Logo' },
-  D3: { src: '/d3-logo.svg', alt: 'D3 Logo' },
-  Jest: { src: '/jest-logo.svg', alt: 'Jest Logo' },
-  Cypress: { src: '/cypress-logo.svg', alt: 'Cypress Logo' },
-  Sass: { src: '/sass-logo.svg', alt: 'Sass Logo' }
+  React: { src: '/logos/react-logo.svg', alt: 'React Logo' },
+  Node: { src: '/logos/node-logo.svg', alt: 'Node Logo' },
+  Redux: { src: '/logos/redux-logo.svg', alt: 'Redux Logo' },
+  Next: { src: '/logos/next-logo.svg', alt: 'Next.js Logo' },
+  D3: { src: '/logos/d3-logo.svg', alt: 'D3 Logo' },
+  Jest: { src: '/logos/jest-logo.svg', alt: 'Jest Logo' },
+  Cypress: { src: '/logos/cypress-logo.svg', alt: 'Cypress Logo' },
+  Sass: { src: '/logos/sass-logo.svg', alt: 'Sass Logo' }
 };
 
 export const NAV_ITEMS = [

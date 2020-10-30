@@ -17,7 +17,7 @@ const SocialIcon = ({ href, path, alt }) => (
       damping: 20
     }}
   >
-    <img src={path} alt={alt} className="h-20" />
+    <img src={path} alt={alt} className="h-20 w-20" height="20" width="20" />
   </motion.a>
 );
 

@@ -35,6 +35,15 @@ const PixelCard = ({
       rel="noopener noreferrer"
       variants={variants}
       className="font-mono col-span-12 md:col-span-4 flex flex-col bg-radial bg-radial--purple p-8 stack-md rounded-lg shadow-md"
+      whileHover={{
+        x: 5,
+        y: -5
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 260,
+        damping: 20
+      }}
     >
       <div className="bg-white p-2 stack-sm">
         <p className="text-3xl">{name}</p>
@@ -58,7 +67,7 @@ const PixelCard = ({
         ) : null}
         <div className="flex flex-col items-center mr-4 p-2 bg-white">
           <img
-            src="/star.svg"
+            src="/icons/star.svg"
             alt={`${name} Stars on GitHub`}
             className="h-10"
           />
@@ -66,7 +75,7 @@ const PixelCard = ({
         </div>
         <div className="flex flex-col items-center p-2 bg-white">
           <img
-            src="/code-fork.svg"
+            src="/icons/code-fork.svg"
             alt={`${name} Forks on GitHub`}
             className="h-10"
           />

@@ -87,9 +87,9 @@ const projects = [
 ];
 
 const projectToBadgePath = {
-  renature: '/renature.svg',
-  urql: '/urql.svg',
-  'reason-urql': '/reason-urql.svg'
+  renature: '/logos/renature.svg',
+  urql: '/logos/urql.svg',
+  'reason-urql': '/logos/reason-urql.svg'
 };
 
 const repositoriesQuery = gql`
@@ -135,7 +135,7 @@ const repositoriesQuery = gql`
     wonka: repository(name: "wonka", owner: "kitten") {
       ...repoInfo
     }
-    nextUrql: repository(name: "next-urql", owner: "FormidableLabs") {
+    reasonBasics: repository(name: "reason-basics", owner: "parkerziegler") {
       ...repoInfo
     }
     viewer {
@@ -173,8 +173,8 @@ const Code = ({ repositories }) => {
   ];
   const secondaryOSS = [
     repositories.webpackDashboard,
-    repositories.nextUrql,
-    repositories.wonka
+    repositories.wonka,
+    repositories.reasonBasics
   ];
 
   return (
@@ -364,7 +364,7 @@ Code.propTypes = {
     urql: Repository,
     reasonUrql: Repository,
     webpackDashboard: Repository,
-    nextUrql: Repository,
+    reasonBasics: Repository,
     wonka: Repository,
     viewer: Viewer
   }).isRequired

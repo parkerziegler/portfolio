@@ -32,7 +32,7 @@
     "react-dom": "^16.13.1",
     "react-intersection-observer": "^8.26.5",
     "roughjs": "^4.3.1",
-    "tailwindcss": "^1.8.8",
+    "tailwindcss": "^1.9.6",
     "topojson": "^3.0.2",
     "urql": "^1.10.1"
   },

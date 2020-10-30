@@ -81,7 +81,7 @@ const RepositoryCard = ({
             </span>
             <div className="flex flex-col items-center mr-4">
               <img
-                src="/star.svg"
+                src="/icons/star.svg"
                 alt={`${name} Stars on GitHub`}
                 className="h-10"
                 height="25"
@@ -91,7 +91,7 @@ const RepositoryCard = ({
             </div>
             <div className="flex flex-col items-center">
               <img
-                src="/code-fork.svg"
+                src="/icons/code-fork.svg"
                 alt={`${name} Forks on GitHub`}
                 className="h-10"
                 height="25"
