@@ -13,7 +13,7 @@ const Maps = () => {
     <>
       <Head>
         <title>
-          Maps | Parker Ziegler | Software Engineer and Cartographer
+          Maps / Parker Ziegler / Software Engineer and Cartographer
         </title>
         <meta
           name="description"

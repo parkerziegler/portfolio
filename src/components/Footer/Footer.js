@@ -26,6 +26,11 @@ const Footer = () => (
           path="/logos/codesandbox-logo.svg"
           alt="Parker's CodeSandbox"
         />
+        <SocialIcon
+          href="https://observablehq.com/@parkerziegler"
+          path="/logos/observable-logo.svg"
+          alt="Parker's Observable"
+        />
       </div>
     </div>
   </footer>

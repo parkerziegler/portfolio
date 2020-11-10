@@ -181,7 +181,7 @@ const Code = ({ repositories }) => {
     <>
       <Head>
         <title>
-          Code | Parker Ziegler | Software Engineer and Cartographer
+          Code / Parker Ziegler / Software Engineer and Cartographer
         </title>
         <meta
           name="description"

@@ -47,7 +47,7 @@ const Index = ({ user }) => {
   return (
     <>
       <Head>
-        <title>Parker Ziegler | Software Engineer and Cartographer</title>
+        <title>Parker Ziegler / Software Engineer and Cartographer</title>
         <meta
           name="description"
           content="Parker Ziegler is a software engineer and cartographer based in Seattle, WA. He works on next generation web technologies, with a focus on animation, graphics, and emerging programming languages."

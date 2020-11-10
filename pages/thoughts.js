@@ -24,7 +24,7 @@ const Thoughts = ({ posts }) => {
     <>
       <Head>
         <title>
-          Thoughts | Parker Ziegler | Software Engineer and Cartographer
+          Thoughts / Parker Ziegler / Software Engineer and Cartographer
         </title>
         <meta
           name="description"
