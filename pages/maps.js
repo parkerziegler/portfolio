@@ -30,6 +30,8 @@ const Maps = () => {
               ({
                 src,
                 alt,
+                width,
+                height,
                 title,
                 items,
                 link,
@@ -54,6 +56,8 @@ const Maps = () => {
                     title={title}
                     src={src}
                     alt={alt}
+                    width={width}
+                    height={height}
                     link={link}
                     code={code}
                     isPortrait={isPortrait}
