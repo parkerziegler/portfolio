@@ -1,20 +1,10 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 import cs from 'classnames';
 
 import MapTitle from './MapTitle';
 import Text from '../Shared/Text';
-import { generateSrcSet } from '../../utils/generate-src-set';
-
-const variants = {
-  visible: {
-    filter: 'saturate(1)'
-  },
-  hidden: {
-    filter: 'saturate(0)'
-  }
-};
 
 const MapThumbnail = ({
   src,
@@ -24,37 +14,41 @@ const MapThumbnail = ({
   isPortrait = false
 }) => {
   const thumbnailNode = useRef(null);
-  const srcSet = generateSrcSet(src);
 
   return (
-    <img
-      key={src}
-      src={src}
-      srcSet={srcSet}
-      sizes={
-        isPortrait
-          ? '(min-width: 768px) 25vw, (min-width: 1024px) calc(100vw / 6v), (min-width: 1280px) 12.5vw, 20vw'
-          : '(min-width: 768px) 33vw, (min-width: 1024px) 25vw, (min-width: 1280px) 20vw, 25vw'
-      }
-      alt={alt}
-      onClick={() => {
-        onClick(src, srcSet);
-        thumbnailNode.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'start'
-        });
-      }}
-      className="h-32 md:h-64 object-cover saturate cursor-pointer rounded-md"
+    <div
+      className={cs(
+        'h-32 md:h-64 object-cover saturate cursor-pointer flex-shrink-0',
+        isPortrait ? 'w-24 md:w-48' : 'w-40 md:w-80'
+      )}
       ref={thumbnailNode}
-      style={selectedSrc === src ? { filter: 'saturate(1)' } : {}}
-    />
+    >
+      <Image
+        src={src}
+        alt={alt}
+        sizes={
+          isPortrait
+            ? '(min-width: 768px) 25vw, (min-width: 1024px) calc(100vw / 6), (min-width: 1280px) 12.5vw, 20vw'
+            : '(min-width: 768px) 33vw, (min-width: 1024px) 25vw, (min-width: 1280px) 20vw, 25vw'
+        }
+        layout="fill"
+        onClick={() => {
+          onClick(src);
+          thumbnailNode.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'start'
+          });
+        }}
+        className="object-contain"
+        style={selectedSrc === src ? { filter: 'saturate(1)' } : {}}
+      />
+    </div>
   );
 };
 
 MapThumbnail.propTypes = {
   src: PropTypes.string.isRequired,
-  srcSet: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   selectedSrc: PropTypes.shape({
     src: PropTypes.string.isRequired,
@@ -77,7 +71,6 @@ const MapCarousel = ({
   const onClickThumbnail = (src) => {
     setMap(maps.find((m) => m.src === src));
   };
-  const srcSet = generateSrcSet(map.src);
 
   return (
     <div className="grid grid-cols-12 md:grid-rows-auto-2 gap-8 md:gap-12">
@@ -89,28 +82,17 @@ const MapCarousel = ({
             : 'md:row-span-1'
         )}
       >
-        <motion.img
-          key={map.src}
+        <Image
           src={map.src}
-          srcSet={srcSet}
+          alt={map.alt}
           sizes={
             isPortrait
               ? '(min-width: 768px) 50vw, (min-width: 1280px) 1280px, 100vw'
               : '(min-width: 1280px) 1280px, 100vw'
           }
-          alt={map.alt}
-          initial="hidden"
-          animate="visible"
-          variants={variants}
-          transition={{
-            type: 'spring',
-            stiffness: 260,
-            damping: 20
-          }}
-          className="block min-w-screen max-w-full h-auto scroll-snap-align-start object-cover shadow-lg rounded-md"
-          loading="lazy"
           height={map.height}
           width={map.width}
+          className="shadow-lg rounded-md"
         />
         <nav className="flex overflow-y-hidden stack-sm-h">
           {maps.map(({ src, alt }) => {

@@ -18,10 +18,6 @@ function justifySelfPlugin({ addUtilities }) {
 
 module.exports = {
   purge: ['./src/**/*.js', './pages/**/*.js'],
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true
-  },
   theme: {
     extend: {
       colors: {
