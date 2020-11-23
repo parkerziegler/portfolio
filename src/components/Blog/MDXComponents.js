@@ -141,7 +141,7 @@ Image.propTypes = {
 };
 
 const BlockQuote = ({ children }) => (
-  <blockquote className="font-bold bg-teal-200 border-opacity-50 p-4 rounded-md">
+  <blockquote className="font-bold bg-indigo-200 border-opacity-50 p-4 rounded-md">
     {children}
   </blockquote>
 );

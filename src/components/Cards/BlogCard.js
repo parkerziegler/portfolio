@@ -49,12 +49,19 @@ const BlogCard = ({ title, slug, tags = [], introText, date }) => {
             <div className="flex justify-between items-end mt-auto">
               <div className="flex flex-wrap">
                 {tags.map(({ tag, icon }) => (
-                  <Tag key={tag} icon={icon} className="m-2 h-16">
+                  <Tag
+                    key={tag}
+                    icon={icon}
+                    compact
+                    className="m-2 h-16 text-lg"
+                  >
                     {tag}
                   </Tag>
                 ))}
               </div>
-              <p className="text-2xl font-mono self-end m-2">{date}</p>
+              <p className="text-2xl font-mono self-end m-2 flex-shrink-0">
+                {date}
+              </p>
             </div>
           </div>
         </div>
