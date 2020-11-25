@@ -63,6 +63,9 @@ module.exports = {
       },
       gridTemplateRows: {
         'auto-2': 'auto 1fr'
+      },
+      boxShadow: {
+        '2xl-dark': '0 25px 50px -12px rgba(0, 0, 0, 1)'
       }
     },
     fill: (theme) => {

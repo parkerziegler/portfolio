@@ -34,7 +34,7 @@ const PixelCard = ({
       target="_blank"
       rel="noopener noreferrer"
       variants={variants}
-      className="font-mono col-span-12 md:col-span-4 flex flex-col bg-radial bg-radial--purple p-8 stack-md rounded-lg shadow-md"
+      className="font-mono col-span-12 lg:col-span-4 flex flex-col bg-radial bg-radial--purple p-8 stack-md rounded-lg shadow-md"
       whileHover={{
         x: 5,
         y: -5

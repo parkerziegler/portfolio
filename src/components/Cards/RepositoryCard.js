@@ -36,7 +36,7 @@ const RepositoryCard = ({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="col-span-12 md:col-span-4 self-stretch rounded-lg"
+      className="col-span-12 lg:col-span-4 self-stretch rounded-lg"
       variants={variants}
       whileHover={{
         x: 5,
@@ -72,7 +72,10 @@ const RepositoryCard = ({
               );
             })}
           </div>
-          <div className="flex flex-auto self-stretch items-center">
+          <div
+            className="flex self-stretch items-center"
+            style={{ marginTop: 'auto' }}
+          >
             <span
               className="text-white text-xl rounded-md mr-auto p-2"
               style={{ background: primaryLanguage.color }}

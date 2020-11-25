@@ -21,7 +21,7 @@ import ProjectInlineCode from '../src/components/Projects/ProjectInlineCode';
 const projects = [
   {
     projectId: 'renature',
-    projectTitle: (
+    title: (
       <>
         <ProjectInlineCode className="text-4xl md:text-5xl">
           renature
@@ -29,7 +29,7 @@ const projects = [
         Documentation Site
       </>
     ),
-    projectDescription: (
+    description: (
       <>
         I built the <ProjectInlineCode>renature</ProjectInlineCode>{' '}
         documentation site as part of my broader work on the library during{' '}
@@ -49,15 +49,15 @@ const projects = [
         Matt Keith for their support on design and infrastructure.
       </>
     ),
-    projectImg: '/projects/renature-docs/renature-docs.png',
-    projectImgAlt:
+    img: '/projects/renature-docs/renature-docs.png',
+    alt:
       'The documentation site for renature, a physics-based animation-library for React.',
-    projectLink: 'https://formidable.com/open-source/renature/'
+    href: 'https://formidable.com/open-source/renature/'
   },
   {
     projectId: 'police-shootings',
-    projectTitle: 'Police Shootings',
-    projectDescription: (
+    title: 'Police Shootings',
+    description: (
       <>
         I built this set of visualizations on police violence in America after
         diving into data compiled by the Guardian in their project,{' '}
@@ -79,10 +79,10 @@ const projects = [
         charts are built using <ProjectInlineCode>victory</ProjectInlineCode>.
       </>
     ),
-    projectImg: '/projects/police-shootings/police-shootings.png',
-    projectImgAlt:
+    img: '/projects/police-shootings/police-shootings.png',
+    alt:
       'A data visualization project looking at police shootings in the United State between 2015 and 2016.',
-    projectLink: 'https://parkerziegler.github.io/police-shootings/'
+    href: 'https://parkerziegler.github.io/police-shootings/'
   }
 ];
 
@@ -341,12 +341,7 @@ const Repository = PropTypes.shape({
 
 const Viewer = PropTypes.shape({
   repositoriesContributedTo: PropTypes.shape({
-    totalCount: PropTypes.number.isRequired,
-    edges: PropTypes.arrayOf(
-      PropTypes.shape({
-        node: Repository
-      }).isRequired
-    ).isRequired
+    totalCount: PropTypes.number.isRequired
   }).isRequired,
   pullRequests: PropTypes.shape({
     totalCount: PropTypes.number.isRequired
