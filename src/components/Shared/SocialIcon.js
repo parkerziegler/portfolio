@@ -7,7 +7,7 @@ const SocialIcon = ({ href, path, alt }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex justify-center w-40"
+    className="flex justify-center"
     whileHover={{
       scale: 1.05
     }}
@@ -17,7 +17,13 @@ const SocialIcon = ({ href, path, alt }) => (
       damping: 20
     }}
   >
-    <img src={path} alt={alt} className="h-20 w-20" height="20" width="20" />
+    <img
+      src={path}
+      alt={alt}
+      className="h-16 w-16 md:h-20 md:w-20"
+      height="20"
+      width="20"
+    />
   </motion.a>
 );
 

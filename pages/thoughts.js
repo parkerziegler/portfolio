@@ -41,7 +41,7 @@ const Thoughts = ({ posts }) => {
             things that are puzzling me. Here are some of my recent pieces.
           </Text>
           <motion.div
-            className="grid grid-cols-12 gap-12"
+            className="grid grid-cols-12 gap-x-6 gap-y-12 md:gap-12"
             variants={variants}
             initial="hidden"
             animate="visible"
