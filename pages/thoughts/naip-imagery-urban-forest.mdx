@@ -27,9 +27,19 @@ For those unfamiliar with NAIP imagery, it is collected (as of 2007) in four ban
 
 This makes it some of the highest resolution multispectral imagery that is publicly available today.
 
-![A composited NAIP image of the city of Portland, OR in 2014 displayed in true color (R = Band 1, G = Band 2, B = Band 3).](/thoughts/naip-imagery-urban-forest/portland-rgb.png)
+<img
+  src="/thoughts/naip-imagery-urban-forest/portland-rgb.png"
+  alt="A composited NAIP image of the city of Portland, OR in 2014 displayed in true color (R = Band 1, G = Band 2, B = Band 3)."
+  width="590"
+  height="529"
+/>
 
-![A composited NAIP image of the city of Portland, OR in 2014 displayed in color-infrared (R = Band 4, G = Band 3, B = Band 2).](/thoughts/naip-imagery-urban-forest/portland-infrared.png)
+<img
+  src="/thoughts/naip-imagery-urban-forest/portland-infrared.png"
+  alt="A composited NAIP image of the city of Portland, OR in 2014 displayed in color-infrared (R = Band 4, G = Band 3, B = Band 2)."
+  width="658"
+  height="591"
+/>
 
 I decided to apply Behee’s methodology to my current work with [Ecotrust](http://ecotrust.org/), a Portland, Oregon-based non-profit. The project aims to use high-resolution imagery to:
 
@@ -40,9 +50,19 @@ I decided to apply Behee’s methodology to my current work with [Ecotrust](http
 
 Behee’s methodology is based on using the [iso cluster unsupervised classification algorithm](http://pro.arcgis.com/en/pro-app/tool-reference/spatial-analyst/iso-cluster-unsupervised-classification.htm) with six different raster inputs – the four bands of the NAIP image, a[ Normalized Differentiated Vegetation Index (NDVI)](http://earthobservatory.nasa.gov/Features/MeasuringVegetation/measuring_vegetation_2.php) raster, and a ‘texture’ raster. These last two layers are the real key to the classification. The NDVI raster is particularly adept at distinguishing between vegetated and non-vegetated surfaces. It does this by exploiting [the tendency for vegetation to reflect strongly in the NIR band](https://publiclab.org/wiki/near-infrared-imaging) compared with other land cover types. However, the NDVI raster does not distinguish between trees and other scrubby vegetation or deal with shadows. This is where the ‘texture’ raster comes in.
 
-![The NDVI of the NAIP composite displayed using a diverging color ramp. You can use the Image Analysis toolbar to automatically generate an NDVI from an input raster or manually calculate it using Raster Calculator.](/thoughts/naip-imagery-urban-forest/portland-ndvi.png)
+<img
+  src="/thoughts/naip-imagery-urban-forest/portland-ndvi.png"
+  alt="The NDVI of the NAIP composite displayed using a diverging color ramp. You can use the Image Analysis toolbar to automatically generate an NDVI from an input raster or manually calculate it using Raster Calculator."
+  width="657"
+  height="585"
+/>
 
-![The NDVI of the NAIP composite reclassified using a threshold. Remember that this layer gives a good indication of all vegetated surfaces, but does not distinguish trees from grass.](/thoughts/naip-imagery-urban-forest/portland-ndvi-composite.png)
+<img
+  src="/thoughts/naip-imagery-urban-forest/portland-ndvi-composite.png"
+  alt="The NDVI of the NAIP composite reclassified using a threshold. Remember that this layer gives a good indication of all vegetated surfaces, but does not distinguish trees from grass."
+  width="656"
+  height="581"
+/>
 
 ### The Texture Raster
 
@@ -50,17 +70,37 @@ The idea here is that rather than relying solely on the spectral information of 
 
 To obtain this final layer, we perform a [Focal Statistics](http://desktop.arcgis.com/en/arcmap/10.3/tools/spatial-analyst-toolbox/how-focal-statistics-works.htm) operation on both the G band and the NIR band of our NAIP image with a Range statistic and a 7 x 7 window. At 1m resolution, a 7 x 7 window corresponds roughly to the area of a mature tree crown. We finish by averaging the values of these two rasters together using Raster Calculator.
 
-![The ‘texture’ raster of the NAIP image. Notice how the Willamette River (center) appears very deep blue (low value, smooth surface) while Forest Park (left) appears a tan brown (higher value, rougher surface).](/thoughts/naip-imagery-urban-forest/portland-texture-raster.png)
+<img
+  src="/thoughts/naip-imagery-urban-forest/portland-texture-raster.png"
+  alt="The ‘texture’ raster of the NAIP image. Notice how the Willamette River (center) appears very deep blue (low value, smooth surface) while Forest Park (left) appears a tan brown (higher value, rougher surface)."
+  width="654"
+  height="592"
+/>
 
-![A zoomed in view of the ‘texture’ raster and the original image. Notice how flat, grassy surfaces appear blue (low values), while the canopy appears tan brown (higher values).](/thoughts/naip-imagery-urban-forest/portland-texture-raster-zoom.png)
+<img
+  src="/thoughts/naip-imagery-urban-forest/portland-texture-raster-zoom.png"
+  alt="A zoomed in view of the ‘texture’ raster and the original image. Notice how flat, grassy surfaces appear blue (low values), while the canopy appears tan brown (higher values)."
+  width="1000"
+  height="434"
+/>
 
 ## Running the Classification Algorithm
 
 [Loading these six inputs into my classification](http://desktop.arcgis.com/en/arcmap/latest/extensions/spatial-analyst/image-classification/executing-the-iso-cluster-unsupervised-classification-tool.htm) yielded some pretty exciting results. Obtaining a suitable level of precision did require requesting more classes than needed in the original unsupervised algorithm. I started with 50 classes and then [manually recombined](http://desktop.arcgis.com/en/arcmap/10.3/tools/spatial-analyst-toolbox/reclassify.htm) them to form a single canopy layer through visual inspection. I also engaged in several [post-classification smoothing techniques](http://desktop.arcgis.com/en/arcmap/latest/extensions/spatial-analyst/image-classification/processing-classified-output.htm), including applying a [Majority Filter](http://desktop.arcgis.com/en/arcmap/latest/extensions/spatial-analyst/image-classification/filtering-classified-output.htm) to take care of small holes in canopied areas and using a thresholded ‘texture’ raster as a mask to more precisely pick out trees in shadowy areas.
 
-![The output canopy layer from the NAIP imagery after post-classification smoothing and masking. Notice there are still a few holes in canopied areas of Forest Park – those pesky shadows!](/thoughts/naip-imagery-urban-forest/portland-canopy.png)
+<img
+  src="/thoughts/naip-imagery-urban-forest/portland-canopy.png"
+  alt="The output canopy layer from the NAIP imagery after post-classification smoothing and masking. Notice there are still a few holes in canopied areas of Forest Park – those pesky shadows!"
+  width="723"
+  height="632"
+/>
 
-![The output canopy layer overlaid on the original image (left) and the original image (right) for comparison. The classification lines up nicely with the canopy, although it does tend to overestimate crown boundaries in certain places. It also still suffers from some difficulties distinguishing shadows.](/thoughts/naip-imagery-urban-forest/portland-canopy-zoom.png)
+<img
+  src="/thoughts/naip-imagery-urban-forest/portland-canopy-zoom.png"
+  alt="The output canopy layer overlaid on the original image (left) and the original image (right) for comparison. The classification lines up nicely with the canopy, although it does tend to overestimate crown boundaries in certain places. It also still suffers from some difficulties distinguishing shadows."
+  width="1000"
+  height="410"
+/>
 
 ## Classification Results
 

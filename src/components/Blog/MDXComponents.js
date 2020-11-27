@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import nightOwl from 'prism-react-renderer/themes/nightOwl';
 import cs from 'classnames';
@@ -9,7 +10,6 @@ import Underline from '../Shared/Underline';
 import Text from '../Shared/Text';
 import InlineLink from '../Shared/InlineLink';
 import Heading from '../Shared/Heading';
-import { generateSrcSet } from '../../utils/generate-src-set';
 
 const H1 = ({ children }) => (
   <SectionHeader className="mb-8">
@@ -108,36 +108,26 @@ UL.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const Image = ({ src, alt }) => {
-  const ext = src.split('.')[1];
-  let additionalImageProps = {};
+const Img = ({ src, alt, width, height }) => (
+  <div className="stack-sm py-8">
+    <Image
+      src={src}
+      alt={alt}
+      sizes="(min-width: 768px) 75vw, (min-width: 1280px) 960px, 100vw"
+      width={width}
+      height={height}
+      layout="intrinsic"
+      className="rounded-lg"
+    />
+    <span className="text-2xl font-sans text-gray-600 block">{alt}</span>
+  </div>
+);
 
-  if (ext === 'png') {
-    const srcSet = generateSrcSet(src);
-    const sizes = '(min-width: 768px) 75vw, (min-width: 1280px) 960px, 100vw';
-    additionalImageProps = {
-      srcSet,
-      sizes
-    };
-  }
-
-  return (
-    <div className="flex flex-col items-center mb-12 stack-sm">
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        {...additionalImageProps}
-        className="rounded-lg"
-      />
-      <span className="text-2xl font-sans text-gray-600">{alt}</span>
-    </div>
-  );
-};
-
-Image.propTypes = {
+Img.propTypes = {
   src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired
+  alt: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired
 };
 
 const BlockQuote = ({ children }) => (
@@ -160,7 +150,7 @@ const components = {
   code: Code,
   ol: OL,
   ul: UL,
-  img: Image,
+  img: Img,
   blockquote: BlockQuote
 };
 

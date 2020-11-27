@@ -77,26 +77,3 @@ export const NAV_ITEMS = [
     displayText: 'Thoughts'
   }
 ];
-
-export const imageSizes = [
-  {
-    size: 480,
-    suffix: 'sm'
-  },
-  {
-    size: 800,
-    suffix: 'md'
-  },
-  {
-    size: 1080,
-    suffix: 'lg'
-  },
-  {
-    size: 1280,
-    suffix: 'xl'
-  },
-  {
-    size: 1600,
-    suffix: 'xxl'
-  }
-];
