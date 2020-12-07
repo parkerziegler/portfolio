@@ -33,6 +33,7 @@ export default class Document extends NextDocument {
           <style>{`
             html {
               font-size: 10px;
+              scroll-behavior: smooth;
             }
 
             body {

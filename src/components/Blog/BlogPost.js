@@ -2,41 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { MDXProvider } from '@mdx-js/react';
+import { useInView } from 'react-intersection-observer';
 
-import Section from '../Shared/Section';
 import components from './MDXComponents';
-import Tag from './Tag';
+import Meta from './Meta';
 
-const BlogPost = ({ title, tags, publishDate, children }) => {
-  const meta = (
-    <div
-      className="flex flex-col stack-sm md:absolute"
-      style={{
-        right: '-10%'
-      }}
-    >
-      <span className="font-mono text-2xl">{publishDate}</span>
-      <div className="flex md:flex-col stack-sm-h md:stack-none-h md:stack-sm">
-        {tags.map(({ tag, icon }) => (
-          <Tag key={tag} icon={icon}>
-            {tag}
-          </Tag>
-        ))}
-      </div>
-    </div>
-  );
-
-  const childrenWithMeta = React.Children.map(children, (child, i) => {
-    if (i === 0) {
-      return (
-        <>
-          {child}
-          {meta}
-        </>
-      );
-    }
-
-    return child;
+const BlogPost = ({ title, tags, publishDate, slug, children }) => {
+  const [ref, inView] = useInView({
+    threshold: 0,
+    triggerOnce: true,
+    rootMargin: '-100px'
   });
 
   return (
@@ -45,8 +20,28 @@ const BlogPost = ({ title, tags, publishDate, children }) => {
         <title>{title}</title>
       </Head>
       <MDXProvider components={components}>
-        <main className="md:max-w-3/4 ml-auto mr-auto">
-          <Section className="stack-md">{childrenWithMeta}</Section>
+        <main className="md:flex md:stack-lg-h md:justify-center px-8 py-12">
+          <article className="flex flex-col stack-md max-w-prose mx-auto min-w-0">
+            {children}
+          </article>
+          <aside className="flex flex-col flex-shrink-0 w-60">
+            <Meta
+              tags={tags}
+              publishDate={publishDate}
+              displayMinimap={inView}
+              slug={slug}
+            />
+            <div
+              ref={ref}
+              aria-hidden="true"
+              data-waypoint
+              className="relative left-0 right-0 w-full invisible"
+              style={{
+                height: 'calc(100% - 100vh)',
+                marginTop: '100vh'
+              }}
+            />
+          </aside>
         </main>
       </MDXProvider>
     </>
@@ -62,6 +57,7 @@ BlogPost.propTypes = {
     }).isRequired
   ).isRequired,
   publishDate: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
 };
 

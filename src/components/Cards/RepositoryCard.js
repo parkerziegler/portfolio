@@ -41,7 +41,7 @@ const RepositoryCard = ({
       whileHover={{
         x: 5,
         y: -5,
-        boxShadow: `-1rem 1rem ${tailwind.theme.extend.colors.purple}`
+        boxShadow: `-1rem 1rem ${tailwind.theme.extend.colors.primary}`
       }}
       transition={{
         type: 'spring',
@@ -65,7 +65,7 @@ const RepositoryCard = ({
               return (
                 <span
                   key={topic}
-                  className="bg-purple text-white p-2 m-2 ml-0 rounded-md text-lg"
+                  className="bg-primary text-white p-2 m-2 ml-0 rounded-md text-lg"
                 >
                   {topic}
                 </span>
@@ -90,7 +90,7 @@ const RepositoryCard = ({
                 height="25"
                 width="25"
               />
-              <span className="text-purple text-lg">{starCount}</span>
+              <span className="text-primary text-lg">{starCount}</span>
             </div>
             <div className="flex flex-col items-center">
               <img
@@ -100,7 +100,7 @@ const RepositoryCard = ({
                 height="25"
                 width="25"
               />
-              <span className="text-purple text-lg">{forkCount}</span>
+              <span className="text-primary text-lg">{forkCount}</span>
             </div>
           </div>
         </div>

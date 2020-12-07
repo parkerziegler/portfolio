@@ -34,7 +34,7 @@ const PixelCard = ({
       target="_blank"
       rel="noopener noreferrer"
       variants={variants}
-      className="font-mono col-span-12 lg:col-span-4 flex flex-col bg-radial bg-radial--purple p-8 stack-md rounded-lg shadow-md"
+      className="font-mono col-span-12 lg:col-span-4 flex flex-col bg-radial bg-radial--primary p-8 stack-md rounded-lg shadow-md"
       whileHover={{
         x: 5,
         y: -5
@@ -71,7 +71,7 @@ const PixelCard = ({
             alt={`${name} Stars on GitHub`}
             className="h-10"
           />
-          <span className="text-purple text-lg">{starCount}</span>
+          <span className="text-primary text-lg">{starCount}</span>
         </div>
         <div className="flex flex-col items-center p-2 bg-white">
           <img
@@ -79,7 +79,7 @@ const PixelCard = ({
             alt={`${name} Forks on GitHub`}
             className="h-10"
           />
-          <span className="text-purple text-lg">{forkCount}</span>
+          <span className="text-primary text-lg">{forkCount}</span>
         </div>
       </div>
     </motion.a>

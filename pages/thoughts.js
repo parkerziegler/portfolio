@@ -87,6 +87,7 @@ export async function getStaticProps() {
   const { read } = require('to-vfile');
   const remark = require('remark');
   const mdx = require('remark-mdx');
+
   const { parseMeta, orderAndTagPosts } = require('../src/utils/blog-parser');
 
   // Get all posts from the pages/thoughts directory.

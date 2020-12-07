@@ -7,7 +7,7 @@ import cs from 'classnames';
 
 import tailwind from '../../../tailwind.config';
 
-const { purple, white } = tailwind.theme.extend.colors;
+const { primary, white } = tailwind.theme.extend.colors;
 
 const Link = ({ href, onClick, isMobile = false, children }) => {
   const linkRef = useRef(null);
@@ -36,7 +36,7 @@ const Link = ({ href, onClick, isMobile = false, children }) => {
         const rc = rough.svg(roughUnderline.current);
         roughUnderline.current.appendChild(
           rc.line(0, 3, width, 3, {
-            stroke: isRouteSelected ? purple : white
+            stroke: isRouteSelected ? primary : white
           })
         );
       }
@@ -58,7 +58,7 @@ const Link = ({ href, onClick, isMobile = false, children }) => {
           className={cs(
             'text-white p-2 text-5xl sm:text-4xl font-serif no-underline relative',
             {
-              'sm:text-purple': pathname.includes(href)
+              'sm:text-primary': pathname.includes(href)
             }
           )}
         >

@@ -1,11 +1,11 @@
 const { query: q, Client } = require('faunadb');
 
 const registerHit = async (req, res) => {
-  const client = Client({
-    secret: process.env.FAUNDA_SECRET_KEY
+  const client = new Client({
+    secret: process.env.FAUNA_SECRET_KEY
   });
 
-  const slug = req.query;
+  const { slug } = req.query;
 
   if (!slug) {
     return res.status(400).json({
@@ -18,18 +18,22 @@ const registerHit = async (req, res) => {
   );
 
   if (!docExists) {
-    await client.query(
-      q.Create(q.Collection('hits'), {
-        data: { slug: slug, hits: 0 }
-      })
-    );
+    try {
+      await client.query(
+        q.Create(q.Collection('hits'), {
+          data: { slug: slug, hits: 0 }
+        })
+      );
+    } catch (error) {
+      console.error('Error creating record: ', error.message);
+    }
   }
 
   const document = await client.query(
     q.Get(q.Match(q.Index('hits_by_slug'), slug))
   );
 
-  await client.query(
+  const registeredHit = await client.query(
     q.Update(document.ref, {
       data: {
         hits: document.data.hits + 1
@@ -38,7 +42,7 @@ const registerHit = async (req, res) => {
   );
 
   return res.status(200).json({
-    hits: document.data.hits
+    hits: registeredHit.data.hits
   });
 };
 

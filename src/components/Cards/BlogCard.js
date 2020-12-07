@@ -32,7 +32,7 @@ const BlogCard = ({ title, slug, tags = [], introText, date }) => {
         whileHover={{
           x: 5,
           y: -5,
-          boxShadow: `-1rem 1rem ${tailwind.theme.extend.colors.purple}`
+          boxShadow: `-1rem 1rem ${tailwind.theme.extend.colors.primary}`
         }}
         transition={{
           type: 'spring',

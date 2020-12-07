@@ -4,12 +4,54 @@ import Image from 'next/image';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import nightOwl from 'prism-react-renderer/themes/nightOwl';
 import cs from 'classnames';
+import { slug } from 'github-slugger';
 
 import SectionHeader from '../Shared/SectionHeader';
 import Underline from '../Shared/Underline';
 import Text from '../Shared/Text';
 import InlineLink from '../Shared/InlineLink';
 import Heading from '../Shared/Heading';
+
+const anchor = (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="5" r="3"></circle>
+    <line x1="12" y1="22" x2="12" y2="8"></line>
+    <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
+  </svg>
+);
+
+const SlugAnchor = ({ id, level }) => {
+  const { height, width, translateY } =
+    level === 2
+      ? { height: 24, width: 24, translateY: 2 }
+      : { height: 16, width: 16, translateY: 5 };
+
+  return (
+    <a
+      href={`#${id}`}
+      className="absolute left-0 text-current opacity-0 hover:opacity-100 group-hover:opacity-100 transition-opacity duration-300"
+      style={{
+        transform: `translateX(-30px) translateY(${translateY}px)`,
+        height,
+        width
+      }}
+    >
+      {anchor}
+    </a>
+  );
+};
+
+SlugAnchor.propTypes = {
+  id: PropTypes.string.isRequired,
+  level: PropTypes.oneOf([2, 3])
+};
 
 const H1 = ({ children }) => (
   <SectionHeader className="mb-8">
@@ -21,32 +63,60 @@ H1.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const H2 = ({ children }) => (
-  <Heading
-    tag="h2"
-    className="text-5xl text-gray-600 self-start"
-    style={{ marginTop: '6rem' }}
-  >
-    {children}
-  </Heading>
-);
+const H2 = ({ children }) => {
+  const id = slug(children);
+
+  return (
+    <Heading
+      tag="h2"
+      className="text-5xl text-indigo-600 relative self-start group"
+      style={{
+        marginTop: '6rem',
+        scrollMarginTop: '100px',
+        scrollSnapMarginTop: '100px'
+      }}
+      id={id}
+      data-anchor
+    >
+      <SlugAnchor id={id} level={2} />
+      {children}
+    </Heading>
+  );
+};
 
 H2.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const H3 = ({ children }) => (
-  <Heading tag="h3" className="text-4xl text-teal-700 self-start">
-    {children}
-  </Heading>
-);
+const H3 = ({ children }) => {
+  const id = slug(children);
+
+  return (
+    <Heading
+      tag="h3"
+      className="text-4xl text-yellow-600 relative self-start group"
+      style={{
+        marginTop: '3rem',
+        scrollMarginTop: '50px',
+        scrollSnapMarginTop: '50px'
+      }}
+      id={id}
+      data-anchor
+    >
+      <SlugAnchor id={id} level={3} />
+      {children}
+    </Heading>
+  );
+};
 
 H3.propTypes = {
   children: PropTypes.node.isRequired
 };
 
 export const InlineCode = ({ className = 'bg-purple-100', children }) => (
-  <code className={cs('text-2xl font-mono text-purple p-2 rounded', className)}>
+  <code
+    className={cs('text-2xl font-mono text-primary p-2 rounded', className)}
+  >
     {children}
   </code>
 );
@@ -131,7 +201,7 @@ Img.propTypes = {
 };
 
 const BlockQuote = ({ children }) => (
-  <blockquote className="font-bold bg-indigo-200 border-opacity-50 p-4 rounded-md">
+  <blockquote className="font-bold bg-indigo-200 p-4 rounded-md">
     {children}
   </blockquote>
 );

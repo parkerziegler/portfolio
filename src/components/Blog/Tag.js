@@ -6,7 +6,7 @@ const Tag = ({ icon, compact = false, className, children }) => {
   return (
     <div
       className={cs(
-        'text-black font-mono flex items-center self-start border-purple border-solid border-2 rounded-md py-2 h-16',
+        'text-black font-mono flex items-center self-start border-primary border-solid border-2 rounded-md py-2 h-16',
         compact ? 'text-lg px-2' : 'text-xl px-4',
         className
       )}

@@ -24,7 +24,7 @@ const MapTitle = ({ title, link, code, isPortrait = false }) => {
         {title}
       </Heading>
       <aside>
-        <ul className="text-2xl md:text-3xl text-purple font-mono flex flex-col md:flex-row stack-sm md:stack-none md:stack-md-h">
+        <ul className="text-2xl md:text-3xl text-primary font-mono flex flex-col md:flex-row stack-sm md:stack-none md:stack-md-h">
           {link ? (
             <li className="flex items-center with-map justify-end">
               <a href={link} target="_blank" rel="noopener noreferrer">

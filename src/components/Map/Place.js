@@ -25,7 +25,7 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
           }}
         />
         <motion.text
-          className="fill-purple font-sans text-2xl"
+          className="fill-primary font-sans text-2xl"
           ref={placeRef}
           initial={{ opacity: 0 }}
           animate={{
@@ -37,7 +37,7 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
         </motion.text>
       </g>
       <motion.circle
-        className="fill-purple stroke-purple stroke-2"
+        className="fill-primary stroke-primary stroke-2"
         cx={cx}
         cy={cy}
         initial={{ opacity: 0 }}
@@ -48,7 +48,7 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
         r="5"
       />
       <motion.circle
-        className="stroke-purple stroke-2 fill-white pulse"
+        className="stroke-primary stroke-2 fill-white pulse"
         cx={cx}
         cy={cy}
         initial={{ opacity: 0 }}

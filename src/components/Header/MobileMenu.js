@@ -94,7 +94,7 @@ const MobileMenu = React.forwardRef(({ toggle }, ref) => {
         </svg>
       </button>
       <motion.div
-        className="sm:hidden absolute h-screen top-0 left-0 right-0 bottom-0 bg-purple opacity-90 z-10"
+        className="sm:hidden absolute h-screen top-0 left-0 right-0 bottom-0 bg-primary opacity-90 z-10"
         variants={sidebarVariants}
       >
         <motion.ul variants={listVariants} className="pt-40 pl-8 stack-md">

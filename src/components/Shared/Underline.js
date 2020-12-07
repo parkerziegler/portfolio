@@ -12,9 +12,12 @@ const Underline = ({ children }) => {
   return (
     <span
       ref={ref}
-      className={cs('bg-gradient--secondary bg-highlight m-0 font-serif', {
-        ['highlight--primary']: inView
-      })}
+      className={cs(
+        'bg-gradient-to-r from-pink-400 to-yellow-400 bg-highlight m-0 font-serif',
+        {
+          ['highlight--primary']: inView
+        }
+      )}
     >
       {children}
     </span>

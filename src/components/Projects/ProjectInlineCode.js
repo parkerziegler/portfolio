@@ -7,7 +7,7 @@ import { InlineCode } from '../Blog/MDXComponents';
 const ProjectInlineCode = ({ className, children }) => (
   <InlineCode
     className={cs(
-      'bg-transparent text-electric-teal px-0 py-0 text-2xl md:text-3xl',
+      'bg-transparent text-terminal-secondary px-0 py-0 text-2xl md:text-3xl',
       className
     )}
   >

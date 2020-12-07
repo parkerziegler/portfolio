@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cs from 'classnames';
 
 const SkewBg = ({
-  color = 'purple',
+  color = 'primary',
   tiltDirection = 'backward',
   overflow = 'visible'
 }) => {
