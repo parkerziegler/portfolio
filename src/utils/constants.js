@@ -49,7 +49,8 @@ export const LANGUAGES = {
   CSS: { src: '/logos/css-logo.svg', alt: 'CSS Logo' },
   GraphQL: { src: '/logos/graphql-logo.svg', alt: 'GraphQL Logo' },
   WebAssembly: { src: '/logos/wasm-logo.svg', alt: 'WebAssembly Logo' },
-  Rust: { src: '/logos/rust-logo.svg', alt: 'Rust Logo' }
+  Rust: { src: '/logos/rust-logo.svg', alt: 'Rust Logo' },
+  ReScript: { src: '/logos/rescript-logo.svg', alt: 'ReScript Logo' }
 };
 
 export const TOOLS = {
@@ -60,7 +61,8 @@ export const TOOLS = {
   D3: { src: '/logos/d3-logo.svg', alt: 'D3 Logo' },
   Jest: { src: '/logos/jest-logo.svg', alt: 'Jest Logo' },
   Cypress: { src: '/logos/cypress-logo.svg', alt: 'Cypress Logo' },
-  Sass: { src: '/logos/sass-logo.svg', alt: 'Sass Logo' }
+  Sass: { src: '/logos/sass-logo.svg', alt: 'Sass Logo' },
+  Terraform: { src: '/logos/terraform-logo.svg', alt: 'Terraform Logo' }
 };
 
 export const NAV_ITEMS = [
