@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cs from 'classnames';
 
-const SkewBg = ({
-  color = 'primary',
-  tiltDirection = 'backward',
-  overflow = 'visible'
-}) => {
+const SkewBg = ({ tiltDirection = 'backward', overflow = 'visible' }) => {
   return (
     <div
       className={cs(
@@ -20,15 +16,15 @@ const SkewBg = ({
     >
       <div
         className={cs(
-          `relative h-full w-full top-0 left-0 bg-${color} transform`,
+          `relative h-full w-full top-0 left-0 bg-gradient-to-r from-primary to-terminal-secondary transform`,
           { '-skew-y-3 origin-top-right': tiltDirection === 'backward' },
           { 'skew-y-3 origin-top-left': tiltDirection === 'forward' },
           {
-            'md:-translate-y-8':
+            'md:-translate-y-8 xl:-translate-y-10 2xl:-translate-y-12':
               overflow === 'visible' && tiltDirection === 'backward'
           },
           {
-            'md:translate-y-8':
+            'md:translate-y-8 xl:translate-y-10 2xl:translate-y-12':
               overflow === 'visible' && tiltDirection === 'forward'
           }
         )}
@@ -38,7 +34,6 @@ const SkewBg = ({
 };
 
 SkewBg.propTypes = {
-  color: PropTypes.string,
   tiltDirection: PropTypes.oneOf(['forward', 'backward']),
   overflow: PropTypes.oneOf(['visible', 'hidden'])
 };

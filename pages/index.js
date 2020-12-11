@@ -78,7 +78,7 @@ const Index = ({ user }) => {
           </div>
           <Map />
         </Section>
-        <Section className="stack-md">
+        <Section className="stack-md sm:py-24">
           <SkewBg />
           <SectionHeader className="text-white">
             <Underline>What I&apos;m Up To</Underline>
@@ -113,7 +113,7 @@ const Index = ({ user }) => {
             )}
           </PRCardGrid>
         </Section>
-        <Section className="items-center mt-12">
+        <Section className="items-center sm:py-32">
           <div className="md:max-w-3/4 stack-md">
             <SectionHeader>
               <Underline>Tools I Work With</Underline>
