@@ -36,7 +36,7 @@ const SlugAnchor = ({ id, level }) => {
   return (
     <a
       href={`#${id}`}
-      className="absolute left-0 text-current opacity-0 hover:opacity-100 group-hover:opacity-100 transition-opacity duration-300"
+      className="hidden md:inline absolute left-0 text-current opacity-0 hover:opacity-100 group-hover:opacity-100 transition-opacity duration-300"
       style={{
         transform: `translateX(-30px) translateY(${translateY}px)`,
         height,

@@ -1,4 +1,5 @@
 import BlogPost from '../../src/components/Blog/BlogPost';
+import Tweet from '../../src/components/Blog/Tweet';
 import { TAGS } from '../../src/utils/constants';
 
 export const meta = {
@@ -48,7 +49,7 @@ We're also using TypeScript in renature to handle the public-facing API, includi
 
 The first two weeks of the fellowship began with developing the mathematical foundation on which renature will be built, specifically core vector operations like add, sub, mult, div, mag, norm, and lerp. With these in place, we started creating a nice abstraction around requestAnimationFrame to act more or less like Processing's draw loop. My colleague, Max Yinger, and his writings on reactive animations were instrumental in getting this working. With these two core pieces in place, we could start modeling our first force — gravity! Some early experimentation yielded pretty cool results:
 
-<blockquote class="twitter-tweet">
+<Tweet>
   <p lang="en" dir="ltr" data-twitter-embed>
     We&#39;ve been making awesome progress on `renature` (a new physics
     animation library for React) here at{' '}
@@ -59,11 +60,7 @@ The first two weeks of the fellowship began with developing the mathematical fou
     being attracted to a body 50,000 times its size. <a href="https://t.co/d1D9eMqZeW">pic.twitter.com/d1D9eMqZeW</a>
   </p>
   &mdash; parkie-doo (@parker_ziegler) <a href="https://twitter.com/parker_ziegler/status/1204157892061908993?ref_src=twsrc%5Etfw">December 9, 2019</a>
-</blockquote> <script
-  async
-  src="https://platform.twitter.com/widgets.js"
-  charSet="utf-8"
-></script>
+</Tweet>
 
 However, we hit an interesting stumbling block almost right away. In the real world, everything is exerting a gravitational force on everything else, at all times; the force of gravity never stops acting. This doesn't quite fit with the notion of finite animations where we often want to animate a CSS property from a starting state to a finish state. How can we reconcile this dichotomy?
 
