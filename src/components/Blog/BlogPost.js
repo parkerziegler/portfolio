@@ -24,7 +24,7 @@ const BlogPost = ({ title, tags, publishDate, slug, children }) => {
           <article className="flex flex-col stack-md max-w-prose mx-auto min-w-0">
             {children}
           </article>
-          <aside className="flex flex-col flex-shrink-0 w-60">
+          <aside className="hidden md:flex md:flex-col md:flex-shrink-0 md:w-60">
             <Meta
               tags={tags}
               publishDate={publishDate}

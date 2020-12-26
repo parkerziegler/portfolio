@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
 const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
-  const placeRef = React.useRef(null);
+  const placeRef = useRef(null);
   const width = placeRef.current
     ? placeRef.current.getComputedTextLength() + 10
     : 0;

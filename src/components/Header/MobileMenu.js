@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
@@ -61,57 +61,55 @@ const listItemVariants = {
   }
 };
 
-const MobileMenu = React.forwardRef(({ toggle }, ref) => {
-  return (
-    <>
-      <button
-        className="sm:hidden relative z-20"
-        onClick={toggle}
-        ref={ref}
-        aria-label="Open Mobile Menu"
-      >
-        <svg width="23" height="23" viewBox="0 0 23 23">
-          <Path
-            variants={{
-              closed: { d: 'M 2 2.5 L 20 2.5' },
-              open: { d: 'M 3 16.5 L 17 2.5' }
-            }}
-          />
-          <Path
-            d="M 2 9.423 L 20 9.423"
-            variants={{
-              closed: { opacity: 1 },
-              open: { opacity: 0 }
-            }}
-            transition={{ duration: 0.1 }}
-          />
-          <Path
-            variants={{
-              closed: { d: 'M 2 16.346 L 20 16.346' },
-              open: { d: 'M 3 2.5 L 17 16.346' }
-            }}
-          />
-        </svg>
-      </button>
-      <motion.div
-        className="sm:hidden absolute h-screen top-0 left-0 right-0 bottom-0 bg-primary opacity-90 z-10"
-        variants={sidebarVariants}
-      >
-        <motion.ul variants={listVariants} className="pt-40 pl-8 stack-md">
-          {NAV_ITEMS.map(({ route, displayText }) => {
-            return (
-              <motion.li key={route} variants={listItemVariants}>
-                <Link href={route} onClick={toggle} isMobile>
-                  {displayText}
-                </Link>
-              </motion.li>
-            );
-          })}
-        </motion.ul>
-      </motion.div>
-    </>
-  );
-});
+const MobileMenu = forwardRef(({ toggle }, ref) => (
+  <>
+    <button
+      className="sm:hidden relative z-20"
+      onClick={toggle}
+      ref={ref}
+      aria-label="Open Mobile Menu"
+    >
+      <svg width="23" height="23" viewBox="0 0 23 23">
+        <Path
+          variants={{
+            closed: { d: 'M 2 2.5 L 20 2.5' },
+            open: { d: 'M 3 16.5 L 17 2.5' }
+          }}
+        />
+        <Path
+          d="M 2 9.423 L 20 9.423"
+          variants={{
+            closed: { opacity: 1 },
+            open: { opacity: 0 }
+          }}
+          transition={{ duration: 0.1 }}
+        />
+        <Path
+          variants={{
+            closed: { d: 'M 2 16.346 L 20 16.346' },
+            open: { d: 'M 3 2.5 L 17 16.346' }
+          }}
+        />
+      </svg>
+    </button>
+    <motion.div
+      className="sm:hidden absolute h-screen top-0 left-0 right-0 bottom-0 bg-primary opacity-90 z-10"
+      variants={sidebarVariants}
+    >
+      <motion.ul variants={listVariants} className="pt-40 pl-8 stack-md">
+        {NAV_ITEMS.map(({ route, displayText }) => {
+          return (
+            <motion.li key={route} variants={listItemVariants}>
+              <Link href={route} onClick={toggle} isMobile>
+                {displayText}
+              </Link>
+            </motion.li>
+          );
+        })}
+      </motion.ul>
+    </motion.div>
+  </>
+));
 
 MobileMenu.displayName = 'MobileMenu';
 

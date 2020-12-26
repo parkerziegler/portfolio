@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 import SiteTitle from './SiteTitle';
@@ -10,7 +10,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflowY = 'hidden';
     } else {
