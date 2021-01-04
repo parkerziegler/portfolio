@@ -9,8 +9,7 @@ export const maps = [
     alt: 'Transporation Alternatives x Azavea Vision Zero Map',
     width: 2740,
     height: 1640,
-    link:
-      'https://summer-of-maps.github.io/2016-TransAlt-TrafficCrashVisualization/',
+    link: 'https://parkerziegler.github.io/transalt-visionzero-app/',
     code:
       'https://github.com/summer-of-maps/2016-TransAlt-TrafficCrashVisualization',
     shadow: false,
