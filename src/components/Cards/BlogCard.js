@@ -59,7 +59,7 @@ const BlogCard = ({ title, slug, tags = [], introText, date }) => {
                   </Tag>
                 ))}
               </div>
-              <p className="text-2xl font-mono self-end m-2 flex-shrink-0">
+              <p className="text-xl lg:2xl font-mono self-end m-2 flex-shrink-0">
                 {date}
               </p>
             </div>

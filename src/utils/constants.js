@@ -38,6 +38,10 @@ export const TAGS = {
   javascript: {
     icon: '/logos/js-logo.svg',
     tag: 'JavaScript'
+  },
+  typescript: {
+    icon: '/logos/ts-logo.svg',
+    tag: 'TypeScript'
   }
 };
 

@@ -7,7 +7,14 @@ import { useInView } from 'react-intersection-observer';
 import components from './MDXComponents';
 import Meta from './Meta';
 
-const BlogPost = ({ title, tags, publishDate, slug, children }) => {
+const BlogPost = ({
+  title,
+  description,
+  tags,
+  publishDate,
+  slug,
+  children
+}) => {
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -18,6 +25,18 @@ const BlogPost = ({ title, tags, publishDate, slug, children }) => {
     <>
       <Head>
         <title>{title}</title>
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`/thoughts/${slug}/og-image.png`} />
+        <meta property="og:image:alt" content={title} />
+        <meta property="og:image:width" content="1280" />
+        <meta property="og:image:height" content="675" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@parker_ziegler" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`/thoughts/${slug}/og-image.png`} />
       </Head>
       <MDXProvider components={components}>
         <main className="md:flex md:stack-lg-h md:justify-center px-12 py-12">
@@ -50,6 +69,7 @@ const BlogPost = ({ title, tags, publishDate, slug, children }) => {
 
 BlogPost.propTypes = {
   title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       icon: PropTypes.string.isRequired,
