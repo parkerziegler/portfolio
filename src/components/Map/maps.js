@@ -7,8 +7,8 @@ export const maps = [
       'The Road to Vision Zero: Traffic Crashes and Poverty in New York City',
     src: '/maps/ta-vision-zero/ta-vision-zero.png',
     alt: 'Transporation Alternatives x Azavea Vision Zero Map',
-    width: 2740,
-    height: 1640,
+    width: 2786,
+    height: 1824,
     link: 'https://parkerziegler.github.io/transalt-visionzero-app/',
     code:
       'https://github.com/summer-of-maps/2016-TransAlt-TrafficCrashVisualization',
