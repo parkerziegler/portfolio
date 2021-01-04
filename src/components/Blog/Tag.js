@@ -12,11 +12,7 @@ const Tag = ({ icon, compact = false, className, children }) => {
       )}
     >
       {icon.indexOf('/') !== -1 ? (
-        <img
-          src={icon}
-          alt={children}
-          className={cs('mr-2', compact ? 'h-8' : 'h-12')}
-        />
+        <img src={icon} alt={children} className="mr-2 h-8" />
       ) : (
         <span className="text-3xl mr-2">{icon}</span>
       )}

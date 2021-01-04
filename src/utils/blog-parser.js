@@ -12,7 +12,7 @@ import { TAGS } from './constants';
  * A function to replace the meta object with keys double quoted.
  */
 function quoteKeys(meta) {
-  return meta.replace(/title|slug|date|tags/g, (matchedStr) => {
+  return meta.replace(/title|description|slug|date|tags/g, (matchedStr) => {
     return `"${matchedStr}"`;
   });
 }
