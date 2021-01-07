@@ -43,95 +43,106 @@ const contributionsQuery = gql`
   }
 `;
 
-const Index = ({ user }) => {
-  return (
-    <>
-      <Head>
-        <title>Parker Ziegler / Software Engineer and Cartographer</title>
-        <meta
-          name="description"
-          content="Parker Ziegler is a software engineer and cartographer based in Seattle, WA. He works on next generation web technologies, with a focus on animation, graphics, and emerging programming languages."
-        />
-      </Head>
-      <main id="main">
-        <Section className="items-center">
-          <div className="md:max-w-3/4 stack-sm">
-            <SectionHeader>
-              <Underline>Hey, I&apos;m Parker.</Underline>
-            </SectionHeader>
-            <Text>
-              I am a <strong>software engineer</strong> and{' '}
-              <strong>cartographer</strong> based in Seattle, WA. My passions
-              lie at the intersection of software development, map making,
-              storytelling, and community organizing. I currently spend a lot of
-              my time working on{' '}
-              <InlineLink href="https://github.com/parkerziegler">
-                open source tools
-              </InlineLink>{' '}
-              to help others build better software and bring delightful
-              experiences to their communities.
-            </Text>
-            <Text>
-              I also believe <strong>place</strong> shapes every part of who we
-              are. Here are some of the places that have shaped me.
-            </Text>
-          </div>
-          <Map />
-        </Section>
-        <Section className="stack-md sm:py-24">
-          <SkewBg />
-          <SectionHeader className="text-white">
-            <Underline>What I&apos;m Up To</Underline>
+const title = 'Parker Ziegler / Software Engineer and Cartographer';
+const description =
+  'Parker Ziegler is a software engineer and cartographer based in Seattle, WA. He works on next generation web technologies, with a focus on animation, graphics, and emerging programming languages.';
+
+const Index = ({ user }) => (
+  <>
+    <Head>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="/home/og-image.png" />
+      <meta property="og:image:alt" content={title} />
+      <meta property="og:image:width" content="1280" />
+      <meta property="og:image:height" content="675" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content="@parker_ziegler" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content="/home/og-image.png" />
+    </Head>
+    <main id="main">
+      <Section className="items-center">
+        <div className="md:max-w-3/4 stack-sm">
+          <SectionHeader>
+            <Underline>Hey, I&apos;m Parker.</Underline>
           </SectionHeader>
-          <Text className="text-white">
-            I currently work with the wonderful and talented folks at{' '}
-            <InlineLink href="https://formidable.com/">Formidable</InlineLink>,
-            where I contribute to our{' '}
-            <InlineLink href="https://formidable.com/open-source/">
-              open source work
-            </InlineLink>
-            , build software for rad folks, and support my fellow developers in
-            becoming better engineers and kinder people. Here are some of my
-            recent pull requests.
+          <Text>
+            I am a <strong>software engineer</strong> and{' '}
+            <strong>cartographer</strong> based in Seattle, WA. My passions lie
+            at the intersection of software development, map making,
+            storytelling, and community organizing. I currently spend a lot of
+            my time working on{' '}
+            <InlineLink href="https://github.com/parkerziegler">
+              open source tools
+            </InlineLink>{' '}
+            to help others build better software and bring delightful
+            experiences to their communities.
           </Text>
-          <PRCardGrid>
-            {user.pullRequests.nodes.map(
-              ({
-                repository: { nameWithOwner, primaryLanguage },
-                url,
-                title,
-                id
-              }) => (
-                <PRCard
-                  key={id}
-                  nameWithOwner={nameWithOwner}
-                  url={url}
-                  title={title}
-                  primaryLanguage={primaryLanguage}
-                />
-              )
-            )}
-          </PRCardGrid>
-        </Section>
-        <Section className="items-center sm:py-32">
-          <div className="md:max-w-3/4 stack-md">
-            <SectionHeader>
-              <Underline>Tools I Work With</Underline>
-            </SectionHeader>
-            <Text>
-              I love the frontend JavaScript ecosystem and spend most of my days
-              working with these lovely languages and tools.
-            </Text>
-            <div className="flex flex-col sm:flex-row justify-evenly">
-              <LangSection title="Languages" langs={Object.values(LANGUAGES)} />
-              <LangSection title="Tools" langs={Object.values(TOOLS)} />
-            </div>
+          <Text>
+            I also believe <strong>place</strong> shapes every part of who we
+            are. Here are some of the places that have shaped me.
+          </Text>
+        </div>
+        <Map />
+      </Section>
+      <Section className="stack-md sm:py-24">
+        <SkewBg />
+        <SectionHeader className="text-white">
+          <Underline>What I&apos;m Up To</Underline>
+        </SectionHeader>
+        <Text className="text-white">
+          I currently work with the wonderful and talented folks at{' '}
+          <InlineLink href="https://formidable.com/">Formidable</InlineLink>,
+          where I contribute to our{' '}
+          <InlineLink href="https://formidable.com/open-source/">
+            open source work
+          </InlineLink>
+          , build software for rad folks, and support my fellow developers in
+          becoming better engineers and kinder people. Here are some of my
+          recent pull requests.
+        </Text>
+        <PRCardGrid>
+          {user.pullRequests.nodes.map(
+            ({
+              repository: { nameWithOwner, primaryLanguage },
+              url,
+              title,
+              id
+            }) => (
+              <PRCard
+                key={id}
+                nameWithOwner={nameWithOwner}
+                url={url}
+                title={title}
+                primaryLanguage={primaryLanguage}
+              />
+            )
+          )}
+        </PRCardGrid>
+      </Section>
+      <Section className="items-center sm:py-32">
+        <div className="md:max-w-3/4 stack-md">
+          <SectionHeader>
+            <Underline>Tools I Work With</Underline>
+          </SectionHeader>
+          <Text>
+            I love the frontend JavaScript ecosystem and spend most of my days
+            working with these lovely languages and tools.
+          </Text>
+          <div className="flex flex-col sm:flex-row justify-evenly">
+            <LangSection title="Languages" langs={Object.values(LANGUAGES)} />
+            <LangSection title="Tools" langs={Object.values(TOOLS)} />
           </div>
-        </Section>
-      </main>
-    </>
-  );
-};
+        </div>
+      </Section>
+    </main>
+  </>
+);
 
 export async function getStaticProps() {
   const client = createClient({

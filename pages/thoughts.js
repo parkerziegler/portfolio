@@ -17,19 +17,30 @@ const variants = {
   hidden: false
 };
 
+const title = 'Thoughts / Parker Ziegler / Software Engineer and Cartographer';
+const description =
+  'Musings, learnings, and tutorials written by Parker Ziegler, a software engineer and cartographer based in Seattle, WA.';
+
 const Thoughts = ({ posts }) => {
   useScrollToTop();
 
   return (
     <>
       <Head>
-        <title>
-          Thoughts / Parker Ziegler / Software Engineer and Cartographer
-        </title>
-        <meta
-          name="description"
-          content="Musings, learnings, and tutorials written by Parker Ziegler, a software engineer and cartographer based in Seattle, WA."
-        />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/thoughts/og-image.png" />
+        <meta property="og:image:alt" content={title} />
+        <meta property="og:image:width" content="1280" />
+        <meta property="og:image:height" content="675" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@parker_ziegler" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content="/thoughts/og-image.png" />
       </Head>
       <main>
         <Section className="stack-md">

@@ -8,17 +8,28 @@ import Map from '../src/components/Map/Map';
 import { maps } from '../src/components/Map/maps';
 import MapCarousel from '../src/components/Map/MapCarousel';
 
+const title = 'Maps / Parker Ziegler / Software Engineer and Cartographer';
+const description =
+  'Maps created by Parker Ziegler, a software engineer and cartographer based in Seattle, WA.';
+
 const Maps = () => {
   return (
     <>
       <Head>
-        <title>
-          Maps / Parker Ziegler / Software Engineer and Cartographer
-        </title>
-        <meta
-          name="description"
-          content="Maps created by Parker Ziegler, a software engineer and cartographer based in Seattle, WA."
-        />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/maps/og-image.png" />
+        <meta property="og:image:alt" content={title} />
+        <meta property="og:image:width" content="1280" />
+        <meta property="og:image:height" content="675" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@parker_ziegler" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content="/maps/og-image.png" />
       </Head>
       <main>
         <Section className="stack-md">
