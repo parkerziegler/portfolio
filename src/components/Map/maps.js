@@ -7,7 +7,7 @@ export const maps = [
       'The Road to Vision Zero: Traffic Crashes and Poverty in New York City',
     src: '/maps/ta-vision-zero/ta-vision-zero.png',
     alt: 'Transporation Alternatives x Azavea Vision Zero Map',
-    width: 2786,
+    width: 2784,
     height: 1824,
     link: 'https://parkerziegler.github.io/transalt-visionzero-app/',
     code:
@@ -449,8 +449,8 @@ export const maps = [
     src: '/maps/sf-eviction-map/sf-eviction-map.png',
     alt:
       'An interactive map depicting evictions in San Francisco from 1997 to 2015.',
-    width: 2720,
-    height: 1820,
+    width: 2784,
+    height: 1824,
     link: 'http://parkerziegler.github.io/sf-eviction-map/',
     code: 'https://github.com/parkerziegler/sf-eviction-map/',
     shadow: false,
