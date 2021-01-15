@@ -1,0 +1,144 @@
+import BlogPost from '../../src/components/Blog/BlogPost';
+import ObservableNotebook from '../../src/components/Blog/ObservableNotebook';
+import { TAGS } from '../../src/utils/constants';
+
+export const meta = {
+  title: 'Animating Maps by Centroid Sorting',
+  description:
+    'In this post, we look at how to add delightful animations to your maps built in D3.',
+  slug: 'animating-maps-by-centroid-sorting',
+  date: 'Nov. 2, 2020',
+  tags: ['javascript', 'd3', 'observable']
+};
+
+<BlogPost
+  title={meta.title}
+  description={meta.description}
+  tags={[TAGS.javascript, TAGS.d3, TAGS.observable]}
+  publishDate={meta.date} 
+  slug={meta.slug}
+>
+
+
+<ObservableNotebook
+  importNotebook={async () =>
+    await import('@parkerziegler/animating-maps-by-centroid-sorting')
+  }
+/>
+
+# Animating Maps by Centroid Sorting
+
+One of my favorite flourishes when creating new maps is to animate in the individual SVG paths for the areal unit I'm using, be that a state, province, county, or U.S. House District. It gives a pleasant unfolding effect to the experience, a way to settle a map reader into the story you're trying to tell.
+
+A nice pattern to perform these animations is to presort your areal units by (x,y) coordinates of their centroids, and then animate them in with an opacity stagger. A centroid is the center of mass of a geometric object, assuming uniform density; for our purposes, it's more or less the center of the areal unit. `d3`, in combination with `topojson` (a library for encoding topological information on top of GeoJSON), provides us with a great toolbox for deriving the centroid of our areal units, which makes creating these types of animated map experiences a breeze.
+
+## Preparing our Areal Units
+
+Before we think about animating our individual SVG paths for our areal unit of choice, we want to [_topologically clean_](https://medium.com/@mbostock/command-line-cartography-part-3-1158e4c55a1e) them. Standard GeoJSON encoding treats each areal unit as a discrete path stored as a sequence of coordinates, which can have a few negative consequences:
+
+- **Large file sizes** — encoding a lot of (x,y) coordinate pairs at high precision means a lot of bytes.
+- **Redundant boundaries** — if two geographic features share a boundary, such as a state border, that path can be drawn twice. This can lead to small visual artifacts if the borders don't line up cleanly.
+
+To avoid these deficiencies, we can use the `topojson-client` to topologically clean our GeoJSON.
+
+<div className="topojson" />
+
+```javascript
+topojson = require('topojson-client@3');
+```
+
+With `topojson-client` loaded, let's bring in the GeoJSON for our areal units using `d3.json`. In this example, we'll use U.S. states.
+
+<div className="us" />
+
+```javascript
+us = d3.json('https://d3js.org/us-10m.v1.json');
+```
+
+Let's now topologically clean our GeoJSON using [`topojson.feature`](https://github.com/topojson/topojson-client#feature).
+
+<div className="states" />
+
+```javascript
+states = topojson.feature(us, us.objects.states).features;
+```
+
+Awesome, we now have the raw geographic data needed to render the map. Next, we need to convert these features from their real-world geographic representation to SVG paths that `d3` can work with and render.
+
+## D3's `geoPath` Function
+
+`d3` has a great set of APIs for displaying geographic data. The [`geoPath`](https://github.com/d3/d3-geo#geoPath) function is one of the most useful — it returns a geographic path generator for deriving SVG paths from GeoJSON.
+
+<div className="path" />
+
+With this function, we can iterate over our `states` array and generate an SVG path for each state. The path generator returned by `geoPath` also comes with a `centroid` method that returns the centroid for each of our geographic features. This gives us access to an (x,y) coordinate pair in the context of our SVG element's Cartersian coordinate system, which we'll use for sorting our states before we animate them in.
+
+<div className="statesPaths" />
+
+## Sorting and Rendering Features by Centroid
+
+With our SVG paths and centroids in hand, we can now sort and render them in any manner we like. If we wanted to animate the states in from left to right, for example, we could sort by the x coordinate of the centroid!
+
+<div className="statesPathsLTR" />
+
+```javascript
+statesPathsLTR = [...statesPaths].sort((a, b) => a.centroid[0] - b.centroid[0]);
+```
+
+<div className="viewof_replayLTR" />
+
+<div className="statesLTR" />
+
+You'll notice here that we call a `stagger` function in the rendering process; this is just a call to `d3.transition` under the hood, with each state delayed according to its index in the array. This index-based delay, in combination with the pre-sorting by centroid, is what leads to the sequenced fading in effect.
+
+If we wanted to animate the states in a different direction, say from bottom to top, we could sort by the y coordinate of the centroid instead.
+
+<div className="statesPathsBTT" />
+
+```javascript
+statesPathsBTT = [...statesPaths].sort((a, b) => b.centroid[1] - a.centroid[1]);
+```
+
+<div className="viewof_replayBTT" />
+
+<div className="statesBTT" />
+
+Once you have your centroids in hand you can use the power of `Array.prototype.sort` to order your geographic features in almost any way. We can easily animate geographic features diagonally by combining the two sorting methods we used above. This will animate states in from the bottom left to the top right.
+
+<div className="statesPathsDiagonal" />
+
+```javascript
+statesPathsDiagonal = [...statesPaths].sort(
+  (a, b) => a.centroid[0] - b.centroid[0] + (b.centroid[1] - a.centroid[1])
+);
+```
+
+<div className="viewof_replayDiagonal" />
+
+<div className="statesDiagonal" />
+
+I hope this little trick can help draw readers in to your spatial storytelling. I use this own trick on my website [parkie-doo.sh](https://parkie-doo.sh/), combining `d3` with [`framer-motion`](https://www.framer.com/motion/) for a little added flair. Happy mapping!
+
+## Appendix
+
+<div className="stagger" />
+
+```javascript
+stagger = (i) => (path) => {
+  path
+    .transition()
+    .duration(500)
+    .ease(d3.easeLinear)
+    .delay(i * 50)
+    .attr('opacity', 1);
+};
+```
+
+<div className="d3" />
+
+```javascript
+d3 = require('d3@6');
+```
+
+</BlogPost>
+

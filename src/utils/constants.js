@@ -42,6 +42,10 @@ export const TAGS = {
   typescript: {
     icon: '/logos/ts-logo.svg',
     tag: 'TypeScript'
+  },
+  observable: {
+    icon: '/logos/observable-dark-logo.svg',
+    tag: 'Observable'
   }
 };
 

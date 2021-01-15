@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import nightOwl from 'prism-react-renderer/themes/nightOwl';
+import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight';
 import cs from 'classnames';
 import { slug } from 'github-slugger';
 
@@ -128,10 +128,11 @@ InlineCode.propTypes = {
 
 const Code = ({ children, className = '' }) => {
   const language = className.replace(/language-/, '');
+
   return (
     <Highlight
       {...defaultProps}
-      theme={nightOwl}
+      theme={nightOwlLight}
       code={children}
       language={language}
     >
@@ -140,7 +141,7 @@ const Code = ({ children, className = '' }) => {
           className={cs(className, 'rounded-lg text-2xl overflow-auto')}
           style={{ ...style, padding: '20px' }}
         >
-          {tokens.map((line, i) => (
+          {tokens.slice(0, tokens.length - 1).map((line, i) => (
             <div key={i} {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
                 <span key={key} {...getTokenProps({ token, key })} />

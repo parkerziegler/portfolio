@@ -16,6 +16,8 @@
     "@mdx-js/loader": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
     "@next/mdx": "^9.5.3",
+    "@observablehq/runtime": "^4.8.0",
+    "@parkerziegler/animating-maps-by-centroid-sorting": "https://api.observablehq.com/@parkerziegler/animating-maps-by-centroid-sorting.tgz?v=3",
     "autoprefixer": "^10.0.2",
     "classnames": "^2.2.6",
     "d3": "^6.1.1",

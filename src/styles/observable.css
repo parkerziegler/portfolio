@@ -1,0 +1,13 @@
+@import 'https://cdn.jsdelivr.net/npm/@observablehq/inspector@3/dist/inspector.css';
+
+.observablehq {
+  @apply font-serif text-3xl;
+}
+
+.observablehq > button {
+  @apply font-mono text-xl text-primary rounded-md border-solid border-2 border-primary px-4 py-2;
+}
+
+.observablehq > svg {
+  @apply h-full w-full;
+}

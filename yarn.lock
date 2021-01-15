@@ -497,6 +497,32 @@
   resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.0.2.tgz#a9a3daa55385749cd62fb57d4423ca27ae5f4e81"
   integrity sha512-ILc5/BipD7+GBLmtfnQDMG71KLx0fEpVI5kJw8jN9SoeygMrb4auZhCl7gA6QP3oynocYouJ8piLj1Ol80ZvVw==
 
+"@observablehq/inspector@^3.2.0":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@observablehq/inspector/-/inspector-3.2.1.tgz#c953fd95f1b90fac6f39e41965a72cc079d3e465"
+  integrity sha512-U8EASUAUYCQmCprOF9HafRMnU4yyD0IXjRuDwAjBMjVpm36KXPzXWxHcdzlt/3CbIEu8GOhKQqHBAX9pv6OyUQ==
+  dependencies:
+    esm "^3.2.25"
+
+"@observablehq/runtime@4":
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/@observablehq/runtime/-/runtime-4.8.0.tgz#b09ecaa34dce4c6ef58f2822bc8c0a1e648ddea5"
+  integrity sha512-MCWgmzCl1qfLaenod96Vsv2gGm3VJNJsnKn+0dsqBHeLTZR/yF/uofQqHITqlhE94hkQ6RumZyjIuKT9wD9WgA==
+  dependencies:
+    "@observablehq/inspector" "^3.2.0"
+    "@observablehq/stdlib" "^3.4.0"
+
+"@observablehq/stdlib@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@observablehq/stdlib/-/stdlib-3.4.0.tgz#9da9894b91271fc41c0a92c494f62bdbec47135f"
+  integrity sha512-kqc/ls4BeNQ6rUAqn2HmESpnWJewQkbSGXYqfpTUe/39/gKaRmiur7ktw8Mqtp930Yr5B1iovwPeADUlVqAOFg==
+  dependencies:
+    d3-require "^1.2.4"
+
+"@parkerziegler/animating-maps-by-centroid-sorting@https://api.observablehq.com/@parkerziegler/animating-maps-by-centroid-sorting.tgz?v=3":
+  version "224.0.0"
+  resolved "https://api.observablehq.com/@parkerziegler/animating-maps-by-centroid-sorting.tgz?v=3#765cb3384f8b6104e56e51598432570ec27ed16e"
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -1997,6 +2023,11 @@ d3-random@2:
   resolved "https://registry.yarnpkg.com/d3-random/-/d3-random-2.2.2.tgz#5eebd209ef4e45a2b362b019c1fb21c2c98cbb6e"
   integrity sha512-0D9P8TRj6qDAtHhRQn6EfdOtHMfsUWanl3yb/84C4DqpZ+VsgfI5iTVRNRbELCfNvRfpMr8OrqqUTQ6ANGCijw==
 
+d3-require@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/d3-require/-/d3-require-1.2.4.tgz#59afc591d5089f99fecd8c45ef7539e1fee112b3"
+  integrity sha512-8UseEGCkBkBxIMouLMPONUBmU8DUPC1q12LARV1Lk/2Jwa32SVgmRfX8GdIeR06ZP+CG85YD3N13K2s14qCNyA==
+
 d3-scale-chromatic@2:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/d3-scale-chromatic/-/d3-scale-chromatic-2.0.0.tgz#c13f3af86685ff91323dc2f0ebd2dabbd72d8bab"
@@ -2691,6 +2722,11 @@ eslint@^7.8.1:
     table "^5.2.3"
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
+
+esm@^3.2.25:
+  version "3.2.25"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
+  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
 
 espree@^7.3.0:
   version "7.3.0"
