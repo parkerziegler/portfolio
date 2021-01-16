@@ -504,7 +504,7 @@
   dependencies:
     esm "^3.2.25"
 
-"@observablehq/runtime@4":
+"@observablehq/runtime@^4.8.0":
   version "4.8.0"
   resolved "https://registry.yarnpkg.com/@observablehq/runtime/-/runtime-4.8.0.tgz#b09ecaa34dce4c6ef58f2822bc8c0a1e648ddea5"
   integrity sha512-MCWgmzCl1qfLaenod96Vsv2gGm3VJNJsnKn+0dsqBHeLTZR/yF/uofQqHITqlhE94hkQ6RumZyjIuKT9wD9WgA==
