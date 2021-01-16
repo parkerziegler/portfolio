@@ -519,9 +519,9 @@
   dependencies:
     d3-require "^1.2.4"
 
-"@parkerziegler/animating-maps-by-centroid-sorting@https://api.observablehq.com/@parkerziegler/animating-maps-by-centroid-sorting.tgz?v=3":
-  version "224.0.0"
-  resolved "https://api.observablehq.com/@parkerziegler/animating-maps-by-centroid-sorting.tgz?v=3#765cb3384f8b6104e56e51598432570ec27ed16e"
+"@parkerziegler/animating-maps-by-centroid-sorting@file:./notebooks/animating-maps-by-centroid-sorting.tgz":
+  version "225.0.0"
+  resolved "file:./notebooks/animating-maps-by-centroid-sorting.tgz#ce0b3937b73ad3287556ea0c7fb78a22737a6dff"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
