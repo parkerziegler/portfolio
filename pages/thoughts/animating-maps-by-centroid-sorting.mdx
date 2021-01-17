@@ -28,6 +28,8 @@ export const meta = {
 
 # Animating Maps by Centroid Sorting
 
+> This post comes originally from a notebook of mine [on Observable](https://observablehq.com/). To view it in its original context — and with interactive editing — check it out on [my Observable page](https://observablehq.com/@parkerziegler/animating-maps-by-centroid-sorting).
+
 One of my favorite flourishes when creating new maps is to animate in the individual SVG paths for the areal unit I'm using, be that a state, province, county, or U.S. House District. It gives a pleasant unfolding effect to the experience, a way to settle a map reader into the story you're trying to tell.
 
 A nice pattern to perform these animations is to presort your areal units by (x,y) coordinates of their centroids, and then animate them in with an opacity stagger. A centroid is the center of mass of a geometric object, assuming uniform density; for our purposes, it's more or less the center of the areal unit. `d3`, in combination with `topojson` (a library for encoding topological information on top of GeoJSON), provides us with a great toolbox for deriving the centroid of our areal units, which makes creating these types of animated map experiences a breeze.
@@ -71,9 +73,21 @@ Awesome, we now have the raw geographic data needed to render the map. Next, we 
 
 <div className="path" />
 
+```javascript
+path = d3.geoPath();
+```
+
 With this function, we can iterate over our `states` array and generate an SVG path for each state. The path generator returned by `geoPath` also comes with a `centroid` method that returns the centroid for each of our geographic features. This gives us access to an (x,y) coordinate pair in the context of our SVG element's Cartersian coordinate system, which we'll use for sorting our states before we animate them in.
 
 <div className="statesPaths" />
+
+```javascript
+statesPaths = states.map((feature) => ({
+  id: feature.id,
+  d: path(feature),
+  centroid: path.centroid(feature)
+}));
+```
 
 ## Sorting and Rendering Features by Centroid
 
@@ -89,6 +103,29 @@ statesPathsLTR = [...statesPaths].sort((a, b) => a.centroid[0] - b.centroid[0]);
 
 <div className="statesLTR" />
 
+```
+statesLTR = {
+  replayLTR;
+  return svg`
+    <svg width="960" height="600" viewBox="0 0 960 600">
+      <g>
+      ${statesPathsLTR.map((path, i) => {
+          const node =
+            d3.select(
+              svg`<path d=${path.d} fill="steelblue" fill-opacity="0.1" stroke="steelblue" opacity="0" />`
+            )
+              .call(stagger(i))
+              .node();
+
+          return node;
+        }
+      )}
+      </g>
+    </svg>
+  `
+};
+```
+
 You'll notice here that we call a `stagger` function in the rendering process; this is just a call to `d3.transition` under the hood, with each state delayed according to its index in the array. This index-based delay, in combination with the pre-sorting by centroid, is what leads to the sequenced fading in effect.
 
 If we wanted to animate the states in a different direction, say from bottom to top, we could sort by the y coordinate of the centroid instead.
@@ -103,6 +140,28 @@ statesPathsBTT = [...statesPaths].sort((a, b) => b.centroid[1] - a.centroid[1]);
 
 <div className="statesBTT" />
 
+```
+statesBTT = {
+  replayBTT;
+  return svg`
+    <svg width="960" height="600" viewBox="0 0 960 600">
+      <g>
+      ${statesPathsBTT.map((path, i) => {
+          const node =
+            d3.select(
+              svg`<path d=${path.d} fill="steelblue" fill-opacity="0.1" stroke="steelblue" opacity="0" />`
+            )
+              .call(stagger(i))
+              .node();
+          return node;
+        }
+      )}
+      </g>
+    </svg>
+  `
+};
+```
+
 Once you have your centroids in hand you can use the power of `Array.prototype.sort` to order your geographic features in almost any way. We can easily animate geographic features diagonally by combining the two sorting methods we used above. This will animate states in from the bottom left to the top right.
 
 <div className="statesPathsDiagonal" />
@@ -116,6 +175,28 @@ statesPathsDiagonal = [...statesPaths].sort(
 <div className="viewof_replayDiagonal" />
 
 <div className="statesDiagonal" />
+
+```
+statesDiagonal = {
+  replayDiagonal;
+  return svg`
+    <svg width="960" height="600" viewBox="0 0 960 600">
+      <g>
+      ${statesPathsDiagonal.map((path, i) => {
+          const node =
+            d3.select(
+              svg`<path d=${path.d} fill="steelblue" fill-opacity="0.1" stroke="steelblue" opacity="0" />`
+            )
+              .call(stagger(i))
+              .node();
+          return node;
+        }
+      )}
+      </g>
+    </svg>
+  `
+};
+```
 
 I hope this little trick can help draw readers in to your spatial storytelling. I use this own trick on my website [parkie-doo.sh](https://parkie-doo.sh/), combining `d3` with [`framer-motion`](https://www.framer.com/motion/) for a little added flair. Happy mapping!
 
