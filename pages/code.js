@@ -293,7 +293,7 @@ const Code = ({ repositories }) => {
           </div>
         </Section>
         <Section className="stack-lg">
-          <SkewBg tiltDirection="forward" overflow="hidden" />
+          <SkewBg tiltDirection="forward" overflow="hidden" asGradient />
           <SectionHeader className="text-white">
             <Underline>Projects</Underline>
           </SectionHeader>

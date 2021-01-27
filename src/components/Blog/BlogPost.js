@@ -39,7 +39,7 @@ const BlogPost = ({
         <meta name="twitter:image" content={`/thoughts/${slug}/og-image.png`} />
       </Head>
       <MDXProvider components={components}>
-        <main className="md:flex md:stack-lg-h md:justify-center px-8 sm:px-32 md:px-40 sm:py-16">
+        <main className="md:flex md:stack-lg-h md:justify-center px-8 sm:px-32 md:px-40 py-12 sm:py-16">
           <article className="flex flex-col stack-md max-w-prose mx-auto min-w-0">
             {children}
           </article>
