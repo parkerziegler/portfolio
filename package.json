@@ -18,6 +18,7 @@
     "@next/mdx": "^9.5.3",
     "@observablehq/runtime": "^4.8.0",
     "@parkerziegler/animating-maps-by-centroid-sorting": "file:./notebooks/animating-maps-by-centroid-sorting.tgz",
+    "@parkerziegler/playing-with-the-collatz-conjecture": "file:./notebooks/playing-with-the-collatz-conjecture.tgz",
     "autoprefixer": "^10.0.2",
     "classnames": "^2.2.6",
     "d3": "^6.1.1",
@@ -52,9 +53,10 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "prettier": "^2.1.1",
     "prop-types": "^15.7.2",
+    "rehype-katex": "^4.0.0",
     "remark": "^12.0.1",
-    "remark-mdx": "^1.6.16",
-    "sharp": "^0.26.0",
+    "remark-math": "^3.0.1",
+    "remark-mdx": "^1.6.22",
     "to-vfile": "^6.1.0"
   }
 }

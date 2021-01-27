@@ -1,5 +1,6 @@
 @import 'https://cdn.jsdelivr.net/npm/@observablehq/inspector@3/dist/inspector.css';
 
+/* Observable overrides */
 .observablehq {
   @apply font-serif text-3xl;
 }
@@ -10,4 +11,9 @@
 
 .observablehq > svg {
   @apply h-full w-full;
+}
+
+/* KaTeX overrides */
+.math {
+  @apply text-3xl;
 }

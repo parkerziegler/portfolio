@@ -1,0 +1,529 @@
+import BlogPost from '../../src/components/Blog/BlogPost';
+import ObservableNotebook from '../../src/components/Blog/ObservableNotebook';
+import { TAGS } from '../../src/utils/constants';
+
+export const meta = {
+  title: 'Playing with the Collatz Conjecture',
+  description:
+    'In this post, I dive into visualizing the Collatz conjecture, one of my favorite problems in mathematics.',
+  slug: 'playing-with-the-collatz-conjecture',
+  date: 'Jan. 8, 2021',
+  tags: ['javascript', 'd3', 'observable']
+};
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+  integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X"
+  crossOrigin="anonymous"
+/>
+
+<BlogPost
+  title={meta.title}
+  description={meta.description}
+  tags={[TAGS.javascript, TAGS.d3, TAGS.observable]}
+  publishDate={meta.date} 
+  slug={meta.slug}
+>
+
+
+<ObservableNotebook
+  importNotebook={async () =>
+    await import('@parkerziegler/playing-with-the-collatz-conjecture')
+  }
+/>
+
+# Playing with the Collatz Conjecture
+
+It was a cold New Year's Eve and I was sitting at my friend Louis' dining room table in my hometown of Northampton, MA. We were both back in town for a bit from our respective locales — me from Seattle and him on a break from his Math Ph.D. at Rutgers University. Louis is one of those friends whose love for the quirky, bizarre world of mathematics has brought so much color to my life. He has a knack for making complex things simple, a trait I deeply admire. On this particular night, a few hours after the 🍾 had been popped and most folks had gone to bed, he introduced me to a tricky problem he'd been researching called the [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture).
+
+The Collatz conjecture is one of my favorite problems in mathematics because its simplicity belies its curious complexity; the conjecture has escaped being proven by mathematicians for more than 80 years.
+
+In this piece, I want to take you on a little journey inside the Collatz conjecture, looking at three different visualizations that can help illuminate this beautiful sequence 💡.
+
+## What is the Collatz Conjecture?
+
+In my experience, the best way to understand the Collatz conjecture is to work through an example before approaching the formal definition. First things first, the conjecture asks us to start with any arbitrary positive integer n. Let's use 21 for this example.
+
+$$
+let\hspace{1mm} n = 21
+$$
+
+The Collatz conjecture continues that if `n` is _odd_ we should multiply it by 3 and add 1:
+
+$$
+n_{next} = 3n + 1
+$$
+
+and that if it is _even_ we should divide it by 2:
+
+$$
+n_{next} = n / 2
+$$
+
+Repeating these computations, The conjecture states that, regardless of the integer we started with, **we will always converge to 1**. To make this a bit clearer, let's see what this process looks like for `n = 21`:
+
+$$
+n = 21\\
+n_{next} = 3(21) + 1 = 64\\
+n_{next} = 64/2 = 32\\
+n_{next} = 32/2 = 16\\
+n_{next} = 16/2 = 8\\
+n_{next} = 8/2 = 4\\
+n_{next} = 4/2 = 2\\
+n_{next} = 2/2 = 1
+$$
+
+This isn't a particularly interesting case — we pretty quickly hit an integer (64) which cascades to 1. Let's look at a more interesting case starting with a number smaller than 21, say 9.
+
+$$
+n = 9\\
+n_{next} = 3(9) + 1 = 28\\
+n_{next} = 28 / 2 = 14\\
+n_{next} = 14 / 2 = 7\\
+n_{next} = 3(7) + 1 = 22\\
+n_{next} = 22 / 2 = 11\\
+n_{next} = 3(11) + 1 = 34\\
+n_{next} = 34 / 2 = 17\\
+n_{next} = 3(17) + 1 = 52\\
+n_{next} = 52 / 2 = 26\\
+n_{next} = 26 / 2 = 13\\
+n_{next} = 3(13) + 1 = 40\\
+n_{next} = 40 / 2 = 20\\
+n_{next} = 20 / 2 = 10\\
+n_{next} = 10 / 2 = 5\\
+n_{next} = 3(5) + 1 = 16\\
+n_{next} = 16 / 2 = 8\\
+n_{next} = 8/2 = 4\\
+n_{next} = 4/2 = 2\\
+n_{next} = 2/2 = 1
+$$
+
+This is a bit more interesting — we see that the value of `n` fluctuates up and down several times, descending from the `n / 2` operations and ascending from the `3n + 1` operations. It's also intriguing that starting from 9 took a full **19** iterations to reach 1, while starting from 21 only took **7**. That's a big difference! This metric of iterations to reach 1 is known as an integer's _**stopping time**_.
+
+## Visualizing Stopping Time with a Scatterplot
+
+The canonical visualization of the Collatz conjecture is a scatterplot where the x-coordinate of each point represents the starting value, `n`, and the y-coordinate represents its stopping time. To generate this data, we'll first need to implement the Collatz conjecture in code.
+
+There are a few different ways to implement the conjecture — I'm personally partial to the following recursive implementation.
+
+<div className="collatz" />
+
+```javascript
+function collatz(n, stoppingTime = 0) {
+  // Base case, n has reached 1.
+  if (n === 1) {
+    return stoppingTime;
+  }
+
+  // Recursive case – n is even.
+  if (n % 2 === 0) {
+    return collatz(n / 2, stoppingTime + 1);
+  }
+
+  // Recursive case – n is odd.
+  return collatz(3 * n + 1, stoppingTime + 1);
+}
+```
+
+Let's use our implementation to generate x-y pairs for the first 10000 values of `n`. We'll then use `d3` to render this data as a scatterplot.
+
+<div className="dataScatterplot" />
+
+```javascript
+dataScatterplot = new Array(10000)
+  .fill()
+  .map((_, i) => ({ x: i + 1, y: collatz(i + 1, 0) }));
+```
+
+<div className="collatzScatterplot" />
+
+```javascript
+collatzScatterplot = {
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height]);
+
+  // Define scales.
+  const x = d3.scaleLinear()
+    .domain(d3.extent(dataScatterplot, (d) => d.x))
+    .rangeRound([margin.left, width - margin.right]);
+
+  const y = d3.scaleLinear()
+    .domain(d3.extent(dataScatterplot, (d) => d.y))
+    .rangeRound([height - margin.bottom, margin.top]);
+
+  // Generate the scatterplot points.
+  svg.append("g")
+    .selectAll("circle")
+    .data(dataScatterplot)
+    .join("circle")
+      .attr("cx", (d) => x(d.x))
+      .attr("cy", (d) => y(d.y))
+      .attr("fill", "steelblue")
+      .attr("r", 3);
+
+  // Define axes.
+  const xAxis = svg.append("g")
+    .attr("transform", `translate(0, ${height - 35})`)
+    .call(d3.axisBottom(x).tickSizeOuter(0));
+
+  xAxis.append("text")
+    .attr("x", width - margin.right)
+    .attr("y", -10)
+    .attr("fill", "currentColor")
+    .attr("text-anchor", "end")
+    .attr("font-size", "0.75rem")
+    .attr("font-weight", "bold")
+    .attr("font-family", "'Helvetica Neue', sans-serif")
+    .text("Starting value (n)");
+
+  const yAxis = svg.append("g")
+    .attr("transform", `translate(${margin.left - 5}, 0)`)
+    .call(d3.axisLeft(y).tickSizeOuter(0));
+
+  yAxis.select(".tick:last-of-type text")
+    .clone()
+    .attr("x", 10)
+    .attr("text-anchor", "start")
+    .attr("font-weight", "bold")
+    .attr("font-size", "0.75rem")
+    .attr("font-family", "'Helvetica Neue', sans-serif")
+    .text("Stopping time");
+
+  svg.selectAll(".tick line")
+    .remove();
+
+  return svg.node();
+}
+```
+
+Looking at this initial visualization, a few interesting trends stick out:
+
+- There's an interesting "banding" effect, where clumps of `n` values take a similar number of computations to reach 0.
+- The "bands" can be interrupted by adjacent values of `n` that have either a very large or very small stopping time.
+- Even as we reach high values of `n`, stopping times can remain quite small. For example, the integer 9248 has a stopping time of just **34**!
+- Likewise, even small values of `n` can have large stopping times. For example, the integer 27 has a stopping time of **111**!
+
+```javascript
+collatz(9248); // 34
+```
+
+```javascript
+collatz(27); // 111
+```
+
+## Visualizing the Distribution of Stopping Times
+
+While the scatterplot above can give us a basic sense of the relationship of `n` to stopping time, it's hard to draw any larger conclusions about the nature of the sequence. We can improve this by looking at a histogram of stopping times, observing which stopping times appear most frequently.
+
+<div className="dataHistogram" />
+
+```javascript
+dataHistogram = new Array(10000).fill().map((_, i) => collatz(i + 1, 0));
+```
+
+<div className="collatzHistogram" />
+
+```javascript
+collatzHistogram = {
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height]);
+
+  const max = d3.max(dataHistogram);
+
+  // Generate a threshold for each stopping time value.
+  const thresholds = [];
+  for (let i = 0; i <= max; i++) {
+    thresholds.push(i);
+  }
+
+  // Apply the data to the thresholds.
+  const bins = d3.bin().thresholds(thresholds)(dataHistogram);
+
+  // Define scales.
+  const x = d3.scaleLinear()
+    .domain([bins[0].x0, bins[bins.length - 1].x1])
+    .range([margin.left, width - margin.right]);
+
+  const y = d3.scaleLinear()
+    .domain([0, d3.max(bins, d => d.length)]).nice()
+    .range([height - margin.bottom, margin.top]);
+
+  // Generate bars for the histogram.
+  svg.append("g")
+    .attr("fill", "steelblue")
+    .selectAll("rect")
+    .data(bins)
+    .join("rect")
+      .attr("x", (d) => x(d.x0) + 1)
+      .attr("width", (d) => Math.max(0, x(d.x1) - x(d.x0) - 1))
+      .attr("y", (d) => y(d.length))
+      .attr("height", (d) => y(0) - y(d.length));
+
+  // Generate axes.
+  const xAxis = svg.append("g")
+    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
+
+  xAxis.append("text")
+    .attr("x", width - margin.right)
+    .attr("y", -15)
+    .attr("fill", "currentColor")
+    .attr("font-weight", "bold")
+    .attr("font-size", "0.75rem")
+    .attr("font-weight", "bold")
+    .attr("font-family", "'Helvetica Neue', sans-serif")
+    .attr("text-anchor", "end")
+    .text("Stopping time");
+
+  const yAxis = svg.append("g")
+    .attr("transform", `translate(${margin.left}, 0)`)
+    .call(d3.axisLeft(y).tickSizeOuter(0))
+
+  yAxis.select(".tick:last-of-type text")
+    .clone()
+    .attr("x", 10)
+    .attr("text-anchor", "start")
+    .attr("font-weight", "bold")
+    .attr("font-size", "0.75rem")
+    .attr("font-family", "'Helvetica Neue', sans-serif")
+    .text("Number of starting values (n) in bin");
+
+  svg.selectAll(".tick line")
+    .remove();
+
+  return svg.node();
+}
+```
+
+What's most fascinating to me is the Collatz sequence yields something approaching a bimodal distribution. There's a peak in the mid-50 range, and a second small peak in the mid-130 range. The granularity of the histogram reveals another interesting observation. We find cases where a _lot_ of numbers have a stopping time of a particular value, but the adjacent stopping time only contains a few numbers. For example, there are only **7** integers that have a stopping time of 128, but **121** that have a stopping time of its neighbor, 129 😮.
+
+To get a better sense of the overall distribution without these (interesting) fluctuations, we can increase the size of the bins. Let's see what the distribution looks like with bins of 5 (i.e. stopping times from 0-4, 5-9, 10-14, etc. would be placed in a single bin).
+
+<div className="collatzHistogramBin5" />
+
+```javascript
+collatzHistogramBin5 = {
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height]);
+
+  const max = d3.max(dataHistogram);
+
+  // Generate a threshold for each stopping time value.
+  const thresholds = [];
+  for (let i = 0; i <= max; i+=5) {
+    thresholds.push(i);
+  }
+
+  // Apply the data to the thresholds.
+  const bins = d3.bin().thresholds(thresholds)(dataHistogram);
+
+  // Define scales.
+  const x = d3.scaleLinear()
+    .domain([bins[0].x0, bins[bins.length - 1].x1])
+    .range([margin.left, width - margin.right]);
+
+  const y = d3.scaleLinear()
+    .domain([0, d3.max(bins, d => d.length)]).nice()
+    .range([height - margin.bottom, margin.top]);
+
+  // Generate bars for the histogram.
+  svg.append("g")
+    .attr("fill", "steelblue")
+    .selectAll("rect")
+    .data(bins)
+    .join("rect")
+      .attr("x", (d) => x(d.x0) + 1)
+      .attr("width", (d) => Math.max(0, x(d.x1) - x(d.x0) - 1))
+      .attr("y", (d) => y(d.length))
+      .attr("height", (d) => y(0) - y(d.length));
+
+  // Generate axes.
+  const xAxis = svg.append("g")
+    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
+
+  xAxis.append("text")
+    .attr("x", width - margin.right)
+    .attr("y", -15)
+    .attr("fill", "currentColor")
+    .attr("font-weight", "bold")
+    .attr("font-size", "0.75rem")
+    .attr("font-weight", "bold")
+    .attr("font-family", "'Helvetica Neue', sans-serif")
+    .attr("text-anchor", "end")
+    .text("Stopping time");
+
+  const yAxis = svg.append("g")
+    .attr("transform", `translate(${margin.left}, 0)`)
+    .call(d3.axisLeft(y).tickSizeOuter(0))
+
+  yAxis.select(".tick:last-of-type text")
+    .clone()
+    .attr("x", 10)
+    .attr("text-anchor", "start")
+    .attr("font-weight", "bold")
+    .attr("font-size", "0.75rem")
+    .attr("font-family", "'Helvetica Neue', sans-serif")
+    .text("Number of starting values (n) in bin");
+
+  svg.selectAll(".tick line")
+    .remove();
+
+  return svg.node();
+}
+```
+
+Now our bimodal distribution comes through even more clearly. Beautiful!
+
+## Visualizing the "Hailstone Numbers" ⛈️
+
+The Collatz sequence is sometimes referred to as the ["hailstone sequence" or "hailstone numbers"](https://mathworld.wolfram.com/HailstoneNumber.html), because the values computed by the sequence often ascend and descend multiple times before converging to 1. This behavior can be seen beautifully by plotting the relationship between the iteration count and the computed value for a given starting value `n`. In the graph below, we plot this relationship for the first 100 numbers in the Collatz sequence. (Click the Replay button to watch the ascent and descent of each number, i.e. the "hailstones").
+
+<div className="dataHailstone" />
+
+```javascript
+dataHailstone = new Array(100).fill().reduce((acc, _, i) => {
+  const line = [];
+
+  let currentN = i + 1;
+
+  function collatz(n, iteration) {
+    line.push({ value: n, iteration: iteration });
+
+    if (n === 1) {
+      return line;
+    }
+
+    if (n % 2 === 0) {
+      return collatz(n / 2, iteration + 1);
+    }
+
+    return collatz(3 * n + 1, iteration + 1);
+  }
+
+  return [...acc, collatz(currentN, 0)];
+}, []);
+```
+
+<div className="viewof_replay" />
+
+<div className="collatzHailstone" />
+
+```javascript
+collatzHailstone = {
+  replay;
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height]);
+
+  const x = d3.scaleLinear()
+    .domain(d3.extent(dataHailstone.flat().map((d) => d.iteration)))
+    .range([margin.left, width - margin.right]);
+
+  const y = d3.scaleLinear()
+    .domain(d3.extent(dataHailstone.flat().map((d) => d.value)))
+    .range([height - margin.top, margin.bottom]);
+
+  const xAxis = svg.append("g")
+    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
+
+  xAxis.append("text")
+    .attr("x", width - margin.right)
+    .attr("y", -15)
+    .attr("fill", "currentColor")
+    .attr("font-weight", "bold")
+    .attr("font-size", "0.75rem")
+    .attr("font-weight", "bold")
+    .attr("font-family", "'Helvetica Neue', sans-serif")
+    .attr("text-anchor", "end")
+    .text("Iteration Count");
+
+  const yAxis = svg.append("g")
+    .attr("transform", `translate(${margin.left}, 0)`)
+    .call(d3.axisLeft(y).tickSizeOuter(0))
+
+  yAxis.select(".tick:last-of-type text")
+    .clone()
+    .attr("x", 10)
+    .attr("text-anchor", "start")
+    .attr("font-weight", "bold")
+    .attr("font-size", "0.75rem")
+    .attr("font-family", "'Helvetica Neue', sans-serif")
+    .text("Computation Value");
+
+  svg.selectAll(".tick line")
+    .remove();
+
+  const paths = dataHailstone.map((datum) => {
+    const line = d3.line()
+      .curve(d3.curveBasis)
+      .x((d) => x(d.iteration))
+      .y((d) => y(d.value));
+
+    return line(datum);
+  });
+
+  svg.append("g")
+    .selectAll(".line")
+    .remove()
+    .data(paths)
+    .join("path")
+      .attr("class", ".line")
+      .attr("d", d => d)
+      .attr("stroke", "steelblue")
+      .attr("fill", "none")
+      .attr("stroke-miterlimit", "1")
+      .attr("stroke-dasharray", "0,1")
+    .call(reveal);
+
+  return svg.node();
+}
+```
+
+<div className="reveal" />
+
+```javascript
+reveal = (path) =>
+  path.each(function (p, i) {
+    d3.select(this)
+      .transition()
+      .delay(i * 500)
+      .duration(500)
+      .attrTween('stroke-dasharray', function () {
+        const length = this.getTotalLength();
+        return d3.interpolate(`0,${length}`, `${length},${length}`);
+      });
+  });
+```
+
+This is one of my favorite visualizations of the Collatz sequence, because it displays the "hailstone" effect so well; the [index staggered animation delay](https://github.com/d3/d3-transition#transition_delay) also helps bring to life the rapid ascents and descents.
+
+As you watch the animation, watch first for `n = 27`, which takes a full **111** computations to reach 1, climbing up to a high of 9232 before cascading down. This will be the first line to really play out the "hailstone" behavior, and you'll see more lines dart across your screen as `n` increases.
+
+## Conclusion
+
+The Collatz conjecture is one of the most fascinating problems in mathematics today, and one of the most intriguing to visualize. There are plenty of other great ways to visualize the Collatz sequence — I encourage you to search around Observable for other great examples.
+
+## Appendix
+
+<div className="height" />
+
+```javascript
+height = 600;
+```
+
+<div className="margin" />
+
+```javascript
+margin = { top: 40, left: 60, right: 40, bottom: 40 };
+```
+
+<div className="d3" />
+
+```javascript
+d3 = require('d3@6');
+```
+
+</BlogPost>
+
