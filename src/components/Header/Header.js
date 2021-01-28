@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+import { NAV_ITEMS } from '../../utils/constants';
+
 import SiteTitle from './SiteTitle';
 import Link from './Link';
 import MobileMenu from './MobileMenu';
-import { NAV_ITEMS } from '../../utils/constants';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

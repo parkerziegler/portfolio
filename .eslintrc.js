@@ -3,12 +3,21 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
     'plugin:prettier/recommended'
   ],
   plugins: ['react-hooks', 'jsx-a11y', 'prettier'],
   rules: {
     'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
-    'no-magic-numbers': 'off'
+    'no-magic-numbers': 'off',
+    'import/newline-after-import': 2,
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always'
+      }
+    ]
   },
   settings: {
     react: {

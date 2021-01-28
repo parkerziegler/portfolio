@@ -1,4 +1,5 @@
 import flowRight from 'lodash.flowright';
+
 import { TAGS } from './constants';
 
 /**

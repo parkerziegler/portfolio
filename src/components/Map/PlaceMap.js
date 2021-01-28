@@ -1,7 +1,6 @@
-/* eslint-disable no-magic-numbers */
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import * as d3 from 'd3';
-import * as topojson from 'topojson';
+import { feature } from 'topojson';
 import { motion } from 'framer-motion';
 
 import Place from './Place';
@@ -28,7 +27,7 @@ const Map = () => {
 
     try {
       const us = await d3.json('https://d3js.org/us-10m.v1.json');
-      const states = topojson.feature(us, us.objects.states).features;
+      const states = feature(us, us.objects.states).features;
       const geoPaths = states.map((feature) => ({
         id: feature.id,
         d: path(feature),

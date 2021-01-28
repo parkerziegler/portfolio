@@ -2,8 +2,9 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
-import Link from './Link';
 import { NAV_ITEMS } from '../../utils/constants';
+
+import Link from './Link';
 
 const Path = (props) => (
   <motion.path

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import InlineLink from '../Shared/InlineLink';
 
 export const maps = [

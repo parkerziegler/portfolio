@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import Image from 'next/image';
 import cs from 'classnames';
 
-import MapTitle from './MapTitle';
 import Text from '../Shared/Text';
+
+import MapTitle from './MapTitle';
 
 const MapThumbnail = ({
   src,
