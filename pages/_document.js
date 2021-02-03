@@ -14,14 +14,11 @@ export default class Document extends NextDocument {
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta name="theme-color" content="#7b16ff" />
           {this.props.styleTags}
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap"
             rel="stylesheet"
           />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
-            rel="stylesheet"
-          ></link>
           <link
             href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"
             rel="stylesheet"

@@ -20,14 +20,14 @@ const PRCard = ({ nameWithOwner, url, title, primaryLanguage }) => (
       damping: 12
     }}
   >
-    <div className="bg-gradient--primary flex p-2 m-auto rounded-lg font-mono h-full w-full shadow-lg">
-      <div className="flex flex-col p-4 rounded-md bg-white flex-auto overflow-auto">
-        <p className="mb-4 block text-2xl font-bold underline">
+    <div className="bg-radial bg-radial--white flex p-2 m-auto rounded-lg font-mono h-full w-full shadow-lg">
+      <div className="flex flex-col p-4 rounded-md flex-auto overflow-auto">
+        <p className="block text-2xl font-bold underline bg-white mb-4 px-4 py-2 rounded-sm">
           {nameWithOwner}
         </p>
-        <p className="mb-4 text-2xl">{title}</p>
+        <p className="text-2xl bg-white mb-4 px-4 py-2 rounded-sm">{title}</p>
         {primaryLanguage ? (
-          <div className="flex items-end stack-sm-h mt-auto py-2">
+          <div className="flex items-end self-start stack-sm-h mt-auto bg-white px-4 py-2 rounded-sm">
             <img
               src={LANGUAGES[primaryLanguage.name].src}
               alt={LANGUAGES[primaryLanguage.name].alt}

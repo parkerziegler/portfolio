@@ -15,12 +15,16 @@ const MapThumbnail = ({
   isPortrait = false
 }) => {
   const thumbnailNode = useRef(null);
+  console.log(selectedSrc === src);
 
   return (
     <div
       className={cs(
         'h-32 md:h-64 object-cover saturate cursor-pointer flex-shrink-0',
-        isPortrait ? 'w-24 md:w-48' : 'w-40 md:w-80'
+        isPortrait ? 'w-24 md:w-48' : 'w-40 md:w-80',
+        {
+          saturated: selectedSrc === src
+        }
       )}
       ref={thumbnailNode}
     >
@@ -41,8 +45,6 @@ const MapThumbnail = ({
             inline: 'start'
           });
         }}
-        className="object-contain"
-        style={selectedSrc === src ? { filter: 'saturate(1)' } : {}}
       />
     </div>
   );

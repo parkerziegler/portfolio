@@ -7,7 +7,6 @@ import cs from 'classnames';
 import { slug } from 'github-slugger';
 
 import SectionHeader from '../Shared/SectionHeader';
-import Underline from '../Shared/Underline';
 import Text from '../Shared/Text';
 import InlineLink from '../Shared/InlineLink';
 import Heading from '../Shared/Heading';
@@ -54,9 +53,7 @@ SlugAnchor.propTypes = {
 };
 
 const H1 = ({ children }) => (
-  <SectionHeader className="mb-8">
-    <Underline>{children}</Underline>
-  </SectionHeader>
+  <SectionHeader className="mb-8">{children}</SectionHeader>
 );
 
 H1.propTypes = {

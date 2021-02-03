@@ -11,7 +11,6 @@ module.exports = {
       },
       fontFamily: {
         serif: "'Zilla Slab', serif",
-        sans: "'Inter', sans-serif",
         mono: "'DM Mono', monospace"
       },
       maxWidth: {

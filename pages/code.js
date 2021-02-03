@@ -8,7 +8,6 @@ import fetch from 'isomorphic-unfetch';
 
 import Section from '../src/components/Shared/Section';
 import SectionHeader from '../src/components/Shared/SectionHeader';
-import Underline from '../src/components/Shared/Underline';
 import SkewBg from '../src/components/Shared/SkewBg';
 import Text from '../src/components/Shared/Text';
 import InlineLink from '../src/components/Shared/InlineLink';
@@ -201,9 +200,7 @@ const Code = ({ repositories }) => {
       </Head>
       <main>
         <Section className="stack-md">
-          <SectionHeader>
-            <Underline>Featured Open Source</Underline>
-          </SectionHeader>
+          <SectionHeader>Featured Open Source</SectionHeader>
           <Text>
             {
               "I'm passionate about open source because I fundamentally believe in the radical power of transparent and open knowledge making. Here are some of the projects I've worked on the most."
@@ -267,9 +264,7 @@ const Code = ({ repositories }) => {
           </motion.div>
         </Section>
         <Section className="stack-md">
-          <SectionHeader>
-            <Underline>Contributions</Underline>
-          </SectionHeader>
+          <SectionHeader>Contributions</SectionHeader>
           <Text>
             I&apos;ve been busy in open source in the last year – here are the
             stats.
@@ -294,8 +289,8 @@ const Code = ({ repositories }) => {
         </Section>
         <Section className="stack-lg">
           <SkewBg tiltDirection="forward" overflow="hidden" asGradient />
-          <SectionHeader className="text-white">
-            <Underline>Projects</Underline>
+          <SectionHeader className="text-white" type="light">
+            Projects
           </SectionHeader>
           <div className="stack-xl md:stack-xxl">
             {projects.map((project) => (

@@ -5,11 +5,9 @@
 }
 
 .minimap-point::before {
-  @apply inline-block h-4 w-4 rounded-full bg-indigo-100 border-solid border-indigo-700 flex-shrink-0 transition-shadow;
+  @apply inline-block h-4 w-4 mr-2 rounded-full bg-indigo-100 border border-solid border-indigo-700 flex-shrink-0 transition-shadow;
 
   content: '';
-  border-width: 1px;
-  margin-right: 0.5rem;
 }
 
 .minimap-point:hover::before {

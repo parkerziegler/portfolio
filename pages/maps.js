@@ -3,7 +3,6 @@ import Head from 'next/head';
 
 import Section from '../src/components/Shared/Section';
 import SectionHeader from '../src/components/Shared/SectionHeader';
-import Underline from '../src/components/Shared/Underline';
 import Map from '../src/components/Map/Map';
 import { maps } from '../src/components/Map/maps';
 import MapCarousel from '../src/components/Map/MapCarousel';
@@ -33,9 +32,7 @@ const Maps = () => {
       </Head>
       <main>
         <Section className="stack-md">
-          <SectionHeader>
-            <Underline>Maps</Underline>
-          </SectionHeader>
+          <SectionHeader>Maps</SectionHeader>
           <div className="stack-xl md:stack-xxl">
             {maps.map(
               ({

@@ -1,21 +1,21 @@
 @tailwind base;
 
-/* Gradient backgrounds. */
-.bg-gradient--primary {
-  background-image: linear-gradient(
-    0.25turn,
-    theme('colors.primary'),
-    theme('colors.secondary')
-  );
-}
-
 .bg-radial {
-  position: relative;
-  background-position: 0 0;
+  @apply relative bg-left-top;
+
   background-size: 0.5rem 0.5rem;
 }
 
-.bg-radial--primary {
+.bg-underline--dark::after,
+.bg-underline--light::after {
+  @apply absolute left-0 -bottom-2 bg-left-top w-full h-2;
+
+  content: '';
+  background-size: 0.5rem 0.5rem;
+}
+
+.bg-radial--primary,
+.bg-underline--dark::after {
   background-image: radial-gradient(
     theme('colors.primary') 25%,
     transparent 25%
@@ -29,11 +29,9 @@
   );
 }
 
-/* Background textures. */
-.bg-highlight {
-  background-repeat: no-repeat;
-  background-position: 0% 85%;
-  background-size: 100% 10%;
+.bg-radial--white,
+.bg-underline--light::after {
+  background-image: radial-gradient(theme('colors.white') 25%, transparent 25%);
 }
 
 .bg-window {
@@ -53,5 +51,5 @@
 
   content: '';
   height: 3rem;
-  background-image: url('./window.svg');
+  background-image: url('./icons/window.svg');
 }

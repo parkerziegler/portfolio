@@ -7,7 +7,6 @@ import Head from 'next/head';
 
 import Section from '../src/components/Shared/Section';
 import SectionHeader from '../src/components/Shared/SectionHeader';
-import Underline from '../src/components/Shared/Underline';
 import Text from '../src/components/Shared/Text';
 import Map from '../src/components/Map/PlaceMap';
 import PRCard from '../src/components/Cards/PRCard';
@@ -68,9 +67,7 @@ const Index = ({ user }) => (
     <main id="main">
       <Section className="items-center">
         <div className="md:max-w-3/4 stack-sm">
-          <SectionHeader>
-            <Underline>Hey, I&apos;m Parker.</Underline>
-          </SectionHeader>
+          <SectionHeader>Hey, I&apos;m Parker.</SectionHeader>
           <Text>
             I am a <strong>software engineer</strong> and{' '}
             <strong>cartographer</strong> based in Seattle, WA. My passions lie
@@ -91,15 +88,17 @@ const Index = ({ user }) => (
         <Map />
       </Section>
       <Section className="stack-md sm:py-24">
-        <SkewBg />
-        <SectionHeader className="text-white">
-          <Underline>What I&apos;m Up To</Underline>
+        <SkewBg asGradient />
+        <SectionHeader className="text-white" type="light">
+          What I&apos;m Up To
         </SectionHeader>
         <Text className="text-white">
           I currently work with the wonderful and talented folks at{' '}
-          <InlineLink href="https://formidable.com/">Formidable</InlineLink>,
-          where I contribute to our{' '}
-          <InlineLink href="https://formidable.com/open-source/">
+          <InlineLink href="https://formidable.com/" type="light">
+            Formidable
+          </InlineLink>
+          , where I contribute to our{' '}
+          <InlineLink href="https://formidable.com/open-source/" type="light">
             open source work
           </InlineLink>
           , build software for rad folks, and support my fellow developers in
@@ -125,11 +124,9 @@ const Index = ({ user }) => (
           )}
         </PRCardGrid>
       </Section>
-      <Section className="items-center sm:py-32">
+      <Section className="items-center sm:pt-32">
         <div className="md:max-w-3/4 stack-md">
-          <SectionHeader>
-            <Underline>Tools I Work With</Underline>
-          </SectionHeader>
+          <SectionHeader>Tools I Work With</SectionHeader>
           <Text>
             I love the frontend JavaScript ecosystem and spend most of my days
             working with these lovely languages and tools.

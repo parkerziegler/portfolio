@@ -40,7 +40,7 @@ const BlogCard = ({ title, slug, tags = [], introText, date }) => {
           damping: 12
         }}
       >
-        <div className="flex h-full bg-gradient--primary shadow-lg p-2 rounded-lg">
+        <div className="flex h-full bg-gradient-to-r from-primary to-secondary shadow-lg p-2 rounded-lg">
           <div className="flex flex-col p-4 rounded-md bg-white flex-auto overflow-auto">
             <h2 className="text-4xl font-serif font-bold">{title}</h2>
             <p className="text-2xl font-serif line-clamp-ellipsis leading-snug tracking-normal my-8">

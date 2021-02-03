@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 
 import Section from '../src/components/Shared/Section';
 import SectionHeader from '../src/components/Shared/SectionHeader';
-import Underline from '../src/components/Shared/Underline';
 import Text from '../src/components/Shared/Text';
 import BlogCard from '../src/components/Cards/BlogCard';
 import { useScrollToTop } from '../src/hooks/useScrollToTop';
@@ -44,9 +43,7 @@ const Thoughts = ({ posts }) => {
       </Head>
       <main>
         <Section className="stack-md">
-          <SectionHeader>
-            <Underline>Thoughts</Underline>
-          </SectionHeader>
+          <SectionHeader>Thoughts</SectionHeader>
           <Text>
             I write mostly about tools I like, projects I&apos;m working on, and
             things that are puzzling me. Here are some of my recent pieces.

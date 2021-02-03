@@ -6,36 +6,35 @@ See https://every-layout.dev/layouts/stack/. */
   .stack-md > *,
   .stack-lg > *,
   .stack-xl > * {
-    margin-top: 0;
-    margin-bottom: 0;
+    @apply my-0;
   }
 
   .stack-xs > * + * {
-    margin-top: 0.5rem;
+    @apply mt-2;
   }
 
   .stack-sm > * + * {
-    margin-top: 1rem;
+    @apply mt-4;
   }
 
   .stack-md > * + * {
-    margin-top: 2rem;
+    @apply mt-8;
   }
 
   .stack-lg > * + * {
-    margin-top: 3rem;
+    @apply mt-12;
   }
 
   .stack-xl > * + * {
-    margin-top: 5rem;
+    @apply mt-20;
   }
 
   .stack-xxl > * + * {
-    margin-top: 10rem;
+    @apply mt-40;
   }
 
   .stack-none > * + * {
-    margin-top: 0;
+    @apply mt-0;
   }
 
   .stack-xs-h > *,
@@ -43,37 +42,37 @@ See https://every-layout.dev/layouts/stack/. */
   .stack-md-h > *,
   .stack-lg-h > *,
   .stack-xl-h > * {
-    margin-left: 0;
-    margin-right: 0;
+    @apply mx-0;
   }
 
   .stack-xs-h > * + * {
-    margin-left: 0.5rem;
+    @apply ml-2;
   }
 
   .stack-sm-h > * + * {
-    margin-left: 1rem;
+    @apply ml-4;
   }
 
   .stack-md-h > * + * {
-    margin-left: 2rem;
+    @apply ml-8;
   }
 
   .stack-lg-h > * + * {
-    margin-left: 3rem;
+    @apply ml-12;
   }
 
   .stack-xl-h > * + * {
-    margin-left: 5rem;
+    @apply ml-20;
   }
 
   .stack-none-h > * + * {
-    margin-left: 0;
+    @apply ml-0;
   }
 }
 
 .line-clamp-ellipsis {
-  overflow: hidden;
+  @apply overflow-hidden;
+
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -81,9 +80,8 @@ See https://every-layout.dev/layouts/stack/. */
 
 @media (min-width: 1280px) {
   .full-width-breakout {
-    width: 100vw;
-    left: 50%;
-    right: 50%;
+    @apply w-screen left-1/2 right-1/2;
+
     margin-left: -50vw !important;
     margin-right: -50vw !important;
   }

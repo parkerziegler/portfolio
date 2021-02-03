@@ -1,3 +1,5 @@
+@tailwind base;
+
 /* Pulse animation for main map. */
 @keyframes pulse {
   from {
@@ -21,31 +23,6 @@
   animation-delay: 500ms;
 }
 
-/* Highlight animations for titles. */
-.highlight--primary {
-  animation: 1s ease-in-out 500ms both highlight;
-}
-
-@keyframes highlight {
-  from {
-    background-size: 0% 10%;
-  }
-
-  to {
-    background-size: 100% 10%;
-  }
-}
-
-/* Underline animations for inline links. */
-.highlight--secondary {
-  transition: background-size 200ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-.highlight--secondary:hover,
-.highlight--secondary:focus {
-  background-size: 100% 100%;
-}
-
 /* Saturation animation for map carousel. */
 .saturate {
   filter: saturate(0);
@@ -54,6 +31,10 @@
 
 .saturate:hover {
   transform: scale(1.05);
+  filter: saturate(1);
+}
+
+.saturated {
   filter: saturate(1);
 }
 
@@ -87,22 +68,22 @@
 }
 
 .with-arrow::after {
+  @apply inline-block ml-2;
+
   content: '';
-  display: inline-block;
   background: url('./icons/arrow.svg');
   height: 1.6rem;
   width: 1.6rem;
-  margin-left: 0.5rem;
   animation: 1s ease-out wiggle infinite;
 }
 
 .with-map::before,
 .with-code::before {
+  @apply inline-block mr-4;
+
   content: '';
-  display: inline-block;
   height: 2.4rem;
   width: 2.4rem;
-  margin-right: 1rem;
 }
 
 .with-map::before {

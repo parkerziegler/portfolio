@@ -49,7 +49,7 @@ const RepositoryCard = ({
         damping: 20
       }}
     >
-      <div className="bg-gradient--primary flex p-2 m-auto rounded-lg font-mono shadow-lg h-full">
+      <div className="bg-gradient-to-r from-primary to-secondary flex p-2 m-auto rounded-lg font-mono shadow-lg h-full">
         <div className="flex flex-col items-center stack-sm p-4 rounded-md bg-white flex-auto overflow-auto">
           <h2 className="text-4xl text-center">{name}</h2>
           <img
