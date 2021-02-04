@@ -17,7 +17,7 @@ const Link = ({ href, onClick, isMobile = false, children }) => {
   useEffect(() => {
     const roughUnderline = svgRef;
     if (linkRef.current && svgRef.current) {
-      const width = linkRef.current.offsetWidth;
+      const { width } = linkRef.current.getBoundingClientRect();
       roughUnderline.current.setAttribute('width', `${width}`);
       roughUnderline.current.setAttribute('viewBox', `0 0 ${width} 6`);
 

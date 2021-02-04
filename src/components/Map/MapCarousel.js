@@ -15,7 +15,6 @@ const MapThumbnail = ({
   isPortrait = false
 }) => {
   const thumbnailNode = useRef(null);
-  console.log(selectedSrc === src);
 
   return (
     <div
@@ -53,10 +52,7 @@ const MapThumbnail = ({
 MapThumbnail.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  selectedSrc: PropTypes.shape({
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired
-  }).isRequired,
+  selectedSrc: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   isPortrait: PropTypes.bool
 };

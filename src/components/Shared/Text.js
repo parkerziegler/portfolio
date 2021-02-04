@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
+import cs from 'classnames';
 
 const Text = ({ children, className }) => (
   <p
-    className={cn(
+    className={cs(
       'font-serif text-3xl tracking-wide leading-normal',
       className
     )}

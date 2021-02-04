@@ -50,6 +50,7 @@ const Maps = () => {
               }) => {
                 return items ? (
                   <MapCarousel
+                    key={title}
                     maps={items}
                     title={title}
                     link={link}

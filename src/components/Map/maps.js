@@ -111,35 +111,33 @@ export const maps = [
       'https://github.com/summer-of-maps/2016-TransAlt-MultipleRegressionScript',
     isPortrait: true,
     children: (
-      <div className="stack-md">
-        <p>
-          This set of maps, designed for{' '}
-          <InlineLink href="https://www.transalt.org/">
-            Transportation Alternatives
-          </InlineLink>{' '}
-          as part of{' '}
-          <InlineLink href="http://www.summerofmaps.com/about/">
-            Azavea&apos;s Summer of Maps fellowship
-          </InlineLink>
-          , seeks to 1) identify clusters of traffic crashes in New York City
-          between 2013 and 2015 and 2) theorize relationships between the
-          density of crashes and local measures of poverty. The results of this
-          spatial analysis show a clear trend – areas with higher concentrations
-          of traffic crashes tend to have higher poverty rates, lower median
-          incomes, and be more densely populated.
-        </p>
-        <p>
-          The collection includes a citywide analysis with economic profiles of
-          each borough alongside analysis of vulnerable city council districts
-          within each borough. To get a more holistic sense of this project,
-          check out the{' '}
-          <InlineLink href="https://www.summerofmaps.com/projects/2016-transportation-alternatives">
-            project description on Azavea&apos;s website
-          </InlineLink>
-          . Special thanks to Daniel McGlone, Senior GIS Analyst at Azavea, for
-          his mentorship on this project.
-        </p>
-      </div>
+      <>
+        This set of maps, designed for{' '}
+        <InlineLink href="https://www.transalt.org/">
+          Transportation Alternatives
+        </InlineLink>{' '}
+        as part of{' '}
+        <InlineLink href="http://www.summerofmaps.com/about/">
+          Azavea&apos;s Summer of Maps fellowship
+        </InlineLink>
+        , seeks to 1) identify clusters of traffic crashes in New York City
+        between 2013 and 2015 and 2) theorize relationships between the density
+        of crashes and local measures of poverty. The results of this spatial
+        analysis show a clear trend – areas with higher concentrations of
+        traffic crashes tend to have higher poverty rates, lower median incomes,
+        and be more densely populated.
+        <br />
+        <br />
+        The collection includes a citywide analysis with economic profiles of
+        each borough alongside analysis of vulnerable city council districts
+        within each borough. To get a more holistic sense of this project, check
+        out the{' '}
+        <InlineLink href="https://www.summerofmaps.com/projects/2016-transportation-alternatives">
+          project description on Azavea&apos;s website
+        </InlineLink>
+        . Special thanks to Daniel McGlone, Senior GIS Analyst at Azavea, for
+        his mentorship on this project.
+      </>
     )
   },
   {

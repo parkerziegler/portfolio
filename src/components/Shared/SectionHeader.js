@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import rough from 'roughjs/bundled/rough.cjs';
-import cn from 'classnames';
+import cs from 'classnames';
 
 import { theme } from '../../../tailwind.config';
 
@@ -37,8 +37,10 @@ const SectionHeader = ({
 
   useEffect(() => {
     const svg = svgRef.current;
-    if (headingRef.current && svg) {
-      const width = headingRef.current.offsetWidth;
+    const heading = headingRef.current;
+
+    if (heading && svg) {
+      const { width } = heading.getBoundingClientRect();
       svg.setAttribute('width', width);
       svg.setAttribute('viewBox', `0 0 ${width} 10`);
 
@@ -55,7 +57,7 @@ const SectionHeader = ({
 
   return (
     <h2
-      className={cn([
+      className={cs([
         'font-serif text-6xl m-0',
         centered && 'text-center flex flex-col items-center ',
         className
