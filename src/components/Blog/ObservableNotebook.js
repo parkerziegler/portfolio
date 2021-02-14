@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Head from 'next/head';
 import { Runtime, Inspector } from '@observablehq/runtime';
 
 const ObservableNotebook = ({ importNotebook }) => {
@@ -19,7 +20,14 @@ const ObservableNotebook = ({ importNotebook }) => {
     fetchNotebook();
   }, [importNotebook]);
 
-  return null;
+  return (
+    <Head>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@3/dist/inspector.css"
+      />
+    </Head>
+  );
 };
 
 ObservableNotebook.propTypes = {

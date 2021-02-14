@@ -124,7 +124,7 @@ const Index = ({ user }) => (
           )}
         </PRCardGrid>
       </Section>
-      <Section className="items-center sm:pt-32">
+      <Section className="items-center pt-20 sm:pt-32">
         <div className="md:max-w-3/4 stack-md">
           <SectionHeader>Tools I Work With</SectionHeader>
           <Text>
