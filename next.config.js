@@ -2,7 +2,6 @@ const { parsed: localEnv } = require('dotenv').config();
 const webpack = require('webpack');
 const remarkMath = require('remark-math');
 const rehypeKatex = require('rehype-katex');
-
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {

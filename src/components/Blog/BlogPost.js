@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { MDXProvider } from '@mdx-js/react';
 import { useInView } from 'react-intersection-observer';
 
+import { useScrollToTop } from '../../hooks/useScrollToTop';
+
 import components from './MDXComponents';
 import Meta from './Meta';
 
@@ -20,6 +22,8 @@ const BlogPost = ({
     triggerOnce: true,
     rootMargin: '-100px'
   });
+
+  useScrollToTop();
 
   return (
     <>
