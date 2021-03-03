@@ -20,16 +20,21 @@
   background-size: 0.5rem 0.5rem;
 }
 
-.bg-underline--dark::after,
-.bg-underline--light::after {
-  @apply absolute left-0 -bottom-2 bg-left-top w-full h-2;
-
-  content: '';
-  background-size: 0.5rem 0.5rem;
+.bg-underline {
+  text-decoration-thickness: 0.2rem;
+  text-decoration-style: dotted;
+  text-decoration-line: underline;
 }
 
-.bg-radial--primary,
-.bg-underline--dark::after {
+.bg-underline--dark {
+  text-decoration-color: theme('colors.primary');
+}
+
+.bg-underline--light {
+  text-decoration-color: theme('colors.white');
+}
+
+.bg-radial--primary {
   background-image: radial-gradient(
     theme('colors.primary') 25%,
     transparent 25%
@@ -43,8 +48,7 @@
   );
 }
 
-.bg-radial--white,
-.bg-underline--light::after {
+.bg-radial--white {
   background-image: radial-gradient(theme('colors.white') 25%, transparent 25%);
 }
 

@@ -7,7 +7,7 @@ const InlineLink = ({ href, type = 'dark', children }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className={cs('relative', {
+    className={cs('bg-underline', {
       'bg-underline--dark': type === 'dark',
       'bg-underline--light': type === 'light'
     })}
