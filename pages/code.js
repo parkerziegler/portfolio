@@ -32,7 +32,10 @@ const projects = [
       <>
         I built the <ProjectInlineCode>renature</ProjectInlineCode>{' '}
         documentation site as part of my broader work on the library during{' '}
-        <InlineLink href="https://formidable.com/blog/2019/fellowship/">
+        <InlineLink
+          href="https://formidable.com/blog/2019/fellowship/"
+          type="light"
+        >
           Formidable&apos;s inaugural Open Source Fellowship
         </InlineLink>
         .
@@ -60,7 +63,10 @@ const projects = [
       <>
         I built this set of visualizations on police violence in America after
         diving into data compiled by the Guardian in their project,{' '}
-        <InlineLink href="https://www.theguardian.com/us-news/ng-interactive/2015/jun/01/the-counted-police-killings-us-database">
+        <InlineLink
+          href="https://www.theguardian.com/us-news/ng-interactive/2015/jun/01/the-counted-police-killings-us-database"
+          type="light"
+        >
           The Counted
         </InlineLink>
         . This project seeks to expand their findings by combining shootings

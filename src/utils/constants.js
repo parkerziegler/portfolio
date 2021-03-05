@@ -46,6 +46,14 @@ export const TAGS = {
   observable: {
     icon: '/logos/observable-dark-logo.svg',
     tag: 'Observable'
+  },
+  reason: {
+    icon: '/logos/reason-logo.svg',
+    tag: 'Reason'
+  },
+  rescript: {
+    icon: '/logos/rescript-logo.svg',
+    tag: 'ReScript'
   }
 };
 

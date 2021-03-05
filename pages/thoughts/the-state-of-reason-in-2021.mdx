@@ -1,0 +1,262 @@
+import BlogPost from '../../src/components/Blog/BlogPost';
+import Tweet from '../../src/components/Blog/Tweet';
+import { TAGS } from '../../src/utils/constants';
+
+export const meta = {
+  title: 'The State of Reason in 2021',
+  description:
+    'In this post, we look at Reason and its new offshoot, ReScript, nearly five years after the language came to life.',
+  slug: 'the-state-of-reason-in-2021',
+  date: 'Feb. 25, 2021',
+  tags: ['reason', 'rescript']
+};
+
+<BlogPost
+  title={meta.title}
+  description={meta.description}
+  tags={[TAGS.reason, TAGS.rescript]}
+  publishDate={meta.date} 
+  slug={meta.slug}
+>
+
+
+# The State of Reason in 2021
+
+> This post comes from a piece I wrote on the Formidable blog. To read the post in its original context, head to the [Formidable website](https://formidable.com/blog/2021/reason-2021).
+
+If you, like me, find a bizarre pleasure in the relentless churn of the JavaScript ecosystem, you may remember a period just a few years ago when some members of the community began toying with an interesting idea: What if we stopped using JavaScript as our main programming language for writing web applications?
+
+This, of course, wasn't a truly novel thought. People had been using other languages to build web applications for a long time—just ask folks who were writing PHP, Python, CoffeeScript, or working with the Closure Compiler. Even those of us writing JavaScript in the mid-2010s were working one level above what browsers supported, using a tool like Babel to _transpile_ our source to ES5-compliant JavaScript. Maybe a few of us were even early to the static typing train, using a superset of JavaScript like TypeScript or Flow to type check our code. In general, JS devs had gotten used to the idea that the source code we wrote got transformed in all sorts of ways before ever making it to the browser.
+
+However, these improvements to the experience of writing JavaScript couldn't hide all of the language's warts; I, in particular, love this one highlighted by my colleague Christian Ipanaque:
+
+<Tweet>
+  <p lang="en" dir="ltr">
+    Certain #JavaScript expressions can cause certain facial expressions
+    <br />
+    Hi 👋 my name is Christian. What’s your name?
+  </p>
+  &mdash; Christian Ipanaque (@christianipanaque)
+  <a href="https://twitter.com/chrisipanaque/status/1354086220830224388?s=20">
+    January 26, 2021
+  </a>
+</Tweet>
+
+Idiosyncrasies like these were an inescapable burden, their damage compounded as our web applications became more dynamic and complex. In response, we started to see the development of new programming languages that viewed JavaScript as a compilation target rather than a source language. Elm, PureScript, ClojureScript—these new languages promised the benefits of sound type systems alongside language constructs that sanded JavaScript's rough edges. Among the most promising of these new languages at the time was [Reason](https://reasonml.github.io/). Designed by the author of React, [Jordan Walke](https://twitter.com/jordwalke), Reason took a lot of React's ideas—a focus on immutability, minimization of side effects, and a declarative paradigm—and elevated them from the level of UI framework to programming language, all while centering the fast compilation times and powerful type inference derived from its ancestor language, OCaml.
+
+But it's early 2021, [nearly five years since Reason's initial commit](https://github.com/reasonml/reason/commit/1037c7dd36dfe94d7f03a7cb4a7c073f5d3cb840), and relatively few people in the JS community still know about Reason; even fewer are using it in production. The question, "Is Reason _ready_?" still looms large in every conversation I have about the language. In this piece, I hope to answer that question by exploring Reason's evolution over the last half-decade—how it's evolved, how it's competing with TypeScript, how it's changing JavaScript for the better, and why it may (and may not) be worth investing in now.
+
+## Reason's Early Days
+
+For those of you unfamiliar with Reason, the language is a statically typed dialect of OCaml that can compile to both highly-optimized JavaScript (ES6 or CommonJS) and native code. It is designed to look like the JavaScript of the future, implementing a lot of language features you might only find in Stage 1 proposals of the ECMAScript spec (e.g. the [pipeline operator](https://rescript-lang.org/docs/manual/latest/pipe), [pattern matching](https://rescript-lang.org/docs/manual/latest/pattern-matching-destructuring), and [nested modules](https://rescript-lang.org/docs/manual/latest/module)). For its first four years, Reason was compiled to JavaScript by the BuckleScript compiler, a project developed (and still maintained) by [Hongbo Zhang](https://twitter.com/bobzhang1988) during his time at Bloomberg. In this way, building web applications with Reason required developing knowledge of, at minimum, two systems:
+
+1. The language itself, including its syntax, data structures, type system, and semantics
+2. The compiler, BuckleScript, that transformed Reason code to fast, idiomatic, and human-readable JavaScript
+
+This dual web-native compilation story was a source of both promise and confusion for newcomers to the language. While it seemed to bring the illusive dream of a "write once, run anywhere" language tantalizingly close, in reality, it was difficult to build a mental model of what all needed to be installed, how the separate parts of the toolchain needed to interact, and what pieces could be left out if you were only targeting web or only targeting native.
+
+Reason's wide scope also made it difficult to build a cohesive community around the language in the early years. The authors and maintainers of Reason were trying to convince members of the JavaScript and OCaml communities to collaborate in ways that weren't familiar to either. Coming from a JavaScript background myself, I had little understanding of OCaml's build system or package management, its syntax or semantics, or what types of applications members of that community were trying to build. I'd worked my way through parts of [Real World OCaml](https://dev.realworldocaml.org/), but my central focus on building for the web hadn't made deeper investment in OCaml worthwhile. Similarly, folks coming from OCaml didn't gain the immediate benefits of an expanded open source community, particularly when much of the early library development for Reason focused on interop with DOM APIs and popular JS libraries. After several years of struggle, the challenges of bridging the JavaScript and OCaml communities felt greater than the benefits each was reaping. By mid-2020, it was clear a new direction was needed.
+
+## From Reason to ReScript
+
+Towards the end of last summer, [the maintainers of BuckleScript announced they were rebranding](https://rescript-lang.org/blog/bucklescript-is-rebranding) as ReScript. This "rebranding" was more about a consolidation of the Reason–BuckleScript–JavaScript toolchain, focusing on:
+
+- A unified compiler, build system, and syntax bundled up in a single installable package
+- An explicit dedication to JavaScript as the compilation target
+- A closer integration with the JavaScript ecosystem and third-party libraries
+
+Reason still exists as a language and is still being actively maintained and worked on, but its goals are more focused on the native development side of things.
+
+Although this schism sounds somewhat confusing, it's ultimately good news for JavaScript developers hoping to invest in ReScript. The language can now more directly address the challenges of working with JS while reducing the cognitive load of adoption. In this way, I see ReScript positioning itself as a TypeScript alternative, parroting stronger type soundness and inference, faster compilation times, and enhanced, high-level language features that JavaScript developers have eagerly sought. For the remainder of this piece, we'll look at how ReScript compares to TypeScript, highlighting the philosophical differences in the two languages and discussing why your team may want to choose one or the other in certain scenarios.
+
+## Typing the Unsound vs. Compiling to the Unsound
+
+One of the most important differences to understand between TypeScript and ReScript is the approach each language takes to static typing. JavaScript, a dynamically-typed, just-in-time (JIT) compiled language, is at its heart an _unsound_ language. [To use a simplified form of the definition provided by type theorist Robin Milner](https://blog.sigplan.org/2019/10/17/what-type-soundness-theorem-do-you-really-want-to-prove/), this means that a JavaScript program, even if it passes the engine's JIT compiler, is not guaranteed to have well-defined behavior when it is executed. In layman's terms, a JavaScript program can have runtime errors!
+
+TypeScript attempts to reduce the chances of encountering runtime errors by adding static types to JavaScript, through a combination of user-defined types (i.e. `type` and `interface` declarations, type annotation, and type assertion) and _structural typing_, sometimes referred to as _implicit subtyping_. This latter piece is what powers TypeScript's type inference—it looks at the _structure_ of a variable to infer its type. It's hard to imagine TypeScript being usable were this not the case; imagine having to explicitly define every type of every variable in your JavaScript program. However, this also forces TypeScript to be incredibly conservative in its inference, relying on user-supplied hints when it can't sufficiently narrow a type constraint. For example, take a look at how TypeScript infers the identity function:
+
+```typescript
+// In strict mode, you'll get a warning:
+// "Parameter 'x' implicitly has an 'any' type."
+function id(x) {
+  return x;
+}
+
+// Inferred as
+function id(x: any): any;
+```
+
+There are, of course, ways around this, but they require authors to use specific language constructs, like [generics](https://www.typescriptlang.org/docs/handbook/generics.html), to assist the type system:
+
+```typescript
+function identity<T>(x: T): T {
+  return x;
+}
+
+// Nice, y is typed as a number.
+const y = identity<number>(2);
+
+// And z is typed as a string.
+const z = identity<string>('Hello');
+```
+
+This works just fine, but let's look at a slightly more involved case where TypeScript's type system fails completely. This example (lightly modified) comes from a recent post on Twitter, and was shared with me by my colleague Phil Plückthun and [verified using v4.1.5 of the TypeScript compiler](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAhgLhgJQKagE4BMA80MCWYA5gDQz5HEB8MAvDAN4wFZIDkWALAMxcBsAMyxwAtAHYuADgAMorqi7jRcAKwBGMeKn84vdQCMeAJnHH2MAL4BuAFChIsQWHowAFFCTNWAfiRgAVwBbA1QMKwBKelpGWxh4mAB6RJQAsCgCINQYKABPAAdsgggYAANKElK4hOSYABUCopLSwJCwmAAfGDSsVEEiVCxSmEAZcmr4hwgQABtUADppkGIPOdYIuxtbWoBRAA9C4ChBmDCMEHCACzDsgwDYYhBYMHBUW2c3OHWgA):
+
+```typescript
+const a: Record<string, string> = {
+  id: 'd4346fda-7480-4e47-a51a-786a431b3272'
+};
+const fn = (t: { id?: number }) => {
+  // Runtime type is `string`
+  // Type is `number | undefined` ❌
+  console.log(t.id);
+};
+// Expected error here but got none
+fn(a);
+```
+
+Yikes! This case is only slightly more involved than our identity function, and we're seeing TypeScript's type system falter already. Let's look at how ReScript handles the same set of functions, starting with the identity function:
+
+```reason
+let identity = x => x;
+
+// Inferred as
+identity: 'a => 'a
+
+// y is inferred as an int without any annotations or generics.
+let y = identity(1);
+
+// z is inferred as a string without any annotations or generics.
+let z = identity("hello");
+```
+
+That `'a` from ReScript's inference is what's known as a _[type parameter](https://rescript-lang.org/docs/manual/latest/type)_—in essence, a generic that can be automatically inferred! ReScript has automatically determined that the output type of `identity` will be dependent on the input type, and defines this relationship with no hints from the author. Let's see [what ReScript outputs](https://rescript-lang.org/try?code=DYUwLgBAhhC8ECkDOA6AIgSwMZhSAtgA5gCeAFAJQBQy62uS4ZUANBAEQYAm7b7XAFgDMAgGwAzLlAC0AdgEAOAAzSBIAbOlQArAEYZshaKjDdAIyEAmWZfbUqoSOIB2cCGTAAuRKkw4UYAA8APbEGMHOgRjOYAB8sRRwsRAA3lQQPijAwQDmZLR+uDlMYHzcdtQAvlRULszUQA) for the case where the TypeScript compiler fails:
+
+```reason
+let a = Js.Dict.empty()
+Js.Dict.set(a, "id", "d4346fda-7480-4e47-a51a-786a431b3272")
+
+let fn = (t: Js.Dict.t<option<int>>) => {
+  Js.log(Js.Dict.get(t, "id"))
+}
+
+// Errors as expected:
+// This has type: Js.Dict.t<string> (defined as Js_dict.t<string>)
+//  Somewhere wanted:
+//    Js.Dict.t<option<int>> (defined as Js_dict.t<option<int>>)
+//
+//  The incompatible parts:
+//  string vs option<int>
+fn(a)
+```
+
+Not only does the ReScript compiler error, but it pinpoints the exact mismatch in type expectations, alerting the developer to the location and reason for their type error. If you've ever attempted to decode a complex TypeScript error, this probably seems like magic; I've hit the exact same pain, more times than I count, that Sunil Pai shows below:
+
+<Tweet>
+  <p lang="en" dir="ltr">
+    Me: My code works, I'll just add types to it, how hard could it be?
+    <br />
+    The Universe:
+  </p>
+  &mdash; nil (@threepointone)
+  <a href="https://twitter.com/threepointone/status/1358399103382740995?s=20">
+    February 7, 2021
+  </a>
+</Tweet>
+
+So, how does ReScript manage to outperform TypeScript in the realm of soundness and inference? For starters, ReScript, like OCaml, uses a different type system than TypeScript, called the Hindley-Milner type system. To again oversimplify, the Hindley-Milner type system has one core principle that makes things easier—_every expression can have at most one type_. This sounds small, but eliminating polymorphism in expressions also means you can _infer a lot more_ about the types of those expressions.
+
+Second, OCaml, and by extension ReScript, doesn't have the same escape hatches that are important to making TypeScript usable. The `any` type, type guards, type casting—these constructs don't exist in ReScript, which means the bugs that can sometimes be introduced by their usage are much harder to come by. Finally, while TypeScript's inference is actually quite amazing given the complexity of typing JavaScript programs, it can run into scenarios where it a) has to be exceedingly conservative about the type it infers, falling back to `any`, or b) fails altogether when it encounters enough ambiguity in user-defined type constraints.
+
+I don't fault TypeScript for not addressing type soundness more aggressively; [the project specifically lists in its "Non-goals"](https://github.com/microsoft/TypeScript/wiki/TypeScript-Design-Goals#non-goals):
+
+> Apply a sound or "provably correct" type system. Instead, strike a balance between correctness and productivity.
+
+<br />
+
+However, I do feel that TypeScript's type system often leaves me feeling a bit ... unfulfilled. It's not always clear or intuitive how to solve a particular type challenge in TypeScript, or how to resolve a particularly tricky compiler error. Some of that, undoubtedly, owes to the fact that JavaScript at its core is an unsound language, and that idiomatic JavaScript does not always prioritize patterns that would make better type inference possible.
+
+The decision to use TypeScript or ReScript in the realm of type safety ultimately comes down to where your team falls on the spectrum of "provably correct" vs. "productive". While I don't think these goals are mutually exclusive, I do they think they are difficult to achieve simultaneously in practice. For those building products where even the tiniest type error is catastrophic, ReScript could be an excellent investment.
+
+## "Zero-Cost" Abstractions
+
+With any language that interfaces with or compiles to another language, there always needs to be some code that adapts or communicates between the two. This is known as foreign function interface, or FFI for short.
+
+TypeScript, as a _superset_ of JavaScript, doesn't have an FFI story because it's _still just JavaScript_. The TypeScript compiler is mostly responsible for type checking and emitting idiomatic JavaScript code that works well for JS's various runtimes. The ReScript compiler, on the other hand, has quite an expansive FFI story, focusing on how to transform ReScript code into highly-optimized, human-readable JavaScript. The key components include:
+
+- Enabling communication with JavaScript functions, modules, global variables, etc. in the context of ReScript source code
+- Compiling ReScript data structures to predictable JavaScript data structures
+- Adding additional runtime code to accommodate certain language features like [automatic function currying](https://rescript-lang.org/docs/manual/latest/function#uncurried-function)
+
+FFI is _really important_ for a language like ReScript—it's what allows code written in ReScript to do things like call functions from a third-party JavaScript library or access a specific DOM API. In short, it makes _partial adoption_ much easier, allowing you to write some of your own codebase in ReScript without sacrificing the ability to communicate with local JavaScript code or tap into the JavaScript ecosystem.
+
+However, authoring code to support FFI can be quite tricky; for new ReScript users, writing "bindings" to JavaScript libraries is often the most intimidating challenge when they begin learning the language. While folks often compare ReScript bindings to TypeScript declarations, the two aren't exactly equivalent. TypeScript declarations are essentially "stitched-on" metadata—they provide type information about a library's public-facing API, but they don't add additional code that needs to be bundled and executed at runtime. ReScript bindings, on the other hand, often call out to JavaScript functions, modules, or global values, and may add an additional layer of abstraction to make interfacing with those data structures more idiomatic to ReScript users. Not every JavaScript data structure has a consistent ReScript equivalent, and filling those gaps can entail some complexity (and sometimes additional code).
+
+In this way, ReScript cannot guarantee that code authored in the language will be "zero-cost"; that is, additional code may need to be bundled and executed at runtime. The most well-known example is that, in order to support automatic currying of functions in ReScript (a language feature that JavaScript does not support), the ReScript compiler has to include a `Curry` module in your compiled JS output. The ReScript team has done a great job mitigating these cases, making sure the compilation of ReScript code to JavaScript is aggressively optimized and, for the standard use cases, fairly intuitive. Some examples include:
+
+- Compiling strictly-typed ReScript records directly to JavaScript objects
+- Ensuring values wrapped in the `option` type get compiled to their inner values (i.e. `Some(value)` becomes `value` in the compiled JS output, while `None` becomes `undefined`)
+- Compiling data structures like tuples, characters, and the `unit` type to logical JavaScript equivalents
+
+Often this can mean that your ReScript code, when compiled, is more performant than the equivalent hand-written JavaScript would be. However, the reality remains that achieving truly "zero-cost" communication between ReScript and JavaScript is quite difficult; while I expect this to change in the coming years, it is noteworthy that using ReScript today is still complicated by the challenges of FFI.
+
+## Integration with the JavaScript Ecosystem
+
+ReScript's fork from the main efforts of Reason was due in large part to a desire to better support JavaScript users seeking a TypeScript alternative. To meaningfully compete with TypeScript is a tall task these days; for both large companies and open source maintainers, TypeScript has become an increasingly common choice. Combine high adoption rates with [the spectacular effort of DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) to provide TypeScript declarations for popular JavaScript libraries, and it's hard to beat the open source ecosystem that has emerged around TypeScript.
+
+ReScript, on the other hand, has a much smaller community, and finding high-quality bindings to popular JavaScript libraries isn't always easy. A main factor in this is that there are _a lot_ of different ways to write "correct" bindings for a JavaScript library in ReScript. Some authors choose to introduce extra runtime code to make the public API of their bindings feel more ergonomic and idiomatic to ReScript users. Others focus on keeping their bindings as "zero-cost" as possible, going to great lengths to ensure they introduce a minimal runtime footprint. To give an example, [`reason-urql`](https://github.com/FormidableLabs/reason-urql), a library I maintain that provides ReScript bindings for our popular GraphQL client, [`urql`](https://github.com/FormidableLabs/urql), has the following function to convert the GraphQL response to an `urql` hook to a strictly-typed Reason record with a special `response` variant type.
+
+```reason
+let hookResponseToReScript =
+  (~response, ~parse) => {
+    let {operation, fetching, error, extensions, stale} = response
+
+    let data = response.data->Js.Nullable.toOption->Belt.Option.map(parse)
+
+    // Create a new response variant to support pattern matching.
+    let response = switch (fetching, data, error) {
+    | (true, None, _) => Fetching
+    | (_, Some(d), None) => Data(d)
+    | (_, Some(d), Some(e)) => PartialData(d, e.graphQLErrors)
+    | (false, _, Some(e)) => Error(e)
+    | (false, None, None) => Empty
+    }
+
+    // Return a typed ReScript record rather than a JavaScript object.
+    {
+      operation: operation,
+      fetching: fetching,
+      data: data,
+      error: error,
+      response: response,
+      extensions: extensions,
+      stale: stale,
+    }
+  }
+```
+
+You don't need to understand the code above; the point is, I made the decision to introduce additional code that has to be executed at runtime in order to make the API more usable for ReScript users. But I could just as easily have shifted this complexity to consumers, allowing them to solve this challenge in the way they see fit. There's no universally "correct" decision when it comes to how you write ReScript bindings, which is part of what makes authoring them so challenging. Moreover, it is worth noting that not all JavaScript libraries translate to ReScript smoothly. For example, a library that emphasizes OOP-flavored paradigms or uses a lot of ad-hoc polymorphism will be harder to bind than one embracing functional patterns and minimizing side effects.
+
+Bindings are ultimately the single biggest blocker I see preventing ReScript from wider adoption—it takes a large, dedicated, and organized community to write and maintain bindings, and it's a much more opinionated process to write ReScript bindings than it is to author TypeScript declarations. The good news is that coordinated efforts in this area are improving; there are already great bindings for libraries like [React](https://github.com/reasonml/reason-react), [Jest](https://github.com/glennsl/bs-jest), and [Relay](https://github.com/zth/reason-relay) in addition to efforts to [standardize FFI for the entire DOM API](https://github.com/reasonml-community/bs-webapi-incubator).
+
+Ultimately, I think ReScript's success will be tied to how successfully the community can coordinate the authoring of bindings to popular libraries in the JavaScript ecosystem. Projects like [Gentype](https://github.com/reason-association/genType) signal a future where automating this process may become more feasible. For now, however, I think ReScript's fate is in the hands of devoted community members willing to support it.
+
+## Is 2021 the Year of Re(ason/Script)?
+
+To return to that question I've been asked so many times—"Is ReScript ready?"—I'll give an age-old answer: _It depends._
+
+It depends on what you're trying to do with ReScript. As a source language used for critical pieces of type-safe, exceedingly performant application code, I think ReScript shines. In fact, Formidable's own [`renature`](https://github.com/FormidableLabs/renature), a physics-based animation library for React, uses ReScript in exactly this way to power the underlying physics engine, parsers, and interpolators of the library with great TypeScript interop. As a source language for an application that's heavily dependent on third-party JavaScript libraries, I think ReScript has significant drawbacks. The community effort around bindings and FFI still doesn't feel there to me.
+
+But the choice to adopt ReScript on your team is ultimately a personal one. To distill the arguments of this piece (and to summarize where my three years of experience in the community have landed me on the subject), here are the essential contexts in which I think ReScript will be a great investment for you and your team:
+
+- **You work in a codebase that cannot sacrifice an inch on type safety.** This may sound like every codebase, but of course there are some situations where the escape hatches of TypeScript (like type casting and `any`) are useful to get a product to production more quickly. In other situations, program correctness is a more important characteristic than shipping fast. In the age-old tradeoff between being "productive" and being "correct", ReScript is the right choice if you fall closer to the "correct" side of that continuum.
+- **You work in a codebase that uses external dependencies sparingly.** If you don't expect to need many external dependencies, you won't feel as much of the pain of working with bindings and FFI. ReScript can provide a much better static typing experience than TypeScript out of the box due to its more powerful inference. As a source language, ReScript also has high-level language features that won't land in JavaScript for years to come.
+- **You work in a React codebase.** ReScript has first-class support for React. It's something the core team actively thinks about and plans for in language development. React is a first-class citizen in the ReScript ecosystem, while other frontend UI frameworks like Vue, Svelte, or Angular have fairly minimal support.
+- **You work in a codebase with contributors willing to learn something new!** Your team should be excited about experimentation if you choose to adopt ReScript. It may sound obvious, but teams are often comprised of members that are skeptical of technologies that haven't been more widely adopted. ReScript is still in the early adoption phase and, while its community resources are getting better, there isn't as much documentation or as many worked examples out there as there are for a language like TypeScript.
+
+If this sounds like your codebase and your team, I expect ReScript to be a worthwhile investment for your next application. And if not, I still encourage you to give ReScript a try—it may just change the way you think about JavaScript itself.
+
+_Thanks to my colleagues Phil Plückthun, Jon Reynolds, and Amy Dickson for their incredible feedback and assiduous editing on this piece._
+
+</BlogPost>
+
