@@ -34,10 +34,6 @@
   filter: saturate(1);
 }
 
-.saturated {
-  filter: saturate(1);
-}
-
 /* Animation on statistics. */
 @keyframes across {
   0% {

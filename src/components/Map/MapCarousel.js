@@ -19,7 +19,7 @@ const MapThumbnail = ({
   return (
     <div
       className={cs(
-        'h-32 md:h-64 object-cover saturate cursor-pointer flex-shrink-0',
+        'h-32 md:h-64 relative object-cover saturate cursor-pointer flex-shrink-0',
         isPortrait ? 'w-24 md:w-48' : 'w-40 md:w-80',
         {
           saturated: selectedSrc === src
