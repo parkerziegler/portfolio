@@ -94,7 +94,7 @@ const projects = [
 const projectToBadgePath = {
   renature: '/logos/renature.svg',
   urql: '/logos/urql.svg',
-  'reason-urql': '/logos/reason-urql.svg'
+  'rescript-urql': '/logos/rescript-urql.svg'
 };
 
 const repositoriesQuery = gql`
@@ -128,7 +128,7 @@ const repositoriesQuery = gql`
     urql: repository(name: "urql", owner: "FormidableLabs") {
       ...repoInfo
     }
-    reasonUrql: repository(name: "reason-urql", owner: "FormidableLabs") {
+    reScriptUrql: repository(name: "rescript-urql", owner: "FormidableLabs") {
       ...repoInfo
     }
     webpackDashboard: repository(
@@ -177,7 +177,7 @@ const description =
 const Code = ({ repositories }) => {
   const mainOSS = [
     repositories.renature,
-    repositories.reasonUrql,
+    repositories.reScriptUrql,
     repositories.urql
   ];
   const secondaryOSS = [
@@ -369,7 +369,7 @@ Code.propTypes = {
   repositories: PropTypes.shape({
     renature: Repository,
     urql: Repository,
-    reasonUrql: Repository,
+    reScriptUrql: Repository,
     webpackDashboard: Repository,
     reasonBasics: Repository,
     wonka: Repository,
