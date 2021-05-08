@@ -46,9 +46,11 @@ const projects = [
         <ProjectInlineCode>styled-components</ProjectInlineCode>, with live code
         examples powered by <ProjectInlineCode>react-live</ProjectInlineCode>.
         Diagrams were made by me using{' '}
-        <InlineLink href="https://www.sketch.com/">Sketch</InlineLink>. Thanks
-        are due to my colleagues Eliot Adams, Phil Plückthun, Ryan Roemer, and
-        Matt Keith for their support on design and infrastructure.
+        <InlineLink href="https://www.sketch.com/" type="light">
+          Sketch
+        </InlineLink>
+        . Thanks are due to my colleagues Eliot Adams, Phil Plückthun, Ryan
+        Roemer, and Matt Keith for their support on design and infrastructure.
       </>
     ),
     img: '/projects/renature-docs/renature-docs.png',
@@ -323,7 +325,8 @@ export async function getStaticProps() {
   return {
     props: {
       repositories: repositories.data
-    }
+    },
+    revalidate: 1
   };
 }
 
