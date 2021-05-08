@@ -80,7 +80,7 @@ const projects = [
         </ProjectInlineCode>, <ProjectInlineCode>redux</ProjectInlineCode>, and{' '}
         <ProjectInlineCode>d3</ProjectInlineCode>. Much of the logic around data
         fetching and side effects is done using{' '}
-        <ProjectInlineCode>redux-saga</ProjectInlineCode>. The temporal bar
+        <ProjectInlineCode>redux-saga</ProjectInlineCode>. The temporal line
         charts are built using <ProjectInlineCode>victory</ProjectInlineCode>.
       </>
     ),
