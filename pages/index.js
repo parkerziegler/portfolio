@@ -159,7 +159,8 @@ export async function getStaticProps() {
   return {
     props: {
       user: contributions.data.user
-    }
+    },
+    revalidate: 1
   };
 }
 
