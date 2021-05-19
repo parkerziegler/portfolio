@@ -145,7 +145,7 @@ export async function getStaticProps() {
   const client = createClient({
     url: 'https://api.github.com/graphql',
     fetchOptions: {
-      headers: { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+      headers: { authorization: `Bearer ${process.env.GITHUB_API_TOKEN}` }
     },
     fetch
   });
