@@ -38,17 +38,20 @@ const Meta = ({ publishDate, tags, slug, displayMinimap }) => {
   }, []);
 
   useEffect(() => {
-    fetch(`/api/register-hit?slug=${slug}`)
-      .then((res) => res.json())
-      .then(({ hits }) => {
-        if (typeof hits === 'number') {
-          setHitCount(hits);
-        }
-      })
-      .catch((error) => {
-        console.error('Failed to register hit: ', error.message);
-        setHitCountErrored(true);
-      });
+    // Only register hits in production.
+    if (process.env.NODE_ENV === 'production') {
+      fetch(`/api/register-hit?slug=${slug}`)
+        .then((res) => res.json())
+        .then(({ hits }) => {
+          if (typeof hits === 'number') {
+            setHitCount(hits);
+          }
+        })
+        .catch((error) => {
+          console.error('Failed to register hit: ', error.message);
+          setHitCountErrored(true);
+        });
+    }
   }, [slug]);
 
   return (
@@ -61,28 +64,28 @@ const Meta = ({ publishDate, tags, slug, displayMinimap }) => {
           </Tag>
         ))}
       </div>
-      <div className="flex stack-sm" style={{ marginTop: '3rem' }}>
-        <svg
-          className="stroke-primary"
-          width="60"
-          height="24"
-          viewBox="0 0 60 24"
-        >
-          <path
-            d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-          <circle cx="12" cy="12" r="3" fill="none" />
-          {!hitCountErrored && hitCount > 0 ? (
+      {!hitCountErrored && hitCount > 0 ? (
+        <div className="flex stack-sm" style={{ marginTop: '3rem' }}>
+          <svg
+            className="stroke-primary"
+            width="60"
+            height="24"
+            viewBox="0 0 60 24"
+          >
+            <path
+              d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            <circle cx="12" cy="12" r="3" fill="none" />
             <text className="hit-count" x="30" y="18">
               {hitCount}
             </text>
-          ) : null}
-        </svg>
-      </div>
+          </svg>
+        </div>
+      ) : null}
       {displayMinimap ? (
         <ul className="flex flex-col stack-md" style={{ marginTop: '3rem' }}>
           {nodes.map(({ id, text }, i) => (
