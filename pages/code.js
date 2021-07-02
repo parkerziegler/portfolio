@@ -297,9 +297,7 @@ const Code = ({ repositories }) => {
         </Section>
         <Section className="stack-lg">
           <SkewBg tiltDirection="forward" overflow="hidden" asGradient />
-          <SectionHeader className="text-white" type="light">
-            Projects
-          </SectionHeader>
+          <SectionHeader className="text-white">Projects</SectionHeader>
           <div className="stack-xl md:stack-xxl">
             {projects.map((project) => (
               <ProjectScreen key={project.projectId} {...project} />

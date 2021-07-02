@@ -1,19 +1,5 @@
 @tailwind base;
 
-.bg-header {
-  background-size: 100% 1rem;
-  background-repeat: no-repeat;
-  background-position: 0px 90%;
-}
-
-.bg-header--dark {
-  background-image: url('./icons/underline-dark.svg');
-}
-
-.bg-header--light {
-  background-image: url('./icons/underline-light.svg');
-}
-
 .bg-radial {
   @apply relative bg-left-top;
 
