@@ -69,16 +69,16 @@ const Index = ({ user }) => (
         <div className="md:max-w-3/4 stack-sm">
           <SectionHeader>Hey, I&apos;m Parker.</SectionHeader>
           <Text>
-            I am a <strong>software engineer</strong> and{' '}
-            <strong>cartographer</strong> based in Seattle, WA. My passions lie
-            at the intersection of software development, map making,
-            storytelling, and community organizing. I currently spend a lot of
-            my time working on{' '}
+            I am a <strong>computer scientist</strong>,{' '}
+            <strong>software engineer</strong>, and{' '}
+            <strong>cartographer</strong> based in Berkeley, CA. My passions lie
+            at the intersection of software development, programming languages,
+            human-computer interaction, and geospatial technologies. I currently
+            spend a lot of my time working on{' '}
             <InlineLink href="https://github.com/parkerziegler">
               open source tools
             </InlineLink>{' '}
-            to help others build better software and bring delightful
-            experiences to their communities.
+            to help others build better software.
           </Text>
           <Text>
             I also believe <strong>place</strong> shapes every part of who we
@@ -93,17 +93,26 @@ const Index = ({ user }) => (
           What I&apos;m Up To
         </SectionHeader>
         <Text className="text-white">
-          I currently work with the wonderful and talented folks at{' '}
+          I&apos;m currently a Ph.D. student in the Electrical Engineering and
+          Computer Science department at UC Berkeley, advised by{' '}
+          <InlineLink
+            href="https://www2.eecs.berkeley.edu/Faculty/Homepages/schasins.html"
+            type="light"
+          >
+            Sarah Chasins
+          </InlineLink>
+          . My research focuses on using novel techniques from programming
+          languages research to build new tools for social scientists, climate
+          researchers, and journalists. Previously, I worked with the wonderful
+          and talented folks at{' '}
           <InlineLink href="https://formidable.com/" type="light">
             Formidable
           </InlineLink>
-          , where I contribute to our{' '}
+          , where I contributed to their{' '}
           <InlineLink href="https://formidable.com/open-source/" type="light">
             open source work
           </InlineLink>
-          , build software for rad folks, and support my fellow developers in
-          becoming better engineers and kinder people. Here are some of my
-          recent pull requests.
+          . Check out some of my recent contributions.
         </Text>
         <PRCardGrid>
           {user.pullRequests.nodes.map(
@@ -128,8 +137,8 @@ const Index = ({ user }) => (
         <div className="md:max-w-3/4 stack-md">
           <SectionHeader>Tools I Work With</SectionHeader>
           <Text>
-            I love the frontend JavaScript ecosystem and spend most of my days
-            working with these lovely languages and tools.
+            I love everything about the Web and spend most of my days working
+            with these lovely languages and tools.
           </Text>
           <div className="flex flex-col sm:flex-row justify-evenly">
             <LangSection title="Languages" langs={Object.values(LANGUAGES)} />
