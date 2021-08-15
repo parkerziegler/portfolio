@@ -195,12 +195,6 @@ export async function getStaticProps() {
     per_page: 20
   });
 
-  for (const event of data) {
-    if (event.type === 'ReleaseEvent') {
-      console.log(JSON.stringify(event, null, 2));
-    }
-  }
-
   let activityCount = 0;
   const activity = [];
 
@@ -225,10 +219,6 @@ export async function getStaticProps() {
         owner,
         repo
       });
-
-      if (event.type === 'IssuesEvent') {
-        console.log(JSON.stringify(event, null, 2));
-      }
 
       const contribution = {
         ...event,

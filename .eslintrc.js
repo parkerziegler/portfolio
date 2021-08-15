@@ -11,6 +11,7 @@ module.exports = {
   rules: {
     'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
     'no-magic-numbers': 'off',
+    'no-console': ['error', { allow: ['warn', 'error'] }],
     'import/newline-after-import': 2,
     'import/order': [
       'error',
