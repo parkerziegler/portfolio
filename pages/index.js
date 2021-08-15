@@ -1,52 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
-import { createClient } from 'urql';
-import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
+import { Octokit } from '@octokit/rest';
 
 import Section from '../src/components/Shared/Section';
 import SectionHeader from '../src/components/Shared/SectionHeader';
 import Text from '../src/components/Shared/Text';
 import Map from '../src/components/Map/PlaceMap';
-import PRCard from '../src/components/Cards/PRCard';
-import PRCardGrid from '../src/components/Cards/PRCardGrid';
+import ContributionCard from '../src/components/Cards/ContributionCard';
 import InlineLink from '../src/components/Shared/InlineLink';
 import LangSection from '../src/components/Shared/LangSection';
 import SkewBg from '../src/components/Shared/SkewBg';
-import { LANGUAGES, TOOLS } from '../src/utils/constants';
-
-const contributionsQuery = gql`
-  query contributions($login: String!) {
-    user(login: $login) {
-      pullRequests(
-        states: [OPEN, MERGED]
-        first: 6
-        orderBy: { field: CREATED_AT, direction: DESC }
-      ) {
-        nodes {
-          id
-          url
-          title
-          repository {
-            nameWithOwner
-            description
-            primaryLanguage {
-              name
-              color
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import {
+  LANGUAGES,
+  TOOLS,
+  CONTRIBUTION_EVENT_TYPES
+} from '../src/utils/constants';
 
 const title = 'Parker Ziegler / Software Engineer and Cartographer';
 const description =
   'Parker Ziegler is a software engineer and cartographer based in Seattle, WA. He works on next generation web technologies, with a focus on animation, graphics, and emerging programming languages.';
+const MAX_ACTIVITY_COUNT = 6;
 
-const Index = ({ user }) => (
+const Index = ({ contributions }) => (
   <>
     <Head>
       <title>{title}</title>
@@ -114,24 +90,20 @@ const Index = ({ user }) => (
           </InlineLink>
           . Check out some of my recent contributions.
         </Text>
-        <PRCardGrid>
-          {user.pullRequests.nodes.map(
-            ({
-              repository: { nameWithOwner, primaryLanguage },
-              url,
-              title,
-              id
-            }) => (
-              <PRCard
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 z-10">
+          {contributions.map(
+            ({ id, repo, url, language, description, type }) => (
+              <ContributionCard
                 key={id}
-                nameWithOwner={nameWithOwner}
+                repo={repo}
                 url={url}
-                title={title}
-                primaryLanguage={primaryLanguage}
+                description={description}
+                language={language}
+                type={type}
               />
             )
           )}
-        </PRCardGrid>
+        </div>
       </Section>
       <Section className="items-center pt-20 sm:pt-32">
         <div className="md:max-w-3/4 stack-md">
@@ -150,47 +122,142 @@ const Index = ({ user }) => (
   </>
 );
 
+const normalizeContribution = (contribution) => {
+  const sharedAttributes = {
+    id: contribution.id,
+    repo: contribution.repo.name,
+    language: contribution.language,
+    type: contribution.type
+  };
+
+  let url = '';
+  let description = '';
+
+  switch (contribution.type) {
+    case 'ForkEvent': {
+      url = contribution.payload.forkee.html_url;
+      description = `Forked ${contribution.repo.name} into ${contribution.payload.forkee.full_name}`;
+
+      break;
+    }
+    case 'IssuesEvent': {
+      url = contribution.payload.issue.html_url;
+      description = `#${contribution.payload.issue.number}: ${contribution.payload.issue.title}`;
+
+      break;
+    }
+    case 'PushEvent': {
+      url = contribution.payload.commits[0].url
+        .replace('api.', '')
+        .replace('/repos', '')
+        .replace('commits', 'commit');
+      description = contribution.payload.commits[0].message;
+
+      break;
+    }
+    case 'PullRequestEvent': {
+      url = contribution.payload.pull_request.html_url;
+      description = `#${contribution.payload.pull_request.number}: ${contribution.payload.pull_request.title}`;
+
+      break;
+    }
+    case 'PullRequestReviewEvent': {
+      url = contribution.payload.pull_request.html_url;
+      description = `Reviewed #${contribution.payload.pull_request.number}: ${contribution.payload.pull_request.title}`;
+
+      break;
+    }
+    case 'ReleaseEvent': {
+      url = contribution.payload.release.html_url;
+      description = `Released ${contribution.payload.release.tag_name} of ${contribution.repo.name}`;
+
+      break;
+    }
+    default:
+      break;
+  }
+
+  return {
+    ...sharedAttributes,
+    url,
+    description
+  };
+};
+
 export async function getStaticProps() {
-  const client = createClient({
-    url: 'https://api.github.com/graphql',
-    fetchOptions: {
-      headers: { authorization: `Bearer ${process.env.GITHUB_API_TOKEN}` }
-    },
-    fetch
+  const octokit = new Octokit({
+    auth: process.env.GITHUB_API_TOKEN,
+    userAgent: 'parkie-doo.sh'
   });
 
-  const contributions = await client
-    .query(contributionsQuery, {
-      login: 'parkerziegler'
+  const { data } = await octokit.rest.activity.listPublicEventsForUser({
+    username: 'parkerziegler',
+    per_page: 20
+  });
+
+  for (const event of data) {
+    if (event.type === 'ReleaseEvent') {
+      console.log(JSON.stringify(event, null, 2));
+    }
+  }
+
+  let activityCount = 0;
+  const activity = [];
+
+  for (const event of data) {
+    if (activityCount === MAX_ACTIVITY_COUNT) {
+      break;
+    }
+
+    if (CONTRIBUTION_EVENT_TYPES.includes(event.type)) {
+      activity.push(event);
+      activityCount++;
+    }
+  }
+
+  const contributions = await Promise.all(
+    activity.map(async (event) => {
+      const [owner, repo] = event.repo.name.split('/');
+
+      const {
+        data: { language, parent }
+      } = await octokit.rest.repos.get({
+        owner,
+        repo
+      });
+
+      if (event.type === 'IssuesEvent') {
+        console.log(JSON.stringify(event, null, 2));
+      }
+
+      const contribution = {
+        ...event,
+        language: language || parent?.language
+      };
+
+      return normalizeContribution(contribution);
     })
-    .toPromise();
+  );
 
   return {
     props: {
-      user: contributions.data.user
+      contributions
     },
     revalidate: 1
   };
 }
 
-const PullRequest = PropTypes.shape({
-  repository: PropTypes.shape({
-    nameWithOwner: PropTypes.string.isRequired,
-    primaryLanguage: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      color: PropTypes.string.isRequired
-    })
-  }).isRequired,
+const Contribution = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  repo: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  type: PropTypes.oneOf(CONTRIBUTION_EVENT_TYPES).isRequired,
+  description: PropTypes.string.isRequired
 }).isRequired;
 
 Index.propTypes = {
-  user: PropTypes.shape({
-    pullRequests: PropTypes.shape({
-      nodes: PropTypes.arrayOf(PullRequest).isRequired
-    }).isRequired
-  }).isRequired
+  contributions: PropTypes.arrayOf(Contribution).isRequired
 };
 
 export default Index;

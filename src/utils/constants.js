@@ -95,3 +95,39 @@ export const NAV_ITEMS = [
     displayText: 'Thoughts'
   }
 ];
+
+export const CONTRIBUTION_EVENT_TYPES = [
+  'ForkEvent',
+  'IssuesEvent',
+  'PullRequestEvent',
+  'PullRequestReviewEvent',
+  'PushEvent',
+  'ReleaseEvent'
+];
+
+export const CONTRIBUTION_EVENT_ICONS = {
+  ForkEvent: {
+    src: '/icons/git-branch.svg',
+    alt: 'Fork'
+  },
+  IssuesEvent: {
+    src: '/icons/alert-circle.svg',
+    alt: 'Issue'
+  },
+  PullRequestEvent: {
+    src: '/icons/git-pull-request.svg',
+    alt: 'Pull Request'
+  },
+  PullRequestReviewEvent: {
+    src: '/icons/eye.svg',
+    alt: 'Pull Request Review'
+  },
+  PushEvent: {
+    src: '/icons/terminal.svg',
+    alt: 'Commit'
+  },
+  ReleaseEvent: {
+    src: '/icons/upload-cloud.svg',
+    alt: 'Release'
+  }
+};

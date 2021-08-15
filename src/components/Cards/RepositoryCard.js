@@ -90,17 +90,17 @@ const RepositoryCard = ({
                 height="25"
                 width="25"
               />
-              <span className="text-primary text-lg">{starCount}</span>
+              <span className="text-lg">{starCount}</span>
             </div>
             <div className="flex flex-col items-center">
               <img
-                src="/icons/code-fork.svg"
+                src="/icons/git-branch.svg"
                 alt={`${name} Forks on GitHub`}
                 className="h-10"
                 height="25"
                 width="25"
               />
-              <span className="text-primary text-lg">{forkCount}</span>
+              <span className="text-lg">{forkCount}</span>
             </div>
           </div>
         </div>
