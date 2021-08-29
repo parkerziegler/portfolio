@@ -75,7 +75,7 @@ const Index = ({ contributions }) => (
             href="https://www2.eecs.berkeley.edu/Faculty/Homepages/schasins.html"
             type="light"
           >
-            Sarah Chasins
+            Professor Sarah Chasins
           </InlineLink>
           . My research focuses on using novel techniques from programming
           languages research to build new tools for social scientists, climate
