@@ -176,26 +176,24 @@ UL.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const Img = ({ src, alt, width, height }) => (
-  <div className="stack-sm py-8">
-    <Image
-      src={src}
-      alt={alt}
-      sizes="(min-width: 768px) 75vw, (min-width: 1280px) 960px, 100vw"
-      width={width}
-      height={height}
-      layout="intrinsic"
-      className="rounded-lg"
-    />
-    <span className="text-2xl font-sans text-gray-600 block">{alt}</span>
-  </div>
-);
+const unsupportedImgRegex = /.(svg|gif)$/g;
+
+const Img = ({ src, alt }) => {
+  // Automated blur placeholders are only avaible for .jpg, .png, and .webp.
+  const placeholder =
+    src.src.match(unsupportedImgRegex) !== null ? 'empty' : 'blur';
+
+  return (
+    <div className="stack-sm py-8">
+      <Image src={src} alt={alt} placeholder={placeholder} />
+      <span className="text-2xl font-sans text-gray-600 block">{alt}</span>
+    </div>
+  );
+};
 
 Img.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  width: PropTypes.string.isRequired,
-  height: PropTypes.string.isRequired
+  src: PropTypes.object.isRequired,
+  alt: PropTypes.string.isRequired
 };
 
 const BlockQuote = ({ children }) => (

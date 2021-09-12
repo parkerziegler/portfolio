@@ -1,5 +1,7 @@
 import BlogPost from '../../src/components/Blog/BlogPost';
 import { TAGS } from '../../src/utils/constants';
+import AWRNCInSrc from '../../public/thoughts/custom-geoprocessing-tools-with-python/awr-nc-in.png';
+import AWRChicagoSrc from '../../public/thoughts/custom-geoprocessing-tools-with-python/awr-chicago.jpg';
 
 export const meta = {
   title: 'Creating Custom Geoprocessing Tools with Python Scripts',
@@ -40,10 +42,8 @@ Alright, now for the goods. [Click here to access my script for the Areal-Weight
 To ensure that the tool actually worked on more than just the Chicago data, I ran it on a similar dataset for North Carolina and Indiana. In this problem, I used my custom AWR script to take data for the number of black and white people in each Census block group and reaggregate by house district. The results are pictured below.
 
 <img
-  src="/thoughts/custom-geoprocessing-tools-with-python/awr-nc-in.png"
+  src={AWRNCInSrc}
   alt="The result of running our AWR script to reaggregate racial data by Census block group to House districts."
-  width="2500"
-  height="1406"
 />
 
 Notice the fields in the attribute table "SUM_WHITE_awr", "SUM_BLACK_awr", etc. These are the outputs of the tool and are visualized on the map on screen. Notice as well that I also included the number of males and females as statistics in my AWR – you can imagine, however, that distribution of men and women might be more homogenous than race.
@@ -53,19 +53,11 @@ Ah, the sweet feeling of success when a custom tool runs correctly. Be wary that
 Here is the good ol' Chicago map once again. This time, however, I used my custom AWR tool to perform the analysis rather than the specific script from Project #1. Comparing the two attribute tables, we see that both the script from Project #1 and the AWR tool produce the same results. The GUI on the left is the AWR tool come to life, and the one on the right shows the Properties of the AWR tool.
 
 <img
-  src="/thoughts/custom-geoprocessing-tools-with-python/awr-chicago.jpg"
+  src={AWRChicagoSrc}
   alt="Results of running the generalized AWR script in comparison to a custom geoprocessing script for analyzing the spatial relationship between non-violent drug arrests and race in Chicago."
-  width="2500"
-  height="1406"
 />
 
-Ultimately, it was a remarkably satisfying experience to write this tool and see
-it come to life. It was also a terrific lesson in learning how to abstract a specific
-problem into something that can be more universally applied. If you have further
-questions about how this tool works or how to get it to work in your own ArcMap project,
-feel free to reach out [on Twitter](https://twitter.com/parker_ziegler). Check back
-in a few weeks for an update on my upcoming work with relational databases and my
-presentation at AAG!
+Ultimately, it was a remarkably satisfying experience to write this tool and see it come to life. It was also a terrific lesson in learning how to abstract a specific problem into something that can be more universally applied. If you have further questions about how this tool works or how to get it to work in your own ArcMap project, feel free to reach out [on Twitter](https://twitter.com/parker_ziegler). Check back in a few weeks for an update on my upcoming work with relational databases and my presentation at AAG!
 
 </BlogPost>
 

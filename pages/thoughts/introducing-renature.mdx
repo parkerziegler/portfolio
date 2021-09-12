@@ -1,6 +1,10 @@
 import BlogPost from '../../src/components/Blog/BlogPost';
 import Tweet from '../../src/components/Blog/Tweet';
 import { TAGS } from '../../src/utils/constants';
+import GravitySimulationSrc from '../../public/thoughts/introducing-renature/gravity-simulation.svg';
+import GravitySimulationOpacitySrc from '../../public/thoughts/introducing-renature/gravity-simulation-opacity.gif';
+import GravitySimulationBackgroundColorSrc from '../../public/thoughts/introducing-renature/gravity-simulation-bg-color.gif';
+import GravitySimulation2DSrc from '../../public/thoughts/introducing-renature/gravity-simulation-2d.gif';
 
 export const meta = {
   title: 'Introducing Renature: Experimenting with Physics for UI Animation',
@@ -70,37 +74,29 @@ However, we hit an interesting stumbling block almost right away. In the real wo
 In `renature`, we simplify things currently by defining a `mover` and an `attractor`. A `mover` will be pulled towards an `attractor` according to the gravitational force exerted by the `attractor`, which is proportional to the two entities' masses and inversely proportional to the distance between them. As the `mover` is pulled closer, it will accelerate until it reaches the `attractor`. At that point, we stop the animation. Let's look at this through the example of changing an element's opacity over time.
 
 <img
-  src="/thoughts/introducing-renature/gravity-simulation.svg"
+  src={GravitySimulationSrc}
   alt="A visual model of renature's gravity simulation."
-  width="1051"
-  height="417"
 />
 
 When the animation is running, we calculate the position of the `mover` object on every frame. By comparing this value to the `attractor's` position, we can interpolate the value of `opacity` for that frame. This results in smoothly animating values according to real world physics! For example, here's a `div` animating its opacity from 0 to 1 at the rate that a 100,000kg body would be pulled towards a body 10,000 times its mass!
 
 <img
-  src="/thoughts/introducing-renature/gravity-simulation-opacity.gif"
+  src={GravitySimulationOpacitySrc}
   alt="An example of renature's gravity simulation animating opacity."
-  width="400"
-  height="400"
 />
 
 Of course, we don't want to limit the values users can animate to `opacity`. For that we need additional interpolators to map from a `mover` position value to a CSS property, like background-color. Let's see what that looks like with the same physics.
 
 <img
-  src="/thoughts/introducing-renature/gravity-simulation-bg-color.gif"
+  src={GravitySimulationBackgroundColorSrc}
   alt="renature's gravity simulation with background-color."
-  width="400"
-  height="400"
 />
 
 We're even beginning to lay the foundation for better visualizations of the two-dimensional interplay of an `attractor` and `mover` with gravity. Houston, we've achieved orbit!
 
 <img
-  src="/thoughts/introducing-renature/gravity-simulation-2d.gif"
+  src={GravitySimulation2DSrc}
   alt="renature's gravity simulation running in two dimensions."
-  width="676"
-  height="748"
 />
 
 ## Where Are We Headed?

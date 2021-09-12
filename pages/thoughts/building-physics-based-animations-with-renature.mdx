@@ -1,5 +1,13 @@
 import BlogPost from '../../src/components/Blog/BlogPost';
 import { TAGS } from '../../src/utils/constants';
+import FrictionEquationSrc from '../../public/thoughts/building-physics-based-animations-with-renature/friction-equation.svg';
+import FrictionEquation2Src from '../../public/thoughts/building-physics-based-animations-with-renature/friction-equation-2.svg';
+import FrictionSimulationSrc from '../../public/thoughts/building-physics-based-animations-with-renature/friction-simulation.svg';
+import FrictionSimulation2Src from '../../public/thoughts/building-physics-based-animations-with-renature/friction-simulation-2.svg';
+import ForceEquationSrc from '../../public/thoughts/building-physics-based-animations-with-renature/force-equation.svg';
+import ForceEquation2Src from '../../public/thoughts/building-physics-based-animations-with-renature/force-equation-2.svg';
+import ForceEquation3Src from '../../public/thoughts/building-physics-based-animations-with-renature/force-equation-3.svg';
+import ForceEquation4Src from '../../public/thoughts/building-physics-based-animations-with-renature/force-equation-4.svg';
 
 export const meta = {
   title: 'Building Physics-Based Animations with Renature',
@@ -34,10 +42,8 @@ In this post, we're going to dig into some of the nitty gritty of how we're buil
 To understand how the `useFriction` hook will animate an element, it's useful to first understand the actual physics it's based off of — the force of friction! Friction is a familiar force for a lot of us— it's what causes your bike to slow down when you engage the brakes, or what gives your hands that nice warm feeling when you rub them together. Friction is a _dissipative_ force; it will decelerate an object over time. The force of friction is derived using the following equation:
 
 <img
-  src="/thoughts/building-physics-based-animations-with-renature/friction-equation.svg"
+  src={FrictionEquationSrc}
   alt="The standard equation of friction."
-  width="133"
-  height="19"
 />
 
 If it's been awhile since your high school or college physics (as it had for me),
@@ -77,37 +83,29 @@ const [props] = useFriction<HTMLDivElement>({
 So we have a physics equation and some parameters that can help us to model the force of friction. But how can we translate from an equation to a DOM element moving in the browser? In `renature`, we start by coding a simulation of an object moving on a rough surface.
 
 <img
-  src="/thoughts/building-physics-based-animations-with-renature/friction-simulation.svg"
+  src={FrictionSimulationSrc}
   alt="The friction simulation in renature."
-  width="947"
-  height="183"
 />
 
 If you've heard of Newton's laws, you've probably heard this expression before — _force equals mass times acceleration_.
 
 <img
-  src="/thoughts/building-physics-based-animations-with-renature/force-equation.svg"
+  src={ForceEquationSrc}
   alt="Force equals mass times acceleration."
-  width="64"
-  height="20"
 />
 
 And just above, we derived the force of friction, so we can say:
 
 <img
-  src="/thoughts/building-physics-based-animations-with-renature/friction-equation-2.svg"
+  src={FrictionEquation2Src}
   alt="Standard equation of friction with ma substituted for F."
-  width="100"
-  height="18"
 />
 
 The important piece here is the **a** term, acceleration. If we solve the above equation for **a**, we can figure out the acceleration (or rather, deceleration) caused by friction on a moving object at any given time.
 
 <img
-  src="/thoughts/building-physics-based-animations-with-renature/force-equation-2.svg"
+  src={ForceEquation2Src}
   alt="Calculating acceleration caused by the force of friction."
-  width="160"
-  height="39"
 />
 
 That **g** in this equation represents the acceleration due to gravity at the Earth's surface, typically represented as ~9.8 m/s². This piece comes from dividing the normal force, equivalent to **mg**, by **m**.
@@ -115,19 +113,15 @@ That **g** in this equation represents the acceleration due to gravity at the Ea
 Now that we have acceleration, we can figure out the velocity, **v**, of the moving object using the following equation:
 
 <img
-  src="/thoughts/building-physics-based-animations-with-renature/force-equation-3.svg"
+  src={ForceEquation3Src}
   alt="Velocity as a function of acceleration and time."
-  width="150"
-  height="14"
 />
 
 The same relationship holds for position, **p**, in relation to velocity:
 
 <img
-  src="/thoughts/building-physics-based-animations-with-renature/force-equation-4.svg"
+  src={ForceEquation4Src}
   alt="Position as a function of velocity and time."
-  width="150"
-  height="15"
 />
 
 Altogether, this means we can figure out _where_ our moving object is in the current moment, _how fast_ it's moving, and at what _rate_ it's slowing down. This forms the basis of the physics simulation we use for friction, as well as the other forces that we model in `renature`. From a code perspective, this looks more or less like the following simplified example:
@@ -256,10 +250,8 @@ When this hook gets run, we start a physics simulation using the `requestAnimati
 And just like that, we have everything we need for our lerp! For every frame that the browser renders, we can calculate what percentage "done" we are with our animation. All that's left is to interpolate the `from` and `to` properties of our animation. A diagram of the above hook running will help make this clear.
 
 <img
-  src="/thoughts/building-physics-based-animations-with-renature/friction-simulation-2.svg"
+  src={FrictionSimulation2Src}
   alt="The friction simulation in renature with CSS interpolation."
-  width="1051"
-  height="495"
 />
 
 When our block has moved 30% of the total distance, we know that our animation should be 30% done. In this example we're rotating from 0° to 180°. What's 30% of 180? 54, right? So our triangle should be rotated 54°. Awesome!

@@ -1,5 +1,7 @@
 import BlogPost from '../../src/components/Blog/BlogPost';
 import { TAGS } from '../../src/utils/constants';
+import CartoWebMapSrc from '../../public/thoughts/d3-carto/carto-web-map.png';
+import CartoWebMapPovertyRateSrc from '../../public/thoughts/d3-carto/carto-web-map-poverty-rate.png';
 
 export const meta = {
   title: 'Building Interactive D3 Dashboards with Carto Web Maps',
@@ -153,10 +155,8 @@ $('#zoom-selector').change(function () {
 ```
 
 <img
-  src="/thoughts/d3-carto/carto-web-map.png"
+  src={CartoWebMapSrc}
   alt="Notice how we changed the dropdown to Brooklyn and we are now zoomed into downtown Brooklyn. jQuery is a powerful framework for handling DOM-Javascript interaction."
-  width="2652"
-  height="1638"
 />
 
 ## Adding Graphics with D3
@@ -268,10 +268,8 @@ svg
 At this point, we have a beautiful scatterplot, but the data is still static. The whole point of using D3 is to create graphics that change dynamically. That’s where [transitions](https://bost.ocks.org/mike/transition/) come in. Transitions are exciting, lively, and make your data come to life. We can also wire transitions in the graphics to changes in map layers, such that we get two views of the same data at once.
 
 <img
-  src="/thoughts/d3-carto/carto-web-map-poverty-rate.png"
+  src={CartoWebMapPovertyRateSrc}
   alt="Notice that we have the Poverty Rate layer selected in the dropdown, the Poverty Rate layer is showing on the map, and the scatterplot is showing the relationship between Poverty Rate and Crash Density. Ah, the beauty of integrated data views."
-  width="2652"
-  height="1638"
 />
 
 Fortunately, D3 makes transitions easy to implement. The general idea is to bind the new dataset (the values we’re transitioning to), update our scales to match this dataset, start a transition for a set duration of time, and move the circles to their new positions. Within the Javascript function that controls the dropdown menu, just add a few lines of code:
