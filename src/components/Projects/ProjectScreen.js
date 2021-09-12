@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 
-const ProjectScreen = ({ title, description, img, alt, href }) => (
+const ProjectScreen = ({ title, description, src, alt, href }) => (
   <div className="relative grid grid-cols-12 gap-8 py-24 px-16 bg-window rounded-lg shadow-2xl-dark text-white">
     <div className="relative grid grid-cols-4 gap-8 col-span-12 lg:col-span-4 lg:flex lg:flex-col">
       <h3 className="font-mono text-4xl md:text-5xl col-span-4 -ml-16 pl-16 pb-4 border-b-2 border-terminal-secondary">
@@ -21,13 +21,7 @@ const ProjectScreen = ({ title, description, img, alt, href }) => (
       </a>
     </div>
     <div className="col-span-12 lg:col-span-8">
-      <Image
-        src={img}
-        alt={alt}
-        sizes="(min-width: 1024px) 600px, 75%"
-        height="600"
-        width="600"
-      />
+      <Image src={src} alt={alt} placeholder="blur" />
     </div>
   </div>
 );
@@ -35,7 +29,7 @@ const ProjectScreen = ({ title, description, img, alt, href }) => (
 ProjectScreen.propTypes = {
   title: PropTypes.node.isRequired,
   description: PropTypes.node.isRequired,
-  img: PropTypes.string.isRequired,
+  src: PropTypes.object.isRequired,
   alt: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired
 };

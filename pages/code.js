@@ -16,6 +16,8 @@ import PixelCard from '../src/components/Cards/PixelCard';
 import Statistic from '../src/components/Contributions/Statistic';
 import ProjectScreen from '../src/components/Projects/ProjectScreen';
 import ProjectInlineCode from '../src/components/Projects/ProjectInlineCode';
+import RenatureDocsSrc from '../public/projects/renature-docs/renature-docs.png';
+import PoliceShootingsSrc from '../public/projects/police-shootings/police-shootings.png';
 
 const projects = [
   {
@@ -53,7 +55,7 @@ const projects = [
         Roemer, and Matt Keith for their support on design and infrastructure.
       </>
     ),
-    img: '/projects/renature-docs/renature-docs.png',
+    src: RenatureDocsSrc,
     alt:
       'The documentation site for renature, a physics-based animation-library for React.',
     href: 'https://formidable.com/open-source/renature/'
@@ -86,7 +88,7 @@ const projects = [
         charts are built using <ProjectInlineCode>victory</ProjectInlineCode>.
       </>
     ),
-    img: '/projects/police-shootings/police-shootings.png',
+    src: PoliceShootingsSrc,
     alt:
       'A data visualization project looking at police shootings in the United State between 2015 and 2016.',
     href: 'https://parkerziegler.github.io/police-shootings/'
