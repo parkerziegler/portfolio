@@ -11,8 +11,6 @@ const Map = ({
   title,
   src,
   alt,
-  width,
-  height,
   link,
   code,
   isPortrait = false,
@@ -35,8 +33,6 @@ const Map = ({
       <Image
         src={src}
         alt={alt}
-        width={width}
-        height={height}
         sizes={
           isPortrait
             ? '(min-width: 768px) 50vw, (min-width: 1280px) 1280px, 100vw'
@@ -45,6 +41,7 @@ const Map = ({
         className="rounded-md h-auto"
         loading={eager ? 'eager' : 'lazy'}
         priority={eager}
+        placeholder="blur"
       />
     </div>
     <MapTitle title={title} link={link} code={code} isPortrait={isPortrait} />
@@ -61,10 +58,8 @@ const Map = ({
 
 Map.propTypes = {
   title: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
+  src: PropTypes.object.isRequired,
   alt: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
   link: PropTypes.string,
   code: PropTypes.string,
   isPortrait: PropTypes.bool,

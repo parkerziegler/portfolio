@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import cs from 'classnames';
@@ -15,6 +15,15 @@ const MapThumbnail = ({
   isPortrait = false
 }) => {
   const thumbnailNode = useRef(null);
+
+  const onClickThumbnail = useCallback(() => {
+    onClick(src);
+    thumbnailNode.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'start'
+    });
+  }, [onClick, src]);
 
   return (
     <div
@@ -33,26 +42,22 @@ const MapThumbnail = ({
         sizes={
           isPortrait
             ? '(min-width: 768px) 25vw, (min-width: 1024px) calc(100vw / 6), (min-width: 1280px) 12.5vw, 20vw'
-            : '(min-width: 768px) 33vw, (min-width: 1024px) 25vw, (min-width: 1280px) 20vw, 25vw'
+            : '(min-width: 768px) calc(100vw / 3), (min-width: 1024px) 25vw, (min-width: 1280px) 20vw, 25vw'
         }
         layout="fill"
-        onClick={() => {
-          onClick(src);
-          thumbnailNode.current.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'start'
-          });
-        }}
+        objectFit="cover"
+        objectPosition="center"
+        onClick={onClickThumbnail}
+        placeholder="blur"
       />
     </div>
   );
 };
 
 MapThumbnail.propTypes = {
-  src: PropTypes.string.isRequired,
+  src: PropTypes.object.isRequired,
   alt: PropTypes.string.isRequired,
-  selectedSrc: PropTypes.string.isRequired,
+  selectedSrc: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
   isPortrait: PropTypes.bool
 };
@@ -67,9 +72,12 @@ const MapCarousel = ({
 }) => {
   const [map, setMap] = useState(maps[0]);
 
-  const onClickThumbnail = (src) => {
-    setMap(maps.find((m) => m.src === src));
-  };
+  const onClickThumbnail = useCallback(
+    (src) => {
+      setMap(maps.find((m) => m.src === src));
+    },
+    [maps]
+  );
 
   return (
     <div className="grid grid-cols-12 md:grid-rows-auto-2 gap-8 md:gap-12">
@@ -89,15 +97,14 @@ const MapCarousel = ({
               ? '(min-width: 768px) 50vw, (min-width: 1280px) 1280px, 100vw'
               : '(min-width: 1280px) 1280px, 100vw'
           }
-          height={map.height}
-          width={map.width}
           className="shadow-lg rounded-md"
+          placeholder="blur"
         />
         <nav className="flex overflow-y-hidden stack-sm-h">
           {maps.map(({ src, alt }) => {
             return (
               <MapThumbnail
-                key={src}
+                key={src.src}
                 src={src}
                 alt={alt}
                 selectedSrc={map.src}
@@ -124,7 +131,7 @@ const MapCarousel = ({
 MapCarousel.propTypes = {
   maps: PropTypes.arrayOf(
     PropTypes.shape({
-      src: PropTypes.string.isRequired,
+      src: PropTypes.object.isRequired,
       alt: PropTypes.string.isRequired
     })
   ),
