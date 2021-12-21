@@ -58,7 +58,7 @@ const ContributionCard = ({ repo, url, description, language, type }) => (
               <img
                 src={LANGUAGES[language]?.src}
                 alt={LANGUAGES[language]?.alt}
-                className="h-8 w-8"
+                className="h-8"
               />
               <span className="text-black text-xl">{language}</span>
             </div>

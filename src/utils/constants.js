@@ -66,7 +66,8 @@ export const LANGUAGES = {
   GraphQL: { src: '/logos/graphql-logo.svg', alt: 'GraphQL Logo' },
   WebAssembly: { src: '/logos/wasm-logo.svg', alt: 'WebAssembly Logo' },
   Rust: { src: '/logos/rust-logo.svg', alt: 'Rust Logo' },
-  ReScript: { src: '/logos/rescript-logo.svg', alt: 'ReScript Logo' }
+  ReScript: { src: '/logos/rescript-logo.svg', alt: 'ReScript Logo' },
+  TeX: { src: '/logos/tex-logo.svg', alt: 'TeX Logo' }
 };
 
 export const TOOLS = {
