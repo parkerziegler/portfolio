@@ -2,26 +2,37 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 
-const ProjectScreen = ({ title, description, src, alt, href }) => (
-  <div className="relative grid grid-cols-12 gap-8 py-24 px-16 bg-window rounded-lg shadow-2xl-dark text-white">
-    <div className="relative grid grid-cols-4 gap-8 col-span-12 lg:col-span-4 lg:flex lg:flex-col">
-      <h3 className="font-mono text-4xl md:text-5xl col-span-4 -ml-16 pl-16 pb-4 border-b-2 border-terminal-secondary">
+import Tag from '../Blog/Tag';
+
+const ProjectScreen = ({ title, description, src, alt, href, stack }) => (
+  <div className="relative col-span-12 lg:col-span-6 stack-md pt-20 pb-16 bg-window rounded-lg shadow-2xl-dark text-white">
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <Image
+        src={src}
+        alt={alt}
+        placeholder="blur"
+        className="transition-transform transform hover:scale-110"
+      />
+    </a>
+    <div className="px-8 stack-md">
+      <h3 className="font-mono text-4xl md:text-5xl inline-block border-b-2 border-terminal-secondary">
         {title}
       </h3>
       <p className="text-2xl md:text-3xl col-span-4 leading-normal">
         {description}
       </p>
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-3xl md:text-4xl text-center font-mono col-span-4 justify-self-start lg:self-start p-4 lg:px-8 lg:py-4 lg:mt-auto text-terminal-secondary border-terminal-secondary border-2 with-arrow"
-      >
-        Check it out
-      </a>
-    </div>
-    <div className="col-span-12 lg:col-span-8">
-      <Image src={src} alt={alt} placeholder="blur" />
+      <div className="flex stack-sm-h">
+        {stack.map(({ tag, icon }) => (
+          <Tag
+            key={tag}
+            icon={icon}
+            compact
+            className="text-white border-terminal-secondary"
+          >
+            {tag}
+          </Tag>
+        ))}
+      </div>
     </div>
   </div>
 );
@@ -31,7 +42,13 @@ ProjectScreen.propTypes = {
   description: PropTypes.node.isRequired,
   src: PropTypes.object.isRequired,
   alt: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired
+  href: PropTypes.string.isRequired,
+  stack: PropTypes.arrayOf(
+    PropTypes.shape({
+      tag: PropTypes.string.isRequired,
+      icon: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
 };
 
 export default ProjectScreen;

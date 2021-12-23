@@ -18,8 +18,33 @@ import ProjectScreen from '../src/components/Projects/ProjectScreen';
 import ProjectInlineCode from '../src/components/Projects/ProjectInlineCode';
 import RenatureDocsSrc from '../public/projects/renature-docs/renature-docs.png';
 import PoliceShootingsSrc from '../public/projects/police-shootings/police-shootings.png';
+import NationalDebtSrc from '../public/projects/the-national-debt/the-national-debt.png';
 
 const projects = [
+  {
+    projectId: 'the-national-debt',
+    title: 'The National Debt',
+    description:
+      'This collection of Observable notebooks explores patterns in the US national debt across Presidential and Congressional eras. Where did the debt originate from, how is it changing, and who is responsible?',
+    src: NationalDebtSrc,
+    alt: 'A collection of Observable notebooks exploring the national debt.',
+    href:
+      'https://observablehq.com/@parkerziegler/the-national-debt?collection=@parkerziegler/the-national-debt',
+    stack: [
+      {
+        tag: 'Observable',
+        icon: '/logos/observable-light-logo.svg'
+      },
+      {
+        tag: 'D3',
+        icon: '/logos/d3-logo.svg'
+      },
+      {
+        tag: 'JavaScript',
+        icon: '/logos/js-logo.svg'
+      }
+    ]
+  },
   {
     projectId: 'renature',
     title: (
@@ -27,71 +52,74 @@ const projects = [
         <ProjectInlineCode className="text-4xl md:text-5xl">
           renature
         </ProjectInlineCode>{' '}
-        Documentation Site
+        Docs Site
       </>
     ),
     description: (
       <>
-        I built the <ProjectInlineCode>renature</ProjectInlineCode>{' '}
-        documentation site as part of my broader work on the library during{' '}
-        <InlineLink
-          href="https://formidable.com/blog/2019/fellowship/"
-          type="light"
-        >
-          Formidable&apos;s inaugural Open Source Fellowship
-        </InlineLink>
-        .
-        <br />
-        <br />
-        The project is built on{' '}
-        <ProjectInlineCode>react-static</ProjectInlineCode> and{' '}
-        <ProjectInlineCode>styled-components</ProjectInlineCode>, with live code
-        examples powered by <ProjectInlineCode>react-live</ProjectInlineCode>.
-        Diagrams were made by me using{' '}
-        <InlineLink href="https://www.sketch.com/" type="light">
-          Sketch
-        </InlineLink>
-        . Thanks are due to my colleagues Eliot Adams, Phil Plückthun, Ryan
-        Roemer, and Matt Keith for their support on design and infrastructure.
+        The documentation site for{' '}
+        <ProjectInlineCode>renature</ProjectInlineCode> provides diagrams, live
+        code editors, and an animation gallery to help users get started
+        animating joyfully with this physics-based animation library for React.
       </>
     ),
     src: RenatureDocsSrc,
     alt:
       'The documentation site for renature, a physics-based animation-library for React.',
-    href: 'https://formidable.com/open-source/renature/'
+    href: 'https://formidable.com/open-source/renature/',
+    stack: [
+      {
+        tag: 'React',
+        icon: '/logos/react-logo.svg'
+      },
+      {
+        tag: 'JavaScript',
+        icon: '/logos/js-logo.svg'
+      },
+      {
+        tag: 'Sketch',
+        icon: '/logos/sketch-logo.svg'
+      }
+    ]
   },
   {
     projectId: 'police-shootings',
     title: 'Police Shootings',
     description: (
       <>
-        I built this set of visualizations on police violence in America after
-        diving into data compiled by the Guardian in their project,{' '}
+        This set of visualizations combines{' '}
         <InlineLink
           href="https://www.theguardian.com/us-news/ng-interactive/2015/jun/01/the-counted-police-killings-us-database"
           type="light"
         >
-          The Counted
-        </InlineLink>
-        . This project seeks to expand their findings by combining shootings
-        data with racial data from the 5-year American Community Survey (ACS).
-        Together, these two data sources give us a clearer geographic picture of
-        how police violence affects folks of different races across the country.
-        <br />
-        <br />
-        This project is built on <ProjectInlineCode>
-          react
-        </ProjectInlineCode>, <ProjectInlineCode>redux</ProjectInlineCode>, and{' '}
-        <ProjectInlineCode>d3</ProjectInlineCode>. Much of the logic around data
-        fetching and side effects is done using{' '}
-        <ProjectInlineCode>redux-saga</ProjectInlineCode>. The temporal line
-        charts are built using <ProjectInlineCode>victory</ProjectInlineCode>.
+          data from the Guardian
+        </InlineLink>{' '}
+        and the 5-year American Community Survey (ACS) to better understand
+        geographic and racial patterns in police violence in America.
       </>
     ),
     src: PoliceShootingsSrc,
     alt:
       'A data visualization project looking at police shootings in the United State between 2015 and 2016.',
-    href: 'https://parkerziegler.github.io/police-shootings/'
+    href: 'https://parkerziegler.github.io/police-shootings/',
+    stack: [
+      {
+        tag: 'D3',
+        icon: '/logos/d3-logo.svg'
+      },
+      {
+        tag: 'React',
+        icon: '/logos/react-logo.svg'
+      },
+      {
+        tag: 'Redux',
+        icon: '/logos/redux-logo.svg'
+      },
+      {
+        tag: 'JavaScript',
+        icon: '/logos/js-logo.svg'
+      }
+    ]
   }
 ];
 
@@ -300,7 +328,7 @@ const Code = ({ repositories }) => {
         <Section className="stack-lg">
           <SkewBg tiltDirection="forward" overflow="hidden" asGradient />
           <SectionHeader className="text-white">Projects</SectionHeader>
-          <div className="stack-xl md:stack-xxl">
+          <div className="grid grid-cols-12 gap-8">
             {projects.map((project) => (
               <ProjectScreen key={project.projectId} {...project} />
             ))}

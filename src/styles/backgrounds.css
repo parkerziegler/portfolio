@@ -43,7 +43,7 @@
 }
 
 .bg-window::before {
-  @apply absolute top-0 w-full rounded-lg;
+  @apply absolute top-0 left-0 w-full rounded-lg;
 
   background-color: theme('colors.terminal');
   content: '';
@@ -51,7 +51,7 @@
 }
 
 .bg-window::after {
-  @apply absolute top-0 w-full h-12 bg-no-repeat;
+  @apply absolute top-0 left-0 w-full h-12 bg-no-repeat;
 
   content: '';
   background-image: url('./icons/window.svg');
