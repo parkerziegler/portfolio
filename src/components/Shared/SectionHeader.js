@@ -9,7 +9,7 @@ const SectionHeader = ({ className, children }) => (
       width="105"
       height="10"
       viewBox="0 0 105 10"
-      className="transform-gpu translate-y-2"
+      className="translate-y-2"
       aria-hidden
     >
       <path d="M5,0 L25,0 L20,10 L0,10 z" fill="#FBFDD7" />

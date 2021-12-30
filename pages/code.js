@@ -326,7 +326,7 @@ const Code = ({ repositories }) => {
           </div>
         </Section>
         <Section className="stack-lg">
-          <SkewBg tiltDirection="forward" overflow="hidden" asGradient />
+          <SkewBg tiltDirection="forward" overflow="hidden" />
           <SectionHeader className="text-white">Projects</SectionHeader>
           <div className="grid grid-cols-12 gap-8">
             {projects.map((project) => (

@@ -64,7 +64,7 @@ const Index = ({ contributions }) => (
         <Map />
       </Section>
       <Section className="stack-md sm:py-24">
-        <SkewBg asGradient />
+        <SkewBg />
         <SectionHeader className="text-white" type="light">
           What I&apos;m Up To
         </SectionHeader>

@@ -1,91 +1,67 @@
-@tailwind base;
+@layer components {
+  /* Pulse animation for main map. */
+  @keyframes pulse {
+    from {
+      stroke-width: 0.5rem;
+      stroke-opacity: 1;
+      transform: scale(0.3);
+    }
 
-/* Pulse animation for main map. */
-@keyframes pulse {
-  from {
-    stroke-width: 0.5rem;
-    stroke-opacity: 1;
-    transform: scale(0.3);
+    to {
+      stroke-width: 0;
+      stroke-opacity: 0;
+      transform: scale(3);
+    }
   }
 
-  to {
-    stroke-width: 0;
-    stroke-opacity: 0;
-    transform: scale(3);
-  }
-}
-
-.pulse {
-  fill-opacity: 0;
-  animation-duration: 2s;
-  animation-name: pulse;
-  animation-iteration-count: infinite;
-  animation-delay: 500ms;
-}
-
-/* Saturation animation for map carousel. */
-.saturate {
-  filter: saturate(0);
-  transition: all 300ms ease-out;
-}
-
-.saturate:hover {
-  transform: scale(1.05);
-  filter: saturate(1);
-}
-
-/* Animation on statistics. */
-@keyframes across {
-  0% {
-    clip-path: inset(0 100% 0 0);
-  }
-  100% {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-.across {
-  animation: 1s ease-out across infinite;
-}
-
-/* Arrow animations. */
-@keyframes wiggle {
-  0% {
-    transform: translateX(0rem);
+  .pulse {
+    fill-opacity: 0;
+    animation-duration: 2s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-delay: 500ms;
   }
 
-  50% {
-    transform: translateX(-0.5rem);
+  /* Saturation animation for map carousel. */
+  .saturate {
+    filter: saturate(0);
+    transition: all 300ms ease-out;
   }
 
-  100% {
-    transform: translateX(0rem);
+  .saturate:hover {
+    transform: scale(1.05);
+    filter: saturate(1);
   }
-}
 
-.with-arrow::after {
-  @apply inline-block ml-2;
+  /* Animation on statistics. */
+  @keyframes across {
+    0% {
+      clip-path: inset(0 100% 0 0);
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+    }
+  }
 
-  content: '';
-  background: url('./icons/arrow.svg');
-  height: 1.6rem;
-  width: 1.6rem;
-  animation: 1s ease-out wiggle infinite;
-}
+  .across {
+    animation: 1s ease-out across infinite;
+  }
 
-.with-map::before,
-.with-code::before {
-  @apply inline-block mr-4;
+  /* Icons associated with map links. */
+  .with-map::before,
+  .with-code::before {
+    @apply inline-block mr-4;
 
-  content: '';
-  height: 2.4rem;
-  width: 2.4rem;
-}
+    content: '';
+    height: 2.4rem;
+    width: 2.4rem;
+  }
 
-.with-map::before {
-  background: url('./icons/map.svg');
-}
+  .with-map::before {
+    background: url('./icons/map.svg');
+  }
 
-.with-code::before {
-  background: url('./icons/github.svg');
+  .with-code::before {
+    background: url('./icons/github.svg');
+  }
 }

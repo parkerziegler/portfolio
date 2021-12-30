@@ -20,7 +20,7 @@ const Header = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="w-full bg-gradient-to-r from-primary to-secondary header-clip-path">
+    <div className="w-full bg-gradient-to-r from-primary to-secondary sm:header-clip-path">
       <header className="w-full max-w-view mx-auto flex items-center justify-between flex-auto px-8 sm:px-32 md:px-40 py-8 sm:pt-8 sm:pb-16">
         <SiteTitle />
         <motion.nav

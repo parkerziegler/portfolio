@@ -1,58 +1,69 @@
-@tailwind base;
+@layer components {
+  /* Radial backgrounds. */
+  .bg-radial {
+    @apply relative bg-left-top;
 
-.bg-radial {
-  @apply relative bg-left-top;
+    background-size: 0.5rem 0.5rem;
+  }
 
-  background-size: 0.5rem 0.5rem;
-}
+  .bg-radial--primary {
+    background-image: radial-gradient(
+      theme('colors.primary') 25%,
+      transparent 25%
+    );
+  }
 
-.bg-underline {
-  text-decoration-thickness: 0.2rem;
-  text-decoration-style: dotted;
-  text-decoration-line: underline;
-}
+  .bg-radial--secondary {
+    background-image: radial-gradient(
+      theme('colors.secondary') 25%,
+      transparent 25%
+    );
+  }
 
-.bg-underline--dark {
-  text-decoration-color: theme('colors.primary');
-}
+  .bg-radial--white {
+    background-image: radial-gradient(
+      theme('colors.white') 25%,
+      transparent 25%
+    );
+  }
 
-.bg-underline--light {
-  text-decoration-color: theme('colors.white');
-}
+  /* Link backgrounds. */
+  .bg-underline {
+    text-decoration-thickness: 0.2rem;
+    text-decoration-style: dotted;
+    text-decoration-line: underline;
+  }
 
-.bg-radial--primary {
-  background-image: radial-gradient(
-    theme('colors.primary') 25%,
-    transparent 25%
-  );
-}
+  .bg-underline--dark {
+    text-decoration-color: theme('colors.primary');
+  }
 
-.bg-radial--secondary {
-  background-image: radial-gradient(
-    theme('colors.secondary') 25%,
-    transparent 25%
-  );
-}
+  .bg-underline--light {
+    text-decoration-color: theme('colors.white');
+  }
 
-.bg-radial--white {
-  background-image: radial-gradient(theme('colors.white') 25%, transparent 25%);
-}
+  /* Project terminal screen backgrounds. */
+  .bg-terminal {
+    background-color: theme('colors.terminal');
+  }
 
-.bg-window {
-  background-color: theme('colors.terminal');
-}
+  .bg-terminal::before {
+    @apply absolute top-0 left-0 w-full rounded-lg;
 
-.bg-window::before {
-  @apply absolute top-0 left-0 w-full rounded-lg;
+    background-color: theme('colors.terminal');
+    content: '';
+    height: 3rem;
+  }
 
-  background-color: theme('colors.terminal');
-  content: '';
-  height: 3rem;
-}
+  .bg-terminal::after {
+    @apply absolute top-0 left-0 w-full h-12 bg-no-repeat;
 
-.bg-window::after {
-  @apply absolute top-0 left-0 w-full h-12 bg-no-repeat;
+    content: '';
+    background-image: url('./icons/window.svg');
+  }
 
-  content: '';
-  background-image: url('./icons/window.svg');
+  /* Clip path for the site header background. */
+  .header-clip-path {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+  }
 }

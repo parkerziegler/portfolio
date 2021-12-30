@@ -1,14 +1,6 @@
 /* Standard vertical and horizontal stack utilities.
 See https://every-layout.dev/layouts/stack/. */
-@responsive {
-  .stack-xs > *,
-  .stack-sm > *,
-  .stack-md > *,
-  .stack-lg > *,
-  .stack-xl > * {
-    @apply my-0;
-  }
-
+@layer utilities {
   .stack-xs > * + * {
     @apply mt-2;
   }
@@ -37,14 +29,6 @@ See https://every-layout.dev/layouts/stack/. */
     @apply mt-0;
   }
 
-  .stack-xs-h > *,
-  .stack-sm-h > *,
-  .stack-md-h > *,
-  .stack-lg-h > *,
-  .stack-xl-h > * {
-    @apply mx-0;
-  }
-
   .stack-xs-h > * + * {
     @apply ml-2;
   }
@@ -68,17 +52,15 @@ See https://every-layout.dev/layouts/stack/. */
   .stack-none-h > * + * {
     @apply ml-0;
   }
-}
 
-.line-clamp-ellipsis {
-  @apply overflow-hidden;
+  .line-clamp-ellipsis {
+    @apply overflow-hidden;
 
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
 
-@media (min-width: 1280px) {
   .full-width-breakout {
     @apply w-screen left-1/2 right-1/2;
 

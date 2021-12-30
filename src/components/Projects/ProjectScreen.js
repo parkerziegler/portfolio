@@ -5,13 +5,13 @@ import Image from 'next/image';
 import Tag from '../Blog/Tag';
 
 const ProjectScreen = ({ title, description, src, alt, href, stack }) => (
-  <div className="relative col-span-12 lg:col-span-6 stack-md pt-20 pb-16 bg-window rounded-lg shadow-2xl-dark text-white">
+  <div className="relative col-span-12 lg:col-span-6 stack-md pt-20 pb-16 bg-terminal rounded-lg shadow-2xl-dark text-white">
     <a href={href} target="_blank" rel="noopener noreferrer">
       <Image
         src={src}
         alt={alt}
         placeholder="blur"
-        className="transition-transform transform hover:scale-110"
+        className="transition-transform hover:scale-110"
       />
     </a>
     <div className="px-8 stack-md">

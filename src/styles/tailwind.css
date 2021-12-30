@@ -4,6 +4,5 @@
 
 @import './animations.css';
 @import './backgrounds.css';
-@import './custom.css';
-@import './mixins.css';
-@import './observable.css';
+@import './blog.css';
+@import './utilities.css';
