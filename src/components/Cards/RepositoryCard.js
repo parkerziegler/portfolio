@@ -2,24 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
-import tailwind from '../../../tailwind.config';
-
-const variants = {
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      y: { stiffness: 1000, velocity: -100 }
-    }
-  },
-  hidden: {
-    y: 50,
-    opacity: 0,
-    transition: {
-      y: { stiffness: 1000 }
-    }
-  }
-};
+import {
+  boxShadow,
+  translateUpRight,
+  appearChildVariants,
+  transitionRelaxed
+} from '../../utils/animation';
 
 const RepositoryCard = ({
   name,
@@ -37,17 +25,9 @@ const RepositoryCard = ({
       target="_blank"
       rel="noopener noreferrer"
       className="col-span-12 lg:col-span-4 self-stretch rounded-lg"
-      variants={variants}
-      whileHover={{
-        x: 5,
-        y: -5,
-        boxShadow: `-1rem 1rem ${tailwind.theme.extend.colors.primary}`
-      }}
-      transition={{
-        type: 'spring',
-        stiffness: 260,
-        damping: 20
-      }}
+      variants={appearChildVariants}
+      whileHover={{ ...boxShadow, ...translateUpRight }}
+      transition={transitionRelaxed}
     >
       <div className="bg-gradient-to-r from-primary to-secondary flex p-2 m-auto rounded-lg font-mono shadow-lg h-full">
         <div className="flex flex-col items-center stack-sm p-4 rounded-md bg-white flex-auto overflow-auto">

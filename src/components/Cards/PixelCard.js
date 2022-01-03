@@ -3,22 +3,11 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import cs from 'classnames';
 
-const variants = {
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      y: { stiffness: 1000, velocity: -100 }
-    }
-  },
-  hidden: {
-    y: 50,
-    opacity: 0,
-    transition: {
-      y: { stiffness: 1000 }
-    }
-  }
-};
+import {
+  translateUpRight,
+  appearChildVariants,
+  transitionRelaxed
+} from '../../utils/animation';
 
 const PixelCard = ({
   name,
@@ -33,17 +22,10 @@ const PixelCard = ({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      variants={variants}
+      variants={appearChildVariants}
       className="font-mono col-span-12 lg:col-span-4 flex flex-col bg-radial bg-radial--primary p-8 stack-md rounded-lg shadow-md"
-      whileHover={{
-        x: 5,
-        y: -5
-      }}
-      transition={{
-        type: 'spring',
-        stiffness: 260,
-        damping: 20
-      }}
+      whileHover={translateUpRight}
+      transition={transitionRelaxed}
     >
       <div className="bg-white p-2 stack-sm">
         <p className="text-3xl">{name}</p>

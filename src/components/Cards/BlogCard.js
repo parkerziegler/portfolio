@@ -3,42 +3,22 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-import tailwind from '../../../tailwind.config';
 import Tag from '../Blog/Tag';
-
-const variants = {
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      y: { stiffness: 1000, velocity: -100 }
-    }
-  },
-  hidden: {
-    y: 50,
-    opacity: 0,
-    transition: {
-      y: { stiffness: 1000 }
-    }
-  }
-};
+import {
+  appearChildVariants,
+  boxShadow,
+  transitionRelaxed,
+  translateUpRight
+} from '../../utils/animation';
 
 const BlogCard = ({ title, slug, tags = [], introText, date }) => {
   return (
     <Link href={`/thoughts/${slug}`}>
       <motion.a
-        variants={variants}
+        variants={appearChildVariants}
         className="col-span-12 md:col-span-6 cursor-pointer rounded-lg"
-        whileHover={{
-          x: 5,
-          y: -5,
-          boxShadow: `-1rem 1rem ${tailwind.theme.extend.colors.primary}`
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 300,
-          damping: 12
-        }}
+        whileHover={{ ...boxShadow, ...translateUpRight }}
+        transition={transitionRelaxed}
       >
         <div className="flex h-full bg-gradient-to-r from-primary to-secondary shadow-lg p-2 rounded-lg">
           <div className="flex flex-col p-4 rounded-md bg-white flex-auto overflow-auto">

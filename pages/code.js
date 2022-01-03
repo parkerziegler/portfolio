@@ -19,6 +19,7 @@ import ProjectInlineCode from '../src/components/Projects/ProjectInlineCode';
 import RenatureDocsSrc from '../public/projects/renature-docs/renature-docs.png';
 import PoliceShootingsSrc from '../public/projects/police-shootings/police-shootings.png';
 import NationalDebtSrc from '../public/projects/the-national-debt/the-national-debt.png';
+import { appearParentVariants } from '../src/utils/animation';
 
 const projects = [
   {
@@ -195,13 +196,6 @@ const repositoriesQuery = gql`
   }
 `;
 
-const variants = {
-  visible: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
-  },
-  hidden: false
-};
-
 const title = 'Code / Parker Ziegler / Software Engineer and Cartographer';
 const description =
   'Open source libraries and projects created by Parker Ziegler, a software engineer and cartographer based in Seattle, WA.';
@@ -240,15 +234,15 @@ const Code = ({ repositories }) => {
         <Section className="stack-md">
           <SectionHeader>Featured Open Source</SectionHeader>
           <Text>
-            {
-              "I'm passionate about open source because I fundamentally believe in the radical power of transparent and open knowledge making. Here are some of the projects I've worked on the most."
-            }
+            I&apos;m passionate about open source because I fundamentally
+            believe in the radical power of transparent and open knowledge
+            making. Here are some of the projects I&apos;ve worked on the most.
           </Text>
           <motion.div
             className="grid grid-cols-12 gap-8"
             animate="visible"
             initial="hidden"
-            variants={variants}
+            variants={appearParentVariants}
           >
             {mainOSS.map(
               ({

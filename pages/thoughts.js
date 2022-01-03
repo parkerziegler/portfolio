@@ -8,13 +8,7 @@ import SectionHeader from '../src/components/Shared/SectionHeader';
 import Text from '../src/components/Shared/Text';
 import BlogCard from '../src/components/Cards/BlogCard';
 import { useScrollToTop } from '../src/hooks/useScrollToTop';
-
-const variants = {
-  visible: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
-  },
-  hidden: false
-};
+import { appearParentVariants } from '../src/utils/animation';
 
 const title = 'Thoughts / Parker Ziegler / Software Engineer and Cartographer';
 const description =
@@ -50,7 +44,7 @@ const Thoughts = ({ posts }) => {
           </Text>
           <motion.div
             className="grid grid-cols-12 gap-x-6 gap-y-12 md:gap-12"
-            variants={variants}
+            variants={appearParentVariants}
             initial="hidden"
             animate="visible"
           >

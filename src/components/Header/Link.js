@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 import rough from 'roughjs/bundled/rough.cjs';
 import cs from 'classnames';
 
-import tailwind from '../../../tailwind.config';
+import { theme } from '../../../tailwind.config';
 
-const { primary, white } = tailwind.theme.extend.colors;
+const { primary, white } = theme.extend.colors;
 
 const Link = ({ href, onClick, isMobile = false, children }) => {
   const linkRef = useRef(null);

@@ -7,6 +7,7 @@ import {
   CONTRIBUTION_EVENT_TYPES,
   LANGUAGES
 } from '../../utils/constants';
+import { transitionDirect, translateDownLeft } from '../../utils/animation';
 
 const normalizeContributionType = (type) => {
   const str = type.replace('Event', '').replace(/([a-z])([A-Z])/g, '$1 $2');
@@ -24,15 +25,10 @@ const ContributionCard = ({ repo, url, description, language, type }) => (
     target="_blank"
     rel="noopener noreferrer"
     whileHover={{
-      rotate: -3,
-      y: 5,
-      x: -5
+      ...translateDownLeft,
+      rotate: -3
     }}
-    transition={{
-      type: 'spring',
-      stiffness: 300,
-      damping: 12
-    }}
+    transition={transitionDirect}
   >
     <div className="bg-radial bg-radial--white flex p-2 m-auto rounded-lg font-mono h-full w-full shadow-lg">
       <div className="flex flex-col p-4 rounded-md flex-auto overflow-auto">

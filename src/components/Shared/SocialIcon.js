@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
+import { transitionRelaxed } from '../../utils/animation';
+
 const SocialIcon = ({ href, path, alt }) => (
   <motion.a
     href={href}
@@ -9,13 +11,9 @@ const SocialIcon = ({ href, path, alt }) => (
     rel="noopener noreferrer"
     className="flex justify-center"
     whileHover={{
-      scale: 1.05
+      scale: 1.1
     }}
-    transition={{
-      type: 'spring',
-      stiffness: 260,
-      damping: 20
-    }}
+    transition={transitionRelaxed}
   >
     <img
       src={path}
