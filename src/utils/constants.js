@@ -54,6 +54,10 @@ export const TAGS = {
   rescript: {
     icon: '/logos/rescript-logo.svg',
     tag: 'ReScript'
+  },
+  ['grad-school']: {
+    icon: '🎓',
+    tag: 'Grad School'
   }
 };
 

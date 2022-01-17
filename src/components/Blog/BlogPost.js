@@ -34,8 +34,8 @@ const BlogPost = ({
         <meta property="og:type" content="website" />
         <meta property="og:image" content={`/thoughts/${slug}/og-image.png`} />
         <meta property="og:image:alt" content={title} />
-        <meta property="og:image:width" content="1280" />
-        <meta property="og:image:height" content="675" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@parker_ziegler" />
         <meta name="twitter:title" content={title} />
@@ -44,7 +44,7 @@ const BlogPost = ({
       </Head>
       <MDXProvider components={components}>
         <main className="md:flex md:stack-lg-h md:justify-center px-8 sm:px-32 md:px-40 py-12 sm:py-16">
-          <article className="flex flex-col stack-md max-w-prose mx-auto min-w-0">
+          <article className="flex flex-col stack-md md:stack-lg max-w-prose mx-auto min-w-0">
             {children}
           </article>
           <aside className="hidden md:flex md:flex-col md:flex-shrink-0 md:w-60">
