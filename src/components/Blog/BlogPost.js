@@ -32,7 +32,14 @@ const BlogPost = ({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={`/thoughts/${slug}/og-image.png`} />
+        <meta
+          property="og:image"
+          content={
+            process.env.VERCEL_URL
+              ? `https://${process.env.VERCEL_URL}/thoughts/${slug}/og-image.png`
+              : '/thoughts/${slug}/og-image.png'
+          }
+        />
         <meta property="og:image:alt" content={title} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -40,7 +47,14 @@ const BlogPost = ({
         <meta name="twitter:creator" content="@parker_ziegler" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={`/thoughts/${slug}/og-image.png`} />
+        <meta
+          name="twitter:image"
+          content={
+            process.env.VERCEL_URL
+              ? `https://${process.env.VERCEL_URL}/thoughts/${slug}/og-image.png`
+              : '/thoughts/${slug}/og-image.png'
+          }
+        />
       </Head>
       <MDXProvider components={components}>
         <main className="md:flex md:stack-lg-h md:justify-center px-8 sm:px-32 md:px-40 py-12 sm:py-16">
