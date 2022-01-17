@@ -37,7 +37,7 @@ const BlogPost = ({
           content={
             process.env.VERCEL_URL
               ? `https://${process.env.VERCEL_URL}/thoughts/${slug}/og-image.png`
-              : '/thoughts/${slug}/og-image.png'
+              : `/thoughts/${slug}/og-image.png`
           }
         />
         <meta property="og:image:alt" content={title} />
@@ -52,7 +52,7 @@ const BlogPost = ({
           content={
             process.env.VERCEL_URL
               ? `https://${process.env.VERCEL_URL}/thoughts/${slug}/og-image.png`
-              : '/thoughts/${slug}/og-image.png'
+              : `/thoughts/${slug}/og-image.png`
           }
         />
       </Head>
