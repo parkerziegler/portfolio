@@ -35,8 +35,8 @@ const BlogPost = ({
         <meta
           property="og:image"
           content={
-            process.env.VERCEL_URL
-              ? `https://${process.env.VERCEL_URL}/thoughts/${slug}/og-image.png`
+            process.env.NEXT_PUBLIC_VERCEL_URL
+              ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/thoughts/${slug}/og-image.png`
               : `/thoughts/${slug}/og-image.png`
           }
         />
@@ -50,8 +50,8 @@ const BlogPost = ({
         <meta
           name="twitter:image"
           content={
-            process.env.VERCEL_URL
-              ? `https://${process.env.VERCEL_URL}/thoughts/${slug}/og-image.png`
+            process.env.NEXT_PUBLIC_VERCEL_URL
+              ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/thoughts/${slug}/og-image.png`
               : `/thoughts/${slug}/og-image.png`
           }
         />
