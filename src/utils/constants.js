@@ -64,13 +64,14 @@ export const TAGS = {
 export const LANGUAGES = {
   JavaScript: { src: '/logos/js-logo.svg', alt: 'JavaScript Logo' },
   TypeScript: { src: '/logos/ts-logo.svg', alt: 'TypeScript Logo' },
+  ReScript: { src: '/logos/rescript-logo.svg', alt: 'ReScript Logo' },
   Reason: { src: '/logos/reason-logo.svg', alt: 'Reason Logo' },
   HTML: { src: '/logos/html-logo.svg', alt: 'HTML Logo' },
   CSS: { src: '/logos/css-logo.svg', alt: 'CSS Logo' },
   GraphQL: { src: '/logos/graphql-logo.svg', alt: 'GraphQL Logo' },
   WebAssembly: { src: '/logos/wasm-logo.svg', alt: 'WebAssembly Logo' },
   Rust: { src: '/logos/rust-logo.svg', alt: 'Rust Logo' },
-  ReScript: { src: '/logos/rescript-logo.svg', alt: 'ReScript Logo' },
+  Python: { src: '/logos/python-logo.svg', alt: 'Python Logo' },
   TeX: { src: '/logos/tex-logo.svg', alt: 'TeX Logo' }
 };
 
