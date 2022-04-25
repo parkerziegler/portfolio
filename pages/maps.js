@@ -9,7 +9,7 @@ import MapCarousel from '../src/components/Map/MapCarousel';
 
 const title = 'Maps / Parker Ziegler / Software Engineer and Cartographer';
 const description =
-  'Maps created by Parker Ziegler, a software engineer and cartographer based in Seattle, WA.';
+  'Maps created by Parker Ziegler, a software engineer and cartographer based in Berkeley, CA.';
 
 const Maps = () => {
   return (

@@ -12,7 +12,7 @@ import { appearParentVariants } from '../src/utils/animation';
 
 const title = 'Thoughts / Parker Ziegler / Software Engineer and Cartographer';
 const description =
-  'Musings, learnings, and tutorials written by Parker Ziegler, a software engineer and cartographer based in Seattle, WA.';
+  'Musings, learnings, and tutorials written by Parker Ziegler, a software engineer and cartographer based in Berkeley, CA.';
 
 const Thoughts = ({ posts }) => {
   useScrollToTop();

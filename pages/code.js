@@ -198,7 +198,7 @@ const repositoriesQuery = gql`
 
 const title = 'Code / Parker Ziegler / Software Engineer and Cartographer';
 const description =
-  'Open source libraries and projects created by Parker Ziegler, a software engineer and cartographer based in Seattle, WA.';
+  'Open source libraries and projects created by Parker Ziegler, a software engineer and cartographer based in Berkeley, CA.';
 
 const Code = ({ repositories }) => {
   const mainOSS = [
