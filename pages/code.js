@@ -170,7 +170,7 @@ const repositoriesQuery = gql`
     ) {
       ...repoInfo
     }
-    wonka: repository(name: "wonka", owner: "kitten") {
+    reviz: repository(name: "reviz", owner: "parkerziegler") {
       ...repoInfo
     }
     reasonBasics: repository(name: "reason-basics", owner: "parkerziegler") {
@@ -208,7 +208,7 @@ const Code = ({ repositories }) => {
   ];
   const secondaryOSS = [
     repositories.webpackDashboard,
-    repositories.wonka,
+    repositories.reviz,
     repositories.reasonBasics
   ];
 
@@ -396,8 +396,8 @@ Code.propTypes = {
     urql: Repository,
     reScriptUrql: Repository,
     webpackDashboard: Repository,
+    reviz: Repository,
     reasonBasics: Repository,
-    wonka: Repository,
     viewer: Viewer
   }).isRequired
 };

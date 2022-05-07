@@ -42,19 +42,20 @@ const Index = ({ contributions }) => (
     </Head>
     <main id="main">
       <Section className="items-center">
-        <div className="md:max-w-3/4 stack-sm">
+        <div className="md:max-w-3/4 stack-md">
           <SectionHeader>Hey, I&apos;m Parker.</SectionHeader>
           <Text>
             I am a <strong>computer scientist</strong>,{' '}
             <strong>software engineer</strong>, and{' '}
             <strong>cartographer</strong> based in Berkeley, CA. My passions lie
-            at the intersection of software development, programming languages,
-            human-computer interaction, and geospatial technologies. I currently
-            spend a lot of my time working on{' '}
+            at the intersection of programming languages, human-computer
+            interaction, data visualization, and geospatial technologies. I
+            currently spend a lot of my time researching and working on{' '}
             <InlineLink href="https://github.com/parkerziegler">
-              open source tools
+              programming tools
             </InlineLink>{' '}
-            to help others build better software.
+            for data journalists, Earth and climate scientists, and social
+            scientists.
           </Text>
           <Text>
             I also believe <strong>place</strong> shapes every part of who we
@@ -78,9 +79,9 @@ const Index = ({ contributions }) => (
             Professor Sarah Chasins
           </InlineLink>
           . My research focuses on using novel techniques from programming
-          languages research to build new tools for social scientists, climate
-          researchers, and journalists. Previously, I worked with the wonderful
-          and talented folks at{' '}
+          languages research to build useful and usable programming tools for
+          data journalists, climate researchers, and social scientists.
+          Previously, I worked with the wonderful and talented folks at{' '}
           <InlineLink href="https://formidable.com/" type="light">
             Formidable
           </InlineLink>
