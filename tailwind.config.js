@@ -10,8 +10,11 @@ module.exports = {
         'terminal-secondary': '#09cbcb'
       },
       fontFamily: {
-        serif: "'Zilla Slab', serif",
+        serif: "'Source Serif Pro', serif",
         mono: "'DM Mono', monospace"
+      },
+      fontSize: {
+        '3xl': ['1.825rem', { lineHeight: '2.25rem' }]
       },
       maxWidth: {
         view: '128rem',

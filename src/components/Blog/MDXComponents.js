@@ -197,7 +197,7 @@ Img.propTypes = {
 };
 
 const BlockQuote = ({ children }) => (
-  <blockquote className="font-bold bg-indigo-100 p-4 border-l-4 border-primary rounded-md">
+  <blockquote className="font-semibold bg-indigo-100 p-4 border-l-4 border-primary rounded-md">
     {children}
   </blockquote>
 );

@@ -6,7 +6,9 @@ import LangIcon from './LangIcon';
 const LangSection = ({ title, langs }) => {
   return (
     <div>
-      <h3 className="text-4xl text-center font-serif mb-4">{title}</h3>
+      <h3 className="text-4xl text-center font-serif font-semibold italic mb-4">
+        {title}
+      </h3>
       <div className="flex flex-wrap items-center justify-center">
         {langs.map(({ src, alt }) => (
           <LangIcon key={src} src={src} alt={alt} />

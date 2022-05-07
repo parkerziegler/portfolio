@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cs from 'classnames';
 
 const SectionHeader = ({ className, children }) => (
-  <h2 className={cs('font-serif text-6xl m-0', className)}>
+  <h2 className={cs('font-serif font-semibold text-6xl m-0', className)}>
     {children}
     <svg
       width="105"

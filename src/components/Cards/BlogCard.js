@@ -22,7 +22,7 @@ const BlogCard = ({ title, slug, tags = [], introText, date }) => {
       >
         <div className="flex h-full bg-gradient-to-r from-primary to-secondary shadow-lg p-2 rounded-lg">
           <div className="flex flex-col p-4 rounded-md bg-white flex-auto overflow-auto">
-            <h2 className="text-4xl font-serif font-bold">{title}</h2>
+            <h2 className="text-4xl font-serif font-semibold">{title}</h2>
             <p className="text-2xl font-serif line-clamp-ellipsis leading-snug tracking-normal my-8">
               {introText}
             </p>
