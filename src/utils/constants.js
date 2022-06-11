@@ -61,17 +61,22 @@ export const TAGS = {
   }
 };
 
-export const LANGUAGES = {
+export const CORE_LANGUAGES = {
   JavaScript: { src: '/logos/js-logo.svg', alt: 'JavaScript Logo' },
   TypeScript: { src: '/logos/ts-logo.svg', alt: 'TypeScript Logo' },
-  ReScript: { src: '/logos/rescript-logo.svg', alt: 'ReScript Logo' },
-  Reason: { src: '/logos/reason-logo.svg', alt: 'Reason Logo' },
   HTML: { src: '/logos/html-logo.svg', alt: 'HTML Logo' },
   CSS: { src: '/logos/css-logo.svg', alt: 'CSS Logo' },
   GraphQL: { src: '/logos/graphql-logo.svg', alt: 'GraphQL Logo' },
-  WebAssembly: { src: '/logos/wasm-logo.svg', alt: 'WebAssembly Logo' },
   Rust: { src: '/logos/rust-logo.svg', alt: 'Rust Logo' },
+  WebAssembly: { src: '/logos/wasm-logo.svg', alt: 'WebAssembly Logo' },
   Python: { src: '/logos/python-logo.svg', alt: 'Python Logo' },
+  ReScript: { src: '/logos/rescript-logo.svg', alt: 'ReScript Logo' },
+  Reason: { src: '/logos/reason-logo.svg', alt: 'Reason Logo' }
+};
+
+export const LANGUAGES = {
+  ...CORE_LANGUAGES,
+  Java: { src: '/logos/java-logo.svg', alt: 'Java Logo' },
   TeX: { src: '/logos/tex-logo.svg', alt: 'TeX Logo' }
 };
 
@@ -83,6 +88,7 @@ export const TOOLS = {
   D3: { src: '/logos/d3-logo.svg', alt: 'D3 Logo' },
   Jest: { src: '/logos/jest-logo.svg', alt: 'Jest Logo' },
   Cypress: { src: '/logos/cypress-logo.svg', alt: 'Cypress Logo' },
+  TailwindCSS: { src: '/logos/tailwindcss-logo.svg', alt: 'Tailwind Logo' },
   Sass: { src: '/logos/sass-logo.svg', alt: 'Sass Logo' },
   Terraform: { src: '/logos/terraform-logo.svg', alt: 'Terraform Logo' }
 };
