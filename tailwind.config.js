@@ -14,7 +14,7 @@ module.exports = {
         mono: "'DM Mono', monospace"
       },
       fontSize: {
-        '3xl': ['1.825rem', { lineHeight: '2.25rem' }]
+        '3xl': ['1.85rem', { lineHeight: '2.25rem' }]
       },
       maxWidth: {
         view: '128rem',

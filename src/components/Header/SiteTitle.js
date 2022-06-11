@@ -30,8 +30,7 @@ const SiteTitle = () => (
           x="10"
           y="36"
           fill={theme.extend.colors.white}
-          style={{ font: '2.8rem "Source Serif Pro", serif' }}
-          className="font-semibold"
+          style={{ font: '2.8rem "Source Serif Pro", serif', fontWeight: 600 }}
         >
           Parker Ziegler
         </text>

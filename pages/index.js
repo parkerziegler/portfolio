@@ -12,7 +12,7 @@ import InlineLink from '../src/components/Shared/InlineLink';
 import LangSection from '../src/components/Shared/LangSection';
 import SkewBg from '../src/components/Shared/SkewBg';
 import {
-  LANGUAGES,
+  CORE_LANGUAGES,
   TOOLS,
   CONTRIBUTION_EVENT_TYPES
 } from '../src/utils/constants';
@@ -42,24 +42,24 @@ const Index = ({ contributions }) => (
     </Head>
     <main id="main">
       <Section className="items-center">
-        <div className="md:max-w-3/4 stack-md">
+        <div className="md:max-w-3/4 stack-lg">
           <SectionHeader>Hey, I&apos;m Parker.</SectionHeader>
           <Text>
-            I am a <strong>computer scientist</strong>,{' '}
-            <strong>software engineer</strong>, and{' '}
-            <strong>cartographer</strong> based in Berkeley, CA. My passions lie
-            at the intersection of programming languages, human-computer
-            interaction, data visualization, and geospatial technologies. I
-            currently spend a lot of my time researching and working on{' '}
+            I am a <em className="font-semibold">computer scientist</em>,{' '}
+            <em className="font-semibold">software engineer</em>, and{' '}
+            <em className="font-semibold">cartographer</em> based in Berkeley,
+            CA. My passions lie at the intersection of programming languages
+            (PL), human-computer interaction (HCI), data visualization, and
+            geospatial technologies. I currently spend a lot of my time
+            researching and working on{' '}
             <InlineLink href="https://github.com/parkerziegler">
               programming tools
             </InlineLink>{' '}
             for data journalists, Earth and climate scientists, and social
             scientists.
-          </Text>
-          <Text>
-            I also believe <strong>place</strong> shapes every part of who we
-            are. Here are some of the places that have shaped me.
+            <br />
+            <br />I also believe <em className="font-semibold">place</em> shapes
+            every part of who we are. These are the places that have shaped me.
           </Text>
         </div>
         <Map />
@@ -79,9 +79,10 @@ const Index = ({ contributions }) => (
             Professor Sarah Chasins
           </InlineLink>
           . My research focuses on using novel techniques from programming
-          languages research to build useful and usable programming tools for
-          data journalists, climate researchers, and social scientists.
-          Previously, I worked with the wonderful and talented folks at{' '}
+          languages and human-computer interaction research to build useful and
+          usable programming tools for data journalists, climate researchers,
+          and social scientists. Previously, I worked with the wonderful and
+          talented folks at{' '}
           <InlineLink href="https://formidable.com/" type="light">
             Formidable
           </InlineLink>
@@ -114,7 +115,10 @@ const Index = ({ contributions }) => (
             with these lovely languages and tools.
           </Text>
           <div className="flex flex-col sm:flex-row justify-evenly">
-            <LangSection title="Languages" langs={Object.values(LANGUAGES)} />
+            <LangSection
+              title="Languages"
+              langs={Object.values(CORE_LANGUAGES)}
+            />
             <LangSection title="Tools" langs={Object.values(TOOLS)} />
           </div>
         </div>
