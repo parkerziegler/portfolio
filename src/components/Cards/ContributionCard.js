@@ -32,7 +32,7 @@ const ContributionCard = ({ repo, url, description, language, type }) => (
   >
     <div className="bg-radial bg-radial--white flex p-2 m-auto rounded-lg font-mono h-full w-full shadow-lg">
       <div className="flex flex-col p-4 rounded-md flex-auto overflow-auto">
-        <p className="block text-2xl font-semibold underline bg-white mb-4 px-4 py-2 rounded-sm">
+        <p className="block text-2xl font-semibold underline bg-white mb-4 px-4 py-2 rounded-sm overflow-hidden whitespace-nowrap text-ellipsis">
           {repo}
         </p>
         <p className="text-2xl bg-white mb-4 px-4 py-2 rounded-sm max-h-28 overflow-auto">

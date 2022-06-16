@@ -11,6 +11,7 @@ import ContributionCard from '../src/components/Cards/ContributionCard';
 import InlineLink from '../src/components/Shared/InlineLink';
 import LangSection from '../src/components/Shared/LangSection';
 import SkewBg from '../src/components/Shared/SkewBg';
+import NewsList from '../src/components/News/NewsList';
 import {
   CORE_LANGUAGES,
   TOOLS,
@@ -20,7 +21,7 @@ import {
 const title = 'Parker Ziegler / Software Engineer and Cartographer';
 const description =
   'Parker Ziegler is a software engineer and cartographer based in Berkeley, CA. He works on next generation web technologies, with a focus on animation, graphics, and emerging programming languages.';
-const MAX_ACTIVITY_COUNT = 6;
+const MAX_ACTIVITY_COUNT = 4;
 
 const Index = ({ contributions }) => (
   <>
@@ -64,7 +65,7 @@ const Index = ({ contributions }) => (
         </div>
         <Map />
       </Section>
-      <Section className="stack-md sm:py-24">
+      <Section className="stack-lg sm:py-24">
         <SkewBg />
         <SectionHeader className="text-white" type="light">
           What I&apos;m Up To
@@ -92,23 +93,26 @@ const Index = ({ contributions }) => (
           </InlineLink>
           . Check out some of my recent contributions.
         </Text>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 z-10">
-          {contributions.map(
-            ({ id, repo, url, language, description, type }) => (
-              <ContributionCard
-                key={id}
-                repo={repo}
-                url={url}
-                description={description}
-                language={language}
-                type={type}
-              />
-            )
-          )}
+        <div className="grid grid-cols-12 gap-8">
+          <NewsList className="col-span-12 lg:col-span-4" />
+          <div className="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8 self-start z-10">
+            {contributions.map(
+              ({ id, repo, url, language, description, type }) => (
+                <ContributionCard
+                  key={id}
+                  repo={repo}
+                  url={url}
+                  description={description}
+                  language={language}
+                  type={type}
+                />
+              )
+            )}
+          </div>
         </div>
       </Section>
       <Section className="items-center pt-20 sm:pt-32">
-        <div className="md:max-w-3/4 stack-md">
+        <div className="md:max-w-3/4 stack-lg">
           <SectionHeader>Tools I Work With</SectionHeader>
           <Text>
             I love everything about the Web and spend most of my days working

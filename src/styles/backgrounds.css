@@ -66,4 +66,16 @@
   .header-clip-path {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
   }
+
+  .timeline:not(:last-child) span::before {
+    @apply h-full w-2 block absolute -left-4 top-9;
+    content: '';
+
+    /* Copy of bg-radial. */
+    @apply bg-left-top;
+    background-size: 0.5rem 0.5rem;
+
+    /* Copy of bg-radial--white. */
+    background-image: radial-gradient(theme('colors.white') 25%, transparent 25%);
+  }
 }

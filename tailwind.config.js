@@ -60,7 +60,8 @@ module.exports = {
     stroke: (theme) => {
       return {
         black: theme('colors.black'),
-        primary: theme('colors.primary')
+        primary: theme('colors.primary'),
+        white: theme('colors.white')
       };
     }
   },
