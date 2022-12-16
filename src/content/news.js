@@ -4,6 +4,30 @@ import InlineLink from '../components/Shared/InlineLink';
 
 export const NEWS = [
   {
+    id: 'chi-2023',
+    date: 'Sep 2022',
+    description:
+      'I submitted the first paper of my Ph.D. to the ACM Conference on Human Factors in Computing (CHI)!'
+  },
+  {
+    id: 'ps-prelim',
+    date: 'Sep 2022',
+    description: (
+      <p>
+        I passed the{' '}
+        <InlineLink
+          href="https://eecs.berkeley.edu/resources/grads/phd/prelims/exam-prep"
+          type="light"
+        >
+          Programming Systems Preliminary Exam
+        </InlineLink>{' '}
+        at UC Berkeley! A summer of studying culminated in an hour of questions
+        on static and dynamic dispatch, symbolic execution, and axiomatic
+        semantics.
+      </p>
+    )
+  },
+  {
     id: 'ps-seminar-talk',
     date: 'Apr 2022',
     description: (
