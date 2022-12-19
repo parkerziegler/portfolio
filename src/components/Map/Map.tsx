@@ -1,13 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Image from 'next/image';
+import * as React from 'react';
+import Image, { StaticImageData } from 'next/image';
 import cs from 'classnames';
 
 import Text from '../Shared/Text';
 
 import MapTitle from './MapTitle';
 
-const Map = ({
+interface Props {
+  title: string;
+  src: StaticImageData;
+  alt: string;
+  link?: string;
+  code?: string;
+  isPortrait?: boolean;
+  shadow?: boolean;
+  eager?: boolean;
+}
+
+const Map: React.FC<React.PropsWithChildren<Props>> = ({
   title,
   src,
   alt,
@@ -55,17 +65,5 @@ const Map = ({
     </Text>
   </div>
 );
-
-Map.propTypes = {
-  title: PropTypes.string.isRequired,
-  src: PropTypes.object.isRequired,
-  alt: PropTypes.string.isRequired,
-  link: PropTypes.string,
-  code: PropTypes.string,
-  isPortrait: PropTypes.bool,
-  shadow: PropTypes.bool,
-  eager: PropTypes.bool,
-  children: PropTypes.node.isRequired
-};
 
 export default Map;

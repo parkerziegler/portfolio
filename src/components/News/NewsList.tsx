@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import cs from 'classnames';
 
 import { NEWS } from '../../content/news';
 
 import NewsExpander from './NewsExpander';
 
-const NewsList = ({ className }) => {
-  const [displayCount, setDisplayCount] = useState(3);
-  const showMore = displayCount < NEWS.length;
+interface Props {
+  className: string;
+}
 
-  const onClickExpander = (showMore) =>
+const NewsList: React.FC<Props> = ({ className }) => {
+  const [displayCount, setDisplayCount] = React.useState(3);
+  const more = displayCount < NEWS.length;
+
+  const onClickExpander = (showMore: boolean): void =>
     setDisplayCount((prevDisplayCount) =>
       showMore ? Math.min(prevDisplayCount + 3, NEWS.length) : 3
     );
@@ -43,13 +46,9 @@ const NewsList = ({ className }) => {
           {description}
         </li>
       ))}
-      <NewsExpander more={showMore} onClick={() => onClickExpander(showMore)} />
+      <NewsExpander more={more} onClick={() => onClickExpander(more)} />
     </ul>
   );
-};
-
-NewsList.propTypes = {
-  className: PropTypes.string
 };
 
 export default NewsList;

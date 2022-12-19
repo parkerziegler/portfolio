@@ -1,10 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import cs from 'classnames';
 
 import Heading from '../Shared/Heading';
 
-const MapTitle = ({ title, link, code, isPortrait = false }) => {
+interface Props {
+  title: string;
+  link?: string;
+  code?: string;
+  isPortrait?: boolean;
+}
+
+const MapTitle: React.FC<Props> = ({
+  title,
+  link,
+  code,
+  isPortrait = false
+}) => {
   return (
     <div
       className={cs(
@@ -43,13 +54,6 @@ const MapTitle = ({ title, link, code, isPortrait = false }) => {
       </aside>
     </div>
   );
-};
-
-MapTitle.propTypes = {
-  title: PropTypes.string.isRequired,
-  link: PropTypes.string,
-  code: PropTypes.string,
-  isPortrait: PropTypes.bool
 };
 
 export default MapTitle;

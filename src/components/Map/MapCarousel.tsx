@@ -1,23 +1,31 @@
-import React, { useState, useRef, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import Image from 'next/image';
+import * as React from 'react';
+import Image, { StaticImageData } from 'next/image';
 import cs from 'classnames';
 
 import Text from '../Shared/Text';
 
 import MapTitle from './MapTitle';
 
-const MapThumbnail = ({
+interface MapThumbnailProps {
+  src: StaticImageData;
+  alt: string;
+  selectedSrc: StaticImageData;
+  onClick: (src: StaticImageData) => void;
+  isPortrait?: boolean;
+}
+
+const MapThumbnail: React.FC<MapThumbnailProps> = ({
   src,
   alt,
   selectedSrc,
   onClick,
   isPortrait = false
 }) => {
-  const thumbnailNode = useRef(null);
+  const thumbnailNode = React.useRef<HTMLDivElement>(null);
 
-  const onClickThumbnail = useCallback(() => {
+  const onClickThumbnail = React.useCallback(() => {
     onClick(src);
+
     thumbnailNode.current.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
@@ -54,26 +62,29 @@ const MapThumbnail = ({
   );
 };
 
-MapThumbnail.propTypes = {
-  src: PropTypes.object.isRequired,
-  alt: PropTypes.string.isRequired,
-  selectedSrc: PropTypes.object.isRequired,
-  onClick: PropTypes.func.isRequired,
-  isPortrait: PropTypes.bool
-};
+interface Props {
+  maps: {
+    src: StaticImageData;
+    alt: string;
+  }[];
+  title: string;
+  link?: string;
+  code?: string;
+  isPortrait?: boolean;
+}
 
-const MapCarousel = ({
-  maps = [],
+const MapCarousel: React.FC<React.PropsWithChildren<Props>> = ({
+  maps,
   title,
   link,
   code,
-  isPortrait,
+  isPortrait = false,
   children
 }) => {
-  const [map, setMap] = useState(maps[0]);
+  const [map, setMap] = React.useState(maps[0]);
 
-  const onClickThumbnail = useCallback(
-    (src) => {
+  const onClickThumbnail = React.useCallback(
+    (src: StaticImageData) => {
       setMap(maps.find((m) => m.src === src));
     },
     [maps]
@@ -126,20 +137,6 @@ const MapCarousel = ({
       </Text>
     </div>
   );
-};
-
-MapCarousel.propTypes = {
-  maps: PropTypes.arrayOf(
-    PropTypes.shape({
-      src: PropTypes.object.isRequired,
-      alt: PropTypes.string.isRequired
-    })
-  ),
-  title: PropTypes.string.isRequired,
-  link: PropTypes.string,
-  code: PropTypes.string,
-  isPortrait: PropTypes.bool,
-  children: PropTypes.node.isRequired
 };
 
 export default MapCarousel;

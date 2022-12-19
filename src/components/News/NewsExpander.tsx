@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
 const ArrowDown = (
   <svg
@@ -31,7 +30,12 @@ const ArrowUp = (
   </svg>
 );
 
-const NewsExpander = ({ more, onClick }) => {
+interface Props {
+  more: boolean;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const NewsExpander: React.FC<Props> = ({ more, onClick }) => {
   return (
     <li className="flex items-center relative">
       <svg viewBox="0 0 16 16" height="16" width="16" className="flex-shrink-0">
@@ -55,11 +59,6 @@ const NewsExpander = ({ more, onClick }) => {
       {more ? ArrowDown : ArrowUp}
     </li>
   );
-};
-
-NewsExpander.propTypes = {
-  more: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
 };
 
 export default NewsExpander;

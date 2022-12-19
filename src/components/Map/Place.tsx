@@ -1,9 +1,18 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { motion } from 'framer-motion';
 
-const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
-  const placeRef = useRef(null);
+interface Props {
+  cx: number;
+  cy: number;
+  x: number;
+  y: number;
+  label: string;
+  i: number;
+  pathLength: number;
+}
+
+const Place: React.FC<Props> = ({ cx, cy, x, y, label, i, pathLength }) => {
+  const placeRef = React.useRef(null);
   const width = placeRef.current
     ? placeRef.current.getComputedTextLength() + 10
     : 0;
@@ -63,16 +72,6 @@ const Place = ({ cx, cy, x, y, label, i, pathLength }) => {
       />
     </>
   );
-};
-
-Place.propTypes = {
-  cx: PropTypes.number.isRequired,
-  cy: PropTypes.number.isRequired,
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-  label: PropTypes.string.isRequired,
-  i: PropTypes.number.isRequired,
-  pathLength: PropTypes.number.isRequired
 };
 
 export default Place;

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import InlineLink from '../Shared/InlineLink';
 import TAVisionZeroMap from '../../../public/maps/ta-vision-zero/ta-vision-zero.png';

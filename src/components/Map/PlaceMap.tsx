@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import * as React from 'react';
 import * as d3 from 'd3';
 import { feature } from 'topojson';
 import { motion } from 'framer-motion';
@@ -7,7 +7,7 @@ import Place from './Place';
 import { places } from './places';
 
 const variants = {
-  visible: (i) => {
+  visible: (i: number) => {
     return {
       opacity: 1,
       transition: { delay: i * 0.05 }
@@ -18,11 +18,11 @@ const variants = {
   }
 };
 
-const Map = () => {
-  const mapRef = useRef(null);
-  const [paths, setPaths] = useState([]);
+const PlaceMap: React.FC = () => {
+  const mapRef = React.useRef<SVGSVGElement>(null);
+  const [paths, setPaths] = React.useState([]);
 
-  const fetchUSJson = useCallback(async () => {
+  const fetchUSJson = React.useCallback(async () => {
     const path = d3.geoPath();
 
     try {
@@ -40,7 +40,7 @@ const Map = () => {
     }
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchUSJson();
   }, [fetchUSJson]);
 
@@ -79,4 +79,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default PlaceMap;
