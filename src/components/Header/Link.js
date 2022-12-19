@@ -51,19 +51,18 @@ const Link = ({ href, onClick, isMobile = false, children }) => {
 
   return (
     <>
-      <NextLink href={href}>
-        <a
-          onClick={onClick}
-          ref={linkRef}
-          className={cs(
-            'text-white p-2 text-5xl sm:text-4xl font-serif no-underline relative',
-            {
-              'font-bold': pathname.includes(href)
-            }
-          )}
-        >
-          {children}
-        </a>
+      <NextLink
+        href={href}
+        onClick={onClick}
+        ref={linkRef}
+        className={cs(
+          'text-white p-2 text-5xl sm:text-4xl font-serif no-underline relative',
+          {
+            'font-bold': pathname.includes(href)
+          }
+        )}
+      >
+        {children}
       </NextLink>
       <svg ref={svgRef} height="6"></svg>
     </>
