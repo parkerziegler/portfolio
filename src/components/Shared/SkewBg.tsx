@@ -1,8 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import cs from 'classnames';
 
-const SkewBg = ({ tiltDirection = 'backward', overflow = 'visible' }) => (
+interface Props {
+  tiltDirection?: 'forward' | 'backward';
+  overflow?: 'visible' | 'hidden';
+}
+
+const SkewBg: React.FC<Props> = ({
+  tiltDirection = 'backward',
+  overflow = 'visible'
+}) => (
   <div
     className={cs(
       'absolute w-full h-full xl:full-width-breakout top-0 -mx-8 sm:-mx-32 md:-mx-40',
@@ -31,10 +38,5 @@ const SkewBg = ({ tiltDirection = 'backward', overflow = 'visible' }) => (
     />
   </div>
 );
-
-SkewBg.propTypes = {
-  tiltDirection: PropTypes.oneOf(['forward', 'backward']),
-  overflow: PropTypes.oneOf(['visible', 'hidden'])
-};
 
 export default SkewBg;

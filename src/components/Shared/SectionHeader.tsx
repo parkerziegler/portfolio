@@ -1,8 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import cs from 'classnames';
 
-const SectionHeader = ({ className, children }) => (
+interface Props {
+  className?: string;
+}
+
+const SectionHeader: React.FC<React.PropsWithChildren<Props>> = ({
+  className,
+  children
+}) => (
   <h2 className={cs('font-serif font-semibold text-6xl m-0', className)}>
     {children}
     <svg
@@ -20,10 +26,5 @@ const SectionHeader = ({ className, children }) => (
     </svg>
   </h2>
 );
-
-SectionHeader.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired
-};
 
 export default SectionHeader;

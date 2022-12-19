@@ -1,10 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { motion } from 'framer-motion';
 
 import { transitionRelaxed } from '../../utils/animation';
 
-const SocialIcon = ({ href, path, alt }) => (
+interface Props {
+  href: string;
+  path: string;
+  alt: string;
+}
+
+const SocialIcon: React.FC<Props> = ({ href, path, alt }) => (
   <motion.a
     href={href}
     target="_blank"
@@ -24,11 +29,5 @@ const SocialIcon = ({ href, path, alt }) => (
     />
   </motion.a>
 );
-
-SocialIcon.propTypes = {
-  href: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired
-};
 
 export default SocialIcon;

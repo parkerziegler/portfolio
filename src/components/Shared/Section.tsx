@@ -1,8 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import cs from 'classnames';
 
-const Section = ({ className, children }) => {
+interface Props {
+  className?: string;
+}
+
+const Section: React.FC<React.PropsWithChildren<Props>> = ({
+  className,
+  children
+}) => {
   return (
     <section
       className={cs([
@@ -13,11 +19,6 @@ const Section = ({ className, children }) => {
       {children}
     </section>
   );
-};
-
-Section.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired
 };
 
 export default Section;

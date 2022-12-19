@@ -1,9 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
 import LangIcon from './LangIcon';
 
-const LangSection = ({ title, langs }) => {
+interface Props {
+  title: string;
+  langs: {
+    src: string;
+    alt: string;
+  }[];
+}
+
+const LangSection: React.FC<Props> = ({ title, langs }) => {
   return (
     <div>
       <h3 className="text-4xl text-center font-serif font-semibold italic mb-4">
@@ -16,16 +23,6 @@ const LangSection = ({ title, langs }) => {
       </div>
     </div>
   );
-};
-
-LangSection.propTypes = {
-  title: PropTypes.string.isRequired,
-  langs: PropTypes.arrayOf(
-    PropTypes.shape({
-      src: PropTypes.string.isRequired,
-      alt: PropTypes.string.isRequired
-    })
-  ).isRequired
 };
 
 export default LangSection;
