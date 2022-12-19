@@ -71,7 +71,8 @@ export const CORE_LANGUAGES = {
   WebAssembly: { src: '/logos/wasm-logo.svg', alt: 'WebAssembly Logo' },
   Python: { src: '/logos/python-logo.svg', alt: 'Python Logo' },
   ReScript: { src: '/logos/rescript-logo.svg', alt: 'ReScript Logo' },
-  Reason: { src: '/logos/reason-logo.svg', alt: 'Reason Logo' }
+  Reason: { src: '/logos/reason-logo.svg', alt: 'Reason Logo' },
+  OCaml: { src: '/logos/ocaml-logo.svg', alt: 'OCaml Logo' }
 };
 
 export const LANGUAGES = {
