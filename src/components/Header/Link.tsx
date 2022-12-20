@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import rough from 'roughjs/bundled/rough.cjs';
@@ -9,12 +8,23 @@ import { theme } from '../../../tailwind.config';
 
 const { secondary, white } = theme.extend.colors;
 
-const Link = ({ href, onClick, isMobile = false, children }) => {
-  const linkRef = useRef(null);
-  const svgRef = useRef(null);
+interface Props {
+  href: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  isMobile?: boolean;
+}
+
+const Link: React.FC<React.PropsWithChildren<Props>> = ({
+  href,
+  onClick,
+  isMobile = false,
+  children
+}) => {
+  const linkRef = React.useRef<HTMLAnchorElement>(null);
+  const svgRef = React.useRef<SVGSVGElement>(null);
   const { pathname } = useRouter();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const roughUnderline = svgRef;
     if (linkRef.current && svgRef.current) {
       const { width } = linkRef.current.getBoundingClientRect();
@@ -67,13 +77,6 @@ const Link = ({ href, onClick, isMobile = false, children }) => {
       <svg ref={svgRef} height="6"></svg>
     </>
   );
-};
-
-Link.propTypes = {
-  href: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  isMobile: PropTypes.bool,
-  children: PropTypes.node.isRequired
 };
 
 export default Link;

@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import Link from 'next/link';
 
 import { theme } from '../../../tailwind.config';
 
-const SiteTitle = () => (
+const SiteTitle: React.FC = () => (
   <Link href="/">
     <svg
       height="55"

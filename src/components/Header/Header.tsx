@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import * as React from 'react';
 import { motion } from 'framer-motion';
 
 import { NAV_ITEMS } from '../../utils/constants';
@@ -7,11 +7,11 @@ import SiteTitle from './SiteTitle';
 import Link from './Link';
 import MobileMenu from './MobileMenu';
 
-const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const mobileMenuRef = useRef(null);
+const Header: React.FC = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const mobileMenuRef = React.useRef(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflowY = 'hidden';
     } else {
