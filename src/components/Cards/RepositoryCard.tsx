@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { motion } from 'framer-motion';
 
 import {
@@ -9,7 +8,21 @@ import {
   transitionRelaxed
 } from '../../utils/animation';
 
-const RepositoryCard = ({
+interface Props {
+  name: string;
+  description: string;
+  primaryLanguage?: {
+    name: string;
+    color: string;
+  };
+  starCount: number;
+  forkCount: number;
+  topics: string[];
+  badgePath: string;
+  url: string;
+}
+
+const RepositoryCard: React.FC<Props> = ({
   name,
   description,
   primaryLanguage,
@@ -87,20 +100,6 @@ const RepositoryCard = ({
       </div>
     </motion.a>
   );
-};
-
-RepositoryCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  primaryLanguage: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired
-  }).isRequired,
-  starCount: PropTypes.number.isRequired,
-  forkCount: PropTypes.number.isRequired,
-  topics: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  badgePath: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
 };
 
 export default RepositoryCard;

@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -11,7 +10,15 @@ import {
   translateUpRight
 } from '../../utils/animation';
 
-const BlogCard = ({ title, slug, tags = [], introText, date }) => {
+interface Props {
+  title: string;
+  slug: string;
+  tags: { tag: string; icon: string }[];
+  introText: string;
+  date: string;
+}
+
+const BlogCard: React.FC<Props> = ({ title, slug, tags, introText, date }) => {
   return (
     <Link href={`/thoughts/${slug}`}>
       <motion.a
@@ -48,19 +55,6 @@ const BlogCard = ({ title, slug, tags = [], introText, date }) => {
       </motion.a>
     </Link>
   );
-};
-
-BlogCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(
-    PropTypes.shape({
-      tag: PropTypes.string.isRequired,
-      icon: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired,
-  introText: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
 };
 
 export default BlogCard;

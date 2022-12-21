@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { motion } from 'framer-motion';
 import cs from 'classnames';
 
@@ -9,7 +8,19 @@ import {
   transitionRelaxed
 } from '../../utils/animation';
 
-const PixelCard = ({
+interface Props {
+  name: string;
+  description: string;
+  primaryLanguage?: {
+    name: string;
+    color: string;
+  };
+  starCount: number;
+  forkCount: number;
+  url: string;
+}
+
+const PixelCard: React.FC<Props> = ({
   name,
   description,
   primaryLanguage,
@@ -66,18 +77,6 @@ const PixelCard = ({
       </div>
     </motion.a>
   );
-};
-
-PixelCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  primaryLanguage: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired
-  }),
-  starCount: PropTypes.number.isRequired,
-  forkCount: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired
 };
 
 export default PixelCard;
