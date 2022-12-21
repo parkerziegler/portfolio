@@ -1,8 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import cs from 'classnames';
 
-const Tag = ({ icon, compact = false, className, children }) => {
+interface Props {
+  icon: string;
+  tag: string;
+  compact?: boolean;
+  className?: string;
+}
+
+const Tag: React.FC<React.PropsWithChildren<Props>> = ({
+  icon,
+  tag,
+  compact = false,
+  className
+}) => {
   return (
     <div
       className={cs(
@@ -12,20 +23,13 @@ const Tag = ({ icon, compact = false, className, children }) => {
       )}
     >
       {icon.indexOf('/') !== -1 ? (
-        <img src={icon} alt={children} className="mr-2 h-8" />
+        <img src={icon} alt={tag} className="mr-2 h-8" />
       ) : (
         <span className="text-3xl mr-2">{icon}</span>
       )}
-      {children}
+      {tag}
     </div>
   );
-};
-
-Tag.propTypes = {
-  icon: PropTypes.string.isRequired,
-  compact: PropTypes.bool,
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired
 };
 
 export default Tag;

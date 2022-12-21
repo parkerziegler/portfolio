@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import Head from 'next/head';
 import { Runtime, Inspector } from '@observablehq/runtime';
 
+interface Props {
+  importNotebook: () => Promise<{ default: () => void }>;
+}
+
 const ObservableNotebook = ({ importNotebook }) => {
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchNotebook = async () => {
       const notebook = await importNotebook();
 
-      new Runtime().module(notebook.default, (name) => {
+      new Runtime().module(notebook.default, (name: string) => {
         const node = name?.replace(' ', '_');
         const into = node ? document.querySelector(`.${node}`) : null;
+
         if (into) {
           return new Inspector(into);
         }
@@ -28,10 +32,6 @@ const ObservableNotebook = ({ importNotebook }) => {
       />
     </Head>
   );
-};
-
-ObservableNotebook.propTypes = {
-  importNotebook: PropTypes.func.isRequired
 };
 
 export default ObservableNotebook;

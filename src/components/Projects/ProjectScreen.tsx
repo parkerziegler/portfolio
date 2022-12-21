@@ -45,11 +45,10 @@ const ProjectScreen: React.FC<Props> = ({
           <Tag
             key={tag}
             icon={icon}
+            tag={tag}
             compact
             className="text-white border-terminal-secondary"
-          >
-            {tag}
-          </Tag>
+          />
         ))}
       </div>
     </div>

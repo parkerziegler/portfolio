@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Image from 'next/image';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import * as React from 'react';
+import Image, { StaticImageData } from 'next/image';
+import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight';
 import cs from 'classnames';
 import { slug } from 'github-slugger';
@@ -26,7 +25,12 @@ const anchor = (
   </svg>
 );
 
-const SlugAnchor = ({ id, level }) => {
+interface SlugAnchorProps {
+  id: string;
+  level: 2 | 3;
+}
+
+const SlugAnchor: React.FC<SlugAnchorProps> = ({ id, level }) => {
   const { height, width, translateY } =
     level === 2
       ? { height: 24, width: 24, translateY: 2 }
@@ -47,20 +51,11 @@ const SlugAnchor = ({ id, level }) => {
   );
 };
 
-SlugAnchor.propTypes = {
-  id: PropTypes.string.isRequired,
-  level: PropTypes.oneOf([2, 3])
+const H1: React.FC<React.PropsWithChildren> = ({ children }) => {
+  return <SectionHeader className="mb-8">{children}</SectionHeader>;
 };
 
-const H1 = ({ children }) => (
-  <SectionHeader className="mb-8">{children}</SectionHeader>
-);
-
-H1.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
-const H2 = ({ children }) => {
+const H2: React.FC<React.PropsWithChildren> = ({ children }) => {
   const id = slug(children);
 
   return (
@@ -81,11 +76,7 @@ const H2 = ({ children }) => {
   );
 };
 
-H2.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
-const H3 = ({ children }) => {
+const H3: React.FC<React.PropsWithChildren> = ({ children }) => {
   const id = slug(children);
 
   return (
@@ -106,11 +97,14 @@ const H3 = ({ children }) => {
   );
 };
 
-H3.propTypes = {
-  children: PropTypes.node.isRequired
-};
+interface InlineCodeProps {
+  className?: string;
+}
 
-export const InlineCode = ({ className = 'bg-purple-100', children }) => (
+export const InlineCode: React.FC<React.PropsWithChildren<InlineCodeProps>> = ({
+  className = 'bg-purple-100',
+  children
+}) => (
   <code
     className={cs('text-2xl font-mono text-primary p-2 rounded', className)}
   >
@@ -118,13 +112,19 @@ export const InlineCode = ({ className = 'bg-purple-100', children }) => (
   </code>
 );
 
-InlineCode.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired
-};
+interface CodeProps {
+  className?: string;
+}
 
-const Code = ({ children, className = '' }) => {
-  const language = className.replace(/language-/, '');
+const Code: React.FC<React.PropsWithChildren<CodeProps>> = ({
+  className = '',
+  children
+}) => {
+  if (typeof children !== 'string') {
+    throw new Error('Code children must be a string. Got: ' + typeof children);
+  }
+
+  const language = className.replace(/language-/, '') as Language;
 
   return (
     <Highlight
@@ -151,34 +151,26 @@ const Code = ({ children, className = '' }) => {
   );
 };
 
-Code.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string
-};
-
-const OL = ({ children }) => (
+const OL: React.FC<React.PropsWithChildren> = ({ children }) => (
   <ol className="text-3xl leading-normal font-serif stack-sm list-decimal pl-16">
     {children}
   </ol>
 );
 
-OL.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
-const UL = ({ children }) => (
+const UL: React.FC<React.PropsWithChildren> = ({ children }) => (
   <ul className="text-3xl leading-normal font-serif stack-sm list-disc pl-16">
     {children}
   </ul>
 );
 
-UL.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
 const unsupportedImgRegex = /.(svg|gif)$/g;
 
-const Img = ({ src, alt }) => {
+interface ImgProps {
+  src: StaticImageData;
+  alt: string;
+}
+
+const Img: React.FC<ImgProps> = ({ src, alt }) => {
   // Automated blur placeholders are only avaible for .jpg, .png, and .webp.
   const placeholder =
     src.src.match(unsupportedImgRegex) !== null ? 'empty' : 'blur';
@@ -191,20 +183,11 @@ const Img = ({ src, alt }) => {
   );
 };
 
-Img.propTypes = {
-  src: PropTypes.object.isRequired,
-  alt: PropTypes.string.isRequired
-};
-
-const BlockQuote = ({ children }) => (
+const BlockQuote: React.FC<React.PropsWithChildren> = ({ children }) => (
   <blockquote className="font-semibold bg-indigo-100 p-4 border-l-4 border-primary rounded-md">
     {children}
   </blockquote>
 );
-
-BlockQuote.propTypes = {
-  children: PropTypes.node.isRequired
-};
 
 const components = {
   h1: H1,

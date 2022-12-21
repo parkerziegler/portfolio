@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-const Tweet = ({ children }) => {
-  useEffect(() => {
+const Tweet: React.FC<React.PropsWithChildren> = ({ children }) => {
+  React.useEffect(() => {
     const tw = document.createElement('script');
     tw.setAttribute('src', 'https://platform.twitter.com/widgets.js');
     tw.setAttribute('async', 'true');
@@ -11,10 +10,6 @@ const Tweet = ({ children }) => {
   }, []);
 
   return <blockquote className="twitter-tweet">{children}</blockquote>;
-};
-
-Tweet.propTypes = {
-  children: PropTypes.node.isRequired
 };
 
 export default Tweet;

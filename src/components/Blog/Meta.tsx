@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { motion } from 'framer-motion';
 
 import Tag from './Tag';
@@ -9,7 +8,7 @@ const minimapVariants = {
     x: 150,
     opacity: 0
   },
-  visible: (i) => ({
+  visible: (i: number) => ({
     x: 0,
     opacity: 1,
     transition: {
@@ -21,23 +20,33 @@ const minimapVariants = {
   })
 };
 
-const Meta = ({ publishDate, tags, slug, displayMinimap }) => {
-  const [nodes, setNodes] = useState([]);
-  const [hitCount, setHitCount] = useState(0);
-  const [hitCountErrored, setHitCountErrored] = useState(false);
+interface Props {
+  publishDate: string;
+  tags: {
+    icon: string;
+    tag: string;
+  }[];
+  slug: string;
+  displayMinimap: boolean;
+}
 
-  useEffect(() => {
-    const nodes = document.querySelectorAll('[data-anchor]');
+const Meta: React.FC<Props> = ({ publishDate, tags, slug, displayMinimap }) => {
+  const [nodes, setNodes] = React.useState([]);
+  const [hitCount, setHitCount] = React.useState(0);
+  const [hitCountErrored, setHitCountErrored] = React.useState(false);
+
+  React.useEffect(() => {
+    const nodes = document.querySelectorAll<HTMLElement>('[data-anchor]');
 
     const minimap = [];
-    for (const node of nodes) {
+    nodes.forEach((node) => {
       minimap.push({ text: node.innerText, id: node.id });
-    }
+    });
 
     setNodes(minimap);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Only register hits in production.
     if (process.env.NODE_ENV === 'production') {
       fetch(`/api/register-hit?slug=${slug}`)
@@ -59,9 +68,7 @@ const Meta = ({ publishDate, tags, slug, displayMinimap }) => {
       <span className="font-mono text-2xl">{publishDate}</span>
       <div className="flex flex-col stack-sm-h stack-none-h stack-sm">
         {tags.map(({ tag, icon }) => (
-          <Tag key={tag} icon={icon}>
-            {tag}
-          </Tag>
+          <Tag key={tag} icon={icon} tag={tag} />
         ))}
       </div>
       {!hitCountErrored && hitCount > 0 ? (
@@ -108,18 +115,6 @@ const Meta = ({ publishDate, tags, slug, displayMinimap }) => {
       ) : null}
     </nav>
   );
-};
-
-Meta.propTypes = {
-  publishDate: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(
-    PropTypes.shape({
-      icon: PropTypes.string.isRequired,
-      tag: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired,
-  slug: PropTypes.string.isRequired,
-  displayMinimap: PropTypes.bool.isRequired
 };
 
 export default Meta;

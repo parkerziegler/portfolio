@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import Head from 'next/head';
 import { MDXProvider } from '@mdx-js/react';
 import { useInView } from 'react-intersection-observer';
@@ -9,7 +8,18 @@ import { useScrollToTop } from '../../hooks/useScrollToTop';
 import components from './MDXComponents';
 import Meta from './Meta';
 
-const BlogPost = ({
+interface Props {
+  title: string;
+  description: string;
+  tags: {
+    icon: string;
+    tag: string;
+  }[];
+  publishDate: string;
+  slug: string;
+}
+
+const BlogPost: React.FC<React.PropsWithChildren<Props>> = ({
   title,
   description,
   tags,
@@ -83,20 +93,6 @@ const BlogPost = ({
       </MDXProvider>
     </>
   );
-};
-
-BlogPost.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(
-    PropTypes.shape({
-      icon: PropTypes.string.isRequired,
-      tag: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired,
-  publishDate: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
 };
 
 export default BlogPost;

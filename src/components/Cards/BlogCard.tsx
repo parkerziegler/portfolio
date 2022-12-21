@@ -39,11 +39,10 @@ const BlogCard: React.FC<Props> = ({ title, slug, tags, introText, date }) => {
                   <Tag
                     key={tag}
                     icon={icon}
+                    tag={tag}
                     compact
                     className="m-2 h-16 text-lg"
-                  >
-                    {tag}
-                  </Tag>
+                  />
                 ))}
               </div>
               <p className="text-xl lg:2xl font-mono self-end m-2 flex-shrink-0">
