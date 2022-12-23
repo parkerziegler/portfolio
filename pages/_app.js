@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import { MDXProvider } from '@mdx-js/react';
 
 import Header from '../src/components/Header/Header';
 import Footer from '../src/components/Footer/Footer';
+import components from '../src/components/Blog/MDXComponents';
 
 import '../src/styles/tailwind.css';
 
@@ -14,9 +16,11 @@ function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
-      <div className="w-full max-w-view mx-auto">
-        <Component {...pageProps} />
-      </div>
+      <MDXProvider components={components}>
+        <div className="w-full max-w-view mx-auto">
+          <Component {...pageProps} />
+        </div>
+      </MDXProvider>
       <Footer />
     </>
   );

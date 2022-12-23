@@ -124,6 +124,12 @@ const Code: React.FC<React.PropsWithChildren<CodeProps>> = ({
     throw new Error('Code children must be a string. Got: ' + typeof children);
   }
 
+  // MDX v2 eliminated inlineCode as a key in the components map.
+  // This is a workaround to render inline code via a single Code component.
+  if (!className.startsWith('language-')) {
+    return <InlineCode className={className}>{children}</InlineCode>;
+  }
+
   const language = className.replace(/language-/, '') as Language;
 
   return (

@@ -86,9 +86,10 @@ export async function getStaticProps() {
   const fs = require('fs');
   const fsPromise = fs.promises;
   const path = require('path');
-  const { read } = require('to-vfile');
-  const remark = require('remark');
-  const mdx = require('remark-mdx');
+  const toVFile = await import('to-vfile');
+  const { remark } = await import('remark');
+  const { default: remarkMath } = await import('remark-math');
+  const { default: remarkMdx } = await import('remark-mdx');
 
   const { parseMeta, orderAndTagPosts } = require('../src/utils/blog-parser');
 
@@ -99,8 +100,12 @@ export async function getStaticProps() {
   const posts = [];
 
   for (const file of files) {
-    const f = await read(path.join(postsPath, file));
-    await remark().use(mdx).use(parseMeta(posts)).process(f);
+    const f = await toVFile.read(path.join(postsPath, file), 'utf-8');
+    await remark()
+      .use(remarkMath)
+      .use(remarkMdx)
+      .use(parseMeta(posts))
+      .process(f);
   }
 
   return {

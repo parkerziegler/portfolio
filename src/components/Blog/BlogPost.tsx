@@ -1,11 +1,9 @@
 import * as React from 'react';
 import Head from 'next/head';
-import { MDXProvider } from '@mdx-js/react';
 import { useInView } from 'react-intersection-observer';
 
 import { useScrollToTop } from '../../hooks/useScrollToTop';
 
-import components from './MDXComponents';
 import Meta from './Meta';
 
 interface Props {
@@ -66,31 +64,29 @@ const BlogPost: React.FC<React.PropsWithChildren<Props>> = ({
           }
         />
       </Head>
-      <MDXProvider components={components}>
-        <main className="md:flex md:stack-lg-h md:justify-center px-8 sm:px-32 md:px-40 py-12 sm:py-16">
-          <article className="flex flex-col stack-md md:stack-lg max-w-prose mx-auto min-w-0">
-            {children}
-          </article>
-          <aside className="hidden md:flex md:flex-col md:flex-shrink-0 md:w-60">
-            <Meta
-              tags={tags}
-              publishDate={publishDate}
-              displayMinimap={inView}
-              slug={slug}
-            />
-            <div
-              ref={ref}
-              aria-hidden="true"
-              data-waypoint
-              className="relative left-0 right-0 w-full invisible"
-              style={{
-                height: 'calc(100% - 100vh)',
-                marginTop: '100vh'
-              }}
-            />
-          </aside>
-        </main>
-      </MDXProvider>
+      <main className="md:flex md:stack-lg-h md:justify-center px-8 sm:px-32 md:px-40 py-12 sm:py-16">
+        <article className="flex flex-col stack-md md:stack-lg max-w-prose mx-auto min-w-0">
+          {children}
+        </article>
+        <aside className="hidden md:flex md:flex-col md:flex-shrink-0 md:w-60">
+          <Meta
+            tags={tags}
+            publishDate={publishDate}
+            displayMinimap={inView}
+            slug={slug}
+          />
+          <div
+            ref={ref}
+            aria-hidden="true"
+            data-waypoint
+            className="relative left-0 right-0 w-full invisible"
+            style={{
+              height: 'calc(100% - 100vh)',
+              marginTop: '100vh'
+            }}
+          />
+        </aside>
+      </main>
     </>
   );
 };
