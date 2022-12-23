@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import * as React from 'react';
 
 export const useScrollToTop = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     if (window.pageYOffset !== 0) {
       window.scrollTo(0, 0);
     }

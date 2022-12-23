@@ -1,8 +1,14 @@
-import React from 'react';
+import * as React from 'react';
 
 import InlineLink from '../components/Shared/InlineLink';
 
-export const NEWS = [
+interface NewsItem {
+  id: string;
+  date: string;
+  description: React.ReactNode;
+}
+
+export const NEWS: NewsItem[] = [
   {
     id: 'chi-2023',
     date: 'Sep 2022',
