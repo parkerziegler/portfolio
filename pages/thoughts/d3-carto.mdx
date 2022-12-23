@@ -20,7 +20,6 @@ export const meta = {
   slug={meta.slug}
 >
 
-
 # Bulding Interactive D3 Dashboards with Carto Web Maps
 
 > This post comes from a piece I wrote as part of Azavea's Summer of Maps program. To read the original post, head to the [Azavea website](https://www.azavea.com/blog/2016/09/26/building-interactive-d3-dashboards-with-carto-web-maps/).
@@ -155,7 +154,7 @@ $('#zoom-selector').change(function () {
 ```
 
 <img
-  src={CartoWebMapSrc}
+  src={CartoWebMapSrc.src}
   alt="Notice how we changed the dropdown to Brooklyn and we are now zoomed into downtown Brooklyn. jQuery is a powerful framework for handling DOM-Javascript interaction."
 />
 
@@ -268,7 +267,7 @@ svg
 At this point, we have a beautiful scatterplot, but the data is still static. The whole point of using D3 is to create graphics that change dynamically. That’s where [transitions](https://bost.ocks.org/mike/transition/) come in. Transitions are exciting, lively, and make your data come to life. We can also wire transitions in the graphics to changes in map layers, such that we get two views of the same data at once.
 
 <img
-  src={CartoWebMapPovertyRateSrc}
+  src={CartoWebMapPovertyRateSrc.src}
   alt="Notice that we have the Poverty Rate layer selected in the dropdown, the Poverty Rate layer is showing on the map, and the scatterplot is showing the relationship between Poverty Rate and Crash Density. Ah, the beauty of integrated data views."
 />
 
@@ -315,4 +314,3 @@ Adding transitions gets a bit more complicated when the size of your dataset cha
 By tying your D3 interactivity to your CARTO layer selector, your dashboard and your map can talk to one another. They help to tell the same story in different ways, pointing at nuances in the data that fit the needs of multiple users all in a simple, clean interface. To access the entire source code for this example, head over to [this Summer of Maps Github repo](https://github.com/summer-of-maps/2016-TransAlt-TrafficCrashVisualization). To play with the app yourself, head [here](https://parkerziegler.github.io/transalt-visionzero-app/). Happy dashboarding!
 
 </BlogPost>
-

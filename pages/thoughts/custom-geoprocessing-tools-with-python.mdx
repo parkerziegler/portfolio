@@ -20,7 +20,6 @@ export const meta = {
   slug={meta.slug}
 >
 
-
 # Creating Custom Geoprocessing Tools with Python Scripts
 
 While I think many GIS analysts cherish Python for its ability to automate large-scale geoprocessing tasks and do a lot of the heavy lifting when it comes to data management, I find that its true creative power lies in creating custom geoprocessing scripts. So just to back up for a moment, we know that all GIS applications are based on the idea of passing spatial files (i.e. shapefiles, rasters, feature classes) through script tools that do something to these files. These scripts, nowadays, are often written in Python, especially after Esri began writing all of their tools in this language. For most GIS users, however, script tools operate almost like a black box – files are passed into them and new files pop out. While we all have an understanding of what the input needs to look like and what the output should look like, what happens in the middle actually remains fairly opaque. This obscurity was something that initially frustrated me when I first began using GIS. I wanted to know more about what was actually going on "under the hood" and to be able to manipulate that process to make different things happen.
@@ -42,7 +41,7 @@ Alright, now for the goods. [Click here to access my script for the Areal-Weight
 To ensure that the tool actually worked on more than just the Chicago data, I ran it on a similar dataset for North Carolina and Indiana. In this problem, I used my custom AWR script to take data for the number of black and white people in each Census block group and reaggregate by house district. The results are pictured below.
 
 <img
-  src={AWRNCInSrc}
+  src={AWRNCInSrc.src}
   alt="The result of running our AWR script to reaggregate racial data by Census block group to House districts."
 />
 
@@ -53,11 +52,10 @@ Ah, the sweet feeling of success when a custom tool runs correctly. Be wary that
 Here is the good ol' Chicago map once again. This time, however, I used my custom AWR tool to perform the analysis rather than the specific script from Project #1. Comparing the two attribute tables, we see that both the script from Project #1 and the AWR tool produce the same results. The GUI on the left is the AWR tool come to life, and the one on the right shows the Properties of the AWR tool.
 
 <img
-  src={AWRChicagoSrc}
+  src={AWRChicagoSrc.src}
   alt="Results of running the generalized AWR script in comparison to a custom geoprocessing script for analyzing the spatial relationship between non-violent drug arrests and race in Chicago."
 />
 
 Ultimately, it was a remarkably satisfying experience to write this tool and see it come to life. It was also a terrific lesson in learning how to abstract a specific problem into something that can be more universally applied. If you have further questions about how this tool works or how to get it to work in your own ArcMap project, feel free to reach out [on Twitter](https://twitter.com/parker_ziegler). Check back in a few weeks for an update on my upcoming work with relational databases and my presentation at AAG!
 
 </BlogPost>
-
