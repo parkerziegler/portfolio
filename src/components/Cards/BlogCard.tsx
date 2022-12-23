@@ -20,12 +20,12 @@ interface Props {
 
 const BlogCard: React.FC<Props> = ({ title, slug, tags, introText, date }) => {
   return (
-    <Link href={`/thoughts/${slug}`}>
-      <motion.a
+    <Link href={`/thoughts/${slug}`} className="col-span-12 md:col-span-6">
+      <motion.div
         variants={appearChildVariants}
-        className="col-span-12 md:col-span-6 cursor-pointer rounded-lg"
         whileHover={{ ...boxShadow, ...translateUpRight }}
         transition={transitionRelaxed}
+        className="rounded-lg"
       >
         <div className="flex h-full bg-gradient-to-r from-primary to-secondary shadow-lg p-2 rounded-lg">
           <div className="flex flex-col p-4 rounded-md bg-white flex-auto overflow-auto">
@@ -51,7 +51,7 @@ const BlogCard: React.FC<Props> = ({ title, slug, tags, introText, date }) => {
             </div>
           </div>
         </div>
-      </motion.a>
+      </motion.div>
     </Link>
   );
 };
