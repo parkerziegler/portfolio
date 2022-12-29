@@ -13,7 +13,12 @@ const ProjectScreen: React.FC<Project> = ({
   stack
 }) => (
   <div className="relative col-span-12 lg:col-span-6 stack-md pt-20 pb-16 bg-terminal rounded-lg shadow-2xl-dark text-white">
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block overflow-hidden"
+    >
       <Image
         src={src}
         alt={alt}

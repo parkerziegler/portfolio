@@ -119,6 +119,6 @@ export const projects: Project[] = [
 
 export const repoToBadgePath = {
   renature: '/logos/renature.svg',
-  urql: '/logos/urql.svg',
-  'rescript-urql': '/logos/rescript-urql.svg'
+  'rescript-urql': '/logos/rescript-urql.svg',
+  reviz: '/logos/reviz.svg'
 };
