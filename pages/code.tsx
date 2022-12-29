@@ -15,6 +15,7 @@ import Statistic from '../src/components/Contributions/Statistic';
 import ProjectScreen from '../src/components/Projects/ProjectScreen';
 import { projects, repoToBadgePath } from '../src/content/projects';
 import { appearParentVariants } from '../src/utils/animation';
+import type { ReposQuery } from '../src/generated/graphql';
 
 // Page-level information for meta tags.
 const title = 'Code / Parker Ziegler / Software Engineer and Cartographer';
@@ -25,11 +26,11 @@ const Code = ({ repositories }) => {
   const mainOSS = [
     repositories.renature,
     repositories.reScriptUrql,
-    repositories.urql
+    repositories.reviz
   ];
   const secondaryOSS = [
+    repositories.urql,
     repositories.webpackDashboard,
-    repositories.reviz,
     repositories.reasonBasics
   ];
 
@@ -182,7 +183,7 @@ const repositoriesQuery = gql`
     renature: repository(name: "renature", owner: "FormidableLabs") {
       ...repoInfo
     }
-    urql: repository(name: "urql", owner: "FormidableLabs") {
+    reviz: repository(name: "reviz", owner: "parkerziegler") {
       ...repoInfo
     }
     reScriptUrql: repository(name: "rescript-urql", owner: "FormidableLabs") {
@@ -194,7 +195,7 @@ const repositoriesQuery = gql`
     ) {
       ...repoInfo
     }
-    reviz: repository(name: "reviz", owner: "parkerziegler") {
+    urql: repository(name: "urql", owner: "FormidableLabs") {
       ...repoInfo
     }
     reasonBasics: repository(name: "reason-basics", owner: "parkerziegler") {
@@ -229,14 +230,22 @@ export async function getStaticProps() {
     fetch
   });
 
-  const repositories = await client.query(repositoriesQuery).toPromise();
+  try {
+    const repositories = await client
+      .query<ReposQuery>(repositoriesQuery)
+      .toPromise();
 
-  return {
-    props: {
-      repositories: repositories.data
-    },
-    revalidate: 1
-  };
+    return {
+      props: {
+        repositories: repositories.data
+      },
+      revalidate: 1
+    };
+  } catch (error) {
+    throw new Error(
+      'Failed to query GitHub API for repositories. Got: ' + error
+    );
+  }
 }
 
 export default Code;
