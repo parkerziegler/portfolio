@@ -3,8 +3,9 @@ import * as d3 from 'd3';
 import { feature } from 'topojson';
 import { motion } from 'framer-motion';
 
+import { places } from '../../content/places';
+
 import Place from './Place';
-import { places } from './places';
 
 const variants = {
   visible: (i: number) => {

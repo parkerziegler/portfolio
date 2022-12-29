@@ -2,7 +2,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-import Tag from '../Blog/Tag';
+import Tag, { TagAttributes } from '../Blog/Tag';
 import {
   appearChildVariants,
   boxShadow,
@@ -13,7 +13,7 @@ import {
 interface Props {
   title: string;
   slug: string;
-  tags: { tag: string; icon: string }[];
+  tags: TagAttributes[];
   introText: string;
   date: string;
 }

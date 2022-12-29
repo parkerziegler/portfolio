@@ -1,4 +1,12 @@
-export const places = [
+interface Place {
+  label: string;
+  cx: number;
+  cy: number;
+  x: number;
+  y: number;
+}
+
+export const places: Place[] = [
   { label: 'Now – Berkeley, CA', cx: 40, cy: 255, x: 45, y: 240 },
   { label: 'Previously – Seattle, WA', cx: 100, cy: 40, x: 105, y: 25 },
   {

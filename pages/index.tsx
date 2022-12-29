@@ -1,7 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
+import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Octokit } from '@octokit/rest';
+import type { Endpoints } from '@octokit/types';
 
 import Section from '../src/components/Shared/Section';
 import SectionHeader from '../src/components/Shared/SectionHeader';
@@ -18,12 +20,17 @@ import {
   CONTRIBUTION_EVENT_TYPES
 } from '../src/utils/constants';
 
+// Page-level information for meta tags.
 const title = 'Parker Ziegler / Software Engineer and Cartographer';
 const description =
   'Parker Ziegler is a software engineer and cartographer based in Berkeley, CA. He works on next generation web technologies, with a focus on animation, graphics, and emerging programming languages.';
 const MAX_ACTIVITY_COUNT = 4;
 
-const Index = ({ contributions }) => (
+interface Props {
+  contributions: Contribution[];
+}
+
+const Index: NextPage<Props> = ({ contributions }) => (
   <>
     <Head>
       <title>{title}</title>
@@ -67,7 +74,7 @@ const Index = ({ contributions }) => (
       </Section>
       <Section className="stack-lg sm:py-24">
         <SkewBg />
-        <SectionHeader className="text-white" type="light">
+        <SectionHeader className="text-white">
           What I&apos;m Up To
         </SectionHeader>
         <Text className="text-white">
@@ -131,7 +138,20 @@ const Index = ({ contributions }) => (
   </>
 );
 
-const normalizeContribution = (contribution) => {
+type GitHubPublicEvent =
+  Endpoints['GET /users/{username}/events/public']['response']['data'][number];
+type GitHubLanguage =
+  Endpoints['GET /repos/{owner}/{repo}']['response']['data']['language'];
+type GitHubContribution = GitHubPublicEvent & { language: GitHubLanguage };
+type Contribution = Pick<GitHubContribution, 'id' | 'language' | 'type'> & {
+  repo: GitHubContribution['repo']['name'];
+  url: string;
+  description: string;
+};
+
+const normalizeContribution = (
+  contribution: GitHubContribution
+): Contribution => {
   const sharedAttributes = {
     id: contribution.id,
     repo: contribution.repo.name,
@@ -144,7 +164,12 @@ const normalizeContribution = (contribution) => {
 
   switch (contribution.type) {
     case 'ForkEvent': {
+      // GitHub's OpenAPI types are incorrect here. See relevant issues:
+      // https://github.com/octokit/rest.js/issues/128
+      // https://github.com/github/rest-api-description/issues/1318
+      // @ts-expect-error
       url = contribution.payload.forkee.html_url;
+      // @ts-expect-error
       description = `Forked ${contribution.repo.name} into ${contribution.payload.forkee.full_name}`;
 
       break;
@@ -156,28 +181,36 @@ const normalizeContribution = (contribution) => {
       break;
     }
     case 'PushEvent': {
+      // @ts-expect-error
       url = contribution.payload.commits[0].url
         .replace('api.', '')
         .replace('/repos', '')
         .replace('commits', 'commit');
+      // @ts-expect-error
       description = contribution.payload.commits[0].message;
 
       break;
     }
     case 'PullRequestEvent': {
+      // @ts-expect-error
       url = contribution.payload.pull_request.html_url;
+      // @ts-expect-error
       description = `#${contribution.payload.pull_request.number}: ${contribution.payload.pull_request.title}`;
 
       break;
     }
     case 'PullRequestReviewEvent': {
+      // @ts-expect-error
       url = contribution.payload.pull_request.html_url;
+      // @ts-expect-error
       description = `Reviewed #${contribution.payload.pull_request.number}: ${contribution.payload.pull_request.title}`;
 
       break;
     }
     case 'ReleaseEvent': {
+      // @ts-expect-error
       url = contribution.payload.release.html_url;
+      // @ts-expect-error
       description = `Released ${contribution.payload.release.tag_name} of ${contribution.repo.name}`;
 
       break;
@@ -205,7 +238,7 @@ export async function getStaticProps() {
   });
 
   let activityCount = 0;
-  const activity = [];
+  const activity: GitHubPublicEvent[] = [];
 
   for (const event of data) {
     if (activityCount === MAX_ACTIVITY_COUNT) {
@@ -245,18 +278,5 @@ export async function getStaticProps() {
     revalidate: 1
   };
 }
-
-const Contribution = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  repo: PropTypes.string.isRequired,
-  language: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(CONTRIBUTION_EVENT_TYPES).isRequired,
-  description: PropTypes.string.isRequired
-}).isRequired;
-
-Index.propTypes = {
-  contributions: PropTypes.arrayOf(Contribution).isRequired
-};
 
 export default Index;

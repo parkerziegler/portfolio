@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
 
-import Tag from './Tag';
+import Tag, { TagAttributes } from './Tag';
 
 const minimapVariants = {
   invisible: {
@@ -22,10 +22,7 @@ const minimapVariants = {
 
 interface Props {
   publishDate: string;
-  tags: {
-    icon: string;
-    tag: string;
-  }[];
+  tags: TagAttributes[];
   slug: string;
   displayMinimap: boolean;
 }

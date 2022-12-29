@@ -5,14 +5,12 @@ import { useInView } from 'react-intersection-observer';
 import { useScrollToTop } from '../../hooks/useScrollToTop';
 
 import Meta from './Meta';
+import type { TagAttributes } from './Tag';
 
 interface Props {
   title: string;
   description: string;
-  tags: {
-    icon: string;
-    tag: string;
-  }[];
+  tags: TagAttributes[];
   publishDate: string;
   slug: string;
 }

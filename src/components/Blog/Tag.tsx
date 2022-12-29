@@ -1,9 +1,12 @@
 import * as React from 'react';
 import cs from 'classnames';
 
-interface Props {
-  icon: string;
+export interface TagAttributes {
   tag: string;
+  icon: string;
+}
+
+interface Props extends TagAttributes {
   compact?: boolean;
   className?: string;
 }

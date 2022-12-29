@@ -2,26 +2,16 @@ import * as React from 'react';
 import Image, { StaticImageData } from 'next/image';
 import cs from 'classnames';
 
+import type { Map } from '../../content/maps';
 import Text from '../Shared/Text';
 
 import MapTitle from './MapTitle';
 
-interface Props {
-  title: string;
-  src: StaticImageData;
-  alt: string;
-  link?: string;
-  code?: string;
-  isPortrait?: boolean;
-  shadow?: boolean;
-  eager?: boolean;
-}
-
-const Map: React.FC<React.PropsWithChildren<Props>> = ({
+const Map: React.FC<React.PropsWithChildren<Map>> = ({
   title,
   src,
   alt,
-  link,
+  href,
   code,
   isPortrait = false,
   shadow = true,
@@ -54,7 +44,7 @@ const Map: React.FC<React.PropsWithChildren<Props>> = ({
         placeholder="blur"
       />
     </div>
-    <MapTitle title={title} link={link} code={code} isPortrait={isPortrait} />
+    <MapTitle title={title} href={href} code={code} isPortrait={isPortrait} />
     <Text
       className={cs(
         'col-span-12 row-start-3 md:row-start-2 bg-white',

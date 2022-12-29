@@ -1,22 +1,10 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
 import Tag from '../Blog/Tag';
+import type { Project } from '../../content/projects';
 
-interface Props {
-  title: React.ReactNode;
-  description: React.ReactNode;
-  src: StaticImageData;
-  alt: string;
-  href: string;
-  stack: {
-    tag: string;
-    icon: string;
-  }[];
-}
-
-const ProjectScreen: React.FC<Props> = ({
+const ProjectScreen: React.FC<Project> = ({
   title,
   description,
   src,

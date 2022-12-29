@@ -5,7 +5,7 @@ export const appearParentVariants = {
   visible: {
     transition: { staggerChildren: 0.07, delayChildren: 0.2 }
   },
-  hidden: false
+  hidden: {}
 };
 
 export const appearChildVariants = {

@@ -1,46 +1,70 @@
 import * as React from 'react';
+import type { StaticImageData } from 'next/image';
 
-import InlineLink from '../Shared/InlineLink';
-import TAVisionZeroMap from '../../../public/maps/ta-vision-zero/ta-vision-zero.png';
-import TATrafficCrashesNYC from '../../../public/maps/ta-traffic-crashes-nyc/ta-traffic-crashes-nyc.png';
-import TATrafficCrashesBronx from '../../../public/maps/ta-traffic-crashes-bronx/ta-traffic-crashes-bronx.png';
-import TATrafficCrashesBrooklyn from '../../../public/maps/ta-traffic-crashes-brooklyn/ta-traffic-crashes-brooklyn.png';
-import TATrafficCrashesManhattan from '../../../public/maps/ta-traffic-crashes-manhattan/ta-traffic-crashes-manhattan.png';
-import TATrafficCrashesQueens from '../../../public/maps/ta-traffic-crashes-queens/ta-traffic-crashes-queens.png';
-import TATrafficCrashesSI from '../../../public/maps/ta-traffic-crashes-si/ta-traffic-crashes-si.png';
-import EcotrustLidarCC from '../../../public/maps/ecotrust-lidar-canopy-cover/ecotrust-lidar-canopy-cover.png';
-import EcotrustBGCC from '../../../public/maps/ecotrust-block-groups-canopy-cover/ecotrust-block-groups-canopy-cover.png';
-import EcotrustBGTargets from '../../../public/maps/ecotrust-block-groups-targets/ecotrust-block-groups-targets.png';
-import EcotrustNeighborhoodCC from '../../../public/maps/ecotrust-neighborhoods-canopy-cover/ecotrust-neighborhoods-canopy-cover.png';
-import EcotrustNeighborhoodTargets from '../../../public/maps/ecotrust-neighborhoods-targets/ecotrust-neighborhoods-targets.png';
-import EcotrustZoningResCC from '../../../public/maps/ecotrust-zoning-res-canopy-cover/ecotrust-zoning-res-canopy-cover.png';
-import EcotrustZoningResTargets from '../../../public/maps/ecotrust-zoning-res-targets/ecotrust-zoning-res-targets.png';
-import EcotrustZoningCICC from '../../../public/maps/ecotrust-zoning-ci-canopy-cover/ecotrust-zoning-ci-canopy-cover.png';
-import EcotrustZoningCITargets from '../../../public/maps/ecotrust-zoning-ci-targets/ecotrust-zoning-ci-targets.png';
-import EcotrustZoningOSCC from '../../../public/maps/ecotrust-zoning-os-canopy-cover/ecotrust-zoning-os-canopy-cover.png';
-import EcotrustZoningOSTargets from '../../../public/maps/ecotrust-zoning-os-targets/ecotrust-zoning-os-targets.png';
-import EcotrustChangeDetectionLayout from '../../../public/maps/ecotrust-change-detection-layout/ecotrust-change-detection-layout.png';
-import EcotrustChangeDetectionLayout2 from '../../../public/maps/ecotrust-change-detection-layout-2/ecotrust-change-detection-layout-2.png';
-import EcotrustChangeDetectionLayout3 from '../../../public/maps/ecotrust-change-detection-layout-3/ecotrust-change-detection-layout-3.png';
-import EcotrustGWRLayout from '../../../public/maps/ecotrust-gwr-layout/ecotrust-gwr-layout.png';
-import EcotrustGWRLayout2 from '../../../public/maps/ecotrust-gwr-layout-2/ecotrust-gwr-layout-2.png';
-import ChildMigration from '../../../public/maps/child-migration/child-migration.png';
-import AASD from '../../../public/maps/aasd/aasd.png';
-import PAFoodAccess from '../../../public/maps/pa-food-access/pa-food-access.png';
-import SFEvictionMap from '../../../public/maps/sf-eviction-map/sf-eviction-map.png';
-import ChicagoDrugArrestsCrack from '../../../public/maps/chicago-drug-arrests/chicago-drug-arrests-crack.png';
-import ChicagoDrugArrestsMarijuana from '../../../public/maps/chicago-drug-arrests/chicago-drug-arrests-marijuana.png';
-import ChicagoDrugArrestsCocaine from '../../../public/maps/chicago-drug-arrests/chicago-drug-arrests-cocaine.png';
+import InlineLink from '../components/Shared/InlineLink';
+import TAVisionZeroMap from '../../public/maps/ta-vision-zero/ta-vision-zero.png';
+import TATrafficCrashesNYC from '../../public/maps/ta-traffic-crashes-nyc/ta-traffic-crashes-nyc.png';
+import TATrafficCrashesBronx from '../../public/maps/ta-traffic-crashes-bronx/ta-traffic-crashes-bronx.png';
+import TATrafficCrashesBrooklyn from '../../public/maps/ta-traffic-crashes-brooklyn/ta-traffic-crashes-brooklyn.png';
+import TATrafficCrashesManhattan from '../../public/maps/ta-traffic-crashes-manhattan/ta-traffic-crashes-manhattan.png';
+import TATrafficCrashesQueens from '../../public/maps/ta-traffic-crashes-queens/ta-traffic-crashes-queens.png';
+import TATrafficCrashesSI from '../../public/maps/ta-traffic-crashes-si/ta-traffic-crashes-si.png';
+import EcotrustLidarCC from '../../public/maps/ecotrust-lidar-canopy-cover/ecotrust-lidar-canopy-cover.png';
+import EcotrustBGCC from '../../public/maps/ecotrust-block-groups-canopy-cover/ecotrust-block-groups-canopy-cover.png';
+import EcotrustBGTargets from '../../public/maps/ecotrust-block-groups-targets/ecotrust-block-groups-targets.png';
+import EcotrustNeighborhoodCC from '../../public/maps/ecotrust-neighborhoods-canopy-cover/ecotrust-neighborhoods-canopy-cover.png';
+import EcotrustNeighborhoodTargets from '../../public/maps/ecotrust-neighborhoods-targets/ecotrust-neighborhoods-targets.png';
+import EcotrustZoningResCC from '../../public/maps/ecotrust-zoning-res-canopy-cover/ecotrust-zoning-res-canopy-cover.png';
+import EcotrustZoningResTargets from '../../public/maps/ecotrust-zoning-res-targets/ecotrust-zoning-res-targets.png';
+import EcotrustZoningCICC from '../../public/maps/ecotrust-zoning-ci-canopy-cover/ecotrust-zoning-ci-canopy-cover.png';
+import EcotrustZoningCITargets from '../../public/maps/ecotrust-zoning-ci-targets/ecotrust-zoning-ci-targets.png';
+import EcotrustZoningOSCC from '../../public/maps/ecotrust-zoning-os-canopy-cover/ecotrust-zoning-os-canopy-cover.png';
+import EcotrustZoningOSTargets from '../../public/maps/ecotrust-zoning-os-targets/ecotrust-zoning-os-targets.png';
+import EcotrustChangeDetectionLayout from '../../public/maps/ecotrust-change-detection-layout/ecotrust-change-detection-layout.png';
+import EcotrustChangeDetectionLayout2 from '../../public/maps/ecotrust-change-detection-layout-2/ecotrust-change-detection-layout-2.png';
+import EcotrustChangeDetectionLayout3 from '../../public/maps/ecotrust-change-detection-layout-3/ecotrust-change-detection-layout-3.png';
+import EcotrustGWRLayout from '../../public/maps/ecotrust-gwr-layout/ecotrust-gwr-layout.png';
+import EcotrustGWRLayout2 from '../../public/maps/ecotrust-gwr-layout-2/ecotrust-gwr-layout-2.png';
+import ChildMigration from '../../public/maps/child-migration/child-migration.png';
+import AASD from '../../public/maps/aasd/aasd.png';
+import PAFoodAccess from '../../public/maps/pa-food-access/pa-food-access.png';
+import SFEvictionMap from '../../public/maps/sf-eviction-map/sf-eviction-map.png';
+import ChicagoDrugArrestsCrack from '../../public/maps/chicago-drug-arrests/chicago-drug-arrests-crack.png';
+import ChicagoDrugArrestsMarijuana from '../../public/maps/chicago-drug-arrests/chicago-drug-arrests-marijuana.png';
+import ChicagoDrugArrestsCocaine from '../../public/maps/chicago-drug-arrests/chicago-drug-arrests-cocaine.png';
 
-export const maps = [
+interface MapAttributes {
+  title: string;
+  href?: string;
+  code?: string;
+  isPortrait?: boolean;
+  children: React.ReactNode;
+}
+
+export interface Map extends MapAttributes {
+  src: StaticImageData;
+  alt: string;
+  shadow?: boolean;
+  eager?: boolean;
+}
+
+export interface MapCollection extends MapAttributes {
+  items: {
+    src: StaticImageData;
+    alt: string;
+  }[];
+}
+
+type Maps = (Map | MapCollection)[];
+
+export const maps: Maps = [
   {
     title:
       'The Road to Vision Zero: Traffic Crashes and Poverty in New York City',
     src: TAVisionZeroMap,
     alt: 'Transporation Alternatives x Azavea Vision Zero Map',
-    link: 'https://parkerziegler.github.io/transalt-visionzero-app/',
-    code:
-      'https://github.com/summer-of-maps/2016-TransAlt-TrafficCrashVisualization',
+    href: 'https://parkerziegler.github.io/transalt-visionzero-app/',
+    code: 'https://github.com/summer-of-maps/2016-TransAlt-TrafficCrashVisualization',
     shadow: false,
     eager: true,
     children: (
@@ -91,38 +115,31 @@ export const maps = [
     items: [
       {
         src: TATrafficCrashesNYC,
-        alt:
-          'A heat map of traffic crashes in New York City between 2013 and 2015.'
+        alt: 'A heat map of traffic crashes in New York City between 2013 and 2015.'
       },
       {
         src: TATrafficCrashesBronx,
-        alt:
-          'A heat map of traffic crashes in the Bronx, New York City between 2013 and 2015.'
+        alt: 'A heat map of traffic crashes in the Bronx, New York City between 2013 and 2015.'
       },
       {
         src: TATrafficCrashesBrooklyn,
-        alt:
-          'A heat map of traffic crashes in Brooklyn, New York between 2013 and 2015.'
+        alt: 'A heat map of traffic crashes in Brooklyn, New York between 2013 and 2015.'
       },
       {
         src: TATrafficCrashesManhattan,
-        alt:
-          'A heat map of traffic crashes in Manhattan, New York City between 2013 and 2015.'
+        alt: 'A heat map of traffic crashes in Manhattan, New York City between 2013 and 2015.'
       },
       {
         src: TATrafficCrashesQueens,
-        alt:
-          'A heat map of traffic crashes in Queens, New York between 2013 and 2015.'
+        alt: 'A heat map of traffic crashes in Queens, New York between 2013 and 2015.'
       },
       {
         src: TATrafficCrashesSI,
-        alt:
-          'A heat map of traffic crashes on Staten Island, New York between 2013 and 2015.'
+        alt: 'A heat map of traffic crashes on Staten Island, New York between 2013 and 2015.'
       }
     ],
-    link: '/maps/ta-vision-zero/ta-vision-zero.pdf',
-    code:
-      'https://github.com/summer-of-maps/2016-TransAlt-MultipleRegressionScript',
+    href: '/maps/ta-vision-zero/ta-vision-zero.pdf',
+    code: 'https://github.com/summer-of-maps/2016-TransAlt-MultipleRegressionScript',
     isPortrait: true,
     children: (
       <>
@@ -156,7 +173,7 @@ export const maps = [
   },
   {
     title: " Mapping Portland's Urban Canopy",
-    link: '/maps/ecotrust-lidar-canopy-cover/ecotrust-lidar-canopy-cover.pdf',
+    href: '/maps/ecotrust-lidar-canopy-cover/ecotrust-lidar-canopy-cover.pdf',
     items: [
       {
         src: EcotrustLidarCC,
@@ -168,8 +185,7 @@ export const maps = [
       },
       {
         src: EcotrustBGTargets,
-        alt:
-          "A map of Portland's urban canopy cover compared to city targets by Census Block Group in 2014."
+        alt: "A map of Portland's urban canopy cover compared to city targets by Census Block Group in 2014."
       },
       {
         src: EcotrustNeighborhoodCC,
@@ -177,8 +193,7 @@ export const maps = [
       },
       {
         src: EcotrustNeighborhoodTargets,
-        alt:
-          "A map of Portland's urban canopy cover compared to city targets by neighborhood in 2014."
+        alt: "A map of Portland's urban canopy cover compared to city targets by neighborhood in 2014."
       },
       {
         src: EcotrustZoningResCC,
@@ -186,18 +201,15 @@ export const maps = [
       },
       {
         src: EcotrustZoningResTargets,
-        alt:
-          "A map of Portland's urban canopy cover compared to city targets by Residential Zone in 2014."
+        alt: "A map of Portland's urban canopy cover compared to city targets by Residential Zone in 2014."
       },
       {
         src: EcotrustZoningCICC,
-        alt:
-          "A map of Portland's urban canopy by Commercial and Industrial Zone in 2014."
+        alt: "A map of Portland's urban canopy by Commercial and Industrial Zone in 2014."
       },
       {
         src: EcotrustZoningCITargets,
-        alt:
-          "A map of Portland's urban canopy cover compared to city targets by Commercial and Industrial Zone in 2014."
+        alt: "A map of Portland's urban canopy cover compared to city targets by Commercial and Industrial Zone in 2014."
       },
       {
         src: EcotrustZoningOSCC,
@@ -205,8 +217,7 @@ export const maps = [
       },
       {
         src: EcotrustZoningOSTargets,
-        alt:
-          "A map of Portland's urban canopy cover compared to city targets by Open Space Zone in 2014."
+        alt: "A map of Portland's urban canopy cover compared to city targets by Open Space Zone in 2014."
       }
     ],
     children: (
@@ -242,33 +253,27 @@ export const maps = [
   },
   {
     title: "Detecting Change in Portland's Urban Canopy",
-    link:
-      '/maps/ecotrust-change-detection-layout/ecotrust-change-detection-layout.pdf',
+    href: '/maps/ecotrust-change-detection-layout/ecotrust-change-detection-layout.pdf',
     items: [
       {
         src: EcotrustChangeDetectionLayout,
-        alt:
-          "A summary report of how Portland's urban canopy has changed from 2007 to 2014."
+        alt: "A summary report of how Portland's urban canopy has changed from 2007 to 2014."
       },
       {
         src: EcotrustChangeDetectionLayout2,
-        alt:
-          "A summary report examining the rate of growth of Portland's urban canopy at 2 year intervals between 2007 and 2014."
+        alt: "A summary report examining the rate of growth of Portland's urban canopy at 2 year intervals between 2007 and 2014."
       },
       {
         src: EcotrustChangeDetectionLayout3,
-        alt:
-          "A summary report examining progress towards canopy targets in Portland's urban canopy in 2014."
+        alt: "A summary report examining progress towards canopy targets in Portland's urban canopy in 2014."
       },
       {
         src: EcotrustGWRLayout,
-        alt:
-          'A report showing the fit of a geographically weighted regression model exploring the relationship between canopy cover and various socioeconomic factors.'
+        alt: 'A report showing the fit of a geographically weighted regression model exploring the relationship between canopy cover and various socioeconomic factors.'
       },
       {
         src: EcotrustGWRLayout2,
-        alt:
-          'A series of small multiples showing geographic variation in the strength of correlations drawn between canopy cover and various socioeconomic factors.'
+        alt: 'A series of small multiples showing geographic variation in the strength of correlations drawn between canopy cover and various socioeconomic factors.'
       }
     ],
     isPortrait: true,
@@ -299,11 +304,10 @@ export const maps = [
   },
   {
     src: ChildMigration,
-    alt:
-      'Unseen, Unheard, and Forgotten: Child Migration from Central America to the United States',
+    alt: 'Unseen, Unheard, and Forgotten: Child Migration from Central America to the United States',
     title:
       'Unseen, Unheard, and Forgotten: Child Migration from Central America to the United States',
-    link: '/maps/child-migration/child-migration.pdf',
+    href: '/maps/child-migration/child-migration.pdf',
     isPortrait: true,
     children: (
       <>
@@ -344,11 +348,10 @@ export const maps = [
   },
   {
     src: AASD,
-    alt:
-      'Communities in the Clouds: Landscape, Agriculture, and Access in the Peruvian Andes',
+    alt: 'Communities in the Clouds: Landscape, Agriculture, and Access in the Peruvian Andes',
     title:
       'Communities in the Clouds: Landscape, Agriculture, and Access in the Peruvian Andes',
-    link: '/maps/aasd/aasd.pdf',
+    href: '/maps/aasd/aasd.pdf',
     children: (
       <>
         This layout, made as part of Middlebury College&apos;s 2016 Cartographic
@@ -387,7 +390,7 @@ export const maps = [
     title: 'Who Has Access to Healthy Corner Stores in Philadelphia, PA?',
     src: PAFoodAccess,
     alt: 'A map exploring food access by Census tract in Philadelphia, PA.',
-    link: '/maps/pa-food-access/pa-food-access.pdf',
+    href: '/maps/pa-food-access/pa-food-access.pdf',
     isPortrait: true,
     children: (
       <>
@@ -410,9 +413,8 @@ export const maps = [
   {
     title: 'Eviction Notices in San Francisco, CA (1997-2015)',
     src: SFEvictionMap,
-    alt:
-      'An interactive map depicting evictions in San Francisco from 1997 to 2015.',
-    link: 'http://parkerziegler.github.io/sf-eviction-map/',
+    alt: 'An interactive map depicting evictions in San Francisco from 1997 to 2015.',
+    href: 'http://parkerziegler.github.io/sf-eviction-map/',
     code: 'https://github.com/parkerziegler/sf-eviction-map/',
     shadow: false,
     children: (
@@ -447,22 +449,19 @@ export const maps = [
   {
     title:
       'Drugs, Demography, and the Police: Spatially Relating Race and Arrest Density for Drug Possesion in Chicago, IL',
-    link: '/maps/chicago-drug-arrests.pdf',
+    href: '/maps/chicago-drug-arrests.pdf',
     items: [
       {
         src: ChicagoDrugArrestsCrack,
-        alt:
-          'A map spatially correlating race and arrest density for possession of crack cocaine in Chicago, IL.'
+        alt: 'A map spatially correlating race and arrest density for possession of crack cocaine in Chicago, IL.'
       },
       {
         src: ChicagoDrugArrestsMarijuana,
-        alt:
-          'A map spatially correlating race and arrest density for possession of marijuana in Chicago, IL.'
+        alt: 'A map spatially correlating race and arrest density for possession of marijuana in Chicago, IL.'
       },
       {
         src: ChicagoDrugArrestsCocaine,
-        alt:
-          'A map spatially correlating race and arrest density for possession of  cocaine in Chicago, IL.'
+        alt: 'A map spatially correlating race and arrest density for possession of  cocaine in Chicago, IL.'
       }
     ],
     isPortrait: true,

@@ -2,6 +2,7 @@ import * as React from 'react';
 import Image, { StaticImageData } from 'next/image';
 import cs from 'classnames';
 
+import type { MapCollection } from '../../content/maps';
 import Text from '../Shared/Text';
 
 import MapTitle from './MapTitle';
@@ -62,32 +63,21 @@ const MapThumbnail: React.FC<MapThumbnailProps> = ({
   );
 };
 
-interface Props {
-  maps: {
-    src: StaticImageData;
-    alt: string;
-  }[];
-  title: string;
-  link?: string;
-  code?: string;
-  isPortrait?: boolean;
-}
-
-const MapCarousel: React.FC<React.PropsWithChildren<Props>> = ({
-  maps,
+const MapCarousel: React.FC<React.PropsWithChildren<MapCollection>> = ({
+  items,
   title,
-  link,
+  href,
   code,
   isPortrait = false,
   children
 }) => {
-  const [map, setMap] = React.useState(maps[0]);
+  const [map, setMap] = React.useState(items[0]);
 
   const onClickThumbnail = React.useCallback(
     (src: StaticImageData) => {
-      setMap(maps.find((m) => m.src === src));
+      setMap(items.find((m) => m.src === src));
     },
-    [maps]
+    [items]
   );
 
   return (
@@ -112,7 +102,7 @@ const MapCarousel: React.FC<React.PropsWithChildren<Props>> = ({
           placeholder="blur"
         />
         <nav className="flex overflow-y-hidden stack-sm-h">
-          {maps.map(({ src, alt }) => {
+          {items.map(({ src, alt }) => {
             return (
               <MapThumbnail
                 key={src.src}
@@ -126,7 +116,7 @@ const MapCarousel: React.FC<React.PropsWithChildren<Props>> = ({
           })}
         </nav>
       </div>
-      <MapTitle title={title} link={link} code={code} isPortrait={isPortrait} />
+      <MapTitle title={title} href={href} code={code} isPortrait={isPortrait} />
       <Text
         className={cs(
           'col-span-12 row-start-3 md:row-start-2 bg-white',
