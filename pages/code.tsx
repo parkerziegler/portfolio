@@ -1,6 +1,6 @@
 import * as React from 'react';
+import type { NextPage } from 'next';
 import Head from 'next/head';
-import gql from 'graphql-tag';
 import { createClient } from 'urql';
 import { motion } from 'framer-motion';
 import fetch from 'isomorphic-unfetch';
@@ -15,14 +15,19 @@ import Statistic from '../src/components/Contributions/Statistic';
 import ProjectScreen from '../src/components/Projects/ProjectScreen';
 import { projects, repoToBadgePath } from '../src/content/projects';
 import { appearParentVariants } from '../src/utils/animation';
-import type { ReposQuery } from '../src/generated/graphql';
+import { graphql } from '../src/generated';
+import type { ReposQuery, ReposQueryVariables } from '../src/generated/graphql';
 
 // Page-level information for meta tags.
 const title = 'Code / Parker Ziegler / Software Engineer and Cartographer';
 const description =
   'Open source libraries and projects created by Parker Ziegler, a software engineer and cartographer based in Berkeley, CA.';
 
-const Code = ({ repositories }) => {
+interface Props {
+  repositories: ReposQuery;
+}
+
+const Code: NextPage<Props> = ({ repositories }) => {
   const mainOSS = [
     repositories.renature,
     repositories.reScriptUrql,
@@ -66,79 +71,58 @@ const Code = ({ repositories }) => {
             initial="hidden"
             variants={appearParentVariants}
           >
-            {mainOSS.map(
-              ({
-                name,
-                description,
-                repositoryTopics,
-                stargazers: { totalCount: starCount },
-                forkCount,
-                primaryLanguage,
-                url
-              }) => (
-                <RepositoryCard
-                  key={name}
-                  name={name}
-                  description={description}
-                  topics={repositoryTopics.edges.map(
-                    ({
-                      node: {
-                        topic: { name: topic }
-                      }
-                    }) => topic
-                  )}
-                  starCount={starCount}
-                  forkCount={forkCount}
-                  primaryLanguage={primaryLanguage}
-                  badgePath={repoToBadgePath[name]}
-                  url={url}
-                />
-              )
-            )}
-            {secondaryOSS.map(
-              ({
-                name,
-                description,
-                primaryLanguage,
-                stargazers: { totalCount: starCount },
-                forkCount,
-                url
-              }) => (
-                <PixelCard
-                  key={name}
-                  name={name}
-                  description={description}
-                  primaryLanguage={primaryLanguage}
-                  starCount={starCount}
-                  forkCount={forkCount}
-                  url={url}
-                />
-              )
-            )}
+            {mainOSS.map((project, i) => (
+              <RepositoryCard
+                key={`${project.__typename}-${i}`}
+                repository={project}
+              />
+            ))}
+            {secondaryOSS.map((project, i) => (
+              <PixelCard
+                key={`${project.__typename}-${i}`}
+                repository={project}
+              />
+            ))}
           </motion.div>
         </Section>
         <Section className="stack-md">
           <SectionHeader>Contributions</SectionHeader>
-          <Text>
-            I&apos;ve been busy in open source in the last year – here are the
-            stats.
-          </Text>
           <div className="grid grid-cols-12 gap-8">
-            <Statistic
-              number={
-                repositories.viewer.contributionsCollection.contributionCalendar
-                  .totalContributions
-              }
-              description="Contributions"
-            />
-            <Statistic
-              number={repositories.viewer.pullRequests.totalCount}
-              description="Pull Requests"
-            />
-            <Statistic
-              number={repositories.viewer.repositoriesContributedTo.totalCount}
-              description="Repos Contributed To"
-            />
+            <Text className="col-span-12 lg:col-span-6">
+              When I&apos;m not doing research or teaching, I love contributing
+              to open source. Here are the stats for my contributions over the
+              past year.
+            </Text>
+            <div className="col-span-12 lg:col-span-6 grid grid-cols-12 lg:grid-cols-6 gap-8">
+              <Statistic
+                number={
+                  repositories.viewer.contributionsCollection
+                    .totalCommitContributions
+                }
+                description="Commit"
+              />
+              <Statistic
+                number={
+                  repositories.viewer.contributionsCollection
+                    .totalPullRequestContributions
+                }
+                description="Pull Request"
+              />
+              <Statistic
+                number={
+                  repositories.viewer.contributionsCollection
+                    .totalPullRequestReviewContributions
+                }
+                description="Pull Request Review"
+              />
+              <Statistic
+                number={
+                  repositories.viewer.contributionsCollection
+                    .totalIssueContributions
+                }
+                description="Issue"
+              />
+            </div>
           </div>
         </Section>
         <Section className="stack-lg">
@@ -155,31 +139,8 @@ const Code = ({ repositories }) => {
   );
 };
 
-const repositoriesQuery = gql`
-  fragment repoInfo on Repository {
-    name
-    description
-    primaryLanguage {
-      name
-      color
-    }
-    stargazers {
-      totalCount
-    }
-    forkCount
-    repositoryTopics(first: 6) {
-      edges {
-        node {
-          topic {
-            name
-          }
-        }
-      }
-    }
-    url
-  }
-
-  query repos {
+const repositoriesQuery = graphql(`
+  query repos($from: DateTime!, $to: DateTime!) {
     renature: repository(name: "renature", owner: "FormidableLabs") {
       ...repoInfo
     }
@@ -202,37 +163,35 @@ const repositoriesQuery = gql`
       ...repoInfo
     }
     viewer {
-      repositoriesContributedTo(
-        first: 10
-        orderBy: { field: STARGAZERS, direction: DESC }
-        contributionTypes: [COMMIT, PULL_REQUEST]
-      ) {
-        totalCount
-      }
-      pullRequests(states: [OPEN, MERGED]) {
-        totalCount
-      }
-      contributionsCollection {
-        contributionCalendar {
-          totalContributions
-        }
+      contributionsCollection(from: $from, to: $to) {
+        totalCommitContributions
+        totalIssueContributions
+        totalPullRequestContributions
+        totalPullRequestReviewContributions
       }
     }
   }
-`;
+`);
 
 export async function getStaticProps() {
-  const client = createClient({
-    url: 'https://api.github.com/graphql',
-    fetchOptions: {
-      headers: { authorization: `Bearer ${process.env.GITHUB_API_TOKEN}` }
-    },
-    fetch
-  });
-
   try {
+    const client = createClient({
+      url: 'https://api.github.com/graphql',
+      fetchOptions: {
+        headers: { authorization: `Bearer ${process.env.GITHUB_API_TOKEN}` }
+      },
+      fetch
+    });
+
+    const to = new Date();
+    let from = new Date();
+    from.setFullYear(to.getFullYear() - 1);
+
     const repositories = await client
-      .query<ReposQuery>(repositoriesQuery)
+      .query<ReposQuery, ReposQueryVariables>(repositoriesQuery, {
+        from: from.toISOString(),
+        to: to.toISOString()
+      })
       .toPromise();
 
     return {

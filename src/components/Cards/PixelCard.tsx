@@ -2,35 +2,48 @@ import * as React from 'react';
 import { motion } from 'framer-motion';
 import cs from 'classnames';
 
+import { FragmentType, useFragment, graphql } from '../../generated';
 import {
   translateUpRight,
   appearChildVariants,
   transitionRelaxed
 } from '../../utils/animation';
 
+const RepoInfoFragment = graphql(`
+  fragment repoInfo on Repository {
+    name
+    description
+    primaryLanguage {
+      name
+      color
+    }
+    stargazers {
+      totalCount
+    }
+    forkCount
+    repositoryTopics(first: 6) {
+      edges {
+        node {
+          topic {
+            name
+          }
+        }
+      }
+    }
+    url
+  }
+`);
+
 interface Props {
-  name: string;
-  description: string;
-  primaryLanguage?: {
-    name: string;
-    color: string;
-  };
-  starCount: number;
-  forkCount: number;
-  url: string;
+  repository: FragmentType<typeof RepoInfoFragment>;
 }
 
-const PixelCard: React.FC<Props> = ({
-  name,
-  description,
-  primaryLanguage,
-  starCount,
-  forkCount,
-  url
-}) => {
+const PixelCard: React.FC<Props> = ({ repository }) => {
+  const repoInfo = useFragment(RepoInfoFragment, repository);
+
   return (
     <motion.a
-      href={url}
+      href={repoInfo.url}
       target="_blank"
       rel="noopener noreferrer"
       variants={appearChildVariants}
@@ -39,40 +52,40 @@ const PixelCard: React.FC<Props> = ({
       transition={transitionRelaxed}
     >
       <div className="bg-white p-2 stack-sm">
-        <p className="text-3xl">{name}</p>
-        <p className="text-xl">{description}</p>
+        <p className="text-3xl">{repoInfo.name}</p>
+        <p className="text-xl">{repoInfo.description}</p>
       </div>
       <div className="flex flex-auto items-end">
-        {primaryLanguage ? (
+        {repoInfo.primaryLanguage ? (
           <div className="bg-white mr-auto px-2 py-4">
             <span
               className={cs(
                 'text-xl font-mono p-2 rounded-md',
-                primaryLanguage.name === 'JavaScript'
+                repoInfo.primaryLanguage.name === 'JavaScript'
                   ? 'text-black'
                   : 'text-white'
               )}
-              style={{ background: primaryLanguage.color }}
+              style={{ background: repoInfo.primaryLanguage.color }}
             >
-              {primaryLanguage.name}
+              {repoInfo.primaryLanguage.name}
             </span>
           </div>
         ) : null}
         <div className="flex flex-col items-center mr-4 p-2 bg-white">
           <img
             src="/icons/star.svg"
-            alt={`${name} Stars on GitHub`}
+            alt={`${repoInfo.name} Stars on GitHub`}
             className="h-10"
           />
-          <span className="text-lg">{starCount}</span>
+          <span className="text-lg">{repoInfo.stargazers.totalCount}</span>
         </div>
         <div className="flex flex-col items-center p-2 bg-white">
           <img
             src="/icons/git-branch.svg"
-            alt={`${name} Forks on GitHub`}
+            alt={`${repoInfo.name} Forks on GitHub`}
             className="h-10"
           />
-          <span className="text-lg">{forkCount}</span>
+          <span className="text-lg">{repoInfo.forkCount}</span>
         </div>
       </div>
     </motion.a>
