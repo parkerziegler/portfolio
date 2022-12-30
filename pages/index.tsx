@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Octokit } from '@octokit/rest';
@@ -227,56 +226,62 @@ const normalizeContribution = (
 };
 
 export async function getStaticProps() {
-  const octokit = new Octokit({
-    auth: process.env.GITHUB_API_TOKEN,
-    userAgent: 'parkie-doo.sh'
-  });
+  try {
+    const octokit = new Octokit({
+      auth: process.env.GITHUB_API_TOKEN,
+      userAgent: 'parkie-doo.sh'
+    });
 
-  const { data } = await octokit.rest.activity.listPublicEventsForUser({
-    username: 'parkerziegler',
-    per_page: 20
-  });
+    const { data } = await octokit.rest.activity.listPublicEventsForUser({
+      username: 'parkerziegler',
+      per_page: 20
+    });
 
-  let activityCount = 0;
-  const activity: GitHubPublicEvent[] = [];
+    let activityCount = 0;
+    const activity: GitHubPublicEvent[] = [];
 
-  for (const event of data) {
-    if (activityCount === MAX_ACTIVITY_COUNT) {
-      break;
+    for (const event of data) {
+      if (activityCount === MAX_ACTIVITY_COUNT) {
+        break;
+      }
+
+      if (CONTRIBUTION_EVENT_TYPES.includes(event.type)) {
+        activity.push(event);
+        activityCount++;
+      }
     }
 
-    if (CONTRIBUTION_EVENT_TYPES.includes(event.type)) {
-      activity.push(event);
-      activityCount++;
-    }
+    const contributions = await Promise.all(
+      activity.map(async (event) => {
+        const [owner, repo] = event.repo.name.split('/');
+
+        const {
+          data: { language, parent }
+        } = await octokit.rest.repos.get({
+          owner,
+          repo
+        });
+
+        const contribution = {
+          ...event,
+          language: language || parent?.language
+        };
+
+        return normalizeContribution(contribution);
+      })
+    );
+
+    return {
+      props: {
+        contributions
+      },
+      revalidate: 1
+    };
+  } catch (error) {
+    throw new Error(
+      'Failed to query GitHub API for contributions. Got: ' + error
+    );
   }
-
-  const contributions = await Promise.all(
-    activity.map(async (event) => {
-      const [owner, repo] = event.repo.name.split('/');
-
-      const {
-        data: { language, parent }
-      } = await octokit.rest.repos.get({
-        owner,
-        repo
-      });
-
-      const contribution = {
-        ...event,
-        language: language || parent?.language
-      };
-
-      return normalizeContribution(contribution);
-    })
-  );
-
-  return {
-    props: {
-      contributions
-    },
-    revalidate: 1
-  };
 }
 
 export default Index;
