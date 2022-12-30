@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as d3 from 'd3';
-import { feature } from 'topojson';
+import { feature, UsAtlas } from 'topojson';
 import { motion } from 'framer-motion';
 
 import { places } from '../../content/places';
@@ -27,7 +27,7 @@ const PlaceMap: React.FC = () => {
     const path = d3.geoPath();
 
     try {
-      const us = await d3.json('https://d3js.org/us-10m.v1.json');
+      const us = (await d3.json('https://d3js.org/us-10m.v1.json')) as UsAtlas;
       const states = feature(us, us.objects.states).features;
       const geoPaths = states.map((feature) => ({
         id: feature.id,
