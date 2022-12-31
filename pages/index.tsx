@@ -138,10 +138,14 @@ const Index: NextPage<Props> = ({ contributions }) => (
 );
 
 type GitHubPublicEvent =
-  Endpoints['GET /users/{username}/events/public']['response']['data'][number];
+  Endpoints['GET /users/{username}/events/public']['response']['data'][number] & {
+    type: typeof CONTRIBUTION_EVENT_TYPES[number];
+  };
 type GitHubLanguage =
   Endpoints['GET /repos/{owner}/{repo}']['response']['data']['language'];
-type GitHubContribution = GitHubPublicEvent & { language: GitHubLanguage };
+type GitHubContribution = GitHubPublicEvent & {
+  language: GitHubLanguage;
+};
 type Contribution = Pick<GitHubContribution, 'id' | 'language' | 'type'> & {
   repo: GitHubContribution['repo']['name'];
   url: string;
@@ -245,8 +249,12 @@ export async function getStaticProps() {
         break;
       }
 
-      if (CONTRIBUTION_EVENT_TYPES.includes(event.type)) {
-        activity.push(event);
+      if (
+        CONTRIBUTION_EVENT_TYPES.includes(
+          event.type as typeof CONTRIBUTION_EVENT_TYPES[number]
+        )
+      ) {
+        activity.push(event as GitHubPublicEvent);
         activityCount++;
       }
     }
