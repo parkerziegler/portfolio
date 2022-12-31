@@ -42,13 +42,20 @@ function replaceCharacterWithCharacter(
   return (str) => str.replace(regex, replace);
 }
 
-export interface Post {
+interface PostAttributes {
   title: string;
   description: string;
   slug: string;
   date: string;
-  tags: TagAttributes[];
   introText: string;
+}
+
+interface RawPost extends PostAttributes {
+  tags: string[];
+}
+
+export interface Post extends PostAttributes {
+  tags: TagAttributes[];
 }
 
 /**
@@ -60,7 +67,7 @@ export interface Post {
  * @returns {array}
  * The array of posts pushed to.
  */
-export function parseMeta(posts: Post[]): Plugin {
+export function parseMeta(posts: RawPost[]): Plugin {
   return () => (tree: Root) => {
     // First, extract the meta information from the post. Meta information
     // will always be the second child in the tree's children array based on
@@ -123,7 +130,7 @@ export function parseMeta(posts: Post[]): Plugin {
  * @returns {number}
  * 1 or -1 depending on whether or not a is later than b.
  */
-function sortByDate(a: Post, b: Post): number {
+function sortByDate(a: RawPost, b: RawPost): number {
   const dateA = new Date(a.date).getTime();
   const dateB = new Date(b.date).getTime();
 
@@ -140,7 +147,7 @@ function sortByDate(a: Post, b: Post): number {
  * The post object with a properly associated
  * tag object.
  */
-function parseTags(post: Post): Post {
+function parseTags(post: RawPost): Post {
   return {
     ...post,
     tags: post.tags.map((t) => TAGS[t])
@@ -155,6 +162,6 @@ function parseTags(post: Post): Post {
  * @returns {array}
  * The ordered and tagged posts.
  */
-export function orderAndTagPosts(posts: Post[]): Post[] {
+export function orderAndTagPosts(posts: RawPost[]): Post[] {
   return posts.sort(sortByDate).map(parseTags);
 }
