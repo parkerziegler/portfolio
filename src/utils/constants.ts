@@ -1,4 +1,6 @@
-export const TAGS = {
+import type { TagAttributes } from '../components/Blog/Tag';
+
+export const TAGS: Record<string, TagAttributes> = {
   testing: {
     icon: '⚠️',
     tag: 'Testing'

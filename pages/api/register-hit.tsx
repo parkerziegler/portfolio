@@ -1,6 +1,16 @@
-const { query: q, Client } = require('faunadb');
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { query as q, Client, Expr } from 'faunadb';
 
-const registerHit = async (req, res) => {
+interface FaunaDocument {
+  ref: Expr;
+  ts: number;
+  data: {
+    slug: string;
+    hits: number;
+  };
+}
+
+const registerHit = async (req: NextApiRequest, res: NextApiResponse) => {
   const client = new Client({
     secret: process.env.FAUNA_SECRET_KEY
   });
@@ -13,7 +23,7 @@ const registerHit = async (req, res) => {
     });
   }
 
-  const docExists = await client.query(
+  const docExists = await client.query<FaunaDocument>(
     q.Exists(q.Match(q.Index('hits_by_slug'), slug))
   );
 
@@ -25,15 +35,18 @@ const registerHit = async (req, res) => {
         })
       );
     } catch (error) {
-      console.error('Error creating record: ', error.message);
+      return res.status(500).json({
+        message:
+          'Error creating document for slug: ' + slug + '. Error: ' + error
+      });
     }
   }
 
-  const document = await client.query(
+  const document = await client.query<FaunaDocument>(
     q.Get(q.Match(q.Index('hits_by_slug'), slug))
   );
 
-  const registeredHit = await client.query(
+  const registeredHit = await client.query<FaunaDocument>(
     q.Update(document.ref, {
       data: {
         hits: document.data.hits + 1
@@ -46,4 +59,4 @@ const registerHit = async (req, res) => {
   });
 };
 
-module.exports = registerHit;
+export default registerHit;
