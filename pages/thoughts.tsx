@@ -1,5 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { promises } from 'fs';
+import path from 'path';
+
+import * as React from 'react';
+import type { NextPage } from 'next';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 
@@ -9,12 +12,18 @@ import Text from '../src/components/Shared/Text';
 import BlogCard from '../src/components/Cards/BlogCard';
 import { useScrollToTop } from '../src/hooks/useScrollToTop';
 import { appearParentVariants } from '../src/utils/animation';
+import { parseMeta, orderAndTagPosts, Post } from '../src/utils/blog-parser';
 
+// Page-level information for meta tags.
 const title = 'Thoughts / Parker Ziegler / Software Engineer and Cartographer';
 const description =
   'Musings, learnings, and tutorials written by Parker Ziegler, a software engineer and cartographer based in Berkeley, CA.';
 
-const Thoughts = ({ posts }) => {
+interface Props {
+  posts: Post[];
+}
+
+const Thoughts: NextPage<Props> = ({ posts }) => {
   useScrollToTop();
 
   return (
@@ -65,40 +74,20 @@ const Thoughts = ({ posts }) => {
   );
 };
 
-Thoughts.propTypes = {
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      introText: PropTypes.string.isRequired,
-      tags: PropTypes.arrayOf(
-        PropTypes.shape({
-          icon: PropTypes.string.isRequired,
-          tag: PropTypes.string.isRequired
-        }).isRequired
-      ).isRequired
-    }).isRequired
-  ).isRequired
-};
-
 export async function getStaticProps() {
-  const fs = require('fs');
-  const fsPromise = fs.promises;
-  const path = require('path');
   const toVFile = await import('to-vfile');
   const { remark } = await import('remark');
   const { default: remarkMath } = await import('remark-math');
   const { default: remarkMdx } = await import('remark-mdx');
 
-  const { parseMeta, orderAndTagPosts } = require('../src/utils/blog-parser');
-
   // Get all posts from the pages/thoughts directory.
   const postsPath = path.resolve(process.cwd(), './pages/thoughts');
-  const files = await fsPromise.readdir(postsPath);
+  const files = await promises.readdir(postsPath);
 
   const posts = [];
 
+  // Parse each post's meta information and body. Use remarkMath to parse
+  // math blocks and remarkMdx to parse JSX and produce an AST to operate on.
   for (const file of files) {
     const f = await toVFile.read(path.join(postsPath, file), 'utf-8');
     await remark()

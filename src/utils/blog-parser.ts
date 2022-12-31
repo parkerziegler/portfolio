@@ -1,6 +1,8 @@
 import flowRight from 'lodash.flowright';
 import type { Plugin } from 'unified';
-import type { Root, BlockContent, Paragraph, Literal } from 'mdast';
+import type { Root, Paragraph, Literal } from 'mdast';
+
+import { TagAttributes } from '../components/Blog/Tag';
 
 import { TAGS } from './constants';
 
@@ -40,12 +42,13 @@ function replaceCharacterWithCharacter(
   return (str) => str.replace(regex, replace);
 }
 
-interface Post {
+export interface Post {
   title: string;
   description: string;
   slug: string;
   date: string;
-  tags: string[];
+  tags: TagAttributes[];
+  introText: string;
 }
 
 /**
