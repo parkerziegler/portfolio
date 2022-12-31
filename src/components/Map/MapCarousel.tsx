@@ -53,9 +53,8 @@ const MapThumbnail: React.FC<MapThumbnailProps> = ({
             ? '(min-width: 768px) 25vw, (min-width: 1024px) calc(100vw / 6), (min-width: 1280px) 12.5vw, 20vw'
             : '(min-width: 768px) calc(100vw / 3), (min-width: 1024px) 25vw, (min-width: 1280px) 20vw, 25vw'
         }
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
+        fill
+        style={{ objectFit: 'cover', objectPosition: 'center' }}
         onClick={onClickThumbnail}
         placeholder="blur"
       />

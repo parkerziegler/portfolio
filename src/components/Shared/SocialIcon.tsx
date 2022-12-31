@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 import { transitionRelaxed } from '../../utils/animation';
@@ -20,12 +21,12 @@ const SocialIcon: React.FC<Props> = ({ href, path, alt }) => (
     }}
     transition={transitionRelaxed}
   >
-    <img
+    <Image
       src={path}
       alt={alt}
       className="h-16 w-16 md:h-20 md:w-20"
-      height="20"
-      width="20"
+      height={40}
+      width={40}
     />
   </motion.a>
 );

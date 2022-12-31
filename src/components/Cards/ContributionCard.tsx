@@ -1,11 +1,26 @@
 import * as React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-import { CONTRIBUTION_EVENT_ICONS, LANGUAGES } from '../../utils/constants';
+import {
+  CONTRIBUTION_EVENT_TYPES,
+  CONTRIBUTION_EVENT_ICONS,
+  LANGUAGES
+} from '../../utils/constants';
 import { transitionDirect, translateDownLeft } from '../../utils/animation';
 
-const normalizeContributionType = (type) => {
-  const str = type.replace('Event', '').replace(/([a-z])([A-Z])/g, '$1 $2');
+type ContributionEvent = typeof CONTRIBUTION_EVENT_TYPES[number];
+type ContributionSansEvent = ContributionEvent extends `${infer Prefix}Event`
+  ? Prefix
+  : never;
+type NormalizedContribution = Exclude<ContributionSansEvent, 'Push'> | 'Commit';
+
+const normalizeContributionType = (
+  type: typeof CONTRIBUTION_EVENT_TYPES[number]
+): NormalizedContribution => {
+  const str = type
+    .replace('Event', '')
+    .replace(/([a-z])([A-Z])/g, '$1 $2') as ContributionSansEvent;
 
   if (str === 'Push') {
     return 'Commit';
@@ -19,7 +34,7 @@ interface Props {
   url: string;
   description: string;
   language: string;
-  type: string;
+  type: ContributionEvent;
 }
 
 const ContributionCard: React.FC<Props> = ({
@@ -50,10 +65,12 @@ const ContributionCard: React.FC<Props> = ({
           </p>
           <div className="flex mt-auto justify-between">
             <div className="flex items-end stack-sm-h bg-white px-4 py-2 rounded-sm">
-              <img
+              <Image
                 src={CONTRIBUTION_EVENT_ICONS[type].src}
                 alt={CONTRIBUTION_EVENT_ICONS[type].alt}
                 className="h-8 w-8"
+                width={20}
+                height={20}
               />
               <span className="text-black text-xl">
                 {normalizeContributionType(type)}
@@ -61,10 +78,12 @@ const ContributionCard: React.FC<Props> = ({
             </div>
             {language ? (
               <div className="flex items-end stack-sm-h bg-white px-4 py-2 rounded-sm">
-                <img
+                <Image
                   src={LANGUAGES[language]?.src}
                   alt={LANGUAGES[language]?.alt}
                   className="h-8"
+                  width={20}
+                  height={20}
                 />
                 <span className="text-black text-xl">{language}</span>
               </div>

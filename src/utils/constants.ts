@@ -118,7 +118,7 @@ export const CONTRIBUTION_EVENT_TYPES = [
   'PullRequestReviewEvent',
   'PushEvent',
   'ReleaseEvent'
-];
+] as const;
 
 export const CONTRIBUTION_EVENT_ICONS = {
   ForkEvent: {

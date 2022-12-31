@@ -39,7 +39,6 @@ const Map: React.FC<React.PropsWithChildren<Map>> = ({
             : '(min-width: 1280px) 1280px, 100vw'
         }
         className="rounded-md h-auto"
-        loading={eager ? 'eager' : 'lazy'}
         priority={eager}
         placeholder="blur"
       />

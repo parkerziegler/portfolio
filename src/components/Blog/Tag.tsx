@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Image from 'next/image';
 import cs from 'classnames';
 
 export interface TagAttributes {
@@ -26,7 +27,13 @@ const Tag: React.FC<React.PropsWithChildren<Props>> = ({
       )}
     >
       {icon.indexOf('/') !== -1 ? (
-        <img src={icon} alt={tag} className="mr-2 h-8" />
+        <Image
+          src={icon}
+          alt={tag}
+          width={20}
+          height={20}
+          className="mr-2 w-8 h-8"
+        />
       ) : (
         <span className="text-3xl mr-2">{icon}</span>
       )}
