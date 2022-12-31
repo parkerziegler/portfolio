@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 import { FragmentType, useFragment, graphql } from '../../generated';
@@ -9,6 +10,8 @@ import {
   transitionRelaxed
 } from '../../utils/animation';
 import { repoToBadgePath } from '../../content/projects';
+
+import RepositoryStats from './RepositoryStats';
 
 const RepoInfoFragment = graphql(`
   fragment repoInfo on Repository {
@@ -53,14 +56,14 @@ const RepositoryCard: React.FC<Props> = ({ repository }) => {
       transition={transitionRelaxed}
     >
       <div className="bg-gradient-to-r from-primary to-secondary flex p-2 m-auto rounded-lg font-mono shadow-lg h-full">
-        <div className="flex flex-col items-center stack-sm p-4 rounded-md bg-white flex-auto overflow-auto">
+        <div className="flex flex-col items-center stack-sm p-8 rounded-md bg-white flex-auto overflow-auto">
           <h2 className="text-4xl text-center">{repoInfo.name}</h2>
-          <img
+          <Image
             src={repoToBadgePath[repoInfo.name]}
             alt={`${repoInfo.name} Badge`}
             className="h-64"
-            height="160"
-            width="160"
+            width={160}
+            height={160}
           />
           <p className="text-xl">{repoInfo.description}</p>
           <div className="flex flex-wrap">
@@ -85,26 +88,11 @@ const RepositoryCard: React.FC<Props> = ({ repository }) => {
             >
               {repoInfo.primaryLanguage.name}
             </span>
-            <div className="flex flex-col items-center mr-4">
-              <img
-                src="/icons/star.svg"
-                alt={`${repoInfo.name} Stars on GitHub`}
-                className="h-10"
-                height="25"
-                width="25"
-              />
-              <span className="text-lg">{repoInfo.stargazers.totalCount}</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <img
-                src="/icons/git-branch.svg"
-                alt={`${repoInfo.name} Forks on GitHub`}
-                className="h-10"
-                height="25"
-                width="25"
-              />
-              <span className="text-lg">{repoInfo.forkCount}</span>
-            </div>
+            <RepositoryStats
+              repoName={repoInfo.name}
+              stars={repoInfo.stargazers.totalCount}
+              forks={repoInfo.forkCount}
+            />
           </div>
         </div>
       </div>

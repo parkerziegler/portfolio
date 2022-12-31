@@ -9,6 +9,8 @@ import {
   transitionRelaxed
 } from '../../utils/animation';
 
+import RepositoryStats from './RepositoryStats';
+
 const RepoInfoFragment = graphql(`
   fragment repoInfo on Repository {
     name
@@ -71,22 +73,12 @@ const PixelCard: React.FC<Props> = ({ repository }) => {
             </span>
           </div>
         ) : null}
-        <div className="flex flex-col items-center mr-4 p-2 bg-white">
-          <img
-            src="/icons/star.svg"
-            alt={`${repoInfo.name} Stars on GitHub`}
-            className="h-10"
-          />
-          <span className="text-lg">{repoInfo.stargazers.totalCount}</span>
-        </div>
-        <div className="flex flex-col items-center p-2 bg-white">
-          <img
-            src="/icons/git-branch.svg"
-            alt={`${repoInfo.name} Forks on GitHub`}
-            className="h-10"
-          />
-          <span className="text-lg">{repoInfo.forkCount}</span>
-        </div>
+        <RepositoryStats
+          repoName={repoInfo.name}
+          stars={repoInfo.stargazers.totalCount}
+          forks={repoInfo.forkCount}
+          className="p-2 bg-white"
+        />
       </div>
     </motion.a>
   );
