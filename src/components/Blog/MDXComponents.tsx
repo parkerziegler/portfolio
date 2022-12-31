@@ -169,26 +169,6 @@ const UL: React.FC<React.PropsWithChildren> = ({ children }) => (
   </ul>
 );
 
-const unsupportedImgRegex = /.(svg|gif)$/g;
-
-interface ImgProps {
-  src: StaticImageData;
-  alt: string;
-}
-
-const Img: React.FC<ImgProps> = ({ src, alt }) => {
-  // Automated blur placeholders are only avaible for .jpg, .png, and .webp.
-  const placeholder =
-    src.src.match(unsupportedImgRegex) !== null ? 'empty' : 'blur';
-
-  return (
-    <div className="stack-sm py-8">
-      <Image src={src} alt={alt} placeholder={placeholder} />
-      <span className="text-2xl font-sans text-gray-600 block">{alt}</span>
-    </div>
-  );
-};
-
 const BlockQuote: React.FC<React.PropsWithChildren> = ({ children }) => (
   <blockquote className="font-semibold bg-indigo-100 p-4 border-l-4 border-primary rounded-md">
     {children}
@@ -205,7 +185,6 @@ const components = {
   code: Code,
   ol: OL,
   ul: UL,
-  img: Img,
   blockquote: BlockQuote
 };
 

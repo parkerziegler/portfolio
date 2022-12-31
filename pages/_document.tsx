@@ -1,8 +1,14 @@
-import React from 'react';
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+import * as React from 'react';
+import NextDocument, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext
+} from 'next/document';
 
 export default class Document extends NextDocument {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(ctx: DocumentContext) {
     const props = await NextDocument.getInitialProps(ctx);
     return { ...props };
   }
@@ -13,7 +19,7 @@ export default class Document extends NextDocument {
         <Head>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta name="theme-color" content="#7b16ff" />
-          {this.props.styleTags}
+          {this.props.styles}
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
