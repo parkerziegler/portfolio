@@ -1,7 +1,8 @@
-module.exports = async (phase, { defaultConfig }) => {
+module.exports = async (_phase, _config) => {
   const { default: remarkMath } = await import('remark-math');
   const { default: rehypeKatex } = await import('rehype-katex');
 
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const withMDX = require('@next/mdx')({
     extension: /\.mdx?$/,
     options: {

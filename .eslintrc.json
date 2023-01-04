@@ -1,6 +1,8 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
+  "extends": ["plugin:@typescript-eslint/recommended", "next/core-web-vitals", "prettier"],
+  "plugins": ["@typescript-eslint"],
   "rules": {
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "import/newline-after-import": 2,
     "import/order": [
       "error",
@@ -8,5 +10,6 @@
         "newlines-between": "always"
       }
     ]
-  }
+  },
+  "ignorePatterns": ["src/generated/*"]
 }

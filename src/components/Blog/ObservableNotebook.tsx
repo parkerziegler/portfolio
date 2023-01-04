@@ -6,7 +6,7 @@ interface Props {
   importNotebook: () => Promise<{ default: () => void }>;
 }
 
-const ObservableNotebook = ({ importNotebook }) => {
+const ObservableNotebook: React.FC<Props> = ({ importNotebook }) => {
   React.useEffect(() => {
     const fetchNotebook = async () => {
       const notebook = await importNotebook();

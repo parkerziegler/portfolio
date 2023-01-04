@@ -13,7 +13,7 @@ import RepositoryCard from '../src/components/Cards/RepositoryCard';
 import PixelCard from '../src/components/Cards/PixelCard';
 import Statistic from '../src/components/Contributions/Statistic';
 import ProjectScreen from '../src/components/Projects/ProjectScreen';
-import { projects, repoToBadgePath } from '../src/content/projects';
+import { projects } from '../src/content/projects';
 import { appearParentVariants } from '../src/utils/animation';
 import { graphql } from '../src/generated';
 import type { ReposQuery, ReposQueryVariables } from '../src/generated/graphql';
@@ -184,7 +184,7 @@ export async function getStaticProps() {
     });
 
     const to = new Date();
-    let from = new Date();
+    const from = new Date();
     from.setFullYear(to.getFullYear() - 1);
 
     const repositories = await client

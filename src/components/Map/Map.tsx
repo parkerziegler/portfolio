@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import cs from 'classnames';
 
 import type { Map } from '../../content/maps';

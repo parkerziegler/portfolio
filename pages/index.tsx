@@ -170,9 +170,9 @@ const normalizeContribution = (
       // GitHub's OpenAPI types are incorrect here. See relevant issues:
       // https://github.com/octokit/rest.js/issues/128
       // https://github.com/github/rest-api-description/issues/1318
-      // @ts-expect-error
+      // @ts-expect-error – GitHub's OpenAPI types do not include `forkee` on `payload` for `ForkEvent`.
       url = contribution.payload.forkee.html_url;
-      // @ts-expect-error
+      // @ts-expect-error – GitHub's OpenAPI types do not include `forkee` on `payload` for `ForkEvent`.
       description = `Forked ${contribution.repo.name} into ${contribution.payload.forkee.full_name}`;
 
       break;
@@ -184,36 +184,36 @@ const normalizeContribution = (
       break;
     }
     case 'PushEvent': {
-      // @ts-expect-error
+      // @ts-expect-error – GitHub's OpenAPI types do not include `commits` on `payload` for `PushEvent`.
       url = contribution.payload.commits[0].url
         .replace('api.', '')
         .replace('/repos', '')
         .replace('commits', 'commit');
-      // @ts-expect-error
+      // @ts-expect-error – GitHub's OpenAPI types do not include `commits` on `payload` for `PushEvent`.
       description = contribution.payload.commits[0].message;
 
       break;
     }
     case 'PullRequestEvent': {
-      // @ts-expect-error
+      // @ts-expect-error - GitHub's OpenAPI types do not include `pull_request` on `payload` for `PullRequestEvent`.
       url = contribution.payload.pull_request.html_url;
-      // @ts-expect-error
+      // @ts-expect-error - GitHub's OpenAPI types do not include `pull_request` on `payload` for `PullRequestEvent`.
       description = `#${contribution.payload.pull_request.number}: ${contribution.payload.pull_request.title}`;
 
       break;
     }
     case 'PullRequestReviewEvent': {
-      // @ts-expect-error
+      // @ts-expect-error - GitHub's OpenAPI types do not include `pull_request` on `payload` for `PullRequestReviewEvent`.
       url = contribution.payload.pull_request.html_url;
-      // @ts-expect-error
+      // @ts-expect-error - GitHub's OpenAPI types do not include `pull_request` on `payload` for `PullRequestReviewEvent`.
       description = `Reviewed #${contribution.payload.pull_request.number}: ${contribution.payload.pull_request.title}`;
 
       break;
     }
     case 'ReleaseEvent': {
-      // @ts-expect-error
+      // @ts-expect-error - GitHub's OpenAPI types do not include `release` on `payload` for `ReleaseEvent`.
       url = contribution.payload.release.html_url;
-      // @ts-expect-error
+      // @ts-expect-error - GitHub's OpenAPI types do not include `release` on `payload` for `ReleaseEvent`.
       description = `Released ${contribution.payload.release.tag_name} of ${contribution.repo.name}`;
 
       break;
