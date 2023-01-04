@@ -28,7 +28,7 @@ module.exports = {
         '2/3': '66.666%',
         '1/2': '50%',
         '1/8': '12.5%',
-        prose: '100ch'
+        prose: '130ch'
       },
       minWidth: {
         'half-screen': '50vw'

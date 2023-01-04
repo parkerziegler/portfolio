@@ -12,6 +12,14 @@ module.exports = async (phase, { defaultConfig }) => {
   });
 
   return withMDX({
-    pageExtensions: ['js', 'tsx', 'mdx']
+    pageExtensions: ['js', 'tsx', 'mdx'],
+    experimental: {
+      fontLoaders: [
+        {
+          loader: '@next/font/google',
+          options: { subsets: ['latin'] }
+        }
+      ]
+    }
   });
 };

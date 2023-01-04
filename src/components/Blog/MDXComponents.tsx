@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Image, { StaticImageData } from 'next/image';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight';
 import cs from 'classnames';
@@ -61,7 +60,7 @@ const H2: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <Heading
       tag="h2"
-      className="text-5xl text-indigo-600 relative self-start group"
+      className="text-5xl text-indigo-600 font-sans relative self-start group"
       style={{
         marginTop: '6rem',
         scrollMarginTop: '100px',
@@ -82,7 +81,7 @@ const H3: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <Heading
       tag="h3"
-      className="text-4xl text-yellow-600 relative self-start group"
+      className="text-4xl text-yellow-600 font-sans relative self-start group"
       style={{
         marginTop: '3rem',
         scrollMarginTop: '50px',
