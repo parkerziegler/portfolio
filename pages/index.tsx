@@ -124,7 +124,7 @@ const Index: NextPage<Props> = ({ contributions }) => (
             I love everything about the Web and spend most of my days working
             with these lovely languages and tools.
           </Text>
-          <div className="flex flex-col sm:flex-row justify-evenly">
+          <div className="flex flex-col stack-lg sm:flex-row sm:stack-none sm:justify-evenly">
             <LangSection
               title="Languages"
               langs={Object.values(CORE_LANGUAGES)}

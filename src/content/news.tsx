@@ -13,7 +13,7 @@ export const NEWS: NewsItem[] = [
     id: 'chi-2023',
     date: 'Sep 2022',
     description:
-      'I submitted the first paper of my Ph.D. to the ACM Conference on Human Factors in Computing (CHI)!'
+      'I submitted the first paper of my Ph.D. to the ACM CHI Conference on Human Factors in Computing Systems!'
   },
   {
     id: 'ps-prelim',
