@@ -28,6 +28,7 @@ const Footer: React.FC = () => (
           path="/logos/observable-logo.svg"
           alt="Parker's Observable"
         />
+        <SocialIcon href="/cv.pdf" path="/icons/cv.svg" alt="Parker's CV" />
       </div>
     </div>
   </footer>
