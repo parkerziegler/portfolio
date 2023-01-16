@@ -1,16 +1,18 @@
 import * as React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import cs from 'classnames';
 
 import { transitionRelaxed } from '../../utils/animation';
 
 interface Props {
-  href: string;
-  path: string;
+  src: string;
   alt: string;
+  href: string;
+  variant: 'sm' | 'lg';
 }
 
-const SocialIcon: React.FC<Props> = ({ href, path, alt }) => (
+const SocialIcon: React.FC<Props> = ({ src, alt, href, variant }) => (
   <motion.a
     href={href}
     target="_blank"
@@ -22,11 +24,14 @@ const SocialIcon: React.FC<Props> = ({ href, path, alt }) => (
     transition={transitionRelaxed}
   >
     <Image
-      src={path}
+      src={src}
       alt={alt}
-      className="h-16 w-16 md:h-20 md:w-20"
-      height={40}
-      width={40}
+      className={cs({
+        'h-8 w-8': variant === 'sm',
+        'h-16 w-16': variant === 'lg'
+      })}
+      height={variant === 'sm' ? 20 : 40}
+      width={variant === 'sm' ? 20 : 40}
     />
   </motion.a>
 );

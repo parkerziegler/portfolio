@@ -13,11 +13,13 @@ import InlineLink from '../src/components/Shared/InlineLink';
 import LangSection from '../src/components/Shared/LangSection';
 import SkewBg from '../src/components/Shared/SkewBg';
 import NewsList from '../src/components/News/NewsList';
+import SocialIcon from '../src/components/Shared/SocialIcon';
 import {
   CORE_LANGUAGES,
   TOOLS,
   CONTRIBUTION_EVENT_TYPES
 } from '../src/utils/constants';
+import { social } from '../src/content/social';
 
 // Page-level information for meta tags.
 const title = 'Parker Ziegler / Software Engineer and Cartographer';
@@ -50,7 +52,20 @@ const Index: NextPage<Props> = ({ contributions }) => (
     <main id="main">
       <Section className="items-center">
         <div className="md:max-w-3/4 stack-lg">
-          <SectionHeader>Hey, I&apos;m Parker.</SectionHeader>
+          <div className="flex flex-col stack-md md:flex-row md:justify-between md:items-baseline md:stack-none">
+            <SectionHeader>Hey, I&apos;m Parker.</SectionHeader>
+            <div className="flex stack stack-sm-h">
+              {social.map(({ href, src, alt }) => (
+                <SocialIcon
+                  key={src}
+                  src={src}
+                  alt={alt}
+                  href={href}
+                  variant="sm"
+                />
+              ))}
+            </div>
+          </div>
           <Text>
             I am a <em className="font-semibold">computer scientist</em>,{' '}
             <em className="font-semibold">software engineer</em>, and{' '}
