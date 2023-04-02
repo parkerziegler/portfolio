@@ -85,10 +85,11 @@ export const LANGUAGES = {
 
 export const TOOLS = {
   React: { src: '/logos/react-logo.svg', alt: 'React Logo' },
+  Svelte: { src: '/logos/svelte-logo.svg', alt: 'Svelte Logo' },
   Node: { src: '/logos/node-logo.svg', alt: 'Node Logo' },
-  Redux: { src: '/logos/redux-logo.svg', alt: 'Redux Logo' },
   Next: { src: '/logos/next-logo.svg', alt: 'Next.js Logo' },
   D3: { src: '/logos/d3-logo.svg', alt: 'D3 Logo' },
+  Redux: { src: '/logos/redux-logo.svg', alt: 'Redux Logo' },
   Jest: { src: '/logos/jest-logo.svg', alt: 'Jest Logo' },
   Cypress: { src: '/logos/cypress-logo.svg', alt: 'Cypress Logo' },
   TailwindCSS: { src: '/logos/tailwindcss-logo.svg', alt: 'Tailwind Logo' },

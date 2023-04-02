@@ -10,6 +10,64 @@ interface NewsItem {
 
 export const NEWS: NewsItem[] = [
   {
+    id: 'nsf-grfp-honorable-mention',
+    date: 'Apr 2023',
+    description: (
+      <p>
+        I won an{' '}
+        <InlineLink
+          href="https://www.research.gov/grfp/AwardeeList.do?method=loadAwardeeList"
+          type="light"
+        >
+          Honorable Mention in the 2023 NSF Graduate Research Fellowship Program
+          comptetion
+        </InlineLink>{' '}
+        for my research on programming languages and interfaces for working with
+        geospatial data.
+      </p>
+    )
+  },
+  {
+    id: 'outstanding-gsi-award',
+    date: 'Mar 2023',
+    description: (
+      <p>
+        I was awarded the{' '}
+        <InlineLink
+          href="https://gsi.berkeley.edu/programs-services/award-programs/ogsi/ogsi-recipients-2022-2023/"
+          type="light"
+        >
+          Outstanding Graduate Student Instructor Award
+        </InlineLink>{' '}
+        for my teaching in{' '}
+        <InlineLink
+          href="https://inst.eecs.berkeley.edu/~cs164/fa22/"
+          type="light"
+        >
+          CS164: Programming Languages and Compilers
+        </InlineLink>{' '}
+        at UC Berkeley!
+      </p>
+    )
+  },
+  {
+    id: 'chi-2023-acceptance',
+    date: 'Jan 2023',
+    description: (
+      <p>
+        Our paper,{' '}
+        <InlineLink
+          href="/papers/a-need-finding-study-with-users-of-geospatial-data.pdf"
+          type="light"
+        >
+          A Need-Finding Study with Users of Geospatial Data
+        </InlineLink>
+        , was accepted to the 2023 ACM CHI Conference on Human Factors in
+        Computing Systems!
+      </p>
+    )
+  },
+  {
     id: 'chi-2023',
     date: 'Sep 2022',
     description:

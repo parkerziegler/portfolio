@@ -68,7 +68,7 @@ const Link: React.FC<React.PropsWithChildren<Props>> = ({
         className={cs(
           'text-white p-2 text-5xl sm:text-4xl font-serif no-underline relative',
           {
-            'font-bold': pathname.includes(href)
+            'font-semibold': pathname.includes(href)
           }
         )}
       >
