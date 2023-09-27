@@ -25,7 +25,7 @@ import { social } from '../src/content/social';
 const title = 'Parker Ziegler / Software Engineer and Cartographer';
 const description =
   'Parker Ziegler is a software engineer and cartographer based in Berkeley, CA. He works on next generation web technologies, with a focus on animation, graphics, and emerging programming languages.';
-const MAX_ACTIVITY_COUNT = 4;
+const MAX_ACTIVITY_COUNT = 6;
 
 interface Props {
   contributions: Contribution[];

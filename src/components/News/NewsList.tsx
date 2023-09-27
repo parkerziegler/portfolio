@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cs from 'classnames';
+import format from 'date-fns/format';
 
 import { NEWS } from '../../content/news';
 
@@ -42,7 +43,9 @@ const NewsList: React.FC<Props> = ({ className }) => {
               style={{ transformOrigin: '8px 8px' }}
             />
           </svg>
-          <span className="italic relative flex-shrink-0 mr-8">{date}</span>
+          <span className="italic relative flex-shrink-0 mr-8">
+            {format(date, 'MMM yyyy')}
+          </span>
           {description}
         </li>
       ))}
