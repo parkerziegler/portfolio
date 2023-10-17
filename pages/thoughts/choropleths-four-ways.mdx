@@ -1,0 +1,53 @@
+import BlogPost from '../../src/components/Blog/BlogPost';
+import ObservableNotebook from '../../src/components/Blog/ObservableNotebook';
+import { TAGS } from '../../src/utils/constants';
+
+export const meta = {
+  title: 'Choropleths, Four Ways',
+  description:
+    'An exploration of four different ways to make choropleth maps using D3, Leaflet, Mapbox GL JS, and deck.gl',
+  slug: 'choropleths-four-ways',
+  date: 'Nov. 10, 2022',
+  tags: ['javascript', 'd3', 'observable']
+};
+
+<BlogPost
+  title={meta.title}
+  description={meta.description}
+  tags={[TAGS.javascript, TAGS.d3, TAGS.observable]}
+  publishDate={meta.date} 
+  slug={meta.slug}
+>
+
+<ObservableNotebook
+  importNotebook={async () =>
+    await import('@parkerziegler/choropleths-four-ways')
+  }
+/>
+
+# Choropleths, Four Ways
+
+Ah, the humble choropleth. Given that its name is almost universally mispronounced outside of cartography circles (looking at you "chloropleth" 👀), it's somewhat funny that this is one of the most recognizable map styles out there.
+
+Choropleths are typically used when we have geospatial data aggregated by some areal unit, such as states, provinces, counties, or Census tracts. Unsurprisingly, a _whole lot_ of geospatial data comes prepackaged this way, which is part of the reason the choropleth gets so much play. Additionally, many (western) map users are accustomed to thinking about geographic space in such units, even if spatial variation in many environmental and social phenomena doesn't follow such neat, human-defined geographic boundaries.
+
+But enough of my takes on choropleths—the aim here is not to critique this particular cartographic representation. Instead, this is a first entry into a set of notebooks related to my Ph.D. research at Berkeley, in which I'm exploring usable programming abstractions for cartographic design. A natural first step in this process is to ask:
+
+_How do existing tools enable or disable certain types of cartographic representation?_
+
+Put another way, how hard—or easy—is it to make (seemingly) simple maps. The choropleth feels like the right place to begin.
+
+In this notebook, we'll be exploring what it takes to craft a basic choropleth using four popular JavaScript libraries for cartography: [D3](https://github.com/d3/d3-geo), [Leaflet](https://leafletjs.com/), [Mapbox GL JS](https://www.mapbox.com/mapbox-gljs), and [deck.gl](https://deck.gl/). No legend, no labels, no north stars—just us and some polygons.
+
+We'll be using data from the 2020 American Community Survey's (ACS) 5-year estimates aggregated at the Census tract level for the state of California. Specifically, we'll use racial data from table B0200100. The raw data is available on [Census Reporter](https://censusreporter.org/data/map/?table=B02001&geo_ids=140|04000US06). To focus in a bit, I filtered the data down to tracts within [California State Plane Zone 3](https://epsg.io/26943) (my neck of the woods) and simplified the geometry a bit in [MapShaper](https://mapshaper.org/).
+
+## The Data
+
+<iframe
+  width="100%"
+  height="105"
+  frameborder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=caSP3TractsTopo"
+></iframe>
+
+</BlogPost>

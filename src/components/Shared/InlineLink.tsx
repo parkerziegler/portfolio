@@ -33,7 +33,7 @@ const InlineLink: React.FC<React.PropsWithChildren<Props>> = ({
       rel="noopener noreferrer"
       className={className}
     >
-      <strong>{children}</strong>
+      <strong className="font-semibold">{children}</strong>
     </a>
   );
 };

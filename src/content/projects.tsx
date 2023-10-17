@@ -118,7 +118,22 @@ export const projects: Project[] = [
 ];
 
 export const repoToBadgePath = {
-  renature: '/logos/renature.svg',
-  'rescript-urql': '/logos/rescript-urql.svg',
-  reviz: '/logos/reviz.svg'
+  reviz: '/logos/reviz.svg',
+  cartokit: '/logos/cartokit.svg',
+  renature: '/logos/renature.svg'
+};
+
+export const repoToDimensions = {
+  reviz: {
+    width: 160,
+    height: 160
+  },
+  cartokit: {
+    width: 559,
+    height: 171
+  },
+  renature: {
+    width: 160,
+    height: 160
+  }
 };

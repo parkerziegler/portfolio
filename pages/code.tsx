@@ -29,14 +29,14 @@ interface Props {
 
 const Code: NextPage<Props> = ({ repositories }) => {
   const mainOSS = [
-    repositories.renature,
-    repositories.reScriptUrql,
-    repositories.reviz
+    repositories.reviz,
+    repositories.cartokit,
+    repositories.renature
   ];
   const secondaryOSS = [
+    repositories.rescriptUrql,
     repositories.urql,
-    repositories.webpackDashboard,
-    repositories.reasonBasics
+    repositories.webpackDashboard
   ];
 
   return (
@@ -141,25 +141,25 @@ const Code: NextPage<Props> = ({ repositories }) => {
 
 const repositoriesQuery = graphql(`
   query repos($from: DateTime!, $to: DateTime!) {
-    renature: repository(name: "renature", owner: "FormidableLabs") {
-      ...repoInfo
-    }
     reviz: repository(name: "reviz", owner: "parkerziegler") {
       ...repoInfo
     }
-    reScriptUrql: repository(name: "rescript-urql", owner: "FormidableLabs") {
+    cartokit: repository(name: "cartokit", owner: "parkerziegler") {
+      ...repoInfo
+    }
+    renature: repository(name: "renature", owner: "FormidableLabs") {
+      ...repoInfo
+    }
+    rescriptUrql: repository(name: "rescript-urql", owner: "FormidableLabs") {
+      ...repoInfo
+    }
+    urql: repository(name: "urql", owner: "FormidableLabs") {
       ...repoInfo
     }
     webpackDashboard: repository(
       name: "webpack-dashboard"
       owner: "FormidableLabs"
     ) {
-      ...repoInfo
-    }
-    urql: repository(name: "urql", owner: "FormidableLabs") {
-      ...repoInfo
-    }
-    reasonBasics: repository(name: "reason-basics", owner: "parkerziegler") {
       ...repoInfo
     }
     viewer {

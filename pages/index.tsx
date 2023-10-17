@@ -67,21 +67,22 @@ const Index: NextPage<Props> = ({ contributions }) => (
             </div>
           </div>
           <Text>
-            I am a <em className="font-semibold">computer scientist</em>,{' '}
-            <em className="font-semibold">software engineer</em>, and{' '}
-            <em className="font-semibold">cartographer</em> based in Berkeley,
-            CA. My passions lie at the intersection of programming languages
-            (PL), human-computer interaction (HCI), data visualization, and
-            geospatial technologies. I currently spend a lot of my time
-            researching and working on{' '}
+            I am a <strong className="font-semibold">computer scientist</strong>
+            , <strong className="font-semibold">software engineer</strong>, and{' '}
+            <strong className="font-semibold">cartographer</strong> based in
+            Berkeley, CA. My passions lie at the intersection of programming
+            languages (PL), human-computer interaction (HCI), data
+            visualization, and geospatial technologies. I currently spend a lot
+            of my time researching and working on{' '}
             <InlineLink href="https://github.com/parkerziegler">
               programming tools
             </InlineLink>{' '}
             for data journalists, Earth and climate scientists, and social
             scientists.
             <br />
-            <br />I also believe <em className="font-semibold">place</em> shapes
-            every part of who we are. These are the places that have shaped me.
+            <br />I also believe{' '}
+            <strong className="font-semibold">place</strong> shapes every part
+            of who we are. These are the places that have shaped me.
           </Text>
         </div>
         <Map />

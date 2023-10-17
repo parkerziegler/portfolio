@@ -104,7 +104,7 @@ export const NEWS: NewsItem[] = [
         </InlineLink>
         , or check out the{' '}
         <InlineLink
-          href="/slides/chi23-need-finding-geospatial-data.pdf"
+          href="/slides/chi-23-need-finding-geospatial-data.pdf"
           type="light"
         >
           slides

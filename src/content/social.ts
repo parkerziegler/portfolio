@@ -6,16 +6,6 @@ interface SocialMedia {
 
 export const social: SocialMedia[] = [
   {
-    src: '/icons/resume.svg',
-    alt: "Parker's Resume",
-    href: '/resume.pdf'
-  },
-  {
-    src: '/icons/cv.svg',
-    alt: "Parker's CV",
-    href: '/cv.pdf'
-  },
-  {
     src: '/logos/github-logo.svg',
     alt: "Parker's Github",
     href: 'https://github.com/parkerziegler'
