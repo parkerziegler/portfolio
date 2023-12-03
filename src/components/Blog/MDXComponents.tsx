@@ -1,5 +1,9 @@
 import * as React from 'react';
-import Highlight, { defaultProps, Language } from 'prism-react-renderer';
+import Highlight, {
+  defaultProps,
+  Language,
+  PrismTheme
+} from 'prism-react-renderer';
 import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight';
 import cs from 'classnames';
 import { slug } from 'github-slugger';
@@ -111,6 +115,23 @@ export const InlineCode: React.FC<React.PropsWithChildren<InlineCodeProps>> = ({
   </code>
 );
 
+const nightOwlLightNoItalics: PrismTheme = {
+  ...nightOwlLight,
+  styles: nightOwlLight.styles.map((style) => {
+    if (style.style.fontStyle === 'italic') {
+      return {
+        ...style,
+        style: {
+          ...style.style,
+          fontStyle: 'normal'
+        }
+      };
+    }
+
+    return style;
+  })
+};
+
 interface CodeProps {
   className?: string;
 }
@@ -134,13 +155,16 @@ const Code: React.FC<React.PropsWithChildren<CodeProps>> = ({
   return (
     <Highlight
       {...defaultProps}
-      theme={nightOwlLight}
+      theme={nightOwlLightNoItalics}
       code={children}
       language={language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
-          className={cs(className, 'rounded-lg text-2xl overflow-auto')}
+          className={cs(
+            className,
+            'rounded-lg text-xl overflow-auto shadow-sm'
+          )}
           style={{ ...style, padding: '20px' }}
         >
           {tokens.slice(0, tokens.length - 1).map((line, i) => (

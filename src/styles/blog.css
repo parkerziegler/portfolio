@@ -28,6 +28,11 @@
   @apply h-full w-full;
 }
 
+.observablehq.map-embed {
+  @apply w-full;
+  aspect-ratio: 1.4 / 1;
+}
+
 /* KaTeX overrides. */
 .math {
   @apply text-3xl;

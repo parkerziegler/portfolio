@@ -1,0 +1,406 @@
+import BlogPost from '../../src/components/Blog/BlogPost';
+import { TAGS } from '../../src/utils/constants';
+
+export const meta = {
+  title: 'Choropleths, Four Ways',
+  description:
+    'In this post, I explore four different ways to create choropleth maps using four different JavaScript mapping libraries.',
+  slug: 'choropleths-four-ways',
+  date: 'Nov. 10, 2022',
+  tags: ['javascript', 'd3', 'observable']
+};
+
+<BlogPost
+  title={meta.title}
+  description={meta.description}
+  tags={[TAGS.javascript, TAGS.d3, TAGS.observable]}
+  publishDate={meta.date} 
+  slug={meta.slug}
+>
+
+# Choropleths, Four Ways
+
+> This post comes originally from a notebook of mine [on Observable](https://observablehq.com/). To view it in its original context — and with interactive editing — check it out on [my Observable page](https://observablehq.com/@parkerziegler/choropleths-four-ways).
+
+Ah, the humble choropleth. Given that its name is almost universally mispronounced outside of cartography circles (looking at you "chloropleth" 👀), it's somewhat funny that this is one of the most recognizable map styles out there.
+
+Choropleths are typically used when we have geospatial data aggregated by some areal unit, such as states, provinces, counties, or Census tracts. Unsurprisingly, a whole lot of geospatial data comes prepackaged this way, which is part of the reason the choropleth gets so much play. Additionally, many (western) map users are accustomed to thinking about geographic space in such units, even if spatial variation in many environmental and social phenomena doesn't follow such neat, human-defined geographic boundaries.
+
+But enough of my takes on choropleths—the aim here is not to critique this particular cartographic representation. Instead, this is a first entry into a set of notebooks related to my Ph.D. research at Berkeley, in which I'm exploring usable programming abstractions for cartographic design. A natural first step in this process is to ask:
+
+How do existing tools enable or disable certain types of cartographic representation?
+
+Put another way, how hard—or easy—is it to make (seemingly) simple maps. The choropleth feels like the right place to begin.
+
+In this notebook, we'll be exploring what it takes to craft a basic choropleth using four popular JavaScript libraries for cartography: [D3](https://github.com/d3/d3-geo), [Leaflet](https://leafletjs.com/), [Mapbox GL JS](https://www.mapbox.com/mapbox-gljs), and [deck.gl](https://deck.gl/). No legend, no labels, no north stars—just us and some polygons.
+
+## The Data
+
+We'll be using data from the 2020 American Community Survey's (ACS) 5-year estimates aggregated at the Census tract level for the state of California. Specifically, we'll use racial data from table B0200100. The raw data is available on [Census Reporter](https://censusreporter.org/data/map/?table=B02001&geo_ids=140|04000US06). To focus in a bit, I filtered the data down to tracts within [California State Plane Zone 3](https://epsg.io/26943) (my neck of the woods) and simplified the geometry a bit in [MapShaper](https://mapshaper.org/).
+
+<iframe width="100%" height="105.015625" frameborder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=caSP3TractsTopo"></iframe>
+
+<iframe width="100%" height="105.015625" frameborder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=caSP3Tracts"></iframe>
+
+```javascript
+caSP3Tracts = topojson.feature(
+  caSP3TractsTopo,
+  caSP3TractsTopo.objects["acs-2020-ca-sp3-tracts"]
+)
+```
+
+We'll start by visualizing the distribution of the American Indian and Alaska Native population in this section of California. Specifically, we'll be mapping the percentage of the overall tract population that is American Indian or Alaska Native.
+
+## D3
+
+D3 has a soft spot in my heart—I learned JavaScript by mucking about with D3 and Scott Murray's [_Interactive Data Visualization for the Web_](https://alignedleft.com/work/d3-book-2e). When it comes to cartography, D3 has a fairly nice set of abstractions rolled up in the [`d3-geo`](https://github.com/d3/d3-geo) module. Let's take a look at what getting our choropleth up and running looks like.
+
+<iframe
+  width="100%"
+  height="694.09375"
+  frameborder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=d3Choropleth" className="observablehq">
+</iframe>
+
+```javascript
+d3Choropleth = {
+  // Define a height for the map. We'll use Observable's derived width.
+  const height = 610;
+
+  // Define projection. We use CA State Plane Zone 3 (EPSG:26943) as our projection.
+  // We source these particular values from Noah Veltman's d3-stateplane:
+  // https://github.com/veltman/d3-stateplane
+  const projection = d3
+    .geoConicConformal()
+    .parallels([37 + 4 / 60, 38 + 26 / 60])
+    .rotate([120 + 30 / 60, 0])
+    .fitSize([width, height], caSP3Tracts);
+
+  // Create the SVG container.
+  const svg = d3
+    .create("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("style", "width: 100%; height: auto; height: intrinsic;");
+
+  // Create the color scale.
+  // We'll set the breaks manually rather than rely on quantile or quantized scales.
+  const domain = [0, 1, 5, 10, 20];
+  const range = d3.schemePurples[5];
+  const color = d3.scaleThreshold(domain, range);
+
+  // Render Census tracts.
+  svg
+    .append("g")
+    .selectAll("path")
+    .data(caSP3Tracts.features)
+    .join("path")
+    .attr("d", d3.geoPath(projection))
+    .attr("fill", (d) => {
+      // Compute the percentage of the population that is AIAN, feed this value
+      // into our color scales, and use the output as the fill of our polygons.
+      const { B02001004: nativePop, B02001001: totalPop } = d.properties;
+
+      return color((nativePop / totalPop) * 100) || "#fff";
+    })
+    .attr("stroke", "#fff")
+    .attr("stroke-width", "0.5");
+
+  return svg.node();
+}
+```
+
+One immediate observation about the D3 approach is that we're working with SVG elements as our core primitive rather than a notion of _geographic features_ or _polygons_—grouped in layers—that might be more intuitive for cartographers. We're kind of monkey-patching the notion of geography onto SVG elements via the call to `d3.geoPath`. This keeps D3's API and rendering model consistent with non-spatial data visualizations, but doesn't fit the mental model many cartographers have.
+
+In addition, D3's APIs for working with projections are a bit counterintuitive if you're used to something like QGIS. Rather than reprojecting your data before rendering it with D3, the library expects your data to be georeferenced in [WGS84 (EPSG:4326)](https://epsg.io/4326) and then reprojects it according to a user-defined projection. That is, D3 is actually reprojecting your data from a geographic coordinate system to a projected coordinate system in the browser.
+
+This has some interesting performance implications, but the bigger concern I see is around how projections are specified. There is a real barrier to users in having to define values like parallels, rotate, scale, and [many, many other options](https://github.com/d3/d3-geo#projections) to specify a projection. Many non-expert GIS users struggle with projection selection even when it's just a question of "What is an appropriate projection to use?" Beyond finding an EPSG identifier, even experienced GIS users may not engage with the finer details of projections. I think this is why resources like Noah Veltman's [`d3-stateplane` project](https://github.com/veltman/d3-stateplane) are so heavily relied on.
+
+## Leaflet
+
+Leaflet really ushered in the era of the interactive "slippy" web map. In fact, my first web map was done in Leaflet! Let's take a look at what rendering the same map in Leaflet takes.
+
+<iframe
+  className="observablehq map-embed"
+  frameborder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@511?cells=leaflet">
+</iframe>
+
+```javascript
+leaflet = {
+  // Create the root element into which we'll render the map.
+  // We yield this early to ensure the div is sized by the time
+  // Leaflet accesses its offsetWidth and offsetHeight.
+  //
+  // This neat trick is courtesy Tom MacWright: https://observablehq.com/@tmcw/leaflet
+  const root = DOM.element("div", {
+    style: `width:${width}px; height:${width / 1.6}px`
+  });
+
+  yield root;
+
+  // Establish the map's center view and zoom level.
+  const map = L.map(root).setView([37.88536, -120.56827], 8);
+
+  // Add tiles from the CARTO tile server as a base layer.
+  const tiles = L.tileLayer(
+    "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
+    {
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }
+  ).addTo(map);
+
+  // Define color scale. To keep it consistent, we'll use the values from d3.schemePurples
+  // but encode them manually since they are not a part of Leaflet's APIs.
+  const color = (value) => {
+    if (value > 20) {
+      return "#f2f0f7";
+    } else if (value > 10) {
+      return "#54278f";
+    } else if (value > 5) {
+      return "#756bb1";
+    } else if (value > 1) {
+      return "#9e9ac8";
+    } else if (value >= 0) {
+      return "#cbc9e2";
+    }
+  };
+
+  // Define a style function to color each polygon in the dataset according to the color scale.
+  const style = (feature) => {
+    const { B02001004: nativePop, B02001001: totalPop } = feature.properties;
+
+    const value = (nativePop / totalPop) * 100;
+
+    return {
+      fillColor: color(value) || "transparent",
+      weight: 0.5,
+      fillOpacity: 0.8,
+      color: totalPop === 0 ? "transparent" : "#fff"
+    };
+  };
+
+  // Add the GeoJSON layer to the map, applying the style function to each object.
+  L.geoJson(caSP3Tracts, { style }).addTo(map);
+}
+```
+
+Leaflet's API centers the notions of a map and layers as core concepts. This is similar to how GIS software presents geospatial data to users, making this an intuitive leap for those coming to web mapping from native software. However, we can see that APIs like [`tileLayer`](https://leafletjs.com/reference.html#tilelayer) and [`geoJson`](https://leafletjs.com/reference.html#geojson) require users to both know and specify the formats of their geospatial data to render layers correctly. This is more than the vector/raster split; users have to know the encoding of the data itself. While this may seem trivial to experienced geospatial data users, I've found in observations of newer geospatial data users that geospatial file formats are a consistent source of confusion.
+
+Additionally, you'll see that projection code is notably absent from this map. Leaflet has some [coordinate reference systems (CRSs) built in](https://leafletjs.com/reference.html#crs), but no support for adding custom projections. We stick with Web Mercator (EPSG:3857), but it's not ideal for this particular map compared to California State Plane Zone 3.
+
+These two critiques aside, you can see that most of the code here is just styling—defining color scales and applying them via `style`. I can imagine slightly more declarative ways of doing this, but they would all involve sacrificing some flexibility. I like that you can throw your own styling function at Leaflet and it Just Works ™️.
+
+## Mapbox GL JS
+
+Mapbox GL JS pushed the boundary for web mapping performance by moving rendering into WebGL. Rather than rendering hundreds or thousands of geographic features as SVG elements, our data is rendered inside a `<canvas>` element and manipulated via calls to WebGL APIs (and a whole bunch of [shaders](https://github.com/mapbox/mapbox-gl-js/tree/main/src/shaders)). Let's see what rendering our choropleth takes!
+
+<iframe
+  className="observablehq map-embed"
+  frameborder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=mapbox">
+</iframe>
+
+```javascript
+mapbox = {
+  const root = DOM.element("div", {
+    style: `width:${width}px; height:${width / 1.6}px`
+  });
+
+  yield root;
+
+  // Establish the map's center view and zoom level.
+  const map = new mapboxgl.Map({
+    container: root,
+    style: "mapbox://styles/mapbox/light-v10",
+    center: [-120.56827, 37.88536],
+    zoom: 7,
+    // Mapbox does have support for custom projections!
+    // We'll use California State Plane Zone 3, which is a Lambert Conic Conformal projection.
+    projection: {
+      name: "lambertConformalConic",
+      center: [-120, 37],
+      parallels: [37 + 4 / 60, 38 + 26 / 60]
+    }
+  });
+
+  map.on("load", () => {
+    map.addSource("acs-2020-ca-sp3-tracts", {
+      type: "geojson",
+      data: caSP3Tracts
+    });
+
+    // Add the polygon layer first.
+    map.addLayer({
+      id: "acs-2020-ca-sp3-tracts",
+      type: "fill",
+      source: "acs-2020-ca-sp3-tracts",
+      layout: {},
+      paint: {
+        // Assign the fill using expressions from Mapbox's Style Specification.
+        "fill-color": [
+          "let",
+          "value",
+          ["*", ["/", ["get", "B02001004"], ["get", "B02001001"]], 100],
+          [
+            "case",
+            [">", ["var", "value"], 20],
+            "#f2f0f7",
+            [">", ["var", "value"], 10],
+            "#54278f",
+            [">", ["var", "value"], 5],
+            "#756bb1",
+            [">", ["var", "value"], 1],
+            "#9e9ac8",
+            [">=", ["var", "value"], 0],
+            "#cbc9e2",
+            "transparent"
+          ]
+        ],
+        "fill-opacity": 0.8
+      }
+    });
+
+    // Create the outline on polygons using a separate line layer.
+    // See: https://github.com/mapbox/mapbox-gl-js/issues/3018
+    map.addLayer({
+      id: "acs-2020-ca-sp3-tracts-outline",
+      type: "line",
+      source: "acs-2020-ca-sp3-tracts",
+      layout: {},
+      paint: {
+        "line-color": [
+          "let",
+          "totalPop",
+          ["get", "B02001001"],
+          ["match", ["var", "totalPop"], 0, "transparent", "#fff"]
+        ],
+        "line-width": 0.5
+      }
+    });
+  });
+}
+```
+
+<iframe width="100%" height="105.046875" frameborder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@513?cells=mapboxgl"></iframe>
+
+```javascript
+mapboxgl = {
+  const gl = await require("mapbox-gl@2.10");
+  if (!gl.accessToken) {
+    gl.accessToken =
+      "<YOUR_MAPBOX_ACCESS_TOKEN>";
+    const href = await require.resolve("mapbox-gl@2.10/dist/mapbox-gl.css");
+    document.head.appendChild(html`<link href=${href} rel=stylesheet>`);
+  }
+  return gl;
+}
+```
+
+At first glance, this Mapbox program may look a little more verbose than the Leaflet program above. But upon further inspection, you may notice that a lot of the verbosity is related to styling code written in a syntax full of nested arrays. These are actually [expressions](https://docs.mapbox.com/mapbox-gl-js/style-spec/expressions/) in Mapbox's Style Specification, which are JSON arrays modeled on the S-expressions of Lisp. As a programming languages researcher, I was pretty excited when I found Mapbox had, in essence, shallowly embedded a Lisp inside of their JS API. However, I do have some concerns about the usability and learnability of this language for Mapbox's intended audience; it sacrifices some of the simplicity of just passing plain JavaScript functions to handle styling.
+
+My suspicion is that Mapbox created their expressions syntax because it's easily JSON-able, meaning style specifications can be serialized and sent over the network in a way that custom user functions cannot. This makes more sense when you think about their intended user workflow, in which styles are created in [Mapbox Studio](https://www.mapbox.com/mapbox-studio) and subsequently imported into a Mapbox GL JS program. Using this language as an intermediate representation both makes styles portable and gives the library more control over how styles get translated to WebGL calls and shaders. However, writing these expressions by hand is perhaps a bit counterintuitive for the typical JS developer.
+
+One quirk of using WebGL as the rendering target is that certain things we take for granted in SVG become difficult. Notice above that we have to render a separate `"line"` layer for the outlines of Census tracts to control their width. This is [apparently because WebGL can't render outlines with a width greater than 1 (?)](https://github.com/mapbox/mapbox-gl-js/issues/3018), so the library just doesn't expose a `fill-outline-width` property. The existence of a [`fill-outline-color`](https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#paint-fill-fill-outline-color) property makes this all the more confusing—I can control some things, like color, but not others, like width.
+
+Finally, you may notice that, unlike Leaflet, we aren't locked into Web Mercator in Mapbox GL JS. The library's support for [custom projections](https://docs.mapbox.com/mapbox-gl-js/guides/projections/) allows us to use a very similar projection specification to the one we used in D3. It's hard to overstate the magnitude of this for cartographers working on the web. Web Mercator is optimized for navigational use at local scales (e.g. north is always up on a user's screen), but suffers from the same areal distortion issues as the standard Mercator projection. Using an appropriate projection for interactive, data-intensive maps is a major plus.
+
+## deck.gl
+
+deck.gl extends even further into the realm of WebGL-base maps. While it can handle non-geospatial data effectively, it is particularly well-suited to geospatial visualization. Rather than trying to reimplement a lot of the functionality of Mapbox, CARTO, Leaflet, and others, it focuses on the layer rendering pipeline while providing integrations with these libraries. Let's see see what our choropleth program looks like with deck.gl!
+
+<iframe
+  className="observablehq map-embed"
+  frameborder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@513?cells=deckGlChoropleth">
+</iframe>
+
+```javascript
+deckGlChoropleth = {
+  const root = DOM.element("div", {
+    style: `width:${width}px; height:${width / 1.6}px`
+  });
+
+  yield root;
+  const map = new mapboxgl.Map({
+    container: root,
+    style: "mapbox://styles/mapbox/light-v10",
+    center: [-120.56827, 37.88536],
+    zoom: 7
+  });
+
+  // Define color scale. To keep it consistent, we'll use the values from d3.schemePurples
+  // but encode them manually since they are not a part of deck.gl's APIs. We have to
+  // encode them as rgba arrays to fit the deck.gl API.
+  const color = (value) => {
+    if (value > 20) {
+      return [242, 240, 247, 204];
+    } else if (value > 10) {
+      return [84, 39, 143, 204];
+    } else if (value > 5) {
+      return [117, 107, 177, 204];
+    } else if (value > 1) {
+      return [158, 154, 200, 204];
+    } else if (value >= 0) {
+      return [203, 201, 226, 204];
+    }
+  };
+
+  // Use deck's MapboxOverlay API to synchrnoize the GeoJson layer with the Mapbox basemap.
+  const choropleth = new deck.MapboxOverlay({
+    layers: [
+      new deck.GeoJsonLayer({
+        id: "acs-2020-ca-sp3-tracts",
+        data: caSP3Tracts,
+        getFillColor: (d) => {
+          const { B02001004: nativePop, B02001001: totalPop } = d.properties;
+
+          const value = (nativePop / totalPop) * 100;
+          return color(value) || [255, 255, 255, 0];
+        },
+        lineWidthUnits: "pixels",
+        getLineWidth: 0.5,
+        getLineColor: (d) => {
+          const { B02001001: totalPop } = d.properties;
+          return totalPop === 0 ? [255, 255, 255, 0] : [255, 255, 255, 255];
+        }
+      })
+    ]
+  });
+
+  map.addControl(choropleth);
+}
+```
+
+<iframe width="100%" height="105.03125" frameborder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@513?cells=deck"></iframe>
+
+```javascript
+deck = require.alias({
+  h3: {}
+})("deck.gl@latest/dist.min.js")
+```
+
+Similar to Leaflet and Mapbox GL JS, deck.gl uses the notion of a layer as its core rendering model. In this instance, the API skews closer to Leaflet's `L.geoJson` than Mapbox GL JS's `"fill"` layer type. Indeed, deck.gl and Leaflet seem to prioritize the data format of a layer in their API naming (e.g. a GeoJSON), while Mapbox GL JS focuses more on the presentation of a layer (e.g. `"fill"`).
+
+Perhaps the most interesting part of this program is the call to deck's [`MapboxOverlay`](https://deck.gl/docs/api-reference/mapbox/mapbox-overlay) API. If you actually go and inspect the DOM, you'll find that there are two separate `<canvas>` elements getting rendered here, one corresponding to the Mapbox basemap and the other to the deck.gl data layer (that is, the choropleth itself). There are mechanisms in the deck.gl API to specify a different rendering mode where you "interleave" layers in a single `<canvas>` element, but this is subject to whether or not the basemap provider exposes APIs to access and manipulate its own `<canvas>`.
+
+deck.gl also seems to follow in Leaflet's API design by allowing users to style data using JavaScript functions. The only snag I hit here is that the default unit for [`lineWidthUnits`](https://deck.gl/docs/api-reference/layers/geojson-layer#linewidthunits) is `"meters"` rather than `"pixels"`. I haven't observed any cases in my work with data journalists and climate scientists using these tools where they have wanted to use meters for outline widths, though I can see the use cases. It just seems like an odd choice for the default.
+
+Unfortunately, custom cartographic projections in deck.gl don't seem to quite be there. They have a discussion of [coordinate systems](https://deck.gl/docs/developer-guide/coordinate-systems) in their documentation that allow you to use meter-based systems if your data is encoded as offsets from a coordinate origin. However, I don't quite see how we'd be able to get something like the conformal conic projection we use in the D3 and Mapbox GL JS examples with their existing APIs; if you happen to know, please leave a comment!
+
+## Conclusion
+
+It's interesting how many subtle differences exist across these four libraries even for as common a cartographic representation as the choropleth. These differences also raise an interesting set of questions for new cartographic design tools. Should we use layers or geographic features as the core primitive for data rendering and styling? How does the compilation target (e.g. SVG, WebGL) affect our API design? Should users have to specify the encoding format of their data when adding a layer (e.g. L.geoJson) or focus just on the presentation (e.g. type: "flll")? Why are even higher-level abstractions, like a type: "choropleth" configuration, not supported in any of these APIs even when other map styles like heatmaps are?
+
+I'm excited to keep digging into these questions and more in the second year of my Ph.D. More to come soon!
+
+### Additional Reading
+
+For a neat comparison of some of the performance characteristics of Mapbox GL JS vs. deck.gl, along with a few small benchmarks, [check out Tom MacWright's comparison of the two libraries](https://github.com/placemark/map-bench).
+
+</BlogPost>
