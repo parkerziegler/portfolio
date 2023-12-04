@@ -6,6 +6,7 @@ import ProjectInlineCode from '../components/Projects/ProjectInlineCode';
 import RenatureDocsSrc from '../../public/projects/renature-docs/renature-docs.png';
 import PoliceShootingsSrc from '../../public/projects/police-shootings/police-shootings.png';
 import NationalDebtSrc from '../../public/projects/the-national-debt/the-national-debt.png';
+import CartoKitSrc from '../../public/projects/cartokit/cartokit.png';
 
 export interface Project {
   projectId: string;
@@ -18,6 +19,36 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    projectId: 'cartokit',
+    title: 'cartokit',
+    description: (
+      <>
+        <ProjectInlineCode>cartokit</ProjectInlineCode> is a direct manipulation
+        programming environment for interactive cartography on the web. Style
+        geospatial data via intuitive direct manipulation controls while the{' '}
+        <ProjectInlineCode>cartokit</ProjectInlineCode> compiler writes the
+        corresponding JavaScript code.
+      </>
+    ),
+    src: CartoKitSrc,
+    alt: 'Screenshots of showing different maps made using cartokit, a direct manipulation programming environment for interactive cartography on the web.',
+    href: 'https://alpha.cartokit.dev/',
+    stack: [
+      {
+        tag: 'Svelte',
+        icon: '/logos/svelte-logo.svg'
+      },
+      {
+        tag: 'TypeScript',
+        icon: '/logos/ts-logo.svg'
+      },
+      {
+        tag: 'Tailwind',
+        icon: '/logos/tailwindcss-logo.svg'
+      }
+    ]
+  },
   {
     projectId: 'the-national-debt',
     title: 'The National Debt',
@@ -43,14 +74,7 @@ export const projects: Project[] = [
   },
   {
     projectId: 'renature',
-    title: (
-      <>
-        <ProjectInlineCode className="text-4xl md:text-5xl">
-          renature
-        </ProjectInlineCode>{' '}
-        Docs Site
-      </>
-    ),
+    title: 'renature Docs Site',
     description: (
       <>
         The documentation site for{' '}
