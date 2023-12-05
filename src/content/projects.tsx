@@ -7,6 +7,7 @@ import RenatureDocsSrc from '../../public/projects/renature-docs/renature-docs.p
 import PoliceShootingsSrc from '../../public/projects/police-shootings/police-shootings.png';
 import NationalDebtSrc from '../../public/projects/the-national-debt/the-national-debt.png';
 import CartoKitSrc from '../../public/projects/cartokit/cartokit.png';
+import RevizChromeExtensionSrc from '../../public/projects/reviz-chrome-extension/reviz-chrome-extension.png';
 
 export interface Project {
   projectId: string;
@@ -32,12 +33,47 @@ export const projects: Project[] = [
       </>
     ),
     src: CartoKitSrc,
-    alt: 'Screenshots of showing different maps made using cartokit, a direct manipulation programming environment for interactive cartography on the web.',
+    alt: 'Screenshots showing different maps made using cartokit, a direct manipulation programming environment for interactive cartography on the web.',
     href: 'https://alpha.cartokit.dev/',
     stack: [
       {
         tag: 'Svelte',
         icon: '/logos/svelte-logo.svg'
+      },
+      {
+        tag: 'TypeScript',
+        icon: '/logos/ts-logo.svg'
+      },
+      {
+        tag: 'Tailwind',
+        icon: '/logos/tailwindcss-logo.svg'
+      }
+    ]
+  },
+  {
+    projectId: 'reviz-chrome-extension',
+    title: 'reviz Chrome Extension',
+    description: (
+      <>
+        The <ProjectInlineCode>reviz</ProjectInlineCode> Chrome extension brings
+        the power of the <ProjectInlineCode>reviz</ProjectInlineCode> engine and
+        compiler to your DevTools. Use the extension to turn any SVG
+        visualization on the web into an Observable Plot program and
+        accompanying visualization that you can edit, remix, and apply to new
+        data.
+      </>
+    ),
+    src: RevizChromeExtensionSrc,
+    alt: 'Screenshots showing the reviz Chrome extension reverse engineering visualizations from the New York Times website.',
+    href: 'https://youtu.be/MQnVmEw6ISQ?si=k9KNrZ6__MDRZkaT&t=654',
+    stack: [
+      {
+        tag: 'Chrome Extensions',
+        icon: '/logos/chrome-logo.svg'
+      },
+      {
+        tag: 'React',
+        icon: '/logos/react-logo.svg'
       },
       {
         tag: 'TypeScript',

@@ -95,7 +95,7 @@ export const NEWS: NewsItem[] = [
         >
           pre-recorded talk
         </InlineLink>
-        , watch
+        , watch{' '}
         <InlineLink
           href="https://youtu.be/R1fNwXdqqh0?si=YOvkhTMeJRzH_Lmt"
           type="light"
