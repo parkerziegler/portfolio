@@ -33,14 +33,14 @@ const ProjectScreen: React.FC<Project> = ({
       <p className="text-2xl md:text-3xl col-span-4 leading-normal">
         {description}
       </p>
-      <div className="flex stack-sm-h">
+      <div className="flex flex-wrap">
         {stack.map(({ tag, icon }) => (
           <Tag
             key={tag}
             icon={icon}
             tag={tag}
             compact
-            className="text-white border-terminal-secondary"
+            className="text-white border-terminal-secondary mr-4 my-2"
           />
         ))}
       </div>
