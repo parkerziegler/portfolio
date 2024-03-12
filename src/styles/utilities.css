@@ -67,4 +67,30 @@ See https://every-layout.dev/layouts/stack/. */
     margin-left: -50vw !important;
     margin-right: -50vw !important;
   }
+
+  .fade-edge-top {
+    mask-image: linear-gradient(
+      to top,
+      black calc(100% - 36px),
+      transparent 100%
+    );
+  }
+
+  .fade-edge-bottom {
+    mask-image: linear-gradient(
+      to bottom,
+      black calc(100% - 36px),
+      transparent 100%
+    );
+  }
+
+  .fade-edges {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 36px,
+      black calc(100% - 36px),
+      transparent 100%
+    );
+  }
 }
