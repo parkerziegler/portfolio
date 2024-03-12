@@ -10,6 +10,44 @@ interface NewsItem {
 
 export const NEWS: NewsItem[] = [
   {
+    id: 'grist-collaboration',
+    date: new Date(2024, 1, 9),
+    description: (
+      <p>
+        Two months of work with the amazing journalists at{' '}
+        <InlineLink href="https://grist.com/" type="light">
+          Grist
+        </InlineLink>{' '}
+        culminated in the publishing of{' '}
+        <InlineLink
+          href="https://grist.org/project/indigenous/land-grant-universities-indigenous-lands-fossil-fuels/"
+          type="light"
+        >
+          Misplaced Trust
+        </InlineLink>
+        , our investigation into the extractive practices happening on stolen
+        Indigenous lands that benefit land-grant universities across the West. I
+        was honored to contribute the maps, frontend development, and cloud
+        infrastructure for this piece, and to help out with eleventh-hour bug
+        fixes on the data processing pipeline. The code for every interactive is{' '}
+        <InlineLink
+          href="https://github.com/Grist-Data-Desk/land-grab-2-interactives"
+          type="light"
+        >
+          open-source
+        </InlineLink>
+        , as is the{' '}
+        <InlineLink
+          href="https://github.com/Grist-Data-Desk/land-grab-2"
+          type="light"
+        >
+          data analysis
+        </InlineLink>
+        .
+      </p>
+    )
+  },
+  {
     id: 'strange-loop-talk',
     date: new Date(2023, 8, 21),
     description: (
@@ -136,13 +174,13 @@ export const NEWS: NewsItem[] = [
     date: new Date(2023, 3, 3),
     description: (
       <p>
-        I won an{' '}
+        I received an{' '}
         <InlineLink
           href="https://www.research.gov/grfp/AwardeeList.do?method=loadAwardeeList"
           type="light"
         >
-          Honorable Mention in the 2023 NSF Graduate Research Fellowship Program
-          comptetion
+          Honorable Mention for the 2023 NSF Graduate Research Fellowship
+          Program
         </InlineLink>{' '}
         for my research on programming languages and interfaces for working with
         geospatial data.
