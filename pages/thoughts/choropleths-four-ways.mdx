@@ -38,17 +38,25 @@ In this notebook, we'll be exploring what it takes to craft a basic choropleth u
 
 We'll be using data from the 2020 American Community Survey's (ACS) 5-year estimates aggregated at the Census tract level for the state of California. Specifically, we'll use racial data from table B0200100. The raw data is available on [Census Reporter](https://censusreporter.org/data/map/?table=B02001&geo_ids=140|04000US06). To focus in a bit, I filtered the data down to tracts within [California State Plane Zone 3](https://epsg.io/26943) (my neck of the woods) and simplified the geometry a bit in [MapShaper](https://mapshaper.org/).
 
-<iframe width="100%" height="105.015625" frameborder="0"
-  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=caSP3TractsTopo"></iframe>
+<iframe
+  width="100%"
+  height="105.015625"
+  frameBorder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=caSP3TractsTopo"
+></iframe>
 
-<iframe width="100%" height="105.015625" frameborder="0"
-  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=caSP3Tracts"></iframe>
+<iframe
+  width="100%"
+  height="105.015625"
+  frameBorder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=caSP3Tracts"
+></iframe>
 
 ```javascript
 caSP3Tracts = topojson.feature(
   caSP3TractsTopo,
-  caSP3TractsTopo.objects["acs-2020-ca-sp3-tracts"]
-)
+  caSP3TractsTopo.objects['acs-2020-ca-sp3-tracts']
+);
 ```
 
 We'll start by visualizing the distribution of the American Indian and Alaska Native population in this section of California. Specifically, we'll be mapping the percentage of the overall tract population that is American Indian or Alaska Native.
@@ -60,9 +68,10 @@ D3 has a soft spot in my heart—I learned JavaScript by mucking about with D3 a
 <iframe
   width="100%"
   height="694.09375"
-  frameborder="0"
-  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=d3Choropleth" className="observablehq">
-</iframe>
+  frameBorder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=d3Choropleth"
+  className="observablehq"
+></iframe>
 
 ```javascript
 d3Choropleth = {
@@ -124,9 +133,9 @@ Leaflet really ushered in the era of the interactive "slippy" web map. In fact, 
 
 <iframe
   className="observablehq map-embed"
-  frameborder="0"
-  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@511?cells=leaflet">
-</iframe>
+  frameBorder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@511?cells=leaflet"
+></iframe>
 
 ```javascript
 leaflet = {
@@ -200,9 +209,9 @@ Mapbox GL JS pushed the boundary for web mapping performance by moving rendering
 
 <iframe
   className="observablehq map-embed"
-  frameborder="0"
-  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=mapbox">
-</iframe>
+  frameBorder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways?cells=mapbox"
+></iframe>
 
 ```javascript
 mapbox = {
@@ -285,8 +294,12 @@ mapbox = {
 }
 ```
 
-<iframe width="100%" height="105.046875" frameborder="0"
-  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@513?cells=mapboxgl"></iframe>
+<iframe
+  width="100%"
+  height="105.046875"
+  frameBorder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@513?cells=mapboxgl"
+></iframe>
 
 ```javascript
 mapboxgl = {
@@ -315,9 +328,9 @@ deck.gl extends even further into the realm of WebGL-base maps. While it can han
 
 <iframe
   className="observablehq map-embed"
-  frameborder="0"
-  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@513?cells=deckGlChoropleth">
-</iframe>
+  frameBorder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@513?cells=deckGlChoropleth"
+></iframe>
 
 ```javascript
 deckGlChoropleth = {
@@ -376,13 +389,17 @@ deckGlChoropleth = {
 }
 ```
 
-<iframe width="100%" height="105.03125" frameborder="0"
-  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@513?cells=deck"></iframe>
+<iframe
+  width="100%"
+  height="105.03125"
+  frameBorder="0"
+  src="https://observablehq.com/embed/@parkerziegler/choropleths-four-ways@513?cells=deck"
+></iframe>
 
 ```javascript
 deck = require.alias({
   h3: {}
-})("deck.gl@latest/dist.min.js")
+})('deck.gl@latest/dist.min.js');
 ```
 
 Similar to Leaflet and Mapbox GL JS, deck.gl uses the notion of a layer as its core rendering model. In this instance, the API skews closer to Leaflet's `L.geoJson` than Mapbox GL JS's `"fill"` layer type. Indeed, deck.gl and Leaflet seem to prioritize the data format of a layer in their API naming (e.g. a GeoJSON), while Mapbox GL JS focuses more on the presentation of a layer (e.g. `"fill"`).

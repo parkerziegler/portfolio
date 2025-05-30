@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import { Source_Serif_Pro } from '@next/font/google';
+import { Source_Serif_4 } from '@next/font/google';
 import { MDXProvider } from '@mdx-js/react';
 import cs from 'classnames';
 
@@ -11,9 +11,10 @@ import components from '../src/components/Blog/MDXComponents';
 
 import '../src/styles/tailwind.css';
 
-const sourceSerifPro = Source_Serif_Pro({
+const sourceSerifPro = Source_Serif_4({
   style: ['italic', 'normal'],
-  weight: ['400', '600', '700']
+  weight: ['400', '600', '700'],
+  subsets: ['latin']
 });
 
 function App({ Component, pageProps }: AppProps) {
