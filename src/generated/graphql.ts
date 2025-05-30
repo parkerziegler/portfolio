@@ -2,9 +2,15 @@
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -100,7 +106,6 @@ export type Actor = {
   /** The HTTP URL for this actor. */
   url: Scalars['URI'];
 };
-
 
 /** Represents an object which can take actions on GitHub. Typically a User or Bot. */
 export type ActorAvatarUrlArgs = {
@@ -650,7 +655,6 @@ export type App = Node & {
   url: Scalars['URI'];
 };
 
-
 /** A GitHub App. */
 export type AppIpAllowListEntriesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -659,7 +663,6 @@ export type AppIpAllowListEntriesArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<IpAllowListEntryOrder>;
 };
-
 
 /** A GitHub App. */
 export type AppLogoUrlArgs = {
@@ -745,7 +748,6 @@ export type Assignable = {
   /** A list of Users assigned to this object. */
   assignees: UserConnection;
 };
-
 
 /** An object that can have users assigned to it. */
 export type AssignableAssigneesArgs = {
@@ -1006,49 +1008,51 @@ export type BlameRange = {
 };
 
 /** Represents a Git blob. */
-export type Blob = GitObject & Node & {
-  __typename?: 'Blob';
-  /** An abbreviated version of the Git object ID */
-  abbreviatedOid: Scalars['String'];
-  /** Byte size of Blob object */
-  byteSize: Scalars['Int'];
-  /** The HTTP path for this Git object */
-  commitResourcePath: Scalars['URI'];
-  /** The HTTP URL for this Git object */
-  commitUrl: Scalars['URI'];
-  id: Scalars['ID'];
-  /** Indicates whether the Blob is binary or text. Returns null if unable to determine the encoding. */
-  isBinary?: Maybe<Scalars['Boolean']>;
-  /** Indicates whether the contents is truncated */
-  isTruncated: Scalars['Boolean'];
-  /** The Git object ID */
-  oid: Scalars['GitObjectID'];
-  /** The Repository the Git object belongs to */
-  repository: Repository;
-  /** UTF8 text data or null if the Blob is binary */
-  text?: Maybe<Scalars['String']>;
-};
+export type Blob = GitObject &
+  Node & {
+    __typename?: 'Blob';
+    /** An abbreviated version of the Git object ID */
+    abbreviatedOid: Scalars['String'];
+    /** Byte size of Blob object */
+    byteSize: Scalars['Int'];
+    /** The HTTP path for this Git object */
+    commitResourcePath: Scalars['URI'];
+    /** The HTTP URL for this Git object */
+    commitUrl: Scalars['URI'];
+    id: Scalars['ID'];
+    /** Indicates whether the Blob is binary or text. Returns null if unable to determine the encoding. */
+    isBinary?: Maybe<Scalars['Boolean']>;
+    /** Indicates whether the contents is truncated */
+    isTruncated: Scalars['Boolean'];
+    /** The Git object ID */
+    oid: Scalars['GitObjectID'];
+    /** The Repository the Git object belongs to */
+    repository: Repository;
+    /** UTF8 text data or null if the Blob is binary */
+    text?: Maybe<Scalars['String']>;
+  };
 
 /** A special type of user which takes actions on behalf of GitHub Apps. */
-export type Bot = Actor & Node & UniformResourceLocatable & {
-  __typename?: 'Bot';
-  /** A URL pointing to the GitHub App's public avatar. */
-  avatarUrl: Scalars['URI'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-  /** The username of the actor. */
-  login: Scalars['String'];
-  /** The HTTP path for this bot */
-  resourcePath: Scalars['URI'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this bot */
-  url: Scalars['URI'];
-};
-
+export type Bot = Actor &
+  Node &
+  UniformResourceLocatable & {
+    __typename?: 'Bot';
+    /** A URL pointing to the GitHub App's public avatar. */
+    avatarUrl: Scalars['URI'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    id: Scalars['ID'];
+    /** The username of the actor. */
+    login: Scalars['String'];
+    /** The HTTP path for this bot */
+    resourcePath: Scalars['URI'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this bot */
+    url: Scalars['URI'];
+  };
 
 /** A special type of user which takes actions on behalf of GitHub Apps. */
 export type BotAvatarUrlArgs = {
@@ -1124,7 +1128,6 @@ export type BranchProtectionRule = Node & {
   reviewDismissalAllowances: ReviewDismissalAllowanceConnection;
 };
 
-
 /** A branch protection rule. */
 export type BranchProtectionRuleBranchProtectionRuleConflictsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -1132,7 +1135,6 @@ export type BranchProtectionRuleBranchProtectionRuleConflictsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A branch protection rule. */
 export type BranchProtectionRuleBypassForcePushAllowancesArgs = {
@@ -1142,7 +1144,6 @@ export type BranchProtectionRuleBypassForcePushAllowancesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A branch protection rule. */
 export type BranchProtectionRuleBypassPullRequestAllowancesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -1150,7 +1151,6 @@ export type BranchProtectionRuleBypassPullRequestAllowancesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A branch protection rule. */
 export type BranchProtectionRuleMatchingRefsArgs = {
@@ -1161,7 +1161,6 @@ export type BranchProtectionRuleMatchingRefsArgs = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** A branch protection rule. */
 export type BranchProtectionRulePushAllowancesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -1169,7 +1168,6 @@ export type BranchProtectionRulePushAllowancesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A branch protection rule. */
 export type BranchProtectionRuleReviewDismissalAllowancesArgs = {
@@ -1530,53 +1528,54 @@ export enum CheckConclusionState {
 }
 
 /** A check run. */
-export type CheckRun = Node & RequirableByPullRequest & UniformResourceLocatable & {
-  __typename?: 'CheckRun';
-  /** The check run's annotations */
-  annotations?: Maybe<CheckAnnotationConnection>;
-  /** The check suite that this run is a part of. */
-  checkSuite: CheckSuite;
-  /** Identifies the date and time when the check run was completed. */
-  completedAt?: Maybe<Scalars['DateTime']>;
-  /** The conclusion of the check run. */
-  conclusion?: Maybe<CheckConclusionState>;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The corresponding deployment for this job, if any */
-  deployment?: Maybe<Deployment>;
-  /** The URL from which to find full details of the check run on the integrator's site. */
-  detailsUrl?: Maybe<Scalars['URI']>;
-  /** A reference for the check run on the integrator's system. */
-  externalId?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  /** Whether this is required to pass before merging for a specific pull request. */
-  isRequired: Scalars['Boolean'];
-  /** The name of the check for this check run. */
-  name: Scalars['String'];
-  /** Information about a pending deployment, if any, in this check run */
-  pendingDeploymentRequest?: Maybe<DeploymentRequest>;
-  /** The permalink to the check run summary. */
-  permalink: Scalars['URI'];
-  /** The repository associated with this check run. */
-  repository: Repository;
-  /** The HTTP path for this check run. */
-  resourcePath: Scalars['URI'];
-  /** Identifies the date and time when the check run was started. */
-  startedAt?: Maybe<Scalars['DateTime']>;
-  /** The current status of the check run. */
-  status: CheckStatusState;
-  /** The check run's steps */
-  steps?: Maybe<CheckStepConnection>;
-  /** A string representing the check run's summary */
-  summary?: Maybe<Scalars['String']>;
-  /** A string representing the check run's text */
-  text?: Maybe<Scalars['String']>;
-  /** A string representing the check run */
-  title?: Maybe<Scalars['String']>;
-  /** The HTTP URL for this check run. */
-  url: Scalars['URI'];
-};
-
+export type CheckRun = Node &
+  RequirableByPullRequest &
+  UniformResourceLocatable & {
+    __typename?: 'CheckRun';
+    /** The check run's annotations */
+    annotations?: Maybe<CheckAnnotationConnection>;
+    /** The check suite that this run is a part of. */
+    checkSuite: CheckSuite;
+    /** Identifies the date and time when the check run was completed. */
+    completedAt?: Maybe<Scalars['DateTime']>;
+    /** The conclusion of the check run. */
+    conclusion?: Maybe<CheckConclusionState>;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The corresponding deployment for this job, if any */
+    deployment?: Maybe<Deployment>;
+    /** The URL from which to find full details of the check run on the integrator's site. */
+    detailsUrl?: Maybe<Scalars['URI']>;
+    /** A reference for the check run on the integrator's system. */
+    externalId?: Maybe<Scalars['String']>;
+    id: Scalars['ID'];
+    /** Whether this is required to pass before merging for a specific pull request. */
+    isRequired: Scalars['Boolean'];
+    /** The name of the check for this check run. */
+    name: Scalars['String'];
+    /** Information about a pending deployment, if any, in this check run */
+    pendingDeploymentRequest?: Maybe<DeploymentRequest>;
+    /** The permalink to the check run summary. */
+    permalink: Scalars['URI'];
+    /** The repository associated with this check run. */
+    repository: Repository;
+    /** The HTTP path for this check run. */
+    resourcePath: Scalars['URI'];
+    /** Identifies the date and time when the check run was started. */
+    startedAt?: Maybe<Scalars['DateTime']>;
+    /** The current status of the check run. */
+    status: CheckStatusState;
+    /** The check run's steps */
+    steps?: Maybe<CheckStepConnection>;
+    /** A string representing the check run's summary */
+    summary?: Maybe<Scalars['String']>;
+    /** A string representing the check run's text */
+    text?: Maybe<Scalars['String']>;
+    /** A string representing the check run */
+    title?: Maybe<Scalars['String']>;
+    /** The HTTP URL for this check run. */
+    url: Scalars['URI'];
+  };
 
 /** A check run. */
 export type CheckRunAnnotationsArgs = {
@@ -1586,13 +1585,11 @@ export type CheckRunAnnotationsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A check run. */
 export type CheckRunIsRequiredArgs = {
   pullRequestId?: InputMaybe<Scalars['ID']>;
   pullRequestNumber?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A check run. */
 export type CheckRunStepsArgs = {
@@ -1821,7 +1818,6 @@ export type CheckSuite = Node & {
   workflowRun?: Maybe<WorkflowRun>;
 };
 
-
 /** A check suite. */
 export type CheckSuiteCheckRunsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -1830,7 +1826,6 @@ export type CheckSuiteCheckRunsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A check suite. */
 export type CheckSuiteMatchingPullRequestsArgs = {
@@ -2025,24 +2020,25 @@ export type ClosePullRequestPayload = {
 };
 
 /** Represents a 'closed' event on any `Closable`. */
-export type ClosedEvent = Node & UniformResourceLocatable & {
-  __typename?: 'ClosedEvent';
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<Actor>;
-  /** Object that was closed. */
-  closable: Closable;
-  /** Object which triggered the creation of this event. */
-  closer?: Maybe<Closer>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  id: Scalars['ID'];
-  /** The HTTP path for this closed event. */
-  resourcePath: Scalars['URI'];
-  /** The reason the issue state was changed to closed. */
-  stateReason?: Maybe<IssueStateReason>;
-  /** The HTTP URL for this closed event. */
-  url: Scalars['URI'];
-};
+export type ClosedEvent = Node &
+  UniformResourceLocatable & {
+    __typename?: 'ClosedEvent';
+    /** Identifies the actor who performed the event. */
+    actor?: Maybe<Actor>;
+    /** Object that was closed. */
+    closable: Closable;
+    /** Object which triggered the creation of this event. */
+    closer?: Maybe<Closer>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    id: Scalars['ID'];
+    /** The HTTP path for this closed event. */
+    resourcePath: Scalars['URI'];
+    /** The reason the issue state was changed to closed. */
+    stateReason?: Maybe<IssueStateReason>;
+    /** The HTTP URL for this closed event. */
+    url: Scalars['URI'];
+  };
 
 /** The object which triggered a `ClosedEvent`. */
 export type Closer = Commit | PullRequest;
@@ -2106,7 +2102,6 @@ export type Comment = {
   viewerDidAuthor: Scalars['Boolean'];
 };
 
-
 /** Represents a comment. */
 export type CommentUserContentEditsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -2168,112 +2163,114 @@ export type CommentDeletedEvent = Node & {
 };
 
 /** Represents a Git commit. */
-export type Commit = GitObject & Node & Subscribable & UniformResourceLocatable & {
-  __typename?: 'Commit';
-  /** An abbreviated version of the Git object ID */
-  abbreviatedOid: Scalars['String'];
-  /** The number of additions in this commit. */
-  additions: Scalars['Int'];
-  /** The merged Pull Request that introduced the commit to the repository. If the commit is not present in the default branch, additionally returns open Pull Requests associated with the commit */
-  associatedPullRequests?: Maybe<PullRequestConnection>;
-  /** Authorship details of the commit. */
-  author?: Maybe<GitActor>;
-  /** Check if the committer and the author match. */
-  authoredByCommitter: Scalars['Boolean'];
-  /** The datetime when this commit was authored. */
-  authoredDate: Scalars['DateTime'];
-  /**
-   * The list of authors for this commit based on the git author and the Co-authored-by
-   * message trailer. The git author will always be first.
-   *
-   */
-  authors: GitActorConnection;
-  /** Fetches `git blame` information. */
-  blame: Blame;
-  /**
-   * We recommend using the `changedFielsIfAvailable` field instead of `changedFiles`, as `changedFiles` will cause your request to return an error if GitHub is unable to calculate the number of changed files.
-   * @deprecated `changedFiles` will be removed. Use `changedFilesIfAvailable` instead. Removal on 2023-01-01 UTC.
-   */
-  changedFiles: Scalars['Int'];
-  /** The number of changed files in this commit. If GitHub is unable to calculate the number of changed files (for example due to a timeout), this will return `null`. We recommend using this field instead of `changedFiles`. */
-  changedFilesIfAvailable?: Maybe<Scalars['Int']>;
-  /** The check suites associated with a commit. */
-  checkSuites?: Maybe<CheckSuiteConnection>;
-  /** Comments made on the commit. */
-  comments: CommitCommentConnection;
-  /** The HTTP path for this Git object */
-  commitResourcePath: Scalars['URI'];
-  /** The HTTP URL for this Git object */
-  commitUrl: Scalars['URI'];
-  /** The datetime when this commit was committed. */
-  committedDate: Scalars['DateTime'];
-  /** Check if committed via GitHub web UI. */
-  committedViaWeb: Scalars['Boolean'];
-  /** Committer details of the commit. */
-  committer?: Maybe<GitActor>;
-  /** The number of deletions in this commit. */
-  deletions: Scalars['Int'];
-  /** The deployments associated with a commit. */
-  deployments?: Maybe<DeploymentConnection>;
-  /** The tree entry representing the file located at the given path. */
-  file?: Maybe<TreeEntry>;
-  /** The linear commit history starting from (and including) this commit, in the same order as `git log`. */
-  history: CommitHistoryConnection;
-  id: Scalars['ID'];
-  /** The Git commit message */
-  message: Scalars['String'];
-  /** The Git commit message body */
-  messageBody: Scalars['String'];
-  /** The commit message body rendered to HTML. */
-  messageBodyHTML: Scalars['HTML'];
-  /** The Git commit message headline */
-  messageHeadline: Scalars['String'];
-  /** The commit message headline rendered to HTML. */
-  messageHeadlineHTML: Scalars['HTML'];
-  /** The Git object ID */
-  oid: Scalars['GitObjectID'];
-  /** The organization this commit was made on behalf of. */
-  onBehalfOf?: Maybe<Organization>;
-  /** The parents of a commit. */
-  parents: CommitConnection;
-  /** The datetime when this commit was pushed. */
-  pushedDate?: Maybe<Scalars['DateTime']>;
-  /** The Repository this commit belongs to */
-  repository: Repository;
-  /** The HTTP path for this commit */
-  resourcePath: Scalars['URI'];
-  /** Commit signing information, if present. */
-  signature?: Maybe<GitSignature>;
-  /** Status information for this commit */
-  status?: Maybe<Status>;
-  /** Check and Status rollup information for this commit. */
-  statusCheckRollup?: Maybe<StatusCheckRollup>;
-  /** Returns a list of all submodules in this repository as of this Commit parsed from the .gitmodules file. */
-  submodules: SubmoduleConnection;
-  /**
-   * Returns a URL to download a tarball archive for a repository.
-   * Note: For private repositories, these links are temporary and expire after five minutes.
-   */
-  tarballUrl: Scalars['URI'];
-  /** Commit's root Tree */
-  tree: Tree;
-  /** The HTTP path for the tree of this commit */
-  treeResourcePath: Scalars['URI'];
-  /** The HTTP URL for the tree of this commit */
-  treeUrl: Scalars['URI'];
-  /** The HTTP URL for this commit */
-  url: Scalars['URI'];
-  /** Check if the viewer is able to change their subscription status for the repository. */
-  viewerCanSubscribe: Scalars['Boolean'];
-  /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
-  viewerSubscription?: Maybe<SubscriptionState>;
-  /**
-   * Returns a URL to download a zipball archive for a repository.
-   * Note: For private repositories, these links are temporary and expire after five minutes.
-   */
-  zipballUrl: Scalars['URI'];
-};
-
+export type Commit = GitObject &
+  Node &
+  Subscribable &
+  UniformResourceLocatable & {
+    __typename?: 'Commit';
+    /** An abbreviated version of the Git object ID */
+    abbreviatedOid: Scalars['String'];
+    /** The number of additions in this commit. */
+    additions: Scalars['Int'];
+    /** The merged Pull Request that introduced the commit to the repository. If the commit is not present in the default branch, additionally returns open Pull Requests associated with the commit */
+    associatedPullRequests?: Maybe<PullRequestConnection>;
+    /** Authorship details of the commit. */
+    author?: Maybe<GitActor>;
+    /** Check if the committer and the author match. */
+    authoredByCommitter: Scalars['Boolean'];
+    /** The datetime when this commit was authored. */
+    authoredDate: Scalars['DateTime'];
+    /**
+     * The list of authors for this commit based on the git author and the Co-authored-by
+     * message trailer. The git author will always be first.
+     *
+     */
+    authors: GitActorConnection;
+    /** Fetches `git blame` information. */
+    blame: Blame;
+    /**
+     * We recommend using the `changedFielsIfAvailable` field instead of `changedFiles`, as `changedFiles` will cause your request to return an error if GitHub is unable to calculate the number of changed files.
+     * @deprecated `changedFiles` will be removed. Use `changedFilesIfAvailable` instead. Removal on 2023-01-01 UTC.
+     */
+    changedFiles: Scalars['Int'];
+    /** The number of changed files in this commit. If GitHub is unable to calculate the number of changed files (for example due to a timeout), this will return `null`. We recommend using this field instead of `changedFiles`. */
+    changedFilesIfAvailable?: Maybe<Scalars['Int']>;
+    /** The check suites associated with a commit. */
+    checkSuites?: Maybe<CheckSuiteConnection>;
+    /** Comments made on the commit. */
+    comments: CommitCommentConnection;
+    /** The HTTP path for this Git object */
+    commitResourcePath: Scalars['URI'];
+    /** The HTTP URL for this Git object */
+    commitUrl: Scalars['URI'];
+    /** The datetime when this commit was committed. */
+    committedDate: Scalars['DateTime'];
+    /** Check if committed via GitHub web UI. */
+    committedViaWeb: Scalars['Boolean'];
+    /** Committer details of the commit. */
+    committer?: Maybe<GitActor>;
+    /** The number of deletions in this commit. */
+    deletions: Scalars['Int'];
+    /** The deployments associated with a commit. */
+    deployments?: Maybe<DeploymentConnection>;
+    /** The tree entry representing the file located at the given path. */
+    file?: Maybe<TreeEntry>;
+    /** The linear commit history starting from (and including) this commit, in the same order as `git log`. */
+    history: CommitHistoryConnection;
+    id: Scalars['ID'];
+    /** The Git commit message */
+    message: Scalars['String'];
+    /** The Git commit message body */
+    messageBody: Scalars['String'];
+    /** The commit message body rendered to HTML. */
+    messageBodyHTML: Scalars['HTML'];
+    /** The Git commit message headline */
+    messageHeadline: Scalars['String'];
+    /** The commit message headline rendered to HTML. */
+    messageHeadlineHTML: Scalars['HTML'];
+    /** The Git object ID */
+    oid: Scalars['GitObjectID'];
+    /** The organization this commit was made on behalf of. */
+    onBehalfOf?: Maybe<Organization>;
+    /** The parents of a commit. */
+    parents: CommitConnection;
+    /** The datetime when this commit was pushed. */
+    pushedDate?: Maybe<Scalars['DateTime']>;
+    /** The Repository this commit belongs to */
+    repository: Repository;
+    /** The HTTP path for this commit */
+    resourcePath: Scalars['URI'];
+    /** Commit signing information, if present. */
+    signature?: Maybe<GitSignature>;
+    /** Status information for this commit */
+    status?: Maybe<Status>;
+    /** Check and Status rollup information for this commit. */
+    statusCheckRollup?: Maybe<StatusCheckRollup>;
+    /** Returns a list of all submodules in this repository as of this Commit parsed from the .gitmodules file. */
+    submodules: SubmoduleConnection;
+    /**
+     * Returns a URL to download a tarball archive for a repository.
+     * Note: For private repositories, these links are temporary and expire after five minutes.
+     */
+    tarballUrl: Scalars['URI'];
+    /** Commit's root Tree */
+    tree: Tree;
+    /** The HTTP path for the tree of this commit */
+    treeResourcePath: Scalars['URI'];
+    /** The HTTP URL for the tree of this commit */
+    treeUrl: Scalars['URI'];
+    /** The HTTP URL for this commit */
+    url: Scalars['URI'];
+    /** Check if the viewer is able to change their subscription status for the repository. */
+    viewerCanSubscribe: Scalars['Boolean'];
+    /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
+    viewerSubscription?: Maybe<SubscriptionState>;
+    /**
+     * Returns a URL to download a zipball archive for a repository.
+     * Note: For private repositories, these links are temporary and expire after five minutes.
+     */
+    zipballUrl: Scalars['URI'];
+  };
 
 /** Represents a Git commit. */
 export type CommitAssociatedPullRequestsArgs = {
@@ -2284,7 +2281,6 @@ export type CommitAssociatedPullRequestsArgs = {
   orderBy?: InputMaybe<PullRequestOrder>;
 };
 
-
 /** Represents a Git commit. */
 export type CommitAuthorsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -2293,12 +2289,10 @@ export type CommitAuthorsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** Represents a Git commit. */
 export type CommitBlameArgs = {
   path: Scalars['String'];
 };
-
 
 /** Represents a Git commit. */
 export type CommitCheckSuitesArgs = {
@@ -2309,7 +2303,6 @@ export type CommitCheckSuitesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** Represents a Git commit. */
 export type CommitCommentsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -2317,7 +2310,6 @@ export type CommitCommentsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** Represents a Git commit. */
 export type CommitDeploymentsArgs = {
@@ -2329,12 +2321,10 @@ export type CommitDeploymentsArgs = {
   orderBy?: InputMaybe<DeploymentOrder>;
 };
 
-
 /** Represents a Git commit. */
 export type CommitFileArgs = {
   path: Scalars['String'];
 };
-
 
 /** Represents a Git commit. */
 export type CommitHistoryArgs = {
@@ -2348,7 +2338,6 @@ export type CommitHistoryArgs = {
   until?: InputMaybe<Scalars['GitTimestamp']>;
 };
 
-
 /** Represents a Git commit. */
 export type CommitParentsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -2356,7 +2345,6 @@ export type CommitParentsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** Represents a Git commit. */
 export type CommitSubmodulesArgs = {
@@ -2375,71 +2363,77 @@ export type CommitAuthor = {
 };
 
 /** Represents a comment on a given Commit. */
-export type CommitComment = Comment & Deletable & Minimizable & Node & Reactable & RepositoryNode & Updatable & UpdatableComment & {
-  __typename?: 'CommitComment';
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the subject of the comment. */
-  authorAssociation: CommentAuthorAssociation;
-  /** Identifies the comment body. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The body rendered to text. */
-  bodyText: Scalars['String'];
-  /** Identifies the commit associated with the comment, if the commit exists. */
-  commit?: Maybe<Commit>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The actor who edited the comment. */
-  editor?: Maybe<Actor>;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** Returns whether or not a comment has been minimized. */
-  isMinimized: Scalars['Boolean'];
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
-  minimizedReason?: Maybe<Scalars['String']>;
-  /** Identifies the file path associated with the comment. */
-  path?: Maybe<Scalars['String']>;
-  /** Identifies the line position associated with the comment. */
-  position?: Maybe<Scalars['Int']>;
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** The repository associated with this node. */
-  repository: Repository;
-  /** The HTTP path permalink for this commit comment. */
-  resourcePath: Scalars['URI'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL permalink for this commit comment. */
-  url: Scalars['URI'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Check if the current viewer can delete this object. */
-  viewerCanDelete: Scalars['Boolean'];
-  /** Check if the current viewer can minimize this object. */
-  viewerCanMinimize: Scalars['Boolean'];
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Reasons why the current viewer can not update this comment. */
-  viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-};
-
+export type CommitComment = Comment &
+  Deletable &
+  Minimizable &
+  Node &
+  Reactable &
+  RepositoryNode &
+  Updatable &
+  UpdatableComment & {
+    __typename?: 'CommitComment';
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the subject of the comment. */
+    authorAssociation: CommentAuthorAssociation;
+    /** Identifies the comment body. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The body rendered to text. */
+    bodyText: Scalars['String'];
+    /** Identifies the commit associated with the comment, if the commit exists. */
+    commit?: Maybe<Commit>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The actor who edited the comment. */
+    editor?: Maybe<Actor>;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** Returns whether or not a comment has been minimized. */
+    isMinimized: Scalars['Boolean'];
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+    minimizedReason?: Maybe<Scalars['String']>;
+    /** Identifies the file path associated with the comment. */
+    path?: Maybe<Scalars['String']>;
+    /** Identifies the line position associated with the comment. */
+    position?: Maybe<Scalars['Int']>;
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** The repository associated with this node. */
+    repository: Repository;
+    /** The HTTP path permalink for this commit comment. */
+    resourcePath: Scalars['URI'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL permalink for this commit comment. */
+    url: Scalars['URI'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Check if the current viewer can delete this object. */
+    viewerCanDelete: Scalars['Boolean'];
+    /** Check if the current viewer can minimize this object. */
+    viewerCanMinimize: Scalars['Boolean'];
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Reasons why the current viewer can not update this comment. */
+    viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+  };
 
 /** Represents a comment on a given Commit. */
 export type CommitCommentReactionsArgs = {
@@ -2450,7 +2444,6 @@ export type CommitCommentReactionsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ReactionOrder>;
 };
-
 
 /** Represents a comment on a given Commit. */
 export type CommitCommentUserContentEditsArgs = {
@@ -2483,21 +2476,21 @@ export type CommitCommentEdge = {
 };
 
 /** A thread of comments on a commit. */
-export type CommitCommentThread = Node & RepositoryNode & {
-  __typename?: 'CommitCommentThread';
-  /** The comments that exist in this thread. */
-  comments: CommitCommentConnection;
-  /** The commit the comments were made on. */
-  commit?: Maybe<Commit>;
-  id: Scalars['ID'];
-  /** The file the comments were made on. */
-  path?: Maybe<Scalars['String']>;
-  /** The position in the diff for the commit that the comment was made on. */
-  position?: Maybe<Scalars['Int']>;
-  /** The repository associated with this node. */
-  repository: Repository;
-};
-
+export type CommitCommentThread = Node &
+  RepositoryNode & {
+    __typename?: 'CommitCommentThread';
+    /** The comments that exist in this thread. */
+    comments: CommitCommentConnection;
+    /** The commit the comments were made on. */
+    commit?: Maybe<Commit>;
+    id: Scalars['ID'];
+    /** The file the comments were made on. */
+    path?: Maybe<Scalars['String']>;
+    /** The position in the diff for the commit that the comment was made on. */
+    position?: Maybe<Scalars['Int']>;
+    /** The repository associated with this node. */
+    repository: Repository;
+  };
 
 /** A thread of comments on a commit. */
 export type CommitCommentThreadCommentsArgs = {
@@ -2548,7 +2541,6 @@ export type CommitContributionsByRepository = {
   /** The HTTP URL for the user's commits to the repository in this time range. */
   url: Scalars['URI'];
 };
-
 
 /** This aggregates commits made by a user within one repository. */
 export type CommitContributionsByRepositoryContributionsArgs = {
@@ -2640,7 +2632,6 @@ export type Comparison = Node & {
   /** The status of this comparison. */
   status: ComparisonStatus;
 };
-
 
 /** Represents a comparison between two commit revisions. */
 export type ComparisonCommitsArgs = {
@@ -2891,12 +2882,10 @@ export type ContributionsCollection = {
   user: User;
 };
 
-
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type ContributionsCollectionCommitContributionsByRepositoryArgs = {
   maxRepositories?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type ContributionsCollectionIssueContributionsArgs = {
@@ -2909,14 +2898,12 @@ export type ContributionsCollectionIssueContributionsArgs = {
   orderBy?: InputMaybe<ContributionOrder>;
 };
 
-
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type ContributionsCollectionIssueContributionsByRepositoryArgs = {
   excludeFirst?: InputMaybe<Scalars['Boolean']>;
   excludePopular?: InputMaybe<Scalars['Boolean']>;
   maxRepositories?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type ContributionsCollectionPullRequestContributionsArgs = {
@@ -2929,14 +2916,12 @@ export type ContributionsCollectionPullRequestContributionsArgs = {
   orderBy?: InputMaybe<ContributionOrder>;
 };
 
-
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type ContributionsCollectionPullRequestContributionsByRepositoryArgs = {
   excludeFirst?: InputMaybe<Scalars['Boolean']>;
   excludePopular?: InputMaybe<Scalars['Boolean']>;
   maxRepositories?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type ContributionsCollectionPullRequestReviewContributionsArgs = {
@@ -2947,12 +2932,11 @@ export type ContributionsCollectionPullRequestReviewContributionsArgs = {
   orderBy?: InputMaybe<ContributionOrder>;
 };
 
-
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
-export type ContributionsCollectionPullRequestReviewContributionsByRepositoryArgs = {
-  maxRepositories?: InputMaybe<Scalars['Int']>;
-};
-
+export type ContributionsCollectionPullRequestReviewContributionsByRepositoryArgs =
+  {
+    maxRepositories?: InputMaybe<Scalars['Int']>;
+  };
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type ContributionsCollectionRepositoryContributionsArgs = {
@@ -2964,13 +2948,11 @@ export type ContributionsCollectionRepositoryContributionsArgs = {
   orderBy?: InputMaybe<ContributionOrder>;
 };
 
-
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type ContributionsCollectionTotalIssueContributionsArgs = {
   excludeFirst?: InputMaybe<Scalars['Boolean']>;
   excludePopular?: InputMaybe<Scalars['Boolean']>;
 };
-
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type ContributionsCollectionTotalPullRequestContributionsArgs = {
@@ -2978,20 +2960,19 @@ export type ContributionsCollectionTotalPullRequestContributionsArgs = {
   excludePopular?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
+export type ContributionsCollectionTotalRepositoriesWithContributedIssuesArgs =
+  {
+    excludeFirst?: InputMaybe<Scalars['Boolean']>;
+    excludePopular?: InputMaybe<Scalars['Boolean']>;
+  };
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
-export type ContributionsCollectionTotalRepositoriesWithContributedIssuesArgs = {
-  excludeFirst?: InputMaybe<Scalars['Boolean']>;
-  excludePopular?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-/** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
-export type ContributionsCollectionTotalRepositoriesWithContributedPullRequestsArgs = {
-  excludeFirst?: InputMaybe<Scalars['Boolean']>;
-  excludePopular?: InputMaybe<Scalars['Boolean']>;
-};
-
+export type ContributionsCollectionTotalRepositoriesWithContributedPullRequestsArgs =
+  {
+    excludeFirst?: InputMaybe<Scalars['Boolean']>;
+    excludePopular?: InputMaybe<Scalars['Boolean']>;
+  };
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type ContributionsCollectionTotalRepositoryContributionsArgs = {
@@ -3039,20 +3020,21 @@ export type ConvertPullRequestToDraftPayload = {
 };
 
 /** Represents a 'convert_to_draft' event on a given pull request. */
-export type ConvertToDraftEvent = Node & UniformResourceLocatable & {
-  __typename?: 'ConvertToDraftEvent';
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  id: Scalars['ID'];
-  /** PullRequest referenced by event. */
-  pullRequest: PullRequest;
-  /** The HTTP path for this convert to draft event. */
-  resourcePath: Scalars['URI'];
-  /** The HTTP URL for this convert to draft event. */
-  url: Scalars['URI'];
-};
+export type ConvertToDraftEvent = Node &
+  UniformResourceLocatable & {
+    __typename?: 'ConvertToDraftEvent';
+    /** Identifies the actor who performed the event. */
+    actor?: Maybe<Actor>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    id: Scalars['ID'];
+    /** PullRequest referenced by event. */
+    pullRequest: PullRequest;
+    /** The HTTP path for this convert to draft event. */
+    resourcePath: Scalars['URI'];
+    /** The HTTP URL for this convert to draft event. */
+    url: Scalars['URI'];
+  };
 
 /** Represents a 'converted_note_to_issue' event on a given issue or pull request. */
 export type ConvertedNoteToIssueEvent = Node & {
@@ -3805,7 +3787,9 @@ export type CreatedIssueContributionEdge = {
 };
 
 /** Represents either a issue the viewer can access or a restricted contribution. */
-export type CreatedIssueOrRestrictedContribution = CreatedIssueContribution | RestrictedContribution;
+export type CreatedIssueOrRestrictedContribution =
+  | CreatedIssueContribution
+  | RestrictedContribution;
 
 /** Represents the contribution a user made on GitHub by opening a pull request. */
 export type CreatedPullRequestContribution = Contribution & {
@@ -3855,7 +3839,9 @@ export type CreatedPullRequestContributionEdge = {
 };
 
 /** Represents either a pull request the viewer can access or a restricted contribution. */
-export type CreatedPullRequestOrRestrictedContribution = CreatedPullRequestContribution | RestrictedContribution;
+export type CreatedPullRequestOrRestrictedContribution =
+  | CreatedPullRequestContribution
+  | RestrictedContribution;
 
 /** Represents the contribution a user made by leaving a review on a pull request. */
 export type CreatedPullRequestReviewContribution = Contribution & {
@@ -3956,31 +3942,34 @@ export type CreatedRepositoryContributionEdge = {
 };
 
 /** Represents either a repository the viewer can access or a restricted contribution. */
-export type CreatedRepositoryOrRestrictedContribution = CreatedRepositoryContribution | RestrictedContribution;
+export type CreatedRepositoryOrRestrictedContribution =
+  | CreatedRepositoryContribution
+  | RestrictedContribution;
 
 /** Represents a mention made by one issue or pull request to another. */
-export type CrossReferencedEvent = Node & UniformResourceLocatable & {
-  __typename?: 'CrossReferencedEvent';
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  id: Scalars['ID'];
-  /** Reference originated in a different repository. */
-  isCrossRepository: Scalars['Boolean'];
-  /** Identifies when the reference was made. */
-  referencedAt: Scalars['DateTime'];
-  /** The HTTP path for this pull request. */
-  resourcePath: Scalars['URI'];
-  /** Issue or pull request that made the reference. */
-  source: ReferencedSubject;
-  /** Issue or pull request to which the reference was made. */
-  target: ReferencedSubject;
-  /** The HTTP URL for this pull request. */
-  url: Scalars['URI'];
-  /** Checks if the target will be closed when the source is merged. */
-  willCloseTarget: Scalars['Boolean'];
-};
+export type CrossReferencedEvent = Node &
+  UniformResourceLocatable & {
+    __typename?: 'CrossReferencedEvent';
+    /** Identifies the actor who performed the event. */
+    actor?: Maybe<Actor>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    id: Scalars['ID'];
+    /** Reference originated in a different repository. */
+    isCrossRepository: Scalars['Boolean'];
+    /** Identifies when the reference was made. */
+    referencedAt: Scalars['DateTime'];
+    /** The HTTP path for this pull request. */
+    resourcePath: Scalars['URI'];
+    /** Issue or pull request that made the reference. */
+    source: ReferencedSubject;
+    /** Issue or pull request to which the reference was made. */
+    target: ReferencedSubject;
+    /** The HTTP URL for this pull request. */
+    url: Scalars['URI'];
+    /** Checks if the target will be closed when the source is merged. */
+    willCloseTarget: Scalars['Boolean'];
+  };
 
 /** Autogenerated input type of DeclineTopicSuggestion */
 export type DeclineTopicSuggestionInput = {
@@ -4530,7 +4519,6 @@ export type Deployment = Node & {
   updatedAt: Scalars['DateTime'];
 };
 
-
 /** Represents triggered deployment instance. */
 export type DeploymentStatusesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -4602,7 +4590,6 @@ export type DeploymentProtectionRule = {
   type: DeploymentProtectionRuleType;
 };
 
-
 /** A protection rule. */
 export type DeploymentProtectionRuleReviewersArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -4656,7 +4643,6 @@ export type DeploymentRequest = {
   waitTimerStartedAt?: Maybe<Scalars['DateTime']>;
 };
 
-
 /** A request to deploy a workflow run to an environment. */
 export type DeploymentRequestReviewersArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -4702,7 +4688,6 @@ export type DeploymentReview = Node & {
   /** The user that reviewed the deployment. */
   user: User;
 };
-
 
 /** A deployment review. */
 export type DeploymentReviewEnvironmentsArgs = {
@@ -4899,89 +4884,97 @@ export type DisconnectedEvent = Node & {
 };
 
 /** A discussion in a repository. */
-export type Discussion = Comment & Deletable & Labelable & Lockable & Node & Reactable & RepositoryNode & Subscribable & Updatable & Votable & {
-  __typename?: 'Discussion';
-  /** Reason that the conversation was locked. */
-  activeLockReason?: Maybe<LockReason>;
-  /** The comment chosen as this discussion's answer, if any. */
-  answer?: Maybe<DiscussionComment>;
-  /** The time when a user chose this discussion's answer, if answered. */
-  answerChosenAt?: Maybe<Scalars['DateTime']>;
-  /** The user who chose this discussion's answer, if answered. */
-  answerChosenBy?: Maybe<Actor>;
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the subject of the comment. */
-  authorAssociation: CommentAuthorAssociation;
-  /** The main text of the discussion post. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The body rendered to text. */
-  bodyText: Scalars['String'];
-  /** The category for this discussion. */
-  category: DiscussionCategory;
-  /** The replies to the discussion. */
-  comments: DiscussionCommentConnection;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The actor who edited the comment. */
-  editor?: Maybe<Actor>;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** A list of labels associated with the object. */
-  labels?: Maybe<LabelConnection>;
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** `true` if the object is locked */
-  locked: Scalars['Boolean'];
-  /** The number identifying this discussion within the repository. */
-  number: Scalars['Int'];
-  /** The poll associated with this discussion, if one exists. */
-  poll?: Maybe<DiscussionPoll>;
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** The repository associated with this node. */
-  repository: Repository;
-  /** The path for this discussion. */
-  resourcePath: Scalars['URI'];
-  /** The title of this discussion. */
-  title: Scalars['String'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** Number of upvotes that this subject has received. */
-  upvoteCount: Scalars['Int'];
-  /** The URL for this discussion. */
-  url: Scalars['URI'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Check if the current viewer can delete this object. */
-  viewerCanDelete: Scalars['Boolean'];
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-  /** Check if the viewer is able to change their subscription status for the repository. */
-  viewerCanSubscribe: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Whether or not the current user can add or remove an upvote on this subject. */
-  viewerCanUpvote: Scalars['Boolean'];
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-  /** Whether or not the current user has already upvoted this subject. */
-  viewerHasUpvoted: Scalars['Boolean'];
-  /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
-  viewerSubscription?: Maybe<SubscriptionState>;
-};
-
+export type Discussion = Comment &
+  Deletable &
+  Labelable &
+  Lockable &
+  Node &
+  Reactable &
+  RepositoryNode &
+  Subscribable &
+  Updatable &
+  Votable & {
+    __typename?: 'Discussion';
+    /** Reason that the conversation was locked. */
+    activeLockReason?: Maybe<LockReason>;
+    /** The comment chosen as this discussion's answer, if any. */
+    answer?: Maybe<DiscussionComment>;
+    /** The time when a user chose this discussion's answer, if answered. */
+    answerChosenAt?: Maybe<Scalars['DateTime']>;
+    /** The user who chose this discussion's answer, if answered. */
+    answerChosenBy?: Maybe<Actor>;
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the subject of the comment. */
+    authorAssociation: CommentAuthorAssociation;
+    /** The main text of the discussion post. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The body rendered to text. */
+    bodyText: Scalars['String'];
+    /** The category for this discussion. */
+    category: DiscussionCategory;
+    /** The replies to the discussion. */
+    comments: DiscussionCommentConnection;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The actor who edited the comment. */
+    editor?: Maybe<Actor>;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** A list of labels associated with the object. */
+    labels?: Maybe<LabelConnection>;
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** `true` if the object is locked */
+    locked: Scalars['Boolean'];
+    /** The number identifying this discussion within the repository. */
+    number: Scalars['Int'];
+    /** The poll associated with this discussion, if one exists. */
+    poll?: Maybe<DiscussionPoll>;
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** The repository associated with this node. */
+    repository: Repository;
+    /** The path for this discussion. */
+    resourcePath: Scalars['URI'];
+    /** The title of this discussion. */
+    title: Scalars['String'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** Number of upvotes that this subject has received. */
+    upvoteCount: Scalars['Int'];
+    /** The URL for this discussion. */
+    url: Scalars['URI'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Check if the current viewer can delete this object. */
+    viewerCanDelete: Scalars['Boolean'];
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+    /** Check if the viewer is able to change their subscription status for the repository. */
+    viewerCanSubscribe: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Whether or not the current user can add or remove an upvote on this subject. */
+    viewerCanUpvote: Scalars['Boolean'];
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+    /** Whether or not the current user has already upvoted this subject. */
+    viewerHasUpvoted: Scalars['Boolean'];
+    /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
+    viewerSubscription?: Maybe<SubscriptionState>;
+  };
 
 /** A discussion in a repository. */
 export type DiscussionCommentsArgs = {
@@ -4991,7 +4984,6 @@ export type DiscussionCommentsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A discussion in a repository. */
 export type DiscussionLabelsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5000,7 +4992,6 @@ export type DiscussionLabelsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<LabelOrder>;
 };
-
 
 /** A discussion in a repository. */
 export type DiscussionReactionsArgs = {
@@ -5012,7 +5003,6 @@ export type DiscussionReactionsArgs = {
   orderBy?: InputMaybe<ReactionOrder>;
 };
 
-
 /** A discussion in a repository. */
 export type DiscussionUserContentEditsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5022,28 +5012,29 @@ export type DiscussionUserContentEditsArgs = {
 };
 
 /** A category for discussions in a repository. */
-export type DiscussionCategory = Node & RepositoryNode & {
-  __typename?: 'DiscussionCategory';
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** A description of this category. */
-  description?: Maybe<Scalars['String']>;
-  /** An emoji representing this category. */
-  emoji: Scalars['String'];
-  /** This category's emoji rendered as HTML. */
-  emojiHTML: Scalars['HTML'];
-  id: Scalars['ID'];
-  /** Whether or not discussions in this category support choosing an answer with the markDiscussionCommentAsAnswer mutation. */
-  isAnswerable: Scalars['Boolean'];
-  /** The name of this category. */
-  name: Scalars['String'];
-  /** The repository associated with this node. */
-  repository: Repository;
-  /** The slug of this category. */
-  slug: Scalars['String'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-};
+export type DiscussionCategory = Node &
+  RepositoryNode & {
+    __typename?: 'DiscussionCategory';
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** A description of this category. */
+    description?: Maybe<Scalars['String']>;
+    /** An emoji representing this category. */
+    emoji: Scalars['String'];
+    /** This category's emoji rendered as HTML. */
+    emojiHTML: Scalars['HTML'];
+    id: Scalars['ID'];
+    /** Whether or not discussions in this category support choosing an answer with the markDiscussionCommentAsAnswer mutation. */
+    isAnswerable: Scalars['Boolean'];
+    /** The name of this category. */
+    name: Scalars['String'];
+    /** The repository associated with this node. */
+    repository: Repository;
+    /** The slug of this category. */
+    slug: Scalars['String'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** The connection type for DiscussionCategory. */
 export type DiscussionCategoryConnection = {
@@ -5068,83 +5059,89 @@ export type DiscussionCategoryEdge = {
 };
 
 /** A comment on a discussion. */
-export type DiscussionComment = Comment & Deletable & Minimizable & Node & Reactable & Updatable & UpdatableComment & Votable & {
-  __typename?: 'DiscussionComment';
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the subject of the comment. */
-  authorAssociation: CommentAuthorAssociation;
-  /** The body as Markdown. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The body rendered to text. */
-  bodyText: Scalars['String'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The time when this replied-to comment was deleted */
-  deletedAt?: Maybe<Scalars['DateTime']>;
-  /** The discussion this comment was created in */
-  discussion?: Maybe<Discussion>;
-  /** The actor who edited the comment. */
-  editor?: Maybe<Actor>;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** Has this comment been chosen as the answer of its discussion? */
-  isAnswer: Scalars['Boolean'];
-  /** Returns whether or not a comment has been minimized. */
-  isMinimized: Scalars['Boolean'];
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
-  minimizedReason?: Maybe<Scalars['String']>;
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** The threaded replies to this comment. */
-  replies: DiscussionCommentConnection;
-  /** The discussion comment this comment is a reply to */
-  replyTo?: Maybe<DiscussionComment>;
-  /** The path for this discussion comment. */
-  resourcePath: Scalars['URI'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** Number of upvotes that this subject has received. */
-  upvoteCount: Scalars['Int'];
-  /** The URL for this discussion comment. */
-  url: Scalars['URI'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Check if the current viewer can delete this object. */
-  viewerCanDelete: Scalars['Boolean'];
-  /** Can the current user mark this comment as an answer? */
-  viewerCanMarkAsAnswer: Scalars['Boolean'];
-  /** Check if the current viewer can minimize this object. */
-  viewerCanMinimize: Scalars['Boolean'];
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-  /** Can the current user unmark this comment as an answer? */
-  viewerCanUnmarkAsAnswer: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Whether or not the current user can add or remove an upvote on this subject. */
-  viewerCanUpvote: Scalars['Boolean'];
-  /** Reasons why the current viewer can not update this comment. */
-  viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-  /** Whether or not the current user has already upvoted this subject. */
-  viewerHasUpvoted: Scalars['Boolean'];
-};
-
+export type DiscussionComment = Comment &
+  Deletable &
+  Minimizable &
+  Node &
+  Reactable &
+  Updatable &
+  UpdatableComment &
+  Votable & {
+    __typename?: 'DiscussionComment';
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the subject of the comment. */
+    authorAssociation: CommentAuthorAssociation;
+    /** The body as Markdown. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The body rendered to text. */
+    bodyText: Scalars['String'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The time when this replied-to comment was deleted */
+    deletedAt?: Maybe<Scalars['DateTime']>;
+    /** The discussion this comment was created in */
+    discussion?: Maybe<Discussion>;
+    /** The actor who edited the comment. */
+    editor?: Maybe<Actor>;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** Has this comment been chosen as the answer of its discussion? */
+    isAnswer: Scalars['Boolean'];
+    /** Returns whether or not a comment has been minimized. */
+    isMinimized: Scalars['Boolean'];
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+    minimizedReason?: Maybe<Scalars['String']>;
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** The threaded replies to this comment. */
+    replies: DiscussionCommentConnection;
+    /** The discussion comment this comment is a reply to */
+    replyTo?: Maybe<DiscussionComment>;
+    /** The path for this discussion comment. */
+    resourcePath: Scalars['URI'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** Number of upvotes that this subject has received. */
+    upvoteCount: Scalars['Int'];
+    /** The URL for this discussion comment. */
+    url: Scalars['URI'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Check if the current viewer can delete this object. */
+    viewerCanDelete: Scalars['Boolean'];
+    /** Can the current user mark this comment as an answer? */
+    viewerCanMarkAsAnswer: Scalars['Boolean'];
+    /** Check if the current viewer can minimize this object. */
+    viewerCanMinimize: Scalars['Boolean'];
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+    /** Can the current user unmark this comment as an answer? */
+    viewerCanUnmarkAsAnswer: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Whether or not the current user can add or remove an upvote on this subject. */
+    viewerCanUpvote: Scalars['Boolean'];
+    /** Reasons why the current viewer can not update this comment. */
+    viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+    /** Whether or not the current user has already upvoted this subject. */
+    viewerHasUpvoted: Scalars['Boolean'];
+  };
 
 /** A comment on a discussion. */
 export type DiscussionCommentReactionsArgs = {
@@ -5156,7 +5153,6 @@ export type DiscussionCommentReactionsArgs = {
   orderBy?: InputMaybe<ReactionOrder>;
 };
 
-
 /** A comment on a discussion. */
 export type DiscussionCommentRepliesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5164,7 +5160,6 @@ export type DiscussionCommentRepliesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A comment on a discussion. */
 export type DiscussionCommentUserContentEditsArgs = {
@@ -5251,7 +5246,6 @@ export type DiscussionPoll = Node & {
   /** Indicates if the viewer has voted for any option in this poll. */
   viewerHasVoted: Scalars['Boolean'];
 };
-
 
 /** A poll for a discussion. */
 export type DiscussionPollOptionsArgs = {
@@ -5396,7 +5390,6 @@ export type DraftIssue = Node & {
   updatedAt: Scalars['DateTime'];
 };
 
-
 /** A draft issue within a project. */
 export type DraftIssueAssigneesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5405,7 +5398,6 @@ export type DraftIssueAssigneesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A draft issue within a project. */
 export type DraftIssueProjectV2ItemsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5413,7 +5405,6 @@ export type DraftIssueProjectV2ItemsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A draft issue within a project. */
 export type DraftIssueProjectsV2Args = {
@@ -5514,12 +5505,10 @@ export type Enterprise = Node & {
   websiteUrl?: Maybe<Scalars['URI']>;
 };
 
-
 /** An account to manage multiple organizations with consolidated policy and billing. */
 export type EnterpriseAvatarUrlArgs = {
   size?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** An account to manage multiple organizations with consolidated policy and billing. */
 export type EnterpriseMembersArgs = {
@@ -5534,7 +5523,6 @@ export type EnterpriseMembersArgs = {
   query?: InputMaybe<Scalars['String']>;
   role?: InputMaybe<EnterpriseUserAccountMembershipRole>;
 };
-
 
 /** An account to manage multiple organizations with consolidated policy and billing. */
 export type EnterpriseOrganizationsArgs = {
@@ -5738,7 +5726,6 @@ export type EnterpriseIdentityProvider = Node & {
   ssoUrl?: Maybe<Scalars['URI']>;
 };
 
-
 /** An identity provider configured to provision identities for an enterprise. */
 export type EnterpriseIdentityProviderExternalIdentitiesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5861,7 +5848,6 @@ export type EnterpriseOutsideCollaboratorEdge = {
   repositories: EnterpriseRepositoryInfoConnection;
 };
 
-
 /** A User who is an outside collaborator of an enterprise through one or more organizations. */
 export type EnterpriseOutsideCollaboratorEdgeRepositoriesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5976,7 +5962,6 @@ export type EnterpriseOwnerInfo = {
   twoFactorRequiredSettingOrganizations: OrganizationConnection;
 };
 
-
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoAdminsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5990,7 +5975,6 @@ export type EnterpriseOwnerInfoAdminsArgs = {
   role?: InputMaybe<EnterpriseAdministratorRole>;
 };
 
-
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoAffiliatedUsersWithTwoFactorDisabledArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5999,28 +5983,27 @@ export type EnterpriseOwnerInfoAffiliatedUsersWithTwoFactorDisabledArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
+/** Enterprise information only visible to enterprise owners. */
+export type EnterpriseOwnerInfoAllowPrivateRepositoryForkingSettingOrganizationsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+    orderBy?: InputMaybe<OrganizationOrder>;
+    value: Scalars['Boolean'];
+  };
 
 /** Enterprise information only visible to enterprise owners. */
-export type EnterpriseOwnerInfoAllowPrivateRepositoryForkingSettingOrganizationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<OrganizationOrder>;
-  value: Scalars['Boolean'];
-};
-
-
-/** Enterprise information only visible to enterprise owners. */
-export type EnterpriseOwnerInfoDefaultRepositoryPermissionSettingOrganizationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<OrganizationOrder>;
-  value: DefaultRepositoryPermissionField;
-};
-
+export type EnterpriseOwnerInfoDefaultRepositoryPermissionSettingOrganizationsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+    orderBy?: InputMaybe<OrganizationOrder>;
+    value: DefaultRepositoryPermissionField;
+  };
 
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoDomainsArgs = {
@@ -6033,7 +6016,6 @@ export type EnterpriseOwnerInfoDomainsArgs = {
   orderBy?: InputMaybe<VerifiableDomainOrder>;
 };
 
-
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoEnterpriseServerInstallationsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -6044,7 +6026,6 @@ export type EnterpriseOwnerInfoEnterpriseServerInstallationsArgs = {
   orderBy?: InputMaybe<EnterpriseServerInstallationOrder>;
 };
 
-
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoIpAllowListEntriesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -6054,83 +6035,82 @@ export type EnterpriseOwnerInfoIpAllowListEntriesArgs = {
   orderBy?: InputMaybe<IpAllowListEntryOrder>;
 };
 
+/** Enterprise information only visible to enterprise owners. */
+export type EnterpriseOwnerInfoMembersCanChangeRepositoryVisibilitySettingOrganizationsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+    orderBy?: InputMaybe<OrganizationOrder>;
+    value: Scalars['Boolean'];
+  };
 
 /** Enterprise information only visible to enterprise owners. */
-export type EnterpriseOwnerInfoMembersCanChangeRepositoryVisibilitySettingOrganizationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<OrganizationOrder>;
-  value: Scalars['Boolean'];
-};
-
-
-/** Enterprise information only visible to enterprise owners. */
-export type EnterpriseOwnerInfoMembersCanCreateRepositoriesSettingOrganizationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<OrganizationOrder>;
-  value: OrganizationMembersCanCreateRepositoriesSettingValue;
-};
-
+export type EnterpriseOwnerInfoMembersCanCreateRepositoriesSettingOrganizationsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+    orderBy?: InputMaybe<OrganizationOrder>;
+    value: OrganizationMembersCanCreateRepositoriesSettingValue;
+  };
 
 /** Enterprise information only visible to enterprise owners. */
-export type EnterpriseOwnerInfoMembersCanDeleteIssuesSettingOrganizationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<OrganizationOrder>;
-  value: Scalars['Boolean'];
-};
-
-
-/** Enterprise information only visible to enterprise owners. */
-export type EnterpriseOwnerInfoMembersCanDeleteRepositoriesSettingOrganizationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<OrganizationOrder>;
-  value: Scalars['Boolean'];
-};
-
+export type EnterpriseOwnerInfoMembersCanDeleteIssuesSettingOrganizationsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+    orderBy?: InputMaybe<OrganizationOrder>;
+    value: Scalars['Boolean'];
+  };
 
 /** Enterprise information only visible to enterprise owners. */
-export type EnterpriseOwnerInfoMembersCanInviteCollaboratorsSettingOrganizationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<OrganizationOrder>;
-  value: Scalars['Boolean'];
-};
-
-
-/** Enterprise information only visible to enterprise owners. */
-export type EnterpriseOwnerInfoMembersCanUpdateProtectedBranchesSettingOrganizationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<OrganizationOrder>;
-  value: Scalars['Boolean'];
-};
-
+export type EnterpriseOwnerInfoMembersCanDeleteRepositoriesSettingOrganizationsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+    orderBy?: InputMaybe<OrganizationOrder>;
+    value: Scalars['Boolean'];
+  };
 
 /** Enterprise information only visible to enterprise owners. */
-export type EnterpriseOwnerInfoMembersCanViewDependencyInsightsSettingOrganizationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<OrganizationOrder>;
-  value: Scalars['Boolean'];
-};
+export type EnterpriseOwnerInfoMembersCanInviteCollaboratorsSettingOrganizationsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+    orderBy?: InputMaybe<OrganizationOrder>;
+    value: Scalars['Boolean'];
+  };
 
+/** Enterprise information only visible to enterprise owners. */
+export type EnterpriseOwnerInfoMembersCanUpdateProtectedBranchesSettingOrganizationsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+    orderBy?: InputMaybe<OrganizationOrder>;
+    value: Scalars['Boolean'];
+  };
+
+/** Enterprise information only visible to enterprise owners. */
+export type EnterpriseOwnerInfoMembersCanViewDependencyInsightsSettingOrganizationsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+    orderBy?: InputMaybe<OrganizationOrder>;
+    value: Scalars['Boolean'];
+  };
 
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoOrganizationProjectsSettingOrganizationsArgs = {
@@ -6141,7 +6121,6 @@ export type EnterpriseOwnerInfoOrganizationProjectsSettingOrganizationsArgs = {
   orderBy?: InputMaybe<OrganizationOrder>;
   value: Scalars['Boolean'];
 };
-
 
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoOutsideCollaboratorsArgs = {
@@ -6157,7 +6136,6 @@ export type EnterpriseOwnerInfoOutsideCollaboratorsArgs = {
   visibility?: InputMaybe<RepositoryVisibility>;
 };
 
-
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoPendingAdminInvitationsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -6169,7 +6147,6 @@ export type EnterpriseOwnerInfoPendingAdminInvitationsArgs = {
   role?: InputMaybe<EnterpriseAdministratorRole>;
 };
 
-
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoPendingCollaboratorInvitationsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -6179,7 +6156,6 @@ export type EnterpriseOwnerInfoPendingCollaboratorInvitationsArgs = {
   orderBy?: InputMaybe<RepositoryInvitationOrder>;
   query?: InputMaybe<Scalars['String']>;
 };
-
 
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoPendingMemberInvitationsArgs = {
@@ -6191,7 +6167,6 @@ export type EnterpriseOwnerInfoPendingMemberInvitationsArgs = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoRepositoryProjectsSettingOrganizationsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -6201,7 +6176,6 @@ export type EnterpriseOwnerInfoRepositoryProjectsSettingOrganizationsArgs = {
   orderBy?: InputMaybe<OrganizationOrder>;
   value: Scalars['Boolean'];
 };
-
 
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoSamlIdentityProviderSettingOrganizationsArgs = {
@@ -6213,7 +6187,6 @@ export type EnterpriseOwnerInfoSamlIdentityProviderSettingOrganizationsArgs = {
   value: IdentityProviderConfigurationState;
 };
 
-
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoSupportEntitlementsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -6222,7 +6195,6 @@ export type EnterpriseOwnerInfoSupportEntitlementsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<EnterpriseMemberOrder>;
 };
-
 
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoTeamDiscussionsSettingOrganizationsArgs = {
@@ -6233,7 +6205,6 @@ export type EnterpriseOwnerInfoTeamDiscussionsSettingOrganizationsArgs = {
   orderBy?: InputMaybe<OrganizationOrder>;
   value: Scalars['Boolean'];
 };
-
 
 /** Enterprise information only visible to enterprise owners. */
 export type EnterpriseOwnerInfoTwoFactorRequiredSettingOrganizationsArgs = {
@@ -6323,7 +6294,6 @@ export type EnterpriseServerInstallation = Node & {
   userAccountsUploads: EnterpriseServerUserAccountsUploadConnection;
 };
 
-
 /** An Enterprise Server installation. */
 export type EnterpriseServerInstallationUserAccountsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -6332,7 +6302,6 @@ export type EnterpriseServerInstallationUserAccountsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<EnterpriseServerUserAccountOrder>;
 };
-
 
 /** An Enterprise Server installation. */
 export type EnterpriseServerInstallationUserAccountsUploadsArgs = {
@@ -6406,7 +6375,6 @@ export type EnterpriseServerUserAccount = Node & {
   /** Identifies the date and time when the object was last updated. */
   updatedAt: Scalars['DateTime'];
 };
-
 
 /** A user account on an Enterprise Server installation. */
 export type EnterpriseServerUserAccountEmailsArgs = {
@@ -6572,37 +6540,36 @@ export enum EnterpriseServerUserAccountsUploadSyncState {
 }
 
 /** An account for a user who is an admin of an enterprise or a member of an enterprise through one or more organizations. */
-export type EnterpriseUserAccount = Actor & Node & {
-  __typename?: 'EnterpriseUserAccount';
-  /** A URL pointing to the enterprise user account's public avatar. */
-  avatarUrl: Scalars['URI'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The enterprise in which this user account exists. */
-  enterprise: Enterprise;
-  id: Scalars['ID'];
-  /** An identifier for the enterprise user account, a login or email address */
-  login: Scalars['String'];
-  /** The name of the enterprise user account */
-  name?: Maybe<Scalars['String']>;
-  /** A list of enterprise organizations this user is a member of. */
-  organizations: EnterpriseOrganizationMembershipConnection;
-  /** The HTTP path for this user. */
-  resourcePath: Scalars['URI'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this user. */
-  url: Scalars['URI'];
-  /** The user within the enterprise. */
-  user?: Maybe<User>;
-};
-
+export type EnterpriseUserAccount = Actor &
+  Node & {
+    __typename?: 'EnterpriseUserAccount';
+    /** A URL pointing to the enterprise user account's public avatar. */
+    avatarUrl: Scalars['URI'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The enterprise in which this user account exists. */
+    enterprise: Enterprise;
+    id: Scalars['ID'];
+    /** An identifier for the enterprise user account, a login or email address */
+    login: Scalars['String'];
+    /** The name of the enterprise user account */
+    name?: Maybe<Scalars['String']>;
+    /** A list of enterprise organizations this user is a member of. */
+    organizations: EnterpriseOrganizationMembershipConnection;
+    /** The HTTP path for this user. */
+    resourcePath: Scalars['URI'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this user. */
+    url: Scalars['URI'];
+    /** The user within the enterprise. */
+    user?: Maybe<User>;
+  };
 
 /** An account for a user who is an admin of an enterprise or a member of an enterprise through one or more organizations. */
 export type EnterpriseUserAccountAvatarUrlArgs = {
   size?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** An account for a user who is an admin of an enterprise or a member of an enterprise through one or more organizations. */
 export type EnterpriseUserAccountOrganizationsArgs = {
@@ -6644,7 +6611,6 @@ export type Environment = Node & {
   /** The protection rules defined for this environment */
   protectionRules: DeploymentProtectionRuleConnection;
 };
-
 
 /** An environment. */
 export type EnvironmentProtectionRulesArgs = {
@@ -7011,46 +6977,47 @@ export type GenericHovercardContext = HovercardContext & {
 };
 
 /** A Gist. */
-export type Gist = Node & Starrable & UniformResourceLocatable & {
-  __typename?: 'Gist';
-  /** A list of comments associated with the gist */
-  comments: GistCommentConnection;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The gist description. */
-  description?: Maybe<Scalars['String']>;
-  /** The files in this gist. */
-  files?: Maybe<Array<Maybe<GistFile>>>;
-  /** A list of forks associated with the gist */
-  forks: GistConnection;
-  id: Scalars['ID'];
-  /** Identifies if the gist is a fork. */
-  isFork: Scalars['Boolean'];
-  /** Whether the gist is public or not. */
-  isPublic: Scalars['Boolean'];
-  /** The gist name. */
-  name: Scalars['String'];
-  /** The gist owner. */
-  owner?: Maybe<RepositoryOwner>;
-  /** Identifies when the gist was last pushed to. */
-  pushedAt?: Maybe<Scalars['DateTime']>;
-  /** The HTML path to this resource. */
-  resourcePath: Scalars['URI'];
-  /**
-   * Returns a count of how many stargazers there are on this object
-   *
-   */
-  stargazerCount: Scalars['Int'];
-  /** A list of users who have starred this starrable. */
-  stargazers: StargazerConnection;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this Gist. */
-  url: Scalars['URI'];
-  /** Returns a boolean indicating whether the viewing user has starred this starrable. */
-  viewerHasStarred: Scalars['Boolean'];
-};
-
+export type Gist = Node &
+  Starrable &
+  UniformResourceLocatable & {
+    __typename?: 'Gist';
+    /** A list of comments associated with the gist */
+    comments: GistCommentConnection;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The gist description. */
+    description?: Maybe<Scalars['String']>;
+    /** The files in this gist. */
+    files?: Maybe<Array<Maybe<GistFile>>>;
+    /** A list of forks associated with the gist */
+    forks: GistConnection;
+    id: Scalars['ID'];
+    /** Identifies if the gist is a fork. */
+    isFork: Scalars['Boolean'];
+    /** Whether the gist is public or not. */
+    isPublic: Scalars['Boolean'];
+    /** The gist name. */
+    name: Scalars['String'];
+    /** The gist owner. */
+    owner?: Maybe<RepositoryOwner>;
+    /** Identifies when the gist was last pushed to. */
+    pushedAt?: Maybe<Scalars['DateTime']>;
+    /** The HTML path to this resource. */
+    resourcePath: Scalars['URI'];
+    /**
+     * Returns a count of how many stargazers there are on this object
+     *
+     */
+    stargazerCount: Scalars['Int'];
+    /** A list of users who have starred this starrable. */
+    stargazers: StargazerConnection;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this Gist. */
+    url: Scalars['URI'];
+    /** Returns a boolean indicating whether the viewing user has starred this starrable. */
+    viewerHasStarred: Scalars['Boolean'];
+  };
 
 /** A Gist. */
 export type GistCommentsArgs = {
@@ -7060,13 +7027,11 @@ export type GistCommentsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A Gist. */
 export type GistFilesArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   oid?: InputMaybe<Scalars['GitObjectID']>;
 };
-
 
 /** A Gist. */
 export type GistForksArgs = {
@@ -7076,7 +7041,6 @@ export type GistForksArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<GistOrder>;
 };
-
 
 /** A Gist. */
 export type GistStargazersArgs = {
@@ -7088,55 +7052,59 @@ export type GistStargazersArgs = {
 };
 
 /** Represents a comment on an Gist. */
-export type GistComment = Comment & Deletable & Minimizable & Node & Updatable & UpdatableComment & {
-  __typename?: 'GistComment';
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the gist. */
-  authorAssociation: CommentAuthorAssociation;
-  /** Identifies the comment body. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The body rendered to text. */
-  bodyText: Scalars['String'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The actor who edited the comment. */
-  editor?: Maybe<Actor>;
-  /** The associated gist. */
-  gist: Gist;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** Returns whether or not a comment has been minimized. */
-  isMinimized: Scalars['Boolean'];
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
-  minimizedReason?: Maybe<Scalars['String']>;
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Check if the current viewer can delete this object. */
-  viewerCanDelete: Scalars['Boolean'];
-  /** Check if the current viewer can minimize this object. */
-  viewerCanMinimize: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Reasons why the current viewer can not update this comment. */
-  viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-};
-
+export type GistComment = Comment &
+  Deletable &
+  Minimizable &
+  Node &
+  Updatable &
+  UpdatableComment & {
+    __typename?: 'GistComment';
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the gist. */
+    authorAssociation: CommentAuthorAssociation;
+    /** Identifies the comment body. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The body rendered to text. */
+    bodyText: Scalars['String'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The actor who edited the comment. */
+    editor?: Maybe<Actor>;
+    /** The associated gist. */
+    gist: Gist;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** Returns whether or not a comment has been minimized. */
+    isMinimized: Scalars['Boolean'];
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+    minimizedReason?: Maybe<Scalars['String']>;
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Check if the current viewer can delete this object. */
+    viewerCanDelete: Scalars['Boolean'];
+    /** Check if the current viewer can minimize this object. */
+    viewerCanMinimize: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Reasons why the current viewer can not update this comment. */
+    viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+  };
 
 /** Represents a comment on an Gist. */
 export type GistCommentUserContentEditsArgs = {
@@ -7213,7 +7181,6 @@ export type GistFile = {
   text?: Maybe<Scalars['String']>;
 };
 
-
 /** A file in a gist. */
 export type GistFileTextArgs = {
   truncate?: InputMaybe<Scalars['Int']>;
@@ -7261,7 +7228,6 @@ export type GitActor = {
   /** The GitHub user corresponding to the email field. Null if no such user exists. */
   user?: Maybe<User>;
 };
-
 
 /** Represents an actor in a Git commit (ie. an author or committer). */
 export type GitActorAvatarUrlArgs = {
@@ -7417,7 +7383,6 @@ export type GrantEnterpriseOrganizationsMigratorRolePayload = {
   /** The organizations that had the migrator role applied to for the given user. */
   organizations?: Maybe<OrganizationConnection>;
 };
-
 
 /** Autogenerated return type of GrantEnterpriseOrganizationsMigratorRole */
 export type GrantEnterpriseOrganizationsMigratorRolePayloadOrganizationsArgs = {
@@ -7618,134 +7583,146 @@ export enum IpAllowListForInstalledAppsEnabledSettingValue {
 export type IpAllowListOwner = App | Enterprise | Organization;
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
-export type Issue = Assignable & Closable & Comment & Labelable & Lockable & Node & ProjectNextOwner & ProjectV2Owner & Reactable & RepositoryNode & Subscribable & UniformResourceLocatable & Updatable & UpdatableComment & {
-  __typename?: 'Issue';
-  /** Reason that the conversation was locked. */
-  activeLockReason?: Maybe<LockReason>;
-  /** A list of Users assigned to this object. */
-  assignees: UserConnection;
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the subject of the comment. */
-  authorAssociation: CommentAuthorAssociation;
-  /** Identifies the body of the issue. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The http path for this issue body */
-  bodyResourcePath: Scalars['URI'];
-  /** Identifies the body of the issue rendered to text. */
-  bodyText: Scalars['String'];
-  /** The http URL for this issue body */
-  bodyUrl: Scalars['URI'];
-  /** `true` if the object is closed (definition of closed may depend on type) */
-  closed: Scalars['Boolean'];
-  /** Identifies the date and time when the object was closed. */
-  closedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of comments associated with the Issue. */
-  comments: IssueCommentConnection;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The actor who edited the comment. */
-  editor?: Maybe<Actor>;
-  /** The hovercard information for this issue */
-  hovercard: Hovercard;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** Indicates whether or not this issue is currently pinned to the repository issues list */
-  isPinned?: Maybe<Scalars['Boolean']>;
-  /** Is this issue read by the viewer */
-  isReadByViewer?: Maybe<Scalars['Boolean']>;
-  /** A list of labels associated with the object. */
-  labels?: Maybe<LabelConnection>;
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** Branches linked to this issue. */
-  linkedBranches: LinkedBranchConnection;
-  /** `true` if the object is locked */
-  locked: Scalars['Boolean'];
-  /** Identifies the milestone associated with the issue. */
-  milestone?: Maybe<Milestone>;
-  /** Identifies the issue number. */
-  number: Scalars['Int'];
-  /** A list of Users that are participating in the Issue conversation. */
-  participants: UserConnection;
-  /** List of project cards associated with this issue. */
-  projectCards: ProjectCardConnection;
-  /** List of project items associated with this issue. */
-  projectItems: ProjectV2ItemConnection;
-  /**
-   * Find a project by project (beta) number.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectNext?: Maybe<ProjectNext>;
-  /** List of project (beta) items associated with this issue. */
-  projectNextItems: ProjectNextItemConnection;
-  /** Find a project by number. */
-  projectV2?: Maybe<ProjectV2>;
-  /**
-   * A list of projects (beta) under the owner.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectsNext: ProjectNextConnection;
-  /** A list of projects under the owner. */
-  projectsV2: ProjectV2Connection;
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** The repository associated with this node. */
-  repository: Repository;
-  /** The HTTP path for this issue */
-  resourcePath: Scalars['URI'];
-  /** Identifies the state of the issue. */
-  state: IssueState;
-  /** Identifies the reason for the issue state. */
-  stateReason?: Maybe<IssueStateReason>;
-  /**
-   * A list of events, comments, commits, etc. associated with the issue.
-   * @deprecated `timeline` will be removed Use Issue.timelineItems instead. Removal on 2020-10-01 UTC.
-   */
-  timeline: IssueTimelineConnection;
-  /** A list of events, comments, commits, etc. associated with the issue. */
-  timelineItems: IssueTimelineItemsConnection;
-  /** Identifies the issue title. */
-  title: Scalars['String'];
-  /** Identifies the issue title rendered to HTML. */
-  titleHTML: Scalars['String'];
-  /** A list of issues that track this issue */
-  trackedInIssues: IssueConnection;
-  /** A list of issues tracked inside the current issue */
-  trackedIssues: IssueConnection;
-  /** The number of tracked issues for this issue */
-  trackedIssuesCount: Scalars['Int'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this issue */
-  url: Scalars['URI'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-  /** Check if the viewer is able to change their subscription status for the repository. */
-  viewerCanSubscribe: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Reasons why the current viewer can not update this comment. */
-  viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-  /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
-  viewerSubscription?: Maybe<SubscriptionState>;
-};
-
+export type Issue = Assignable &
+  Closable &
+  Comment &
+  Labelable &
+  Lockable &
+  Node &
+  ProjectNextOwner &
+  ProjectV2Owner &
+  Reactable &
+  RepositoryNode &
+  Subscribable &
+  UniformResourceLocatable &
+  Updatable &
+  UpdatableComment & {
+    __typename?: 'Issue';
+    /** Reason that the conversation was locked. */
+    activeLockReason?: Maybe<LockReason>;
+    /** A list of Users assigned to this object. */
+    assignees: UserConnection;
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the subject of the comment. */
+    authorAssociation: CommentAuthorAssociation;
+    /** Identifies the body of the issue. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The http path for this issue body */
+    bodyResourcePath: Scalars['URI'];
+    /** Identifies the body of the issue rendered to text. */
+    bodyText: Scalars['String'];
+    /** The http URL for this issue body */
+    bodyUrl: Scalars['URI'];
+    /** `true` if the object is closed (definition of closed may depend on type) */
+    closed: Scalars['Boolean'];
+    /** Identifies the date and time when the object was closed. */
+    closedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of comments associated with the Issue. */
+    comments: IssueCommentConnection;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The actor who edited the comment. */
+    editor?: Maybe<Actor>;
+    /** The hovercard information for this issue */
+    hovercard: Hovercard;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** Indicates whether or not this issue is currently pinned to the repository issues list */
+    isPinned?: Maybe<Scalars['Boolean']>;
+    /** Is this issue read by the viewer */
+    isReadByViewer?: Maybe<Scalars['Boolean']>;
+    /** A list of labels associated with the object. */
+    labels?: Maybe<LabelConnection>;
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** Branches linked to this issue. */
+    linkedBranches: LinkedBranchConnection;
+    /** `true` if the object is locked */
+    locked: Scalars['Boolean'];
+    /** Identifies the milestone associated with the issue. */
+    milestone?: Maybe<Milestone>;
+    /** Identifies the issue number. */
+    number: Scalars['Int'];
+    /** A list of Users that are participating in the Issue conversation. */
+    participants: UserConnection;
+    /** List of project cards associated with this issue. */
+    projectCards: ProjectCardConnection;
+    /** List of project items associated with this issue. */
+    projectItems: ProjectV2ItemConnection;
+    /**
+     * Find a project by project (beta) number.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectNext?: Maybe<ProjectNext>;
+    /** List of project (beta) items associated with this issue. */
+    projectNextItems: ProjectNextItemConnection;
+    /** Find a project by number. */
+    projectV2?: Maybe<ProjectV2>;
+    /**
+     * A list of projects (beta) under the owner.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectsNext: ProjectNextConnection;
+    /** A list of projects under the owner. */
+    projectsV2: ProjectV2Connection;
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** The repository associated with this node. */
+    repository: Repository;
+    /** The HTTP path for this issue */
+    resourcePath: Scalars['URI'];
+    /** Identifies the state of the issue. */
+    state: IssueState;
+    /** Identifies the reason for the issue state. */
+    stateReason?: Maybe<IssueStateReason>;
+    /**
+     * A list of events, comments, commits, etc. associated with the issue.
+     * @deprecated `timeline` will be removed Use Issue.timelineItems instead. Removal on 2020-10-01 UTC.
+     */
+    timeline: IssueTimelineConnection;
+    /** A list of events, comments, commits, etc. associated with the issue. */
+    timelineItems: IssueTimelineItemsConnection;
+    /** Identifies the issue title. */
+    title: Scalars['String'];
+    /** Identifies the issue title rendered to HTML. */
+    titleHTML: Scalars['String'];
+    /** A list of issues that track this issue */
+    trackedInIssues: IssueConnection;
+    /** A list of issues tracked inside the current issue */
+    trackedIssues: IssueConnection;
+    /** The number of tracked issues for this issue */
+    trackedIssuesCount: Scalars['Int'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this issue */
+    url: Scalars['URI'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+    /** Check if the viewer is able to change their subscription status for the repository. */
+    viewerCanSubscribe: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Reasons why the current viewer can not update this comment. */
+    viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+    /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
+    viewerSubscription?: Maybe<SubscriptionState>;
+  };
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueAssigneesArgs = {
@@ -7754,7 +7731,6 @@ export type IssueAssigneesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueCommentsArgs = {
@@ -7765,12 +7741,10 @@ export type IssueCommentsArgs = {
   orderBy?: InputMaybe<IssueCommentOrder>;
 };
 
-
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueHovercardArgs = {
   includeNotificationContexts?: InputMaybe<Scalars['Boolean']>;
 };
-
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueLabelsArgs = {
@@ -7781,7 +7755,6 @@ export type IssueLabelsArgs = {
   orderBy?: InputMaybe<LabelOrder>;
 };
 
-
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueLinkedBranchesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -7790,7 +7763,6 @@ export type IssueLinkedBranchesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueParticipantsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -7798,7 +7770,6 @@ export type IssueParticipantsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueProjectCardsArgs = {
@@ -7809,7 +7780,6 @@ export type IssueProjectCardsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueProjectItemsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -7819,12 +7789,10 @@ export type IssueProjectItemsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueProjectNextArgs = {
   number: Scalars['Int'];
 };
-
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueProjectNextItemsArgs = {
@@ -7835,12 +7803,10 @@ export type IssueProjectNextItemsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueProjectV2Args = {
   number: Scalars['Int'];
 };
-
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueProjectsNextArgs = {
@@ -7852,7 +7818,6 @@ export type IssueProjectsNextArgs = {
   sortBy?: InputMaybe<ProjectNextOrderField>;
 };
 
-
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueProjectsV2Args = {
   after?: InputMaybe<Scalars['String']>;
@@ -7862,7 +7827,6 @@ export type IssueProjectsV2Args = {
   orderBy?: InputMaybe<ProjectV2Order>;
   query?: InputMaybe<Scalars['String']>;
 };
-
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueReactionsArgs = {
@@ -7874,7 +7838,6 @@ export type IssueReactionsArgs = {
   orderBy?: InputMaybe<ReactionOrder>;
 };
 
-
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueTimelineArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -7883,7 +7846,6 @@ export type IssueTimelineArgs = {
   last?: InputMaybe<Scalars['Int']>;
   since?: InputMaybe<Scalars['DateTime']>;
 };
-
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueTimelineItemsArgs = {
@@ -7896,7 +7858,6 @@ export type IssueTimelineItemsArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueTrackedInIssuesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -7904,7 +7865,6 @@ export type IssueTrackedInIssuesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueTrackedIssuesArgs = {
@@ -7914,12 +7874,10 @@ export type IssueTrackedIssuesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueTrackedIssuesCountArgs = {
   states?: InputMaybe<Array<InputMaybe<TrackedIssueStates>>>;
 };
-
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueUserContentEditsArgs = {
@@ -7938,73 +7896,79 @@ export enum IssueClosedStateReason {
 }
 
 /** Represents a comment on an Issue. */
-export type IssueComment = Comment & Deletable & Minimizable & Node & Reactable & RepositoryNode & Updatable & UpdatableComment & {
-  __typename?: 'IssueComment';
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the subject of the comment. */
-  authorAssociation: CommentAuthorAssociation;
-  /** The body as Markdown. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The body rendered to text. */
-  bodyText: Scalars['String'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The actor who edited the comment. */
-  editor?: Maybe<Actor>;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** Returns whether or not a comment has been minimized. */
-  isMinimized: Scalars['Boolean'];
-  /** Identifies the issue associated with the comment. */
-  issue: Issue;
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
-  minimizedReason?: Maybe<Scalars['String']>;
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /**
-   * Returns the pull request associated with the comment, if this comment was made on a
-   * pull request.
-   *
-   */
-  pullRequest?: Maybe<PullRequest>;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** The repository associated with this node. */
-  repository: Repository;
-  /** The HTTP path for this issue comment */
-  resourcePath: Scalars['URI'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this issue comment */
-  url: Scalars['URI'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Check if the current viewer can delete this object. */
-  viewerCanDelete: Scalars['Boolean'];
-  /** Check if the current viewer can minimize this object. */
-  viewerCanMinimize: Scalars['Boolean'];
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Reasons why the current viewer can not update this comment. */
-  viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-};
-
+export type IssueComment = Comment &
+  Deletable &
+  Minimizable &
+  Node &
+  Reactable &
+  RepositoryNode &
+  Updatable &
+  UpdatableComment & {
+    __typename?: 'IssueComment';
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the subject of the comment. */
+    authorAssociation: CommentAuthorAssociation;
+    /** The body as Markdown. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The body rendered to text. */
+    bodyText: Scalars['String'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The actor who edited the comment. */
+    editor?: Maybe<Actor>;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** Returns whether or not a comment has been minimized. */
+    isMinimized: Scalars['Boolean'];
+    /** Identifies the issue associated with the comment. */
+    issue: Issue;
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+    minimizedReason?: Maybe<Scalars['String']>;
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /**
+     * Returns the pull request associated with the comment, if this comment was made on a
+     * pull request.
+     *
+     */
+    pullRequest?: Maybe<PullRequest>;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** The repository associated with this node. */
+    repository: Repository;
+    /** The HTTP path for this issue comment */
+    resourcePath: Scalars['URI'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this issue comment */
+    url: Scalars['URI'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Check if the current viewer can delete this object. */
+    viewerCanDelete: Scalars['Boolean'];
+    /** Check if the current viewer can minimize this object. */
+    viewerCanMinimize: Scalars['Boolean'];
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Reasons why the current viewer can not update this comment. */
+    viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+  };
 
 /** Represents a comment on an Issue. */
 export type IssueCommentReactionsArgs = {
@@ -8015,7 +7979,6 @@ export type IssueCommentReactionsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ReactionOrder>;
 };
-
 
 /** Represents a comment on an Issue. */
 export type IssueCommentUserContentEditsArgs = {
@@ -8082,7 +8045,6 @@ export type IssueContributionsByRepository = {
   /** The repository in which the issues were opened. */
   repository: Repository;
 };
-
 
 /** This aggregates issues opened by a user within one repository. */
 export type IssueContributionsByRepositoryContributionsArgs = {
@@ -8192,7 +8154,26 @@ export type IssueTimelineConnection = {
 };
 
 /** An item in an issue timeline */
-export type IssueTimelineItem = AssignedEvent | ClosedEvent | Commit | CrossReferencedEvent | DemilestonedEvent | IssueComment | LabeledEvent | LockedEvent | MilestonedEvent | ReferencedEvent | RenamedTitleEvent | ReopenedEvent | SubscribedEvent | TransferredEvent | UnassignedEvent | UnlabeledEvent | UnlockedEvent | UnsubscribedEvent | UserBlockedEvent;
+export type IssueTimelineItem =
+  | AssignedEvent
+  | ClosedEvent
+  | Commit
+  | CrossReferencedEvent
+  | DemilestonedEvent
+  | IssueComment
+  | LabeledEvent
+  | LockedEvent
+  | MilestonedEvent
+  | ReferencedEvent
+  | RenamedTitleEvent
+  | ReopenedEvent
+  | SubscribedEvent
+  | TransferredEvent
+  | UnassignedEvent
+  | UnlabeledEvent
+  | UnlockedEvent
+  | UnsubscribedEvent
+  | UserBlockedEvent;
 
 /** An edge in a connection. */
 export type IssueTimelineItemEdge = {
@@ -8204,7 +8185,38 @@ export type IssueTimelineItemEdge = {
 };
 
 /** An item in an issue timeline */
-export type IssueTimelineItems = AddedToProjectEvent | AssignedEvent | ClosedEvent | CommentDeletedEvent | ConnectedEvent | ConvertedNoteToIssueEvent | ConvertedToDiscussionEvent | CrossReferencedEvent | DemilestonedEvent | DisconnectedEvent | IssueComment | LabeledEvent | LockedEvent | MarkedAsDuplicateEvent | MentionedEvent | MilestonedEvent | MovedColumnsInProjectEvent | PinnedEvent | ReferencedEvent | RemovedFromProjectEvent | RenamedTitleEvent | ReopenedEvent | SubscribedEvent | TransferredEvent | UnassignedEvent | UnlabeledEvent | UnlockedEvent | UnmarkedAsDuplicateEvent | UnpinnedEvent | UnsubscribedEvent | UserBlockedEvent;
+export type IssueTimelineItems =
+  | AddedToProjectEvent
+  | AssignedEvent
+  | ClosedEvent
+  | CommentDeletedEvent
+  | ConnectedEvent
+  | ConvertedNoteToIssueEvent
+  | ConvertedToDiscussionEvent
+  | CrossReferencedEvent
+  | DemilestonedEvent
+  | DisconnectedEvent
+  | IssueComment
+  | LabeledEvent
+  | LockedEvent
+  | MarkedAsDuplicateEvent
+  | MentionedEvent
+  | MilestonedEvent
+  | MovedColumnsInProjectEvent
+  | PinnedEvent
+  | ReferencedEvent
+  | RemovedFromProjectEvent
+  | RenamedTitleEvent
+  | ReopenedEvent
+  | SubscribedEvent
+  | TransferredEvent
+  | UnassignedEvent
+  | UnlabeledEvent
+  | UnlockedEvent
+  | UnmarkedAsDuplicateEvent
+  | UnpinnedEvent
+  | UnsubscribedEvent
+  | UserBlockedEvent;
 
 /** The connection type for IssueTimelineItems. */
 export type IssueTimelineItemsConnection = {
@@ -8351,7 +8363,6 @@ export type Label = Node & {
   url: Scalars['URI'];
 };
 
-
 /** A label for categorizing Issues, Pull Requests, Milestones, or Discussions with a given Repository. */
 export type LabelIssuesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -8363,7 +8374,6 @@ export type LabelIssuesArgs = {
   orderBy?: InputMaybe<IssueOrder>;
   states?: InputMaybe<Array<IssueState>>;
 };
-
 
 /** A label for categorizing Issues, Pull Requests, Milestones, or Discussions with a given Repository. */
 export type LabelPullRequestsArgs = {
@@ -8421,7 +8431,6 @@ export type Labelable = {
   /** A list of labels associated with the object. */
   labels?: Maybe<LabelConnection>;
 };
-
 
 /** An object that can have labels assigned to it. */
 export type LabelableLabelsArgs = {
@@ -8684,29 +8693,30 @@ export type LockedEvent = Node & {
 };
 
 /** A placeholder user for attribution of imported data on GitHub. */
-export type Mannequin = Actor & Node & UniformResourceLocatable & {
-  __typename?: 'Mannequin';
-  /** A URL pointing to the GitHub App's public avatar. */
-  avatarUrl: Scalars['URI'];
-  /** The user that has claimed the data attributed to this mannequin. */
-  claimant?: Maybe<User>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The mannequin's email on the source instance. */
-  email?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  /** The username of the actor. */
-  login: Scalars['String'];
-  /** The HTML path to this resource. */
-  resourcePath: Scalars['URI'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The URL to this resource. */
-  url: Scalars['URI'];
-};
-
+export type Mannequin = Actor &
+  Node &
+  UniformResourceLocatable & {
+    __typename?: 'Mannequin';
+    /** A URL pointing to the GitHub App's public avatar. */
+    avatarUrl: Scalars['URI'];
+    /** The user that has claimed the data attributed to this mannequin. */
+    claimant?: Maybe<User>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The mannequin's email on the source instance. */
+    email?: Maybe<Scalars['String']>;
+    id: Scalars['ID'];
+    /** The username of the actor. */
+    login: Scalars['String'];
+    /** The HTML path to this resource. */
+    resourcePath: Scalars['URI'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The URL to this resource. */
+    url: Scalars['URI'];
+  };
 
 /** A placeholder user for attribution of imported data on GitHub. */
 export type MannequinAvatarUrlArgs = {
@@ -8984,7 +8994,6 @@ export type MarketplaceListing = Node & {
   viewerIsListingAdmin: Scalars['Boolean'];
 };
 
-
 /** A listing in the GitHub integration marketplace. */
 export type MarketplaceListingLogoUrlArgs = {
   size?: InputMaybe<Scalars['Int']>;
@@ -9018,7 +9027,6 @@ export type MemberStatusable = {
   memberStatuses: UserStatusConnection;
 };
 
-
 /** Entities that have members who can set status messages. */
 export type MemberStatusableMemberStatusesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -9029,142 +9037,151 @@ export type MemberStatusableMemberStatusesArgs = {
 };
 
 /** Audit log entry for a members_can_delete_repos.clear event. */
-export type MembersCanDeleteReposClearAuditEntry = AuditEntry & EnterpriseAuditEntryData & Node & OrganizationAuditEntryData & {
-  __typename?: 'MembersCanDeleteReposClearAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The HTTP path for this enterprise. */
-  enterpriseResourcePath?: Maybe<Scalars['URI']>;
-  /** The slug of the enterprise. */
-  enterpriseSlug?: Maybe<Scalars['String']>;
-  /** The HTTP URL for this enterprise. */
-  enterpriseUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type MembersCanDeleteReposClearAuditEntry = AuditEntry &
+  EnterpriseAuditEntryData &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'MembersCanDeleteReposClearAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The HTTP path for this enterprise. */
+    enterpriseResourcePath?: Maybe<Scalars['URI']>;
+    /** The slug of the enterprise. */
+    enterpriseSlug?: Maybe<Scalars['String']>;
+    /** The HTTP URL for this enterprise. */
+    enterpriseUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a members_can_delete_repos.disable event. */
-export type MembersCanDeleteReposDisableAuditEntry = AuditEntry & EnterpriseAuditEntryData & Node & OrganizationAuditEntryData & {
-  __typename?: 'MembersCanDeleteReposDisableAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The HTTP path for this enterprise. */
-  enterpriseResourcePath?: Maybe<Scalars['URI']>;
-  /** The slug of the enterprise. */
-  enterpriseSlug?: Maybe<Scalars['String']>;
-  /** The HTTP URL for this enterprise. */
-  enterpriseUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type MembersCanDeleteReposDisableAuditEntry = AuditEntry &
+  EnterpriseAuditEntryData &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'MembersCanDeleteReposDisableAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The HTTP path for this enterprise. */
+    enterpriseResourcePath?: Maybe<Scalars['URI']>;
+    /** The slug of the enterprise. */
+    enterpriseSlug?: Maybe<Scalars['String']>;
+    /** The HTTP URL for this enterprise. */
+    enterpriseUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a members_can_delete_repos.enable event. */
-export type MembersCanDeleteReposEnableAuditEntry = AuditEntry & EnterpriseAuditEntryData & Node & OrganizationAuditEntryData & {
-  __typename?: 'MembersCanDeleteReposEnableAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The HTTP path for this enterprise. */
-  enterpriseResourcePath?: Maybe<Scalars['URI']>;
-  /** The slug of the enterprise. */
-  enterpriseSlug?: Maybe<Scalars['String']>;
-  /** The HTTP URL for this enterprise. */
-  enterpriseUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type MembersCanDeleteReposEnableAuditEntry = AuditEntry &
+  EnterpriseAuditEntryData &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'MembersCanDeleteReposEnableAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The HTTP path for this enterprise. */
+    enterpriseResourcePath?: Maybe<Scalars['URI']>;
+    /** The slug of the enterprise. */
+    enterpriseSlug?: Maybe<Scalars['String']>;
+    /** The HTTP URL for this enterprise. */
+    enterpriseUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Represents a 'mentioned' event on a given issue or pull request. */
 export type MentionedEvent = Node & {
@@ -9261,26 +9278,27 @@ export enum MergeableState {
 }
 
 /** Represents a 'merged' event on a given pull request. */
-export type MergedEvent = Node & UniformResourceLocatable & {
-  __typename?: 'MergedEvent';
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<Actor>;
-  /** Identifies the commit associated with the `merge` event. */
-  commit?: Maybe<Commit>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  id: Scalars['ID'];
-  /** Identifies the Ref associated with the `merge` event. */
-  mergeRef?: Maybe<Ref>;
-  /** Identifies the name of the Ref associated with the `merge` event. */
-  mergeRefName: Scalars['String'];
-  /** PullRequest referenced by event. */
-  pullRequest: PullRequest;
-  /** The HTTP path for this merged event. */
-  resourcePath: Scalars['URI'];
-  /** The HTTP URL for this merged event. */
-  url: Scalars['URI'];
-};
+export type MergedEvent = Node &
+  UniformResourceLocatable & {
+    __typename?: 'MergedEvent';
+    /** Identifies the actor who performed the event. */
+    actor?: Maybe<Actor>;
+    /** Identifies the commit associated with the `merge` event. */
+    commit?: Maybe<Commit>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    id: Scalars['ID'];
+    /** Identifies the Ref associated with the `merge` event. */
+    mergeRef?: Maybe<Ref>;
+    /** Identifies the name of the Ref associated with the `merge` event. */
+    mergeRefName: Scalars['String'];
+    /** PullRequest referenced by event. */
+    pullRequest: PullRequest;
+    /** The HTTP path for this merged event. */
+    resourcePath: Scalars['URI'];
+    /** The HTTP URL for this merged event. */
+    url: Scalars['URI'];
+  };
 
 /** Represents a GitHub Enterprise Importer (GEI) migration. */
 export type Migration = {
@@ -9346,43 +9364,44 @@ export enum MigrationState {
 }
 
 /** Represents a Milestone object on a given repository. */
-export type Milestone = Closable & Node & UniformResourceLocatable & {
-  __typename?: 'Milestone';
-  /** `true` if the object is closed (definition of closed may depend on type) */
-  closed: Scalars['Boolean'];
-  /** Identifies the date and time when the object was closed. */
-  closedAt?: Maybe<Scalars['DateTime']>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the actor who created the milestone. */
-  creator?: Maybe<Actor>;
-  /** Identifies the description of the milestone. */
-  description?: Maybe<Scalars['String']>;
-  /** Identifies the due date of the milestone. */
-  dueOn?: Maybe<Scalars['DateTime']>;
-  id: Scalars['ID'];
-  /** A list of issues associated with the milestone. */
-  issues: IssueConnection;
-  /** Identifies the number of the milestone. */
-  number: Scalars['Int'];
-  /** Identifies the percentage complete for the milestone */
-  progressPercentage: Scalars['Float'];
-  /** A list of pull requests associated with the milestone. */
-  pullRequests: PullRequestConnection;
-  /** The repository associated with this milestone. */
-  repository: Repository;
-  /** The HTTP path for this milestone */
-  resourcePath: Scalars['URI'];
-  /** Identifies the state of the milestone. */
-  state: MilestoneState;
-  /** Identifies the title of the milestone. */
-  title: Scalars['String'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this milestone */
-  url: Scalars['URI'];
-};
-
+export type Milestone = Closable &
+  Node &
+  UniformResourceLocatable & {
+    __typename?: 'Milestone';
+    /** `true` if the object is closed (definition of closed may depend on type) */
+    closed: Scalars['Boolean'];
+    /** Identifies the date and time when the object was closed. */
+    closedAt?: Maybe<Scalars['DateTime']>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the actor who created the milestone. */
+    creator?: Maybe<Actor>;
+    /** Identifies the description of the milestone. */
+    description?: Maybe<Scalars['String']>;
+    /** Identifies the due date of the milestone. */
+    dueOn?: Maybe<Scalars['DateTime']>;
+    id: Scalars['ID'];
+    /** A list of issues associated with the milestone. */
+    issues: IssueConnection;
+    /** Identifies the number of the milestone. */
+    number: Scalars['Int'];
+    /** Identifies the percentage complete for the milestone */
+    progressPercentage: Scalars['Float'];
+    /** A list of pull requests associated with the milestone. */
+    pullRequests: PullRequestConnection;
+    /** The repository associated with this milestone. */
+    repository: Repository;
+    /** The HTTP path for this milestone */
+    resourcePath: Scalars['URI'];
+    /** Identifies the state of the milestone. */
+    state: MilestoneState;
+    /** Identifies the title of the milestone. */
+    title: Scalars['String'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this milestone */
+    url: Scalars['URI'];
+  };
 
 /** Represents a Milestone object on a given repository. */
 export type MilestoneIssuesArgs = {
@@ -9395,7 +9414,6 @@ export type MilestoneIssuesArgs = {
   orderBy?: InputMaybe<IssueOrder>;
   states?: InputMaybe<Array<IssueState>>;
 };
-
 
 /** Represents a Milestone object on a given repository. */
 export type MilestonePullRequestsArgs = {
@@ -10027,1206 +10045,1010 @@ export type Mutation = {
   verifyVerifiableDomain?: Maybe<VerifyVerifiableDomainPayload>;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAbortQueuedMigrationsArgs = {
   input: AbortQueuedMigrationsInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAcceptEnterpriseAdministratorInvitationArgs = {
   input: AcceptEnterpriseAdministratorInvitationInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAcceptTopicSuggestionArgs = {
   input: AcceptTopicSuggestionInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddAssigneesToAssignableArgs = {
   input: AddAssigneesToAssignableInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddCommentArgs = {
   input: AddCommentInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddDiscussionCommentArgs = {
   input: AddDiscussionCommentInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddDiscussionPollVoteArgs = {
   input: AddDiscussionPollVoteInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddEnterpriseOrganizationMemberArgs = {
   input: AddEnterpriseOrganizationMemberInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddEnterpriseSupportEntitlementArgs = {
   input: AddEnterpriseSupportEntitlementInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddLabelsToLabelableArgs = {
   input: AddLabelsToLabelableInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddProjectCardArgs = {
   input: AddProjectCardInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddProjectColumnArgs = {
   input: AddProjectColumnInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddProjectDraftIssueArgs = {
   input: AddProjectDraftIssueInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddProjectNextItemArgs = {
   input: AddProjectNextItemInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddProjectV2DraftIssueArgs = {
   input: AddProjectV2DraftIssueInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddProjectV2ItemByIdArgs = {
   input: AddProjectV2ItemByIdInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddPullRequestReviewArgs = {
   input: AddPullRequestReviewInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddPullRequestReviewCommentArgs = {
   input: AddPullRequestReviewCommentInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddPullRequestReviewThreadArgs = {
   input: AddPullRequestReviewThreadInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddReactionArgs = {
   input: AddReactionInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddStarArgs = {
   input: AddStarInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddUpvoteArgs = {
   input: AddUpvoteInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationAddVerifiableDomainArgs = {
   input: AddVerifiableDomainInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationApproveDeploymentsArgs = {
   input: ApproveDeploymentsInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationApproveVerifiableDomainArgs = {
   input: ApproveVerifiableDomainInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationArchiveProjectV2ItemArgs = {
   input: ArchiveProjectV2ItemInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationArchiveRepositoryArgs = {
   input: ArchiveRepositoryInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCancelEnterpriseAdminInvitationArgs = {
   input: CancelEnterpriseAdminInvitationInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCancelSponsorshipArgs = {
   input: CancelSponsorshipInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationChangeUserStatusArgs = {
   input: ChangeUserStatusInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationClearLabelsFromLabelableArgs = {
   input: ClearLabelsFromLabelableInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationClearProjectV2ItemFieldValueArgs = {
   input: ClearProjectV2ItemFieldValueInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCloneProjectArgs = {
   input: CloneProjectInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCloneTemplateRepositoryArgs = {
   input: CloneTemplateRepositoryInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCloseIssueArgs = {
   input: CloseIssueInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationClosePullRequestArgs = {
   input: ClosePullRequestInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationConvertProjectCardNoteToIssueArgs = {
   input: ConvertProjectCardNoteToIssueInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationConvertPullRequestToDraftArgs = {
   input: ConvertPullRequestToDraftInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateAttributionInvitationArgs = {
   input: CreateAttributionInvitationInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateBranchProtectionRuleArgs = {
   input: CreateBranchProtectionRuleInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateCheckRunArgs = {
   input: CreateCheckRunInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateCheckSuiteArgs = {
   input: CreateCheckSuiteInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateCommitOnBranchArgs = {
   input: CreateCommitOnBranchInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateDiscussionArgs = {
   input: CreateDiscussionInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateEnterpriseOrganizationArgs = {
   input: CreateEnterpriseOrganizationInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateEnvironmentArgs = {
   input: CreateEnvironmentInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateIpAllowListEntryArgs = {
   input: CreateIpAllowListEntryInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateIssueArgs = {
   input: CreateIssueInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateLinkedBranchArgs = {
   input: CreateLinkedBranchInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateMigrationSourceArgs = {
   input: CreateMigrationSourceInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateProjectArgs = {
   input: CreateProjectInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateProjectV2Args = {
   input: CreateProjectV2Input;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreatePullRequestArgs = {
   input: CreatePullRequestInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateRefArgs = {
   input: CreateRefInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateRepositoryArgs = {
   input: CreateRepositoryInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateSponsorsListingArgs = {
   input: CreateSponsorsListingInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateSponsorsTierArgs = {
   input: CreateSponsorsTierInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateSponsorshipArgs = {
   input: CreateSponsorshipInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateTeamDiscussionArgs = {
   input: CreateTeamDiscussionInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationCreateTeamDiscussionCommentArgs = {
   input: CreateTeamDiscussionCommentInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeclineTopicSuggestionArgs = {
   input: DeclineTopicSuggestionInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteBranchProtectionRuleArgs = {
   input: DeleteBranchProtectionRuleInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteDeploymentArgs = {
   input: DeleteDeploymentInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteDiscussionArgs = {
   input: DeleteDiscussionInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteDiscussionCommentArgs = {
   input: DeleteDiscussionCommentInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteEnvironmentArgs = {
   input: DeleteEnvironmentInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteIpAllowListEntryArgs = {
   input: DeleteIpAllowListEntryInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteIssueArgs = {
   input: DeleteIssueInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteIssueCommentArgs = {
   input: DeleteIssueCommentInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteLinkedBranchArgs = {
   input: DeleteLinkedBranchInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteProjectArgs = {
   input: DeleteProjectInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteProjectCardArgs = {
   input: DeleteProjectCardInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteProjectColumnArgs = {
   input: DeleteProjectColumnInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteProjectNextItemArgs = {
   input: DeleteProjectNextItemInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteProjectV2ItemArgs = {
   input: DeleteProjectV2ItemInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeletePullRequestReviewArgs = {
   input: DeletePullRequestReviewInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeletePullRequestReviewCommentArgs = {
   input: DeletePullRequestReviewCommentInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteRefArgs = {
   input: DeleteRefInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteTeamDiscussionArgs = {
   input: DeleteTeamDiscussionInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteTeamDiscussionCommentArgs = {
   input: DeleteTeamDiscussionCommentInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDeleteVerifiableDomainArgs = {
   input: DeleteVerifiableDomainInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDisablePullRequestAutoMergeArgs = {
   input: DisablePullRequestAutoMergeInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationDismissPullRequestReviewArgs = {
   input: DismissPullRequestReviewInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationDismissRepositoryVulnerabilityAlertArgs = {
   input: DismissRepositoryVulnerabilityAlertInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationEnablePullRequestAutoMergeArgs = {
   input: EnablePullRequestAutoMergeInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationFollowOrganizationArgs = {
   input: FollowOrganizationInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationFollowUserArgs = {
   input: FollowUserInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationGrantEnterpriseOrganizationsMigratorRoleArgs = {
   input: GrantEnterpriseOrganizationsMigratorRoleInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationGrantMigratorRoleArgs = {
   input: GrantMigratorRoleInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationInviteEnterpriseAdminArgs = {
   input: InviteEnterpriseAdminInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationLinkProjectV2ToRepositoryArgs = {
   input: LinkProjectV2ToRepositoryInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationLinkProjectV2ToTeamArgs = {
   input: LinkProjectV2ToTeamInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationLinkRepositoryToProjectArgs = {
   input: LinkRepositoryToProjectInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationLockLockableArgs = {
   input: LockLockableInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationMarkDiscussionCommentAsAnswerArgs = {
   input: MarkDiscussionCommentAsAnswerInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationMarkFileAsViewedArgs = {
   input: MarkFileAsViewedInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationMarkPullRequestReadyForReviewArgs = {
   input: MarkPullRequestReadyForReviewInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationMergeBranchArgs = {
   input: MergeBranchInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationMergePullRequestArgs = {
   input: MergePullRequestInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationMinimizeCommentArgs = {
   input: MinimizeCommentInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationMoveProjectCardArgs = {
   input: MoveProjectCardInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationMoveProjectColumnArgs = {
   input: MoveProjectColumnInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationPinIssueArgs = {
   input: PinIssueInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationPublishSponsorsTierArgs = {
   input: PublishSponsorsTierInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationRegenerateEnterpriseIdentityProviderRecoveryCodesArgs = {
   input: RegenerateEnterpriseIdentityProviderRecoveryCodesInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationRegenerateVerifiableDomainTokenArgs = {
   input: RegenerateVerifiableDomainTokenInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationRejectDeploymentsArgs = {
   input: RejectDeploymentsInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationRemoveAssigneesFromAssignableArgs = {
   input: RemoveAssigneesFromAssignableInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationRemoveEnterpriseAdminArgs = {
   input: RemoveEnterpriseAdminInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationRemoveEnterpriseIdentityProviderArgs = {
   input: RemoveEnterpriseIdentityProviderInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationRemoveEnterpriseOrganizationArgs = {
   input: RemoveEnterpriseOrganizationInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationRemoveEnterpriseSupportEntitlementArgs = {
   input: RemoveEnterpriseSupportEntitlementInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationRemoveLabelsFromLabelableArgs = {
   input: RemoveLabelsFromLabelableInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationRemoveOutsideCollaboratorArgs = {
   input: RemoveOutsideCollaboratorInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationRemoveReactionArgs = {
   input: RemoveReactionInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationRemoveStarArgs = {
   input: RemoveStarInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationRemoveUpvoteArgs = {
   input: RemoveUpvoteInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationReopenIssueArgs = {
   input: ReopenIssueInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationReopenPullRequestArgs = {
   input: ReopenPullRequestInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationRequestReviewsArgs = {
   input: RequestReviewsInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationRerequestCheckSuiteArgs = {
   input: RerequestCheckSuiteInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationResolveReviewThreadArgs = {
   input: ResolveReviewThreadInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationRevokeEnterpriseOrganizationsMigratorRoleArgs = {
   input: RevokeEnterpriseOrganizationsMigratorRoleInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationRevokeMigratorRoleArgs = {
   input: RevokeMigratorRoleInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationSetEnterpriseIdentityProviderArgs = {
   input: SetEnterpriseIdentityProviderInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationSetOrganizationInteractionLimitArgs = {
   input: SetOrganizationInteractionLimitInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationSetRepositoryInteractionLimitArgs = {
   input: SetRepositoryInteractionLimitInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationSetUserInteractionLimitArgs = {
   input: SetUserInteractionLimitInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationStartRepositoryMigrationArgs = {
   input: StartRepositoryMigrationInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationSubmitPullRequestReviewArgs = {
   input: SubmitPullRequestReviewInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationTransferEnterpriseOrganizationArgs = {
   input: TransferEnterpriseOrganizationInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationTransferIssueArgs = {
   input: TransferIssueInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnarchiveProjectV2ItemArgs = {
   input: UnarchiveProjectV2ItemInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnarchiveRepositoryArgs = {
   input: UnarchiveRepositoryInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnfollowOrganizationArgs = {
   input: UnfollowOrganizationInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnfollowUserArgs = {
   input: UnfollowUserInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnlinkProjectV2FromRepositoryArgs = {
   input: UnlinkProjectV2FromRepositoryInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnlinkProjectV2FromTeamArgs = {
   input: UnlinkProjectV2FromTeamInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnlinkRepositoryFromProjectArgs = {
   input: UnlinkRepositoryFromProjectInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnlockLockableArgs = {
   input: UnlockLockableInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnmarkDiscussionCommentAsAnswerArgs = {
   input: UnmarkDiscussionCommentAsAnswerInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnmarkFileAsViewedArgs = {
   input: UnmarkFileAsViewedInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnmarkIssueAsDuplicateArgs = {
   input: UnmarkIssueAsDuplicateInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnminimizeCommentArgs = {
   input: UnminimizeCommentInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnpinIssueArgs = {
   input: UnpinIssueInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUnresolveReviewThreadArgs = {
   input: UnresolveReviewThreadInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateBranchProtectionRuleArgs = {
   input: UpdateBranchProtectionRuleInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateCheckRunArgs = {
   input: UpdateCheckRunInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateCheckSuitePreferencesArgs = {
   input: UpdateCheckSuitePreferencesInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateDiscussionArgs = {
   input: UpdateDiscussionInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateDiscussionCommentArgs = {
   input: UpdateDiscussionCommentInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseAdministratorRoleArgs = {
   input: UpdateEnterpriseAdministratorRoleInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseAllowPrivateRepositoryForkingSettingArgs = {
   input: UpdateEnterpriseAllowPrivateRepositoryForkingSettingInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseDefaultRepositoryPermissionSettingArgs = {
   input: UpdateEnterpriseDefaultRepositoryPermissionSettingInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
-export type MutationUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingArgs = {
-  input: UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput;
-};
-
+export type MutationUpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingArgs =
+  {
+    input: UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput;
+  };
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseMembersCanCreateRepositoriesSettingArgs = {
   input: UpdateEnterpriseMembersCanCreateRepositoriesSettingInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseMembersCanDeleteIssuesSettingArgs = {
   input: UpdateEnterpriseMembersCanDeleteIssuesSettingInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseMembersCanDeleteRepositoriesSettingArgs = {
   input: UpdateEnterpriseMembersCanDeleteRepositoriesSettingInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseMembersCanInviteCollaboratorsSettingArgs = {
   input: UpdateEnterpriseMembersCanInviteCollaboratorsSettingInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseMembersCanMakePurchasesSettingArgs = {
   input: UpdateEnterpriseMembersCanMakePurchasesSettingInput;
 };
 
+/** The root query for implementing GraphQL mutations. */
+export type MutationUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingArgs =
+  {
+    input: UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput;
+  };
 
 /** The root query for implementing GraphQL mutations. */
-export type MutationUpdateEnterpriseMembersCanUpdateProtectedBranchesSettingArgs = {
-  input: UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput;
-};
-
-
-/** The root query for implementing GraphQL mutations. */
-export type MutationUpdateEnterpriseMembersCanViewDependencyInsightsSettingArgs = {
-  input: UpdateEnterpriseMembersCanViewDependencyInsightsSettingInput;
-};
-
+export type MutationUpdateEnterpriseMembersCanViewDependencyInsightsSettingArgs =
+  {
+    input: UpdateEnterpriseMembersCanViewDependencyInsightsSettingInput;
+  };
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseOrganizationProjectsSettingArgs = {
   input: UpdateEnterpriseOrganizationProjectsSettingInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseOwnerOrganizationRoleArgs = {
   input: UpdateEnterpriseOwnerOrganizationRoleInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseProfileArgs = {
   input: UpdateEnterpriseProfileInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseRepositoryProjectsSettingArgs = {
   input: UpdateEnterpriseRepositoryProjectsSettingInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnterpriseTeamDiscussionsSettingArgs = {
   input: UpdateEnterpriseTeamDiscussionsSettingInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
-export type MutationUpdateEnterpriseTwoFactorAuthenticationRequiredSettingArgs = {
-  input: UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput;
-};
-
+export type MutationUpdateEnterpriseTwoFactorAuthenticationRequiredSettingArgs =
+  {
+    input: UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput;
+  };
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateEnvironmentArgs = {
   input: UpdateEnvironmentInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateIpAllowListEnabledSettingArgs = {
   input: UpdateIpAllowListEnabledSettingInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateIpAllowListEntryArgs = {
   input: UpdateIpAllowListEntryInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateIpAllowListForInstalledAppsEnabledSettingArgs = {
   input: UpdateIpAllowListForInstalledAppsEnabledSettingInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateIssueArgs = {
   input: UpdateIssueInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateIssueCommentArgs = {
   input: UpdateIssueCommentInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateNotificationRestrictionSettingArgs = {
   input: UpdateNotificationRestrictionSettingInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
-export type MutationUpdateOrganizationAllowPrivateRepositoryForkingSettingArgs = {
-  input: UpdateOrganizationAllowPrivateRepositoryForkingSettingInput;
-};
-
+export type MutationUpdateOrganizationAllowPrivateRepositoryForkingSettingArgs =
+  {
+    input: UpdateOrganizationAllowPrivateRepositoryForkingSettingInput;
+  };
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateOrganizationWebCommitSignoffSettingArgs = {
   input: UpdateOrganizationWebCommitSignoffSettingInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateProjectArgs = {
   input: UpdateProjectInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateProjectCardArgs = {
   input: UpdateProjectCardInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateProjectColumnArgs = {
   input: UpdateProjectColumnInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateProjectDraftIssueArgs = {
   input: UpdateProjectDraftIssueInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateProjectNextArgs = {
   input: UpdateProjectNextInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateProjectNextItemFieldArgs = {
   input: UpdateProjectNextItemFieldInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateProjectV2Args = {
   input: UpdateProjectV2Input;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateProjectV2DraftIssueArgs = {
   input: UpdateProjectV2DraftIssueInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateProjectV2ItemFieldValueArgs = {
   input: UpdateProjectV2ItemFieldValueInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateProjectV2ItemPositionArgs = {
   input: UpdateProjectV2ItemPositionInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdatePullRequestArgs = {
   input: UpdatePullRequestInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdatePullRequestBranchArgs = {
   input: UpdatePullRequestBranchInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdatePullRequestReviewArgs = {
   input: UpdatePullRequestReviewInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdatePullRequestReviewCommentArgs = {
   input: UpdatePullRequestReviewCommentInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateRefArgs = {
   input: UpdateRefInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateRepositoryArgs = {
   input: UpdateRepositoryInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateRepositoryWebCommitSignoffSettingArgs = {
   input: UpdateRepositoryWebCommitSignoffSettingInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateSponsorshipPreferencesArgs = {
   input: UpdateSponsorshipPreferencesInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateSubscriptionArgs = {
   input: UpdateSubscriptionInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateTeamDiscussionArgs = {
   input: UpdateTeamDiscussionInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateTeamDiscussionCommentArgs = {
   input: UpdateTeamDiscussionCommentInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateTeamsRepositoryArgs = {
   input: UpdateTeamsRepositoryInput;
 };
 
-
 /** The root query for implementing GraphQL mutations. */
 export type MutationUpdateTopicsArgs = {
   input: UpdateTopicsInput;
 };
-
 
 /** The root query for implementing GraphQL mutations. */
 export type MutationVerifyVerifiableDomainArgs = {
@@ -11261,7 +11083,6 @@ export type OidcProvider = Node & {
   tenantId: Scalars['String'];
 };
 
-
 /** An OIDC identity provider configured to provision identities for an enterprise. */
 export type OidcProviderExternalIdentitiesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -11290,58 +11111,61 @@ export type OauthApplicationAuditEntryData = {
 };
 
 /** Audit log entry for a oauth_application.create event. */
-export type OauthApplicationCreateAuditEntry = AuditEntry & Node & OauthApplicationAuditEntryData & OrganizationAuditEntryData & {
-  __typename?: 'OauthApplicationCreateAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The application URL of the OAuth Application. */
-  applicationUrl?: Maybe<Scalars['URI']>;
-  /** The callback URL of the OAuth Application. */
-  callbackUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The name of the OAuth Application. */
-  oauthApplicationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the OAuth Application */
-  oauthApplicationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the OAuth Application */
-  oauthApplicationUrl?: Maybe<Scalars['URI']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The rate limit of the OAuth Application. */
-  rateLimit?: Maybe<Scalars['Int']>;
-  /** The state of the OAuth Application. */
-  state?: Maybe<OauthApplicationCreateAuditEntryState>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OauthApplicationCreateAuditEntry = AuditEntry &
+  Node &
+  OauthApplicationAuditEntryData &
+  OrganizationAuditEntryData & {
+    __typename?: 'OauthApplicationCreateAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The application URL of the OAuth Application. */
+    applicationUrl?: Maybe<Scalars['URI']>;
+    /** The callback URL of the OAuth Application. */
+    callbackUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The name of the OAuth Application. */
+    oauthApplicationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the OAuth Application */
+    oauthApplicationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the OAuth Application */
+    oauthApplicationUrl?: Maybe<Scalars['URI']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The rate limit of the OAuth Application. */
+    rateLimit?: Maybe<Scalars['Int']>;
+    /** The state of the OAuth Application. */
+    state?: Maybe<OauthApplicationCreateAuditEntryState>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The state of an OAuth Application when it was created. */
 export enum OauthApplicationCreateAuditEntryState {
@@ -11380,88 +11204,92 @@ export enum OrderDirection {
 }
 
 /** Audit log entry for a org.add_billing_manager */
-export type OrgAddBillingManagerAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgAddBillingManagerAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The email address used to invite a billing manager for the organization. */
-  invitationEmail?: Maybe<Scalars['String']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgAddBillingManagerAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgAddBillingManagerAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The email address used to invite a billing manager for the organization. */
+    invitationEmail?: Maybe<Scalars['String']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.add_member */
-export type OrgAddMemberAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgAddMemberAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The permission level of the member added to the organization. */
-  permission?: Maybe<OrgAddMemberAuditEntryPermission>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgAddMemberAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgAddMemberAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The permission level of the member added to the organization. */
+    permission?: Maybe<OrgAddMemberAuditEntryPermission>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The permissions available to members on an Organization. */
 export enum OrgAddMemberAuditEntryPermission {
@@ -11472,174 +11300,182 @@ export enum OrgAddMemberAuditEntryPermission {
 }
 
 /** Audit log entry for a org.block_user */
-export type OrgBlockUserAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgBlockUserAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The blocked user. */
-  blockedUser?: Maybe<User>;
-  /** The username of the blocked user. */
-  blockedUserName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the blocked user. */
-  blockedUserResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the blocked user. */
-  blockedUserUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgBlockUserAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgBlockUserAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The blocked user. */
+    blockedUser?: Maybe<User>;
+    /** The username of the blocked user. */
+    blockedUserName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the blocked user. */
+    blockedUserResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the blocked user. */
+    blockedUserUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.config.disable_collaborators_only event. */
-export type OrgConfigDisableCollaboratorsOnlyAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgConfigDisableCollaboratorsOnlyAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgConfigDisableCollaboratorsOnlyAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgConfigDisableCollaboratorsOnlyAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.config.enable_collaborators_only event. */
-export type OrgConfigEnableCollaboratorsOnlyAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgConfigEnableCollaboratorsOnlyAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgConfigEnableCollaboratorsOnlyAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgConfigEnableCollaboratorsOnlyAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.create event. */
-export type OrgCreateAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgCreateAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The billing plan for the Organization. */
-  billingPlan?: Maybe<OrgCreateAuditEntryBillingPlan>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgCreateAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgCreateAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The billing plan for the Organization. */
+    billingPlan?: Maybe<OrgCreateAuditEntryBillingPlan>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The billing plans available for organizations. */
 export enum OrgCreateAuditEntryBillingPlan {
@@ -11656,260 +11492,272 @@ export enum OrgCreateAuditEntryBillingPlan {
 }
 
 /** Audit log entry for a org.disable_oauth_app_restrictions event. */
-export type OrgDisableOauthAppRestrictionsAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgDisableOauthAppRestrictionsAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgDisableOauthAppRestrictionsAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgDisableOauthAppRestrictionsAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.disable_saml event. */
-export type OrgDisableSamlAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgDisableSamlAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The SAML provider's digest algorithm URL. */
-  digestMethodUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The SAML provider's issuer URL. */
-  issuerUrl?: Maybe<Scalars['URI']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The SAML provider's signature algorithm URL. */
-  signatureMethodUrl?: Maybe<Scalars['URI']>;
-  /** The SAML provider's single sign-on URL. */
-  singleSignOnUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgDisableSamlAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgDisableSamlAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The SAML provider's digest algorithm URL. */
+    digestMethodUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The SAML provider's issuer URL. */
+    issuerUrl?: Maybe<Scalars['URI']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The SAML provider's signature algorithm URL. */
+    signatureMethodUrl?: Maybe<Scalars['URI']>;
+    /** The SAML provider's single sign-on URL. */
+    singleSignOnUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.disable_two_factor_requirement event. */
-export type OrgDisableTwoFactorRequirementAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgDisableTwoFactorRequirementAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgDisableTwoFactorRequirementAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgDisableTwoFactorRequirementAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.enable_oauth_app_restrictions event. */
-export type OrgEnableOauthAppRestrictionsAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgEnableOauthAppRestrictionsAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgEnableOauthAppRestrictionsAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgEnableOauthAppRestrictionsAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.enable_saml event. */
-export type OrgEnableSamlAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgEnableSamlAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The SAML provider's digest algorithm URL. */
-  digestMethodUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The SAML provider's issuer URL. */
-  issuerUrl?: Maybe<Scalars['URI']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The SAML provider's signature algorithm URL. */
-  signatureMethodUrl?: Maybe<Scalars['URI']>;
-  /** The SAML provider's single sign-on URL. */
-  singleSignOnUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgEnableSamlAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgEnableSamlAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The SAML provider's digest algorithm URL. */
+    digestMethodUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The SAML provider's issuer URL. */
+    issuerUrl?: Maybe<Scalars['URI']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The SAML provider's signature algorithm URL. */
+    signatureMethodUrl?: Maybe<Scalars['URI']>;
+    /** The SAML provider's single sign-on URL. */
+    singleSignOnUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.enable_two_factor_requirement event. */
-export type OrgEnableTwoFactorRequirementAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgEnableTwoFactorRequirementAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgEnableTwoFactorRequirementAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgEnableTwoFactorRequirementAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Ordering options for an organization's enterprise owner connections. */
 export type OrgEnterpriseOwnerOrder = {
@@ -11926,274 +11774,290 @@ export enum OrgEnterpriseOwnerOrderField {
 }
 
 /** Audit log entry for a org.invite_member event. */
-export type OrgInviteMemberAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgInviteMemberAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The email address of the organization invitation. */
-  email?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The organization invitation. */
-  organizationInvitation?: Maybe<OrganizationInvitation>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgInviteMemberAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgInviteMemberAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The email address of the organization invitation. */
+    email?: Maybe<Scalars['String']>;
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The organization invitation. */
+    organizationInvitation?: Maybe<OrganizationInvitation>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.invite_to_business event. */
-export type OrgInviteToBusinessAuditEntry = AuditEntry & EnterpriseAuditEntryData & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgInviteToBusinessAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The HTTP path for this enterprise. */
-  enterpriseResourcePath?: Maybe<Scalars['URI']>;
-  /** The slug of the enterprise. */
-  enterpriseSlug?: Maybe<Scalars['String']>;
-  /** The HTTP URL for this enterprise. */
-  enterpriseUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgInviteToBusinessAuditEntry = AuditEntry &
+  EnterpriseAuditEntryData &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgInviteToBusinessAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The HTTP path for this enterprise. */
+    enterpriseResourcePath?: Maybe<Scalars['URI']>;
+    /** The slug of the enterprise. */
+    enterpriseSlug?: Maybe<Scalars['String']>;
+    /** The HTTP URL for this enterprise. */
+    enterpriseUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.oauth_app_access_approved event. */
-export type OrgOauthAppAccessApprovedAuditEntry = AuditEntry & Node & OauthApplicationAuditEntryData & OrganizationAuditEntryData & {
-  __typename?: 'OrgOauthAppAccessApprovedAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The name of the OAuth Application. */
-  oauthApplicationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the OAuth Application */
-  oauthApplicationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the OAuth Application */
-  oauthApplicationUrl?: Maybe<Scalars['URI']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgOauthAppAccessApprovedAuditEntry = AuditEntry &
+  Node &
+  OauthApplicationAuditEntryData &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgOauthAppAccessApprovedAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The name of the OAuth Application. */
+    oauthApplicationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the OAuth Application */
+    oauthApplicationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the OAuth Application */
+    oauthApplicationUrl?: Maybe<Scalars['URI']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.oauth_app_access_denied event. */
-export type OrgOauthAppAccessDeniedAuditEntry = AuditEntry & Node & OauthApplicationAuditEntryData & OrganizationAuditEntryData & {
-  __typename?: 'OrgOauthAppAccessDeniedAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The name of the OAuth Application. */
-  oauthApplicationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the OAuth Application */
-  oauthApplicationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the OAuth Application */
-  oauthApplicationUrl?: Maybe<Scalars['URI']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgOauthAppAccessDeniedAuditEntry = AuditEntry &
+  Node &
+  OauthApplicationAuditEntryData &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgOauthAppAccessDeniedAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The name of the OAuth Application. */
+    oauthApplicationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the OAuth Application */
+    oauthApplicationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the OAuth Application */
+    oauthApplicationUrl?: Maybe<Scalars['URI']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.oauth_app_access_requested event. */
-export type OrgOauthAppAccessRequestedAuditEntry = AuditEntry & Node & OauthApplicationAuditEntryData & OrganizationAuditEntryData & {
-  __typename?: 'OrgOauthAppAccessRequestedAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The name of the OAuth Application. */
-  oauthApplicationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the OAuth Application */
-  oauthApplicationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the OAuth Application */
-  oauthApplicationUrl?: Maybe<Scalars['URI']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgOauthAppAccessRequestedAuditEntry = AuditEntry &
+  Node &
+  OauthApplicationAuditEntryData &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgOauthAppAccessRequestedAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The name of the OAuth Application. */
+    oauthApplicationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the OAuth Application */
+    oauthApplicationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the OAuth Application */
+    oauthApplicationUrl?: Maybe<Scalars['URI']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.remove_billing_manager event. */
-export type OrgRemoveBillingManagerAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgRemoveBillingManagerAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The reason for the billing manager being removed. */
-  reason?: Maybe<OrgRemoveBillingManagerAuditEntryReason>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgRemoveBillingManagerAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgRemoveBillingManagerAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The reason for the billing manager being removed. */
+    reason?: Maybe<OrgRemoveBillingManagerAuditEntryReason>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The reason a billing manager was removed from an Organization. */
 export enum OrgRemoveBillingManagerAuditEntryReason {
@@ -12206,48 +12070,50 @@ export enum OrgRemoveBillingManagerAuditEntryReason {
 }
 
 /** Audit log entry for a org.remove_member event. */
-export type OrgRemoveMemberAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgRemoveMemberAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The types of membership the member has with the organization. */
-  membershipTypes?: Maybe<Array<OrgRemoveMemberAuditEntryMembershipType>>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The reason for the member being removed. */
-  reason?: Maybe<OrgRemoveMemberAuditEntryReason>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgRemoveMemberAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgRemoveMemberAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The types of membership the member has with the organization. */
+    membershipTypes?: Maybe<Array<OrgRemoveMemberAuditEntryMembershipType>>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The reason for the member being removed. */
+    reason?: Maybe<OrgRemoveMemberAuditEntryReason>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The type of membership a user has with an Organization. */
 export enum OrgRemoveMemberAuditEntryMembershipType {
@@ -12280,48 +12146,52 @@ export enum OrgRemoveMemberAuditEntryReason {
 }
 
 /** Audit log entry for a org.remove_outside_collaborator event. */
-export type OrgRemoveOutsideCollaboratorAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgRemoveOutsideCollaboratorAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The types of membership the outside collaborator has with the organization. */
-  membershipTypes?: Maybe<Array<OrgRemoveOutsideCollaboratorAuditEntryMembershipType>>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The reason for the outside collaborator being removed from the Organization. */
-  reason?: Maybe<OrgRemoveOutsideCollaboratorAuditEntryReason>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgRemoveOutsideCollaboratorAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgRemoveOutsideCollaboratorAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The types of membership the outside collaborator has with the organization. */
+    membershipTypes?: Maybe<
+      Array<OrgRemoveOutsideCollaboratorAuditEntryMembershipType>
+    >;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The reason for the outside collaborator being removed from the Organization. */
+    reason?: Maybe<OrgRemoveOutsideCollaboratorAuditEntryReason>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The type of membership a user has with an Organization. */
 export enum OrgRemoveOutsideCollaboratorAuditEntryMembershipType {
@@ -12342,192 +12212,204 @@ export enum OrgRemoveOutsideCollaboratorAuditEntryReason {
 }
 
 /** Audit log entry for a org.restore_member event. */
-export type OrgRestoreMemberAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgRestoreMemberAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The number of custom email routings for the restored member. */
-  restoredCustomEmailRoutingsCount?: Maybe<Scalars['Int']>;
-  /** The number of issue assignments for the restored member. */
-  restoredIssueAssignmentsCount?: Maybe<Scalars['Int']>;
-  /** Restored organization membership objects. */
-  restoredMemberships?: Maybe<Array<OrgRestoreMemberAuditEntryMembership>>;
-  /** The number of restored memberships. */
-  restoredMembershipsCount?: Maybe<Scalars['Int']>;
-  /** The number of repositories of the restored member. */
-  restoredRepositoriesCount?: Maybe<Scalars['Int']>;
-  /** The number of starred repositories for the restored member. */
-  restoredRepositoryStarsCount?: Maybe<Scalars['Int']>;
-  /** The number of watched repositories for the restored member. */
-  restoredRepositoryWatchesCount?: Maybe<Scalars['Int']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgRestoreMemberAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgRestoreMemberAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The number of custom email routings for the restored member. */
+    restoredCustomEmailRoutingsCount?: Maybe<Scalars['Int']>;
+    /** The number of issue assignments for the restored member. */
+    restoredIssueAssignmentsCount?: Maybe<Scalars['Int']>;
+    /** Restored organization membership objects. */
+    restoredMemberships?: Maybe<Array<OrgRestoreMemberAuditEntryMembership>>;
+    /** The number of restored memberships. */
+    restoredMembershipsCount?: Maybe<Scalars['Int']>;
+    /** The number of repositories of the restored member. */
+    restoredRepositoriesCount?: Maybe<Scalars['Int']>;
+    /** The number of starred repositories for the restored member. */
+    restoredRepositoryStarsCount?: Maybe<Scalars['Int']>;
+    /** The number of watched repositories for the restored member. */
+    restoredRepositoryWatchesCount?: Maybe<Scalars['Int']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Types of memberships that can be restored for an Organization member. */
-export type OrgRestoreMemberAuditEntryMembership = OrgRestoreMemberMembershipOrganizationAuditEntryData | OrgRestoreMemberMembershipRepositoryAuditEntryData | OrgRestoreMemberMembershipTeamAuditEntryData;
+export type OrgRestoreMemberAuditEntryMembership =
+  | OrgRestoreMemberMembershipOrganizationAuditEntryData
+  | OrgRestoreMemberMembershipRepositoryAuditEntryData
+  | OrgRestoreMemberMembershipTeamAuditEntryData;
 
 /** Metadata for an organization membership for org.restore_member actions */
-export type OrgRestoreMemberMembershipOrganizationAuditEntryData = OrganizationAuditEntryData & {
-  __typename?: 'OrgRestoreMemberMembershipOrganizationAuditEntryData';
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgRestoreMemberMembershipOrganizationAuditEntryData =
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgRestoreMemberMembershipOrganizationAuditEntryData';
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Metadata for a repository membership for org.restore_member actions */
-export type OrgRestoreMemberMembershipRepositoryAuditEntryData = RepositoryAuditEntryData & {
-  __typename?: 'OrgRestoreMemberMembershipRepositoryAuditEntryData';
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgRestoreMemberMembershipRepositoryAuditEntryData =
+  RepositoryAuditEntryData & {
+    __typename?: 'OrgRestoreMemberMembershipRepositoryAuditEntryData';
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Metadata for a team membership for org.restore_member actions */
-export type OrgRestoreMemberMembershipTeamAuditEntryData = TeamAuditEntryData & {
-  __typename?: 'OrgRestoreMemberMembershipTeamAuditEntryData';
-  /** The team associated with the action */
-  team?: Maybe<Team>;
-  /** The name of the team */
-  teamName?: Maybe<Scalars['String']>;
-  /** The HTTP path for this team */
-  teamResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for this team */
-  teamUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgRestoreMemberMembershipTeamAuditEntryData =
+  TeamAuditEntryData & {
+    __typename?: 'OrgRestoreMemberMembershipTeamAuditEntryData';
+    /** The team associated with the action */
+    team?: Maybe<Team>;
+    /** The name of the team */
+    teamName?: Maybe<Scalars['String']>;
+    /** The HTTP path for this team */
+    teamResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for this team */
+    teamUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.unblock_user */
-export type OrgUnblockUserAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgUnblockUserAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The user being unblocked by the organization. */
-  blockedUser?: Maybe<User>;
-  /** The username of the blocked user. */
-  blockedUserName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the blocked user. */
-  blockedUserResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the blocked user. */
-  blockedUserUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgUnblockUserAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgUnblockUserAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The user being unblocked by the organization. */
+    blockedUser?: Maybe<User>;
+    /** The username of the blocked user. */
+    blockedUserName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the blocked user. */
+    blockedUserResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the blocked user. */
+    blockedUserUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a org.update_default_repository_permission */
-export type OrgUpdateDefaultRepositoryPermissionAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgUpdateDefaultRepositoryPermissionAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The new base repository permission level for the organization. */
-  permission?: Maybe<OrgUpdateDefaultRepositoryPermissionAuditEntryPermission>;
-  /** The former base repository permission level for the organization. */
-  permissionWas?: Maybe<OrgUpdateDefaultRepositoryPermissionAuditEntryPermission>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgUpdateDefaultRepositoryPermissionAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgUpdateDefaultRepositoryPermissionAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The new base repository permission level for the organization. */
+    permission?: Maybe<OrgUpdateDefaultRepositoryPermissionAuditEntryPermission>;
+    /** The former base repository permission level for the organization. */
+    permissionWas?: Maybe<OrgUpdateDefaultRepositoryPermissionAuditEntryPermission>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The default permission a repository can have in an Organization. */
 export enum OrgUpdateDefaultRepositoryPermissionAuditEntryPermission {
@@ -12542,48 +12424,50 @@ export enum OrgUpdateDefaultRepositoryPermissionAuditEntryPermission {
 }
 
 /** Audit log entry for a org.update_member event. */
-export type OrgUpdateMemberAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgUpdateMemberAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The new member permission level for the organization. */
-  permission?: Maybe<OrgUpdateMemberAuditEntryPermission>;
-  /** The former member permission level for the organization. */
-  permissionWas?: Maybe<OrgUpdateMemberAuditEntryPermission>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgUpdateMemberAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgUpdateMemberAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The new member permission level for the organization. */
+    permission?: Maybe<OrgUpdateMemberAuditEntryPermission>;
+    /** The former member permission level for the organization. */
+    permissionWas?: Maybe<OrgUpdateMemberAuditEntryPermission>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The permissions available to members on an Organization. */
 export enum OrgUpdateMemberAuditEntryPermission {
@@ -12594,48 +12478,50 @@ export enum OrgUpdateMemberAuditEntryPermission {
 }
 
 /** Audit log entry for a org.update_member_repository_creation_permission event. */
-export type OrgUpdateMemberRepositoryCreationPermissionAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgUpdateMemberRepositoryCreationPermissionAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** Can members create repositories in the organization. */
-  canCreateRepositories?: Maybe<Scalars['Boolean']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-  /** The permission for visibility level of repositories for this organization. */
-  visibility?: Maybe<OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>;
-};
+export type OrgUpdateMemberRepositoryCreationPermissionAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'OrgUpdateMemberRepositoryCreationPermissionAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** Can members create repositories in the organization. */
+    canCreateRepositories?: Maybe<Scalars['Boolean']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+    /** The permission for visibility level of repositories for this organization. */
+    visibility?: Maybe<OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>;
+  };
 
 /** The permissions available for repository creation on an Organization. */
 export enum OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility {
@@ -12658,227 +12544,241 @@ export enum OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility {
 }
 
 /** Audit log entry for a org.update_member_repository_invitation_permission event. */
-export type OrgUpdateMemberRepositoryInvitationPermissionAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & {
-  __typename?: 'OrgUpdateMemberRepositoryInvitationPermissionAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** Can outside collaborators be invited to repositories in the organization. */
-  canInviteOutsideCollaboratorsToRepositories?: Maybe<Scalars['Boolean']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type OrgUpdateMemberRepositoryInvitationPermissionAuditEntry =
+  AuditEntry &
+    Node &
+    OrganizationAuditEntryData & {
+      __typename?: 'OrgUpdateMemberRepositoryInvitationPermissionAuditEntry';
+      /** The action name */
+      action: Scalars['String'];
+      /** The user who initiated the action */
+      actor?: Maybe<AuditEntryActor>;
+      /** The IP address of the actor */
+      actorIp?: Maybe<Scalars['String']>;
+      /** A readable representation of the actor's location */
+      actorLocation?: Maybe<ActorLocation>;
+      /** The username of the user who initiated the action */
+      actorLogin?: Maybe<Scalars['String']>;
+      /** The HTTP path for the actor. */
+      actorResourcePath?: Maybe<Scalars['URI']>;
+      /** The HTTP URL for the actor. */
+      actorUrl?: Maybe<Scalars['URI']>;
+      /** Can outside collaborators be invited to repositories in the organization. */
+      canInviteOutsideCollaboratorsToRepositories?: Maybe<Scalars['Boolean']>;
+      /** The time the action was initiated */
+      createdAt: Scalars['PreciseDateTime'];
+      id: Scalars['ID'];
+      /** The corresponding operation type for the action */
+      operationType?: Maybe<OperationType>;
+      /** The Organization associated with the Audit Entry. */
+      organization?: Maybe<Organization>;
+      /** The name of the Organization. */
+      organizationName?: Maybe<Scalars['String']>;
+      /** The HTTP path for the organization */
+      organizationResourcePath?: Maybe<Scalars['URI']>;
+      /** The HTTP URL for the organization */
+      organizationUrl?: Maybe<Scalars['URI']>;
+      /** The user affected by the action */
+      user?: Maybe<User>;
+      /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+      userLogin?: Maybe<Scalars['String']>;
+      /** The HTTP path for the user. */
+      userResourcePath?: Maybe<Scalars['URI']>;
+      /** The HTTP URL for the user. */
+      userUrl?: Maybe<Scalars['URI']>;
+    };
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type Organization = Actor & MemberStatusable & Node & PackageOwner & ProfileOwner & ProjectNextOwner & ProjectOwner & ProjectV2Owner & ProjectV2Recent & RepositoryDiscussionAuthor & RepositoryDiscussionCommentAuthor & RepositoryOwner & Sponsorable & UniformResourceLocatable & {
-  __typename?: 'Organization';
-  /** Determine if this repository owner has any items that can be pinned to their profile. */
-  anyPinnableItems: Scalars['Boolean'];
-  /** Audit log entries of the organization */
-  auditLog: OrganizationAuditEntryConnection;
-  /** A URL pointing to the organization's public avatar. */
-  avatarUrl: Scalars['URI'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The organization's public profile description. */
-  description?: Maybe<Scalars['String']>;
-  /** The organization's public profile description rendered to HTML. */
-  descriptionHTML?: Maybe<Scalars['String']>;
-  /** A list of domains owned by the organization. */
-  domains?: Maybe<VerifiableDomainConnection>;
-  /** The organization's public email. */
-  email?: Maybe<Scalars['String']>;
-  /** A list of owners of the organization's enterprise account. */
-  enterpriseOwners: OrganizationEnterpriseOwnerConnection;
-  /** The estimated next GitHub Sponsors payout for this user/organization in cents (USD). */
-  estimatedNextSponsorsPayoutInCents: Scalars['Int'];
-  /** True if this user/organization has a GitHub Sponsors listing. */
-  hasSponsorsListing: Scalars['Boolean'];
-  id: Scalars['ID'];
-  /** The interaction ability settings for this organization. */
-  interactionAbility?: Maybe<RepositoryInteractionAbility>;
-  /** The setting value for whether the organization has an IP allow list enabled. */
-  ipAllowListEnabledSetting: IpAllowListEnabledSettingValue;
-  /** The IP addresses that are allowed to access resources owned by the organization. */
-  ipAllowListEntries: IpAllowListEntryConnection;
-  /** The setting value for whether the organization has IP allow list configuration for installed GitHub Apps enabled. */
-  ipAllowListForInstalledAppsEnabledSetting: IpAllowListForInstalledAppsEnabledSettingValue;
-  /** Check if the given account is sponsoring this user/organization. */
-  isSponsoredBy: Scalars['Boolean'];
-  /** True if the viewer is sponsored by this user/organization. */
-  isSponsoringViewer: Scalars['Boolean'];
-  /** Whether the organization has verified its profile email and website. */
-  isVerified: Scalars['Boolean'];
-  /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
-  itemShowcase: ProfileItemShowcase;
-  /** The organization's public profile location. */
-  location?: Maybe<Scalars['String']>;
-  /** The organization's login name. */
-  login: Scalars['String'];
-  /** A list of all mannequins for this organization. */
-  mannequins: MannequinConnection;
-  /** Get the status messages members of this entity have set that are either public or visible only to the organization. */
-  memberStatuses: UserStatusConnection;
-  /** Members can fork private repositories in this organization */
-  membersCanForkPrivateRepositories: Scalars['Boolean'];
-  /** A list of users who are members of this organization. */
-  membersWithRole: OrganizationMemberConnection;
-  /** The estimated monthly GitHub Sponsors income for this user/organization in cents (USD). */
-  monthlyEstimatedSponsorsIncomeInCents: Scalars['Int'];
-  /** The organization's public profile name. */
-  name?: Maybe<Scalars['String']>;
-  /** The HTTP path creating a new team */
-  newTeamResourcePath: Scalars['URI'];
-  /** The HTTP URL creating a new team */
-  newTeamUrl: Scalars['URI'];
-  /** Indicates if email notification delivery for this organization is restricted to verified or approved domains. */
-  notificationDeliveryRestrictionEnabledSetting: NotificationRestrictionSettingValue;
-  /** The billing email for the organization. */
-  organizationBillingEmail?: Maybe<Scalars['String']>;
-  /** A list of packages under the owner. */
-  packages: PackageConnection;
-  /** A list of users who have been invited to join this organization. */
-  pendingMembers: UserConnection;
-  /** A list of repositories and gists this profile owner can pin to their profile. */
-  pinnableItems: PinnableItemConnection;
-  /** A list of repositories and gists this profile owner has pinned to their profile */
-  pinnedItems: PinnableItemConnection;
-  /** Returns how many more items this profile owner can pin to their profile. */
-  pinnedItemsRemaining: Scalars['Int'];
-  /** Find project by number. */
-  project?: Maybe<Project>;
-  /**
-   * Find a project by project (beta) number.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectNext?: Maybe<ProjectNext>;
-  /** Find a project by number. */
-  projectV2?: Maybe<ProjectV2>;
-  /** A list of projects under the owner. */
-  projects: ProjectConnection;
-  /**
-   * A list of projects (beta) under the owner.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectsNext: ProjectNextConnection;
-  /** The HTTP path listing organization's projects */
-  projectsResourcePath: Scalars['URI'];
-  /** The HTTP URL listing organization's projects */
-  projectsUrl: Scalars['URI'];
-  /** A list of projects under the owner. */
-  projectsV2: ProjectV2Connection;
-  /** Recent projects that this user has modified in the context of the owner. */
-  recentProjects: ProjectV2Connection;
-  /** A list of repositories that the user owns. */
-  repositories: RepositoryConnection;
-  /** Find Repository. */
-  repository?: Maybe<Repository>;
-  /** Discussion comments this user has authored. */
-  repositoryDiscussionComments: DiscussionCommentConnection;
-  /** Discussions this user has started. */
-  repositoryDiscussions: DiscussionConnection;
-  /** A list of all repository migrations for this organization. */
-  repositoryMigrations: RepositoryMigrationConnection;
-  /** When true the organization requires all members, billing managers, and outside collaborators to enable two-factor authentication. */
-  requiresTwoFactorAuthentication?: Maybe<Scalars['Boolean']>;
-  /** The HTTP path for this organization. */
-  resourcePath: Scalars['URI'];
-  /** The Organization's SAML identity providers */
-  samlIdentityProvider?: Maybe<OrganizationIdentityProvider>;
-  /** List of users and organizations this entity is sponsoring. */
-  sponsoring: SponsorConnection;
-  /** List of sponsors for this user or organization. */
-  sponsors: SponsorConnection;
-  /** Events involving this sponsorable, such as new sponsorships. */
-  sponsorsActivities: SponsorsActivityConnection;
-  /** The GitHub Sponsors listing for this user or organization. */
-  sponsorsListing?: Maybe<SponsorsListing>;
-  /** The sponsorship from the viewer to this user/organization; that is, the sponsorship where you're the sponsor. Only returns a sponsorship if it is active. */
-  sponsorshipForViewerAsSponsor?: Maybe<Sponsorship>;
-  /** The sponsorship from this user/organization to the viewer; that is, the sponsorship you're receiving. Only returns a sponsorship if it is active. */
-  sponsorshipForViewerAsSponsorable?: Maybe<Sponsorship>;
-  /** List of sponsorship updates sent from this sponsorable to sponsors. */
-  sponsorshipNewsletters: SponsorshipNewsletterConnection;
-  /** This object's sponsorships as the maintainer. */
-  sponsorshipsAsMaintainer: SponsorshipConnection;
-  /** This object's sponsorships as the sponsor. */
-  sponsorshipsAsSponsor: SponsorshipConnection;
-  /** Find an organization's team by its slug. */
-  team?: Maybe<Team>;
-  /** A list of teams in this organization. */
-  teams: TeamConnection;
-  /** The HTTP path listing organization's teams */
-  teamsResourcePath: Scalars['URI'];
-  /** The HTTP URL listing organization's teams */
-  teamsUrl: Scalars['URI'];
-  /** The organization's Twitter username. */
-  twitterUsername?: Maybe<Scalars['String']>;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this organization. */
-  url: Scalars['URI'];
-  /** Organization is adminable by the viewer. */
-  viewerCanAdminister: Scalars['Boolean'];
-  /** Can the viewer pin repositories and gists to the profile? */
-  viewerCanChangePinnedItems: Scalars['Boolean'];
-  /** Can the current viewer create new projects on this owner. */
-  viewerCanCreateProjects: Scalars['Boolean'];
-  /** Viewer can create repositories on this organization */
-  viewerCanCreateRepositories: Scalars['Boolean'];
-  /** Viewer can create teams on this organization. */
-  viewerCanCreateTeams: Scalars['Boolean'];
-  /** Whether or not the viewer is able to sponsor this user/organization. */
-  viewerCanSponsor: Scalars['Boolean'];
-  /** Viewer is an active member of this organization. */
-  viewerIsAMember: Scalars['Boolean'];
-  /** Whether or not this Organization is followed by the viewer. */
-  viewerIsFollowing: Scalars['Boolean'];
-  /** True if the viewer is sponsoring this user/organization. */
-  viewerIsSponsoring: Scalars['Boolean'];
-  /** Whether contributors are required to sign off on web-based commits for repositories in this organization. */
-  webCommitSignoffRequired: Scalars['Boolean'];
-  /** The organization's public profile URL. */
-  websiteUrl?: Maybe<Scalars['URI']>;
-};
-
+export type Organization = Actor &
+  MemberStatusable &
+  Node &
+  PackageOwner &
+  ProfileOwner &
+  ProjectNextOwner &
+  ProjectOwner &
+  ProjectV2Owner &
+  ProjectV2Recent &
+  RepositoryDiscussionAuthor &
+  RepositoryDiscussionCommentAuthor &
+  RepositoryOwner &
+  Sponsorable &
+  UniformResourceLocatable & {
+    __typename?: 'Organization';
+    /** Determine if this repository owner has any items that can be pinned to their profile. */
+    anyPinnableItems: Scalars['Boolean'];
+    /** Audit log entries of the organization */
+    auditLog: OrganizationAuditEntryConnection;
+    /** A URL pointing to the organization's public avatar. */
+    avatarUrl: Scalars['URI'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The organization's public profile description. */
+    description?: Maybe<Scalars['String']>;
+    /** The organization's public profile description rendered to HTML. */
+    descriptionHTML?: Maybe<Scalars['String']>;
+    /** A list of domains owned by the organization. */
+    domains?: Maybe<VerifiableDomainConnection>;
+    /** The organization's public email. */
+    email?: Maybe<Scalars['String']>;
+    /** A list of owners of the organization's enterprise account. */
+    enterpriseOwners: OrganizationEnterpriseOwnerConnection;
+    /** The estimated next GitHub Sponsors payout for this user/organization in cents (USD). */
+    estimatedNextSponsorsPayoutInCents: Scalars['Int'];
+    /** True if this user/organization has a GitHub Sponsors listing. */
+    hasSponsorsListing: Scalars['Boolean'];
+    id: Scalars['ID'];
+    /** The interaction ability settings for this organization. */
+    interactionAbility?: Maybe<RepositoryInteractionAbility>;
+    /** The setting value for whether the organization has an IP allow list enabled. */
+    ipAllowListEnabledSetting: IpAllowListEnabledSettingValue;
+    /** The IP addresses that are allowed to access resources owned by the organization. */
+    ipAllowListEntries: IpAllowListEntryConnection;
+    /** The setting value for whether the organization has IP allow list configuration for installed GitHub Apps enabled. */
+    ipAllowListForInstalledAppsEnabledSetting: IpAllowListForInstalledAppsEnabledSettingValue;
+    /** Check if the given account is sponsoring this user/organization. */
+    isSponsoredBy: Scalars['Boolean'];
+    /** True if the viewer is sponsored by this user/organization. */
+    isSponsoringViewer: Scalars['Boolean'];
+    /** Whether the organization has verified its profile email and website. */
+    isVerified: Scalars['Boolean'];
+    /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
+    itemShowcase: ProfileItemShowcase;
+    /** The organization's public profile location. */
+    location?: Maybe<Scalars['String']>;
+    /** The organization's login name. */
+    login: Scalars['String'];
+    /** A list of all mannequins for this organization. */
+    mannequins: MannequinConnection;
+    /** Get the status messages members of this entity have set that are either public or visible only to the organization. */
+    memberStatuses: UserStatusConnection;
+    /** Members can fork private repositories in this organization */
+    membersCanForkPrivateRepositories: Scalars['Boolean'];
+    /** A list of users who are members of this organization. */
+    membersWithRole: OrganizationMemberConnection;
+    /** The estimated monthly GitHub Sponsors income for this user/organization in cents (USD). */
+    monthlyEstimatedSponsorsIncomeInCents: Scalars['Int'];
+    /** The organization's public profile name. */
+    name?: Maybe<Scalars['String']>;
+    /** The HTTP path creating a new team */
+    newTeamResourcePath: Scalars['URI'];
+    /** The HTTP URL creating a new team */
+    newTeamUrl: Scalars['URI'];
+    /** Indicates if email notification delivery for this organization is restricted to verified or approved domains. */
+    notificationDeliveryRestrictionEnabledSetting: NotificationRestrictionSettingValue;
+    /** The billing email for the organization. */
+    organizationBillingEmail?: Maybe<Scalars['String']>;
+    /** A list of packages under the owner. */
+    packages: PackageConnection;
+    /** A list of users who have been invited to join this organization. */
+    pendingMembers: UserConnection;
+    /** A list of repositories and gists this profile owner can pin to their profile. */
+    pinnableItems: PinnableItemConnection;
+    /** A list of repositories and gists this profile owner has pinned to their profile */
+    pinnedItems: PinnableItemConnection;
+    /** Returns how many more items this profile owner can pin to their profile. */
+    pinnedItemsRemaining: Scalars['Int'];
+    /** Find project by number. */
+    project?: Maybe<Project>;
+    /**
+     * Find a project by project (beta) number.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectNext?: Maybe<ProjectNext>;
+    /** Find a project by number. */
+    projectV2?: Maybe<ProjectV2>;
+    /** A list of projects under the owner. */
+    projects: ProjectConnection;
+    /**
+     * A list of projects (beta) under the owner.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectsNext: ProjectNextConnection;
+    /** The HTTP path listing organization's projects */
+    projectsResourcePath: Scalars['URI'];
+    /** The HTTP URL listing organization's projects */
+    projectsUrl: Scalars['URI'];
+    /** A list of projects under the owner. */
+    projectsV2: ProjectV2Connection;
+    /** Recent projects that this user has modified in the context of the owner. */
+    recentProjects: ProjectV2Connection;
+    /** A list of repositories that the user owns. */
+    repositories: RepositoryConnection;
+    /** Find Repository. */
+    repository?: Maybe<Repository>;
+    /** Discussion comments this user has authored. */
+    repositoryDiscussionComments: DiscussionCommentConnection;
+    /** Discussions this user has started. */
+    repositoryDiscussions: DiscussionConnection;
+    /** A list of all repository migrations for this organization. */
+    repositoryMigrations: RepositoryMigrationConnection;
+    /** When true the organization requires all members, billing managers, and outside collaborators to enable two-factor authentication. */
+    requiresTwoFactorAuthentication?: Maybe<Scalars['Boolean']>;
+    /** The HTTP path for this organization. */
+    resourcePath: Scalars['URI'];
+    /** The Organization's SAML identity providers */
+    samlIdentityProvider?: Maybe<OrganizationIdentityProvider>;
+    /** List of users and organizations this entity is sponsoring. */
+    sponsoring: SponsorConnection;
+    /** List of sponsors for this user or organization. */
+    sponsors: SponsorConnection;
+    /** Events involving this sponsorable, such as new sponsorships. */
+    sponsorsActivities: SponsorsActivityConnection;
+    /** The GitHub Sponsors listing for this user or organization. */
+    sponsorsListing?: Maybe<SponsorsListing>;
+    /** The sponsorship from the viewer to this user/organization; that is, the sponsorship where you're the sponsor. Only returns a sponsorship if it is active. */
+    sponsorshipForViewerAsSponsor?: Maybe<Sponsorship>;
+    /** The sponsorship from this user/organization to the viewer; that is, the sponsorship you're receiving. Only returns a sponsorship if it is active. */
+    sponsorshipForViewerAsSponsorable?: Maybe<Sponsorship>;
+    /** List of sponsorship updates sent from this sponsorable to sponsors. */
+    sponsorshipNewsletters: SponsorshipNewsletterConnection;
+    /** This object's sponsorships as the maintainer. */
+    sponsorshipsAsMaintainer: SponsorshipConnection;
+    /** This object's sponsorships as the sponsor. */
+    sponsorshipsAsSponsor: SponsorshipConnection;
+    /** Find an organization's team by its slug. */
+    team?: Maybe<Team>;
+    /** A list of teams in this organization. */
+    teams: TeamConnection;
+    /** The HTTP path listing organization's teams */
+    teamsResourcePath: Scalars['URI'];
+    /** The HTTP URL listing organization's teams */
+    teamsUrl: Scalars['URI'];
+    /** The organization's Twitter username. */
+    twitterUsername?: Maybe<Scalars['String']>;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this organization. */
+    url: Scalars['URI'];
+    /** Organization is adminable by the viewer. */
+    viewerCanAdminister: Scalars['Boolean'];
+    /** Can the viewer pin repositories and gists to the profile? */
+    viewerCanChangePinnedItems: Scalars['Boolean'];
+    /** Can the current viewer create new projects on this owner. */
+    viewerCanCreateProjects: Scalars['Boolean'];
+    /** Viewer can create repositories on this organization */
+    viewerCanCreateRepositories: Scalars['Boolean'];
+    /** Viewer can create teams on this organization. */
+    viewerCanCreateTeams: Scalars['Boolean'];
+    /** Whether or not the viewer is able to sponsor this user/organization. */
+    viewerCanSponsor: Scalars['Boolean'];
+    /** Viewer is an active member of this organization. */
+    viewerIsAMember: Scalars['Boolean'];
+    /** Whether or not this Organization is followed by the viewer. */
+    viewerIsFollowing: Scalars['Boolean'];
+    /** True if the viewer is sponsoring this user/organization. */
+    viewerIsSponsoring: Scalars['Boolean'];
+    /** Whether contributors are required to sign off on web-based commits for repositories in this organization. */
+    webCommitSignoffRequired: Scalars['Boolean'];
+    /** The organization's public profile URL. */
+    websiteUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationAnyPinnableItemsArgs = {
   type?: InputMaybe<PinnableItemType>;
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationAuditLogArgs = {
@@ -12890,12 +12790,10 @@ export type OrganizationAuditLogArgs = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationAvatarUrlArgs = {
   size?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationDomainsArgs = {
@@ -12908,7 +12806,6 @@ export type OrganizationDomainsArgs = {
   orderBy?: InputMaybe<VerifiableDomainOrder>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationEnterpriseOwnersArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -12920,7 +12817,6 @@ export type OrganizationEnterpriseOwnersArgs = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationIpAllowListEntriesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -12930,12 +12826,10 @@ export type OrganizationIpAllowListEntriesArgs = {
   orderBy?: InputMaybe<IpAllowListEntryOrder>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationIsSponsoredByArgs = {
   accountLogin: Scalars['String'];
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationMannequinsArgs = {
@@ -12946,7 +12840,6 @@ export type OrganizationMannequinsArgs = {
   orderBy?: InputMaybe<MannequinOrder>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationMemberStatusesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -12956,7 +12849,6 @@ export type OrganizationMemberStatusesArgs = {
   orderBy?: InputMaybe<UserStatusOrder>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationMembersWithRoleArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -12964,7 +12856,6 @@ export type OrganizationMembersWithRoleArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationPackagesArgs = {
@@ -12978,7 +12869,6 @@ export type OrganizationPackagesArgs = {
   repositoryId?: InputMaybe<Scalars['ID']>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationPendingMembersArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -12986,7 +12876,6 @@ export type OrganizationPendingMembersArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationPinnableItemsArgs = {
@@ -12997,7 +12886,6 @@ export type OrganizationPinnableItemsArgs = {
   types?: InputMaybe<Array<PinnableItemType>>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationPinnedItemsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -13007,24 +12895,20 @@ export type OrganizationPinnedItemsArgs = {
   types?: InputMaybe<Array<PinnableItemType>>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationProjectArgs = {
   number: Scalars['Int'];
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationProjectNextArgs = {
   number: Scalars['Int'];
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationProjectV2Args = {
   number: Scalars['Int'];
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationProjectsArgs = {
@@ -13037,7 +12921,6 @@ export type OrganizationProjectsArgs = {
   states?: InputMaybe<Array<ProjectState>>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationProjectsNextArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -13047,7 +12930,6 @@ export type OrganizationProjectsNextArgs = {
   query?: InputMaybe<Scalars['String']>;
   sortBy?: InputMaybe<ProjectNextOrderField>;
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationProjectsV2Args = {
@@ -13059,7 +12941,6 @@ export type OrganizationProjectsV2Args = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationRecentProjectsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -13067,7 +12948,6 @@ export type OrganizationRecentProjectsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationRepositoriesArgs = {
@@ -13083,13 +12963,11 @@ export type OrganizationRepositoriesArgs = {
   privacy?: InputMaybe<RepositoryPrivacy>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationRepositoryArgs = {
   followRenames?: InputMaybe<Scalars['Boolean']>;
   name: Scalars['String'];
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationRepositoryDiscussionCommentsArgs = {
@@ -13100,7 +12978,6 @@ export type OrganizationRepositoryDiscussionCommentsArgs = {
   onlyAnswers?: InputMaybe<Scalars['Boolean']>;
   repositoryId?: InputMaybe<Scalars['ID']>;
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationRepositoryDiscussionsArgs = {
@@ -13113,7 +12990,6 @@ export type OrganizationRepositoryDiscussionsArgs = {
   repositoryId?: InputMaybe<Scalars['ID']>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationRepositoryMigrationsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -13125,7 +13001,6 @@ export type OrganizationRepositoryMigrationsArgs = {
   state?: InputMaybe<MigrationState>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationSponsoringArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -13134,7 +13009,6 @@ export type OrganizationSponsoringArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<SponsorOrder>;
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationSponsorsArgs = {
@@ -13145,7 +13019,6 @@ export type OrganizationSponsorsArgs = {
   orderBy?: InputMaybe<SponsorOrder>;
   tierId?: InputMaybe<Scalars['ID']>;
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationSponsorsActivitiesArgs = {
@@ -13161,7 +13034,6 @@ export type OrganizationSponsorsActivitiesArgs = {
   until?: InputMaybe<Scalars['DateTime']>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationSponsorshipNewslettersArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -13170,7 +13042,6 @@ export type OrganizationSponsorshipNewslettersArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<SponsorshipNewsletterOrder>;
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationSponsorshipsAsMaintainerArgs = {
@@ -13182,7 +13053,6 @@ export type OrganizationSponsorshipsAsMaintainerArgs = {
   orderBy?: InputMaybe<SponsorshipOrder>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationSponsorshipsAsSponsorArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -13193,12 +13063,10 @@ export type OrganizationSponsorshipsAsSponsorArgs = {
   orderBy?: InputMaybe<SponsorshipOrder>;
 };
 
-
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationTeamArgs = {
   slug: Scalars['String'];
 };
-
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type OrganizationTeamsArgs = {
@@ -13216,7 +13084,65 @@ export type OrganizationTeamsArgs = {
 };
 
 /** An audit entry in an organization audit log. */
-export type OrganizationAuditEntry = MembersCanDeleteReposClearAuditEntry | MembersCanDeleteReposDisableAuditEntry | MembersCanDeleteReposEnableAuditEntry | OauthApplicationCreateAuditEntry | OrgAddBillingManagerAuditEntry | OrgAddMemberAuditEntry | OrgBlockUserAuditEntry | OrgConfigDisableCollaboratorsOnlyAuditEntry | OrgConfigEnableCollaboratorsOnlyAuditEntry | OrgCreateAuditEntry | OrgDisableOauthAppRestrictionsAuditEntry | OrgDisableSamlAuditEntry | OrgDisableTwoFactorRequirementAuditEntry | OrgEnableOauthAppRestrictionsAuditEntry | OrgEnableSamlAuditEntry | OrgEnableTwoFactorRequirementAuditEntry | OrgInviteMemberAuditEntry | OrgInviteToBusinessAuditEntry | OrgOauthAppAccessApprovedAuditEntry | OrgOauthAppAccessDeniedAuditEntry | OrgOauthAppAccessRequestedAuditEntry | OrgRemoveBillingManagerAuditEntry | OrgRemoveMemberAuditEntry | OrgRemoveOutsideCollaboratorAuditEntry | OrgRestoreMemberAuditEntry | OrgUnblockUserAuditEntry | OrgUpdateDefaultRepositoryPermissionAuditEntry | OrgUpdateMemberAuditEntry | OrgUpdateMemberRepositoryCreationPermissionAuditEntry | OrgUpdateMemberRepositoryInvitationPermissionAuditEntry | PrivateRepositoryForkingDisableAuditEntry | PrivateRepositoryForkingEnableAuditEntry | RepoAccessAuditEntry | RepoAddMemberAuditEntry | RepoAddTopicAuditEntry | RepoArchivedAuditEntry | RepoChangeMergeSettingAuditEntry | RepoConfigDisableAnonymousGitAccessAuditEntry | RepoConfigDisableCollaboratorsOnlyAuditEntry | RepoConfigDisableContributorsOnlyAuditEntry | RepoConfigDisableSockpuppetDisallowedAuditEntry | RepoConfigEnableAnonymousGitAccessAuditEntry | RepoConfigEnableCollaboratorsOnlyAuditEntry | RepoConfigEnableContributorsOnlyAuditEntry | RepoConfigEnableSockpuppetDisallowedAuditEntry | RepoConfigLockAnonymousGitAccessAuditEntry | RepoConfigUnlockAnonymousGitAccessAuditEntry | RepoCreateAuditEntry | RepoDestroyAuditEntry | RepoRemoveMemberAuditEntry | RepoRemoveTopicAuditEntry | RepositoryVisibilityChangeDisableAuditEntry | RepositoryVisibilityChangeEnableAuditEntry | TeamAddMemberAuditEntry | TeamAddRepositoryAuditEntry | TeamChangeParentTeamAuditEntry | TeamRemoveMemberAuditEntry | TeamRemoveRepositoryAuditEntry;
+export type OrganizationAuditEntry =
+  | MembersCanDeleteReposClearAuditEntry
+  | MembersCanDeleteReposDisableAuditEntry
+  | MembersCanDeleteReposEnableAuditEntry
+  | OauthApplicationCreateAuditEntry
+  | OrgAddBillingManagerAuditEntry
+  | OrgAddMemberAuditEntry
+  | OrgBlockUserAuditEntry
+  | OrgConfigDisableCollaboratorsOnlyAuditEntry
+  | OrgConfigEnableCollaboratorsOnlyAuditEntry
+  | OrgCreateAuditEntry
+  | OrgDisableOauthAppRestrictionsAuditEntry
+  | OrgDisableSamlAuditEntry
+  | OrgDisableTwoFactorRequirementAuditEntry
+  | OrgEnableOauthAppRestrictionsAuditEntry
+  | OrgEnableSamlAuditEntry
+  | OrgEnableTwoFactorRequirementAuditEntry
+  | OrgInviteMemberAuditEntry
+  | OrgInviteToBusinessAuditEntry
+  | OrgOauthAppAccessApprovedAuditEntry
+  | OrgOauthAppAccessDeniedAuditEntry
+  | OrgOauthAppAccessRequestedAuditEntry
+  | OrgRemoveBillingManagerAuditEntry
+  | OrgRemoveMemberAuditEntry
+  | OrgRemoveOutsideCollaboratorAuditEntry
+  | OrgRestoreMemberAuditEntry
+  | OrgUnblockUserAuditEntry
+  | OrgUpdateDefaultRepositoryPermissionAuditEntry
+  | OrgUpdateMemberAuditEntry
+  | OrgUpdateMemberRepositoryCreationPermissionAuditEntry
+  | OrgUpdateMemberRepositoryInvitationPermissionAuditEntry
+  | PrivateRepositoryForkingDisableAuditEntry
+  | PrivateRepositoryForkingEnableAuditEntry
+  | RepoAccessAuditEntry
+  | RepoAddMemberAuditEntry
+  | RepoAddTopicAuditEntry
+  | RepoArchivedAuditEntry
+  | RepoChangeMergeSettingAuditEntry
+  | RepoConfigDisableAnonymousGitAccessAuditEntry
+  | RepoConfigDisableCollaboratorsOnlyAuditEntry
+  | RepoConfigDisableContributorsOnlyAuditEntry
+  | RepoConfigDisableSockpuppetDisallowedAuditEntry
+  | RepoConfigEnableAnonymousGitAccessAuditEntry
+  | RepoConfigEnableCollaboratorsOnlyAuditEntry
+  | RepoConfigEnableContributorsOnlyAuditEntry
+  | RepoConfigEnableSockpuppetDisallowedAuditEntry
+  | RepoConfigLockAnonymousGitAccessAuditEntry
+  | RepoConfigUnlockAnonymousGitAccessAuditEntry
+  | RepoCreateAuditEntry
+  | RepoDestroyAuditEntry
+  | RepoRemoveMemberAuditEntry
+  | RepoRemoveTopicAuditEntry
+  | RepositoryVisibilityChangeDisableAuditEntry
+  | RepositoryVisibilityChangeEnableAuditEntry
+  | TeamAddMemberAuditEntry
+  | TeamAddRepositoryAuditEntry
+  | TeamChangeParentTeamAuditEntry
+  | TeamRemoveMemberAuditEntry
+  | TeamRemoveRepositoryAuditEntry;
 
 /** The connection type for OrganizationAuditEntry. */
 export type OrganizationAuditEntryConnection = {
@@ -13317,7 +13243,6 @@ export type OrganizationIdentityProvider = Node & {
   /** The URL endpoint for the Identity Provider's SAML SSO. */
   ssoUrl?: Maybe<Scalars['URI']>;
 };
-
 
 /** An Identity Provider configured to provision SAML and SCIM identities for Organizations */
 export type OrganizationIdentityProviderExternalIdentitiesArgs = {
@@ -13474,7 +13399,6 @@ export type OrganizationTeamsHovercardContext = HovercardContext & {
   totalTeamCount: Scalars['Int'];
 };
 
-
 /** An organization teams hovercard context */
 export type OrganizationTeamsHovercardContextRelevantTeamsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -13495,7 +13419,6 @@ export type OrganizationsHovercardContext = HovercardContext & {
   /** The total number of organizations this user is in */
   totalOrganizationCount: Scalars['Int'];
 };
-
 
 /** An organization list hovercard context */
 export type OrganizationsHovercardContextRelevantOrganizationsArgs = {
@@ -13525,12 +13448,10 @@ export type Package = Node & {
   versions: PackageVersionConnection;
 };
 
-
 /** Information for an uploaded package. */
 export type PackageVersionArgs = {
   version: Scalars['String'];
 };
-
 
 /** Information for an uploaded package. */
 export type PackageVersionsArgs = {
@@ -13642,7 +13563,6 @@ export type PackageOwner = {
   packages: PackageConnection;
 };
 
-
 /** Represents an owner of a package. */
 export type PackageOwnerPackagesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -13728,7 +13648,6 @@ export type PackageVersion = Node & {
   /** The version string. */
   version: Scalars['String'];
 };
-
 
 /** Information about a specific package version. */
 export type PackageVersionFilesArgs = {
@@ -13888,28 +13807,29 @@ export enum PinnableItemType {
 }
 
 /** A Pinned Discussion is a discussion pinned to a repository's index page. */
-export type PinnedDiscussion = Node & RepositoryNode & {
-  __typename?: 'PinnedDiscussion';
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The discussion that was pinned. */
-  discussion: Discussion;
-  /** Color stops of the chosen gradient */
-  gradientStopColors: Array<Scalars['String']>;
-  id: Scalars['ID'];
-  /** Background texture pattern */
-  pattern: PinnedDiscussionPattern;
-  /** The actor that pinned this discussion. */
-  pinnedBy: Actor;
-  /** Preconfigured background gradient option */
-  preconfiguredGradient?: Maybe<PinnedDiscussionGradient>;
-  /** The repository associated with this node. */
-  repository: Repository;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-};
+export type PinnedDiscussion = Node &
+  RepositoryNode & {
+    __typename?: 'PinnedDiscussion';
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The discussion that was pinned. */
+    discussion: Discussion;
+    /** Color stops of the chosen gradient */
+    gradientStopColors: Array<Scalars['String']>;
+    id: Scalars['ID'];
+    /** Background texture pattern */
+    pattern: PinnedDiscussionPattern;
+    /** The actor that pinned this discussion. */
+    pinnedBy: Actor;
+    /** Preconfigured background gradient option */
+    preconfiguredGradient?: Maybe<PinnedDiscussionGradient>;
+    /** The repository associated with this node. */
+    repository: Repository;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** The connection type for PinnedDiscussion. */
 export type PinnedDiscussionConnection = {
@@ -14012,112 +13932,120 @@ export type PinnedIssueEdge = {
 };
 
 /** Audit log entry for a private_repository_forking.disable event. */
-export type PrivateRepositoryForkingDisableAuditEntry = AuditEntry & EnterpriseAuditEntryData & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'PrivateRepositoryForkingDisableAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The HTTP path for this enterprise. */
-  enterpriseResourcePath?: Maybe<Scalars['URI']>;
-  /** The slug of the enterprise. */
-  enterpriseSlug?: Maybe<Scalars['String']>;
-  /** The HTTP URL for this enterprise. */
-  enterpriseUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type PrivateRepositoryForkingDisableAuditEntry = AuditEntry &
+  EnterpriseAuditEntryData &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'PrivateRepositoryForkingDisableAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The HTTP path for this enterprise. */
+    enterpriseResourcePath?: Maybe<Scalars['URI']>;
+    /** The slug of the enterprise. */
+    enterpriseSlug?: Maybe<Scalars['String']>;
+    /** The HTTP URL for this enterprise. */
+    enterpriseUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a private_repository_forking.enable event. */
-export type PrivateRepositoryForkingEnableAuditEntry = AuditEntry & EnterpriseAuditEntryData & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'PrivateRepositoryForkingEnableAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The HTTP path for this enterprise. */
-  enterpriseResourcePath?: Maybe<Scalars['URI']>;
-  /** The slug of the enterprise. */
-  enterpriseSlug?: Maybe<Scalars['String']>;
-  /** The HTTP URL for this enterprise. */
-  enterpriseUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type PrivateRepositoryForkingEnableAuditEntry = AuditEntry &
+  EnterpriseAuditEntryData &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'PrivateRepositoryForkingEnableAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The HTTP path for this enterprise. */
+    enterpriseResourcePath?: Maybe<Scalars['URI']>;
+    /** The slug of the enterprise. */
+    enterpriseSlug?: Maybe<Scalars['String']>;
+    /** The HTTP URL for this enterprise. */
+    enterpriseUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** A curatable list of repositories relating to a repository owner, which defaults to showing the most popular repositories they own. */
 export type ProfileItemShowcase = {
@@ -14127,7 +14055,6 @@ export type ProfileItemShowcase = {
   /** The repositories and gists in the showcase. If the profile owner has any pinned items, those will be returned. Otherwise, the profile owner's popular repositories will be returned. */
   items: PinnableItemConnection;
 };
-
 
 /** A curatable list of repositories relating to a repository owner, which defaults to showing the most popular repositories they own. */
 export type ProfileItemShowcaseItemsArgs = {
@@ -14164,12 +14091,10 @@ export type ProfileOwner = {
   websiteUrl?: Maybe<Scalars['URI']>;
 };
 
-
 /** Represents any entity on GitHub that has a profile page. */
 export type ProfileOwnerAnyPinnableItemsArgs = {
   type?: InputMaybe<PinnableItemType>;
 };
-
 
 /** Represents any entity on GitHub that has a profile page. */
 export type ProfileOwnerPinnableItemsArgs = {
@@ -14179,7 +14104,6 @@ export type ProfileOwnerPinnableItemsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   types?: InputMaybe<Array<PinnableItemType>>;
 };
-
 
 /** Represents any entity on GitHub that has a profile page. */
 export type ProfileOwnerPinnedItemsArgs = {
@@ -14191,47 +14115,48 @@ export type ProfileOwnerPinnedItemsArgs = {
 };
 
 /** Projects manage issues, pull requests and notes within a project owner. */
-export type Project = Closable & Node & Updatable & {
-  __typename?: 'Project';
-  /** The project's description body. */
-  body?: Maybe<Scalars['String']>;
-  /** The projects description body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** `true` if the object is closed (definition of closed may depend on type) */
-  closed: Scalars['Boolean'];
-  /** Identifies the date and time when the object was closed. */
-  closedAt?: Maybe<Scalars['DateTime']>;
-  /** List of columns in the project */
-  columns: ProjectColumnConnection;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The actor who originally created the project. */
-  creator?: Maybe<Actor>;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-  /** The project's name. */
-  name: Scalars['String'];
-  /** The project's number. */
-  number: Scalars['Int'];
-  /** The project's owner. Currently limited to repositories, organizations, and users. */
-  owner: ProjectOwner;
-  /** List of pending cards in this project */
-  pendingCards: ProjectCardConnection;
-  /** Project progress details. */
-  progress: ProjectProgress;
-  /** The HTTP path for this project */
-  resourcePath: Scalars['URI'];
-  /** Whether the project is open or closed. */
-  state: ProjectState;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this project */
-  url: Scalars['URI'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-};
-
+export type Project = Closable &
+  Node &
+  Updatable & {
+    __typename?: 'Project';
+    /** The project's description body. */
+    body?: Maybe<Scalars['String']>;
+    /** The projects description body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** `true` if the object is closed (definition of closed may depend on type) */
+    closed: Scalars['Boolean'];
+    /** Identifies the date and time when the object was closed. */
+    closedAt?: Maybe<Scalars['DateTime']>;
+    /** List of columns in the project */
+    columns: ProjectColumnConnection;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The actor who originally created the project. */
+    creator?: Maybe<Actor>;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    id: Scalars['ID'];
+    /** The project's name. */
+    name: Scalars['String'];
+    /** The project's number. */
+    number: Scalars['Int'];
+    /** The project's owner. Currently limited to repositories, organizations, and users. */
+    owner: ProjectOwner;
+    /** List of pending cards in this project */
+    pendingCards: ProjectCardConnection;
+    /** Project progress details. */
+    progress: ProjectProgress;
+    /** The HTTP path for this project */
+    resourcePath: Scalars['URI'];
+    /** Whether the project is open or closed. */
+    state: ProjectState;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this project */
+    url: Scalars['URI'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+  };
 
 /** Projects manage issues, pull requests and notes within a project owner. */
 export type ProjectColumnsArgs = {
@@ -14240,7 +14165,6 @@ export type ProjectColumnsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** Projects manage issues, pull requests and notes within a project owner. */
 export type ProjectPendingCardsArgs = {
@@ -14354,7 +14278,6 @@ export type ProjectColumn = Node & {
   url: Scalars['URI'];
 };
 
-
 /** A column inside a project. */
 export type ProjectColumnCardsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -14431,100 +14354,101 @@ export enum ProjectItemType {
 }
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
-export type ProjectNext = Closable & Node & Updatable & {
-  __typename?: 'ProjectNext';
-  /**
-   * Returns true if the project is closed.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  closed: Scalars['Boolean'];
-  /** Identifies the date and time when the object was closed. */
-  closedAt?: Maybe<Scalars['DateTime']>;
-  /**
-   * Identifies the date and time when the object was created.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  createdAt: Scalars['DateTime'];
-  /**
-   * The actor who originally created the project.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  creator?: Maybe<Actor>;
-  /**
-   * Identifies the primary key from the database.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  databaseId?: Maybe<Scalars['Int']>;
-  /**
-   * The project's description.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  description?: Maybe<Scalars['String']>;
-  /**
-   * List of fields in the project
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  fields: ProjectNextFieldConnection;
-  id: Scalars['ID'];
-  /**
-   * List of items in the project
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  items: ProjectNextItemConnection;
-  /**
-   * The project's number.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  number: Scalars['Int'];
-  /**
-   * The project's owner. Currently limited to organizations and users.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  owner: ProjectNextOwner;
-  /**
-   * Returns true if the project is public.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  public: Scalars['Boolean'];
-  /**
-   * The repositories the project is linked to.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  repositories: RepositoryConnection;
-  /**
-   * The HTTP path for this project
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  resourcePath: Scalars['URI'];
-  /**
-   * The project's short description.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  shortDescription?: Maybe<Scalars['String']>;
-  /**
-   * The project's name.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  title?: Maybe<Scalars['String']>;
-  /**
-   * Identifies the date and time when the object was last updated.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  updatedAt: Scalars['DateTime'];
-  /**
-   * The HTTP URL for this project
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  url: Scalars['URI'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /**
-   * List of views in the project
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  views: ProjectViewConnection;
-};
-
+export type ProjectNext = Closable &
+  Node &
+  Updatable & {
+    __typename?: 'ProjectNext';
+    /**
+     * Returns true if the project is closed.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    closed: Scalars['Boolean'];
+    /** Identifies the date and time when the object was closed. */
+    closedAt?: Maybe<Scalars['DateTime']>;
+    /**
+     * Identifies the date and time when the object was created.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    createdAt: Scalars['DateTime'];
+    /**
+     * The actor who originally created the project.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    creator?: Maybe<Actor>;
+    /**
+     * Identifies the primary key from the database.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    databaseId?: Maybe<Scalars['Int']>;
+    /**
+     * The project's description.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    description?: Maybe<Scalars['String']>;
+    /**
+     * List of fields in the project
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    fields: ProjectNextFieldConnection;
+    id: Scalars['ID'];
+    /**
+     * List of items in the project
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    items: ProjectNextItemConnection;
+    /**
+     * The project's number.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    number: Scalars['Int'];
+    /**
+     * The project's owner. Currently limited to organizations and users.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    owner: ProjectNextOwner;
+    /**
+     * Returns true if the project is public.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    public: Scalars['Boolean'];
+    /**
+     * The repositories the project is linked to.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    repositories: RepositoryConnection;
+    /**
+     * The HTTP path for this project
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    resourcePath: Scalars['URI'];
+    /**
+     * The project's short description.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    shortDescription?: Maybe<Scalars['String']>;
+    /**
+     * The project's name.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    title?: Maybe<Scalars['String']>;
+    /**
+     * Identifies the date and time when the object was last updated.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    updatedAt: Scalars['DateTime'];
+    /**
+     * The HTTP URL for this project
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    url: Scalars['URI'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /**
+     * List of views in the project
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    views: ProjectViewConnection;
+  };
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectNextFieldsArgs = {
@@ -14534,7 +14458,6 @@ export type ProjectNextFieldsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectNextItemsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -14543,7 +14466,6 @@ export type ProjectNextItemsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectNextRepositoriesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -14551,7 +14473,6 @@ export type ProjectNextRepositoriesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectNextViewsArgs = {
@@ -14584,45 +14505,46 @@ export type ProjectNextEdge = {
 };
 
 /** A field inside a project. */
-export type ProjectNextField = Node & ProjectNextFieldCommon & {
-  __typename?: 'ProjectNextField';
-  /**
-   * Identifies the date and time when the object was created.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  createdAt: Scalars['DateTime'];
-  /**
-   * The field's type.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  dataType: ProjectNextFieldType;
-  /**
-   * Identifies the primary key from the database.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  databaseId?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-  /**
-   * The project field's name.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  name: Scalars['String'];
-  /**
-   * The project that contains this field.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  project: ProjectNext;
-  /**
-   * The field's settings.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  settings?: Maybe<Scalars['String']>;
-  /**
-   * Identifies the date and time when the object was last updated.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  updatedAt: Scalars['DateTime'];
-};
+export type ProjectNextField = Node &
+  ProjectNextFieldCommon & {
+    __typename?: 'ProjectNextField';
+    /**
+     * Identifies the date and time when the object was created.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    createdAt: Scalars['DateTime'];
+    /**
+     * The field's type.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    dataType: ProjectNextFieldType;
+    /**
+     * Identifies the primary key from the database.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    databaseId?: Maybe<Scalars['Int']>;
+    id: Scalars['ID'];
+    /**
+     * The project field's name.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    name: Scalars['String'];
+    /**
+     * The project that contains this field.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    project: ProjectNext;
+    /**
+     * The field's settings.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    settings?: Maybe<Scalars['String']>;
+    /**
+     * Identifies the date and time when the object was last updated.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** Common fields across different field types */
 export type ProjectNextFieldCommon = {
@@ -14817,7 +14739,6 @@ export type ProjectNextItem = Node & {
   updatedAt: Scalars['DateTime'];
 };
 
-
 /** An item within a new Project. */
 export type ProjectNextItemFieldValuesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -14953,12 +14874,10 @@ export type ProjectNextOwner = {
   projectsNext: ProjectNextConnection;
 };
 
-
 /** Represents an owner of a project (beta). */
 export type ProjectNextOwnerProjectNextArgs = {
   number: Scalars['Int'];
 };
-
 
 /** Represents an owner of a project (beta). */
 export type ProjectNextOwnerProjectsNextArgs = {
@@ -15003,12 +14922,10 @@ export type ProjectOwner = {
   viewerCanCreateProjects: Scalars['Boolean'];
 };
 
-
 /** Represents an owner of a Project. */
 export type ProjectOwnerProjectArgs = {
   number: Scalars['Int'];
 };
-
 
 /** Represents an owner of a Project. */
 export type ProjectOwnerProjectsArgs = {
@@ -15061,61 +14978,61 @@ export enum ProjectTemplate {
 }
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
-export type ProjectV2 = Closable & Node & Updatable & {
-  __typename?: 'ProjectV2';
-  /** Returns true if the project is closed. */
-  closed: Scalars['Boolean'];
-  /** Identifies the date and time when the object was closed. */
-  closedAt?: Maybe<Scalars['DateTime']>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The actor who originally created the project. */
-  creator?: Maybe<Actor>;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** A field of the project */
-  field?: Maybe<ProjectV2FieldConfiguration>;
-  /** List of fields and their constraints in the project */
-  fields: ProjectV2FieldConfigurationConnection;
-  id: Scalars['ID'];
-  /** List of items in the project */
-  items: ProjectV2ItemConnection;
-  /** The project's number. */
-  number: Scalars['Int'];
-  /** The project's owner. Currently limited to organizations and users. */
-  owner: ProjectV2Owner;
-  /** Returns true if the project is public. */
-  public: Scalars['Boolean'];
-  /** The project's readme. */
-  readme?: Maybe<Scalars['String']>;
-  /** The repositories the project is linked to. */
-  repositories: RepositoryConnection;
-  /** The HTTP path for this project */
-  resourcePath: Scalars['URI'];
-  /** The project's short description. */
-  shortDescription?: Maybe<Scalars['String']>;
-  /** The teams the project is linked to. */
-  teams: TeamConnection;
-  /** The project's name. */
-  title: Scalars['String'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this project */
-  url: Scalars['URI'];
-  /** A view of the project */
-  view?: Maybe<ProjectV2View>;
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** List of views in the project */
-  views: ProjectV2ViewConnection;
-};
-
+export type ProjectV2 = Closable &
+  Node &
+  Updatable & {
+    __typename?: 'ProjectV2';
+    /** Returns true if the project is closed. */
+    closed: Scalars['Boolean'];
+    /** Identifies the date and time when the object was closed. */
+    closedAt?: Maybe<Scalars['DateTime']>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The actor who originally created the project. */
+    creator?: Maybe<Actor>;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** A field of the project */
+    field?: Maybe<ProjectV2FieldConfiguration>;
+    /** List of fields and their constraints in the project */
+    fields: ProjectV2FieldConfigurationConnection;
+    id: Scalars['ID'];
+    /** List of items in the project */
+    items: ProjectV2ItemConnection;
+    /** The project's number. */
+    number: Scalars['Int'];
+    /** The project's owner. Currently limited to organizations and users. */
+    owner: ProjectV2Owner;
+    /** Returns true if the project is public. */
+    public: Scalars['Boolean'];
+    /** The project's readme. */
+    readme?: Maybe<Scalars['String']>;
+    /** The repositories the project is linked to. */
+    repositories: RepositoryConnection;
+    /** The HTTP path for this project */
+    resourcePath: Scalars['URI'];
+    /** The project's short description. */
+    shortDescription?: Maybe<Scalars['String']>;
+    /** The teams the project is linked to. */
+    teams: TeamConnection;
+    /** The project's name. */
+    title: Scalars['String'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this project */
+    url: Scalars['URI'];
+    /** A view of the project */
+    view?: Maybe<ProjectV2View>;
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** List of views in the project */
+    views: ProjectV2ViewConnection;
+  };
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectV2FieldArgs = {
   name: Scalars['String'];
 };
-
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectV2FieldsArgs = {
@@ -15126,7 +15043,6 @@ export type ProjectV2FieldsArgs = {
   orderBy?: InputMaybe<ProjectV2FieldOrder>;
 };
 
-
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectV2ItemsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -15135,7 +15051,6 @@ export type ProjectV2ItemsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ProjectV2ItemOrder>;
 };
-
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectV2RepositoriesArgs = {
@@ -15146,7 +15061,6 @@ export type ProjectV2RepositoriesArgs = {
   orderBy?: InputMaybe<RepositoryOrder>;
 };
 
-
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectV2TeamsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -15156,12 +15070,10 @@ export type ProjectV2TeamsArgs = {
   orderBy?: InputMaybe<TeamOrder>;
 };
 
-
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectV2ViewArgs = {
   number: Scalars['Int'];
 };
-
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type ProjectV2ViewsArgs = {
@@ -15195,22 +15107,23 @@ export type ProjectV2Edge = {
 };
 
 /** A field inside a project. */
-export type ProjectV2Field = Node & ProjectV2FieldCommon & {
-  __typename?: 'ProjectV2Field';
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The field's type. */
-  dataType: ProjectV2FieldType;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-  /** The project field's name. */
-  name: Scalars['String'];
-  /** The project that contains this field. */
-  project: ProjectV2;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-};
+export type ProjectV2Field = Node &
+  ProjectV2FieldCommon & {
+    __typename?: 'ProjectV2Field';
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The field's type. */
+    dataType: ProjectV2FieldType;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    id: Scalars['ID'];
+    /** The project field's name. */
+    name: Scalars['String'];
+    /** The project that contains this field. */
+    project: ProjectV2;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** Common fields across different project field types */
 export type ProjectV2FieldCommon = {
@@ -15230,7 +15143,10 @@ export type ProjectV2FieldCommon = {
 };
 
 /** Configurations for project fields. */
-export type ProjectV2FieldConfiguration = ProjectV2Field | ProjectV2IterationField | ProjectV2SingleSelectField;
+export type ProjectV2FieldConfiguration =
+  | ProjectV2Field
+  | ProjectV2IterationField
+  | ProjectV2SingleSelectField;
 
 /** The connection type for ProjectV2FieldConfiguration. */
 export type ProjectV2FieldConfigurationConnection = {
@@ -15372,12 +15288,10 @@ export type ProjectV2Item = Node & {
   updatedAt: Scalars['DateTime'];
 };
 
-
 /** An item within a Project. */
 export type ProjectV2ItemFieldValueByNameArgs = {
   name: Scalars['String'];
 };
-
 
 /** An item within a Project. */
 export type ProjectV2ItemFieldValuesArgs = {
@@ -15414,52 +15328,54 @@ export type ProjectV2ItemEdge = {
 };
 
 /** The value of a date field in a Project item. */
-export type ProjectV2ItemFieldDateValue = Node & ProjectV2ItemFieldValueCommon & {
-  __typename?: 'ProjectV2ItemFieldDateValue';
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The actor who created the item. */
-  creator?: Maybe<Actor>;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** Date value for the field */
-  date?: Maybe<Scalars['Date']>;
-  /** The project field that contains this value. */
-  field: ProjectV2FieldConfiguration;
-  id: Scalars['ID'];
-  /** The project item that contains this value. */
-  item: ProjectV2Item;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-};
+export type ProjectV2ItemFieldDateValue = Node &
+  ProjectV2ItemFieldValueCommon & {
+    __typename?: 'ProjectV2ItemFieldDateValue';
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The actor who created the item. */
+    creator?: Maybe<Actor>;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** Date value for the field */
+    date?: Maybe<Scalars['Date']>;
+    /** The project field that contains this value. */
+    field: ProjectV2FieldConfiguration;
+    id: Scalars['ID'];
+    /** The project item that contains this value. */
+    item: ProjectV2Item;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** The value of an iteration field in a Project item. */
-export type ProjectV2ItemFieldIterationValue = Node & ProjectV2ItemFieldValueCommon & {
-  __typename?: 'ProjectV2ItemFieldIterationValue';
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The actor who created the item. */
-  creator?: Maybe<Actor>;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The duration of the iteration in days. */
-  duration: Scalars['Int'];
-  /** The project field that contains this value. */
-  field: ProjectV2FieldConfiguration;
-  id: Scalars['ID'];
-  /** The project item that contains this value. */
-  item: ProjectV2Item;
-  /** The ID of the iteration. */
-  iterationId: Scalars['String'];
-  /** The start date of the iteration. */
-  startDate: Scalars['Date'];
-  /** The title of the iteration. */
-  title: Scalars['String'];
-  /** The title of the iteration, with HTML. */
-  titleHTML: Scalars['String'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-};
+export type ProjectV2ItemFieldIterationValue = Node &
+  ProjectV2ItemFieldValueCommon & {
+    __typename?: 'ProjectV2ItemFieldIterationValue';
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The actor who created the item. */
+    creator?: Maybe<Actor>;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The duration of the iteration in days. */
+    duration: Scalars['Int'];
+    /** The project field that contains this value. */
+    field: ProjectV2FieldConfiguration;
+    id: Scalars['ID'];
+    /** The project item that contains this value. */
+    item: ProjectV2Item;
+    /** The ID of the iteration. */
+    iterationId: Scalars['String'];
+    /** The start date of the iteration. */
+    startDate: Scalars['Date'];
+    /** The title of the iteration. */
+    title: Scalars['String'];
+    /** The title of the iteration, with HTML. */
+    titleHTML: Scalars['String'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** The value of the labels field in a Project item. */
 export type ProjectV2ItemFieldLabelValue = {
@@ -15469,7 +15385,6 @@ export type ProjectV2ItemFieldLabelValue = {
   /** Labels value of a field */
   labels?: Maybe<LabelConnection>;
 };
-
 
 /** The value of the labels field in a Project item. */
 export type ProjectV2ItemFieldLabelValueLabelsArgs = {
@@ -15489,24 +15404,25 @@ export type ProjectV2ItemFieldMilestoneValue = {
 };
 
 /** The value of a number field in a Project item. */
-export type ProjectV2ItemFieldNumberValue = Node & ProjectV2ItemFieldValueCommon & {
-  __typename?: 'ProjectV2ItemFieldNumberValue';
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The actor who created the item. */
-  creator?: Maybe<Actor>;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The project field that contains this value. */
-  field: ProjectV2FieldConfiguration;
-  id: Scalars['ID'];
-  /** The project item that contains this value. */
-  item: ProjectV2Item;
-  /** Number as a float(8) */
-  number?: Maybe<Scalars['Float']>;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-};
+export type ProjectV2ItemFieldNumberValue = Node &
+  ProjectV2ItemFieldValueCommon & {
+    __typename?: 'ProjectV2ItemFieldNumberValue';
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The actor who created the item. */
+    creator?: Maybe<Actor>;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The project field that contains this value. */
+    field: ProjectV2FieldConfiguration;
+    id: Scalars['ID'];
+    /** The project item that contains this value. */
+    item: ProjectV2Item;
+    /** Number as a float(8) */
+    number?: Maybe<Scalars['Float']>;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** The value of a pull request field in a Project item. */
 export type ProjectV2ItemFieldPullRequestValue = {
@@ -15516,7 +15432,6 @@ export type ProjectV2ItemFieldPullRequestValue = {
   /** The pull requests for this field */
   pullRequests?: Maybe<PullRequestConnection>;
 };
-
 
 /** The value of a pull request field in a Project item. */
 export type ProjectV2ItemFieldPullRequestValuePullRequestsArgs = {
@@ -15545,7 +15460,6 @@ export type ProjectV2ItemFieldReviewerValue = {
   reviewers?: Maybe<RequestedReviewerConnection>;
 };
 
-
 /** The value of a reviewers field in a Project item. */
 export type ProjectV2ItemFieldReviewerValueReviewersArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -15555,48 +15469,50 @@ export type ProjectV2ItemFieldReviewerValueReviewersArgs = {
 };
 
 /** The value of a single select field in a Project item. */
-export type ProjectV2ItemFieldSingleSelectValue = Node & ProjectV2ItemFieldValueCommon & {
-  __typename?: 'ProjectV2ItemFieldSingleSelectValue';
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The actor who created the item. */
-  creator?: Maybe<Actor>;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The project field that contains this value. */
-  field: ProjectV2FieldConfiguration;
-  id: Scalars['ID'];
-  /** The project item that contains this value. */
-  item: ProjectV2Item;
-  /** The name of the selected single select option. */
-  name?: Maybe<Scalars['String']>;
-  /** The html name of the selected single select option. */
-  nameHTML?: Maybe<Scalars['String']>;
-  /** The id of the selected single select option. */
-  optionId?: Maybe<Scalars['String']>;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-};
+export type ProjectV2ItemFieldSingleSelectValue = Node &
+  ProjectV2ItemFieldValueCommon & {
+    __typename?: 'ProjectV2ItemFieldSingleSelectValue';
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The actor who created the item. */
+    creator?: Maybe<Actor>;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The project field that contains this value. */
+    field: ProjectV2FieldConfiguration;
+    id: Scalars['ID'];
+    /** The project item that contains this value. */
+    item: ProjectV2Item;
+    /** The name of the selected single select option. */
+    name?: Maybe<Scalars['String']>;
+    /** The html name of the selected single select option. */
+    nameHTML?: Maybe<Scalars['String']>;
+    /** The id of the selected single select option. */
+    optionId?: Maybe<Scalars['String']>;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** The value of a text field in a Project item. */
-export type ProjectV2ItemFieldTextValue = Node & ProjectV2ItemFieldValueCommon & {
-  __typename?: 'ProjectV2ItemFieldTextValue';
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The actor who created the item. */
-  creator?: Maybe<Actor>;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The project field that contains this value. */
-  field: ProjectV2FieldConfiguration;
-  id: Scalars['ID'];
-  /** The project item that contains this value. */
-  item: ProjectV2Item;
-  /** Text value of a field */
-  text?: Maybe<Scalars['String']>;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-};
+export type ProjectV2ItemFieldTextValue = Node &
+  ProjectV2ItemFieldValueCommon & {
+    __typename?: 'ProjectV2ItemFieldTextValue';
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The actor who created the item. */
+    creator?: Maybe<Actor>;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The project field that contains this value. */
+    field: ProjectV2FieldConfiguration;
+    id: Scalars['ID'];
+    /** The project item that contains this value. */
+    item: ProjectV2Item;
+    /** Text value of a field */
+    text?: Maybe<Scalars['String']>;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** The value of a user field in a Project item. */
 export type ProjectV2ItemFieldUserValue = {
@@ -15607,7 +15523,6 @@ export type ProjectV2ItemFieldUserValue = {
   users?: Maybe<UserConnection>;
 };
 
-
 /** The value of a user field in a Project item. */
 export type ProjectV2ItemFieldUserValueUsersArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -15617,7 +15532,18 @@ export type ProjectV2ItemFieldUserValueUsersArgs = {
 };
 
 /** Project field values */
-export type ProjectV2ItemFieldValue = ProjectV2ItemFieldDateValue | ProjectV2ItemFieldIterationValue | ProjectV2ItemFieldLabelValue | ProjectV2ItemFieldMilestoneValue | ProjectV2ItemFieldNumberValue | ProjectV2ItemFieldPullRequestValue | ProjectV2ItemFieldRepositoryValue | ProjectV2ItemFieldReviewerValue | ProjectV2ItemFieldSingleSelectValue | ProjectV2ItemFieldTextValue | ProjectV2ItemFieldUserValue;
+export type ProjectV2ItemFieldValue =
+  | ProjectV2ItemFieldDateValue
+  | ProjectV2ItemFieldIterationValue
+  | ProjectV2ItemFieldLabelValue
+  | ProjectV2ItemFieldMilestoneValue
+  | ProjectV2ItemFieldNumberValue
+  | ProjectV2ItemFieldPullRequestValue
+  | ProjectV2ItemFieldRepositoryValue
+  | ProjectV2ItemFieldReviewerValue
+  | ProjectV2ItemFieldSingleSelectValue
+  | ProjectV2ItemFieldTextValue
+  | ProjectV2ItemFieldUserValue;
 
 /** Common fields across different project field value types */
 export type ProjectV2ItemFieldValueCommon = {
@@ -15699,24 +15625,25 @@ export enum ProjectV2ItemType {
 }
 
 /** An iteration field inside a project. */
-export type ProjectV2IterationField = Node & ProjectV2FieldCommon & {
-  __typename?: 'ProjectV2IterationField';
-  /** Iteration configuration settings */
-  configuration: ProjectV2IterationFieldConfiguration;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The field's type. */
-  dataType: ProjectV2FieldType;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-  /** The project field's name. */
-  name: Scalars['String'];
-  /** The project that contains this field. */
-  project: ProjectV2;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-};
+export type ProjectV2IterationField = Node &
+  ProjectV2FieldCommon & {
+    __typename?: 'ProjectV2IterationField';
+    /** Iteration configuration settings */
+    configuration: ProjectV2IterationFieldConfiguration;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The field's type. */
+    dataType: ProjectV2FieldType;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    id: Scalars['ID'];
+    /** The project field's name. */
+    name: Scalars['String'];
+    /** The project that contains this field. */
+    project: ProjectV2;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** Iteration field configuration for a project. */
 export type ProjectV2IterationFieldConfiguration = {
@@ -15775,12 +15702,10 @@ export type ProjectV2Owner = {
   projectsV2: ProjectV2Connection;
 };
 
-
 /** Represents an owner of a project (beta). */
 export type ProjectV2OwnerProjectV2Args = {
   number: Scalars['Int'];
 };
-
 
 /** Represents an owner of a project (beta). */
 export type ProjectV2OwnerProjectsV2Args = {
@@ -15798,7 +15723,6 @@ export type ProjectV2Recent = {
   recentProjects: ProjectV2Connection;
 };
 
-
 /** Recent projects for the owner. */
 export type ProjectV2RecentRecentProjectsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -15808,24 +15732,25 @@ export type ProjectV2RecentRecentProjectsArgs = {
 };
 
 /** A single select field inside a project. */
-export type ProjectV2SingleSelectField = Node & ProjectV2FieldCommon & {
-  __typename?: 'ProjectV2SingleSelectField';
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The field's type. */
-  dataType: ProjectV2FieldType;
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-  /** The project field's name. */
-  name: Scalars['String'];
-  /** Options for the single select field */
-  options: Array<ProjectV2SingleSelectFieldOption>;
-  /** The project that contains this field. */
-  project: ProjectV2;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-};
+export type ProjectV2SingleSelectField = Node &
+  ProjectV2FieldCommon & {
+    __typename?: 'ProjectV2SingleSelectField';
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The field's type. */
+    dataType: ProjectV2FieldType;
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    id: Scalars['ID'];
+    /** The project field's name. */
+    name: Scalars['String'];
+    /** Options for the single select field */
+    options: Array<ProjectV2SingleSelectFieldOption>;
+    /** The project that contains this field. */
+    project: ProjectV2;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+  };
 
 /** Single select field option for a configuration for a project. */
 export type ProjectV2SingleSelectFieldOption = {
@@ -15958,7 +15883,6 @@ export type ProjectV2View = Node & {
   visibleFields?: Maybe<ProjectV2FieldConnection>;
 };
 
-
 /** A view within a ProjectV2. */
 export type ProjectV2ViewFieldsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -15967,7 +15891,6 @@ export type ProjectV2ViewFieldsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ProjectV2FieldOrder>;
 };
-
 
 /** A view within a ProjectV2. */
 export type ProjectV2ViewGroupByArgs = {
@@ -15978,7 +15901,6 @@ export type ProjectV2ViewGroupByArgs = {
   orderBy?: InputMaybe<ProjectV2FieldOrder>;
 };
 
-
 /** A view within a ProjectV2. */
 export type ProjectV2ViewGroupByFieldsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -15988,7 +15910,6 @@ export type ProjectV2ViewGroupByFieldsArgs = {
   orderBy?: InputMaybe<ProjectV2FieldOrder>;
 };
 
-
 /** A view within a ProjectV2. */
 export type ProjectV2ViewSortByArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -15997,7 +15918,6 @@ export type ProjectV2ViewSortByArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A view within a ProjectV2. */
 export type ProjectV2ViewSortByFieldsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16005,7 +15925,6 @@ export type ProjectV2ViewSortByFieldsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A view within a ProjectV2. */
 export type ProjectV2ViewVerticalGroupByArgs = {
@@ -16016,7 +15935,6 @@ export type ProjectV2ViewVerticalGroupByArgs = {
   orderBy?: InputMaybe<ProjectV2FieldOrder>;
 };
 
-
 /** A view within a ProjectV2. */
 export type ProjectV2ViewVerticalGroupByFieldsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16025,7 +15943,6 @@ export type ProjectV2ViewVerticalGroupByFieldsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ProjectV2FieldOrder>;
 };
-
 
 /** A view within a ProjectV2. */
 export type ProjectV2ViewVisibleFieldsArgs = {
@@ -16238,217 +16155,229 @@ export type PublishSponsorsTierPayload = {
 };
 
 /** A repository pull request. */
-export type PullRequest = Assignable & Closable & Comment & Labelable & Lockable & Node & ProjectNextOwner & ProjectV2Owner & Reactable & RepositoryNode & Subscribable & UniformResourceLocatable & Updatable & UpdatableComment & {
-  __typename?: 'PullRequest';
-  /** Reason that the conversation was locked. */
-  activeLockReason?: Maybe<LockReason>;
-  /** The number of additions in this pull request. */
-  additions: Scalars['Int'];
-  /** A list of Users assigned to this object. */
-  assignees: UserConnection;
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the subject of the comment. */
-  authorAssociation: CommentAuthorAssociation;
-  /** Returns the auto-merge request object if one exists for this pull request. */
-  autoMergeRequest?: Maybe<AutoMergeRequest>;
-  /** Identifies the base Ref associated with the pull request. */
-  baseRef?: Maybe<Ref>;
-  /** Identifies the name of the base Ref associated with the pull request, even if the ref has been deleted. */
-  baseRefName: Scalars['String'];
-  /** Identifies the oid of the base ref associated with the pull request, even if the ref has been deleted. */
-  baseRefOid: Scalars['GitObjectID'];
-  /** The repository associated with this pull request's base Ref. */
-  baseRepository?: Maybe<Repository>;
-  /** The body as Markdown. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The body rendered to text. */
-  bodyText: Scalars['String'];
-  /** The number of changed files in this pull request. */
-  changedFiles: Scalars['Int'];
-  /** The HTTP path for the checks of this pull request. */
-  checksResourcePath: Scalars['URI'];
-  /** The HTTP URL for the checks of this pull request. */
-  checksUrl: Scalars['URI'];
-  /** `true` if the pull request is closed */
-  closed: Scalars['Boolean'];
-  /** Identifies the date and time when the object was closed. */
-  closedAt?: Maybe<Scalars['DateTime']>;
-  /** List of issues that were may be closed by this pull request */
-  closingIssuesReferences?: Maybe<IssueConnection>;
-  /** A list of comments associated with the pull request. */
-  comments: IssueCommentConnection;
-  /** A list of commits present in this pull request's head branch not present in the base branch. */
-  commits: PullRequestCommitConnection;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The number of deletions in this pull request. */
-  deletions: Scalars['Int'];
-  /** The actor who edited this pull request's body. */
-  editor?: Maybe<Actor>;
-  /** Lists the files changed within this pull request. */
-  files?: Maybe<PullRequestChangedFileConnection>;
-  /** Identifies the head Ref associated with the pull request. */
-  headRef?: Maybe<Ref>;
-  /** Identifies the name of the head Ref associated with the pull request, even if the ref has been deleted. */
-  headRefName: Scalars['String'];
-  /** Identifies the oid of the head ref associated with the pull request, even if the ref has been deleted. */
-  headRefOid: Scalars['GitObjectID'];
-  /** The repository associated with this pull request's head Ref. */
-  headRepository?: Maybe<Repository>;
-  /** The owner of the repository associated with this pull request's head Ref. */
-  headRepositoryOwner?: Maybe<RepositoryOwner>;
-  /** The hovercard information for this issue */
-  hovercard: Hovercard;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** The head and base repositories are different. */
-  isCrossRepository: Scalars['Boolean'];
-  /** Identifies if the pull request is a draft. */
-  isDraft: Scalars['Boolean'];
-  /** Is this pull request read by the viewer */
-  isReadByViewer?: Maybe<Scalars['Boolean']>;
-  /** A list of labels associated with the object. */
-  labels?: Maybe<LabelConnection>;
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of latest reviews per user associated with the pull request. */
-  latestOpinionatedReviews?: Maybe<PullRequestReviewConnection>;
-  /** A list of latest reviews per user associated with the pull request that are not also pending review. */
-  latestReviews?: Maybe<PullRequestReviewConnection>;
-  /** `true` if the pull request is locked */
-  locked: Scalars['Boolean'];
-  /** Indicates whether maintainers can modify the pull request. */
-  maintainerCanModify: Scalars['Boolean'];
-  /** The commit that was created when this pull request was merged. */
-  mergeCommit?: Maybe<Commit>;
-  /** Whether or not the pull request can be merged based on the existence of merge conflicts. */
-  mergeable: MergeableState;
-  /** Whether or not the pull request was merged. */
-  merged: Scalars['Boolean'];
-  /** The date and time that the pull request was merged. */
-  mergedAt?: Maybe<Scalars['DateTime']>;
-  /** The actor who merged the pull request. */
-  mergedBy?: Maybe<Actor>;
-  /** Identifies the milestone associated with the pull request. */
-  milestone?: Maybe<Milestone>;
-  /** Identifies the pull request number. */
-  number: Scalars['Int'];
-  /** A list of Users that are participating in the Pull Request conversation. */
-  participants: UserConnection;
-  /** The permalink to the pull request. */
-  permalink: Scalars['URI'];
-  /** The commit that GitHub automatically generated to test if this pull request could be merged. This field will not return a value if the pull request is merged, or if the test merge commit is still being generated. See the `mergeable` field for more details on the mergeability of the pull request. */
-  potentialMergeCommit?: Maybe<Commit>;
-  /** List of project cards associated with this pull request. */
-  projectCards: ProjectCardConnection;
-  /** List of project items associated with this pull request. */
-  projectItems: ProjectV2ItemConnection;
-  /**
-   * Find a project by project (beta) number.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectNext?: Maybe<ProjectNext>;
-  /**
-   * List of project (beta) items associated with this pull request.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectNextItems: ProjectNextItemConnection;
-  /** Find a project by number. */
-  projectV2?: Maybe<ProjectV2>;
-  /**
-   * A list of projects (beta) under the owner.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectsNext: ProjectNextConnection;
-  /** A list of projects under the owner. */
-  projectsV2: ProjectV2Connection;
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** The repository associated with this node. */
-  repository: Repository;
-  /** The HTTP path for this pull request. */
-  resourcePath: Scalars['URI'];
-  /** The HTTP path for reverting this pull request. */
-  revertResourcePath: Scalars['URI'];
-  /** The HTTP URL for reverting this pull request. */
-  revertUrl: Scalars['URI'];
-  /** The current status of this pull request with respect to code review. */
-  reviewDecision?: Maybe<PullRequestReviewDecision>;
-  /** A list of review requests associated with the pull request. */
-  reviewRequests?: Maybe<ReviewRequestConnection>;
-  /** The list of all review threads for this pull request. */
-  reviewThreads: PullRequestReviewThreadConnection;
-  /** A list of reviews associated with the pull request. */
-  reviews?: Maybe<PullRequestReviewConnection>;
-  /** Identifies the state of the pull request. */
-  state: PullRequestState;
-  /** A list of reviewer suggestions based on commit history and past review comments. */
-  suggestedReviewers: Array<Maybe<SuggestedReviewer>>;
-  /**
-   * A list of events, comments, commits, etc. associated with the pull request.
-   * @deprecated `timeline` will be removed Use PullRequest.timelineItems instead. Removal on 2020-10-01 UTC.
-   */
-  timeline: PullRequestTimelineConnection;
-  /** A list of events, comments, commits, etc. associated with the pull request. */
-  timelineItems: PullRequestTimelineItemsConnection;
-  /** Identifies the pull request title. */
-  title: Scalars['String'];
-  /** Identifies the pull request title rendered to HTML. */
-  titleHTML: Scalars['HTML'];
-  /** Returns a count of how many comments this pull request has received. */
-  totalCommentsCount?: Maybe<Scalars['Int']>;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this pull request. */
-  url: Scalars['URI'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Whether or not the viewer can apply suggestion. */
-  viewerCanApplySuggestion: Scalars['Boolean'];
-  /** Check if the viewer can restore the deleted head ref. */
-  viewerCanDeleteHeadRef: Scalars['Boolean'];
-  /** Whether or not the viewer can disable auto-merge */
-  viewerCanDisableAutoMerge: Scalars['Boolean'];
-  /** Can the viewer edit files within this pull request. */
-  viewerCanEditFiles: Scalars['Boolean'];
-  /** Whether or not the viewer can enable auto-merge */
-  viewerCanEnableAutoMerge: Scalars['Boolean'];
-  /** Indicates whether the viewer can bypass branch protections and merge the pull request immediately */
-  viewerCanMergeAsAdmin: Scalars['Boolean'];
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-  /** Check if the viewer is able to change their subscription status for the repository. */
-  viewerCanSubscribe: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Reasons why the current viewer can not update this comment. */
-  viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-  /** The latest review given from the viewer. */
-  viewerLatestReview?: Maybe<PullRequestReview>;
-  /** The person who has requested the viewer for review on this pull request. */
-  viewerLatestReviewRequest?: Maybe<ReviewRequest>;
-  /** The merge body text for the viewer and method. */
-  viewerMergeBodyText: Scalars['String'];
-  /** The merge headline text for the viewer and method. */
-  viewerMergeHeadlineText: Scalars['String'];
-  /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
-  viewerSubscription?: Maybe<SubscriptionState>;
-};
-
+export type PullRequest = Assignable &
+  Closable &
+  Comment &
+  Labelable &
+  Lockable &
+  Node &
+  ProjectNextOwner &
+  ProjectV2Owner &
+  Reactable &
+  RepositoryNode &
+  Subscribable &
+  UniformResourceLocatable &
+  Updatable &
+  UpdatableComment & {
+    __typename?: 'PullRequest';
+    /** Reason that the conversation was locked. */
+    activeLockReason?: Maybe<LockReason>;
+    /** The number of additions in this pull request. */
+    additions: Scalars['Int'];
+    /** A list of Users assigned to this object. */
+    assignees: UserConnection;
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the subject of the comment. */
+    authorAssociation: CommentAuthorAssociation;
+    /** Returns the auto-merge request object if one exists for this pull request. */
+    autoMergeRequest?: Maybe<AutoMergeRequest>;
+    /** Identifies the base Ref associated with the pull request. */
+    baseRef?: Maybe<Ref>;
+    /** Identifies the name of the base Ref associated with the pull request, even if the ref has been deleted. */
+    baseRefName: Scalars['String'];
+    /** Identifies the oid of the base ref associated with the pull request, even if the ref has been deleted. */
+    baseRefOid: Scalars['GitObjectID'];
+    /** The repository associated with this pull request's base Ref. */
+    baseRepository?: Maybe<Repository>;
+    /** The body as Markdown. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The body rendered to text. */
+    bodyText: Scalars['String'];
+    /** The number of changed files in this pull request. */
+    changedFiles: Scalars['Int'];
+    /** The HTTP path for the checks of this pull request. */
+    checksResourcePath: Scalars['URI'];
+    /** The HTTP URL for the checks of this pull request. */
+    checksUrl: Scalars['URI'];
+    /** `true` if the pull request is closed */
+    closed: Scalars['Boolean'];
+    /** Identifies the date and time when the object was closed. */
+    closedAt?: Maybe<Scalars['DateTime']>;
+    /** List of issues that were may be closed by this pull request */
+    closingIssuesReferences?: Maybe<IssueConnection>;
+    /** A list of comments associated with the pull request. */
+    comments: IssueCommentConnection;
+    /** A list of commits present in this pull request's head branch not present in the base branch. */
+    commits: PullRequestCommitConnection;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The number of deletions in this pull request. */
+    deletions: Scalars['Int'];
+    /** The actor who edited this pull request's body. */
+    editor?: Maybe<Actor>;
+    /** Lists the files changed within this pull request. */
+    files?: Maybe<PullRequestChangedFileConnection>;
+    /** Identifies the head Ref associated with the pull request. */
+    headRef?: Maybe<Ref>;
+    /** Identifies the name of the head Ref associated with the pull request, even if the ref has been deleted. */
+    headRefName: Scalars['String'];
+    /** Identifies the oid of the head ref associated with the pull request, even if the ref has been deleted. */
+    headRefOid: Scalars['GitObjectID'];
+    /** The repository associated with this pull request's head Ref. */
+    headRepository?: Maybe<Repository>;
+    /** The owner of the repository associated with this pull request's head Ref. */
+    headRepositoryOwner?: Maybe<RepositoryOwner>;
+    /** The hovercard information for this issue */
+    hovercard: Hovercard;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** The head and base repositories are different. */
+    isCrossRepository: Scalars['Boolean'];
+    /** Identifies if the pull request is a draft. */
+    isDraft: Scalars['Boolean'];
+    /** Is this pull request read by the viewer */
+    isReadByViewer?: Maybe<Scalars['Boolean']>;
+    /** A list of labels associated with the object. */
+    labels?: Maybe<LabelConnection>;
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of latest reviews per user associated with the pull request. */
+    latestOpinionatedReviews?: Maybe<PullRequestReviewConnection>;
+    /** A list of latest reviews per user associated with the pull request that are not also pending review. */
+    latestReviews?: Maybe<PullRequestReviewConnection>;
+    /** `true` if the pull request is locked */
+    locked: Scalars['Boolean'];
+    /** Indicates whether maintainers can modify the pull request. */
+    maintainerCanModify: Scalars['Boolean'];
+    /** The commit that was created when this pull request was merged. */
+    mergeCommit?: Maybe<Commit>;
+    /** Whether or not the pull request can be merged based on the existence of merge conflicts. */
+    mergeable: MergeableState;
+    /** Whether or not the pull request was merged. */
+    merged: Scalars['Boolean'];
+    /** The date and time that the pull request was merged. */
+    mergedAt?: Maybe<Scalars['DateTime']>;
+    /** The actor who merged the pull request. */
+    mergedBy?: Maybe<Actor>;
+    /** Identifies the milestone associated with the pull request. */
+    milestone?: Maybe<Milestone>;
+    /** Identifies the pull request number. */
+    number: Scalars['Int'];
+    /** A list of Users that are participating in the Pull Request conversation. */
+    participants: UserConnection;
+    /** The permalink to the pull request. */
+    permalink: Scalars['URI'];
+    /** The commit that GitHub automatically generated to test if this pull request could be merged. This field will not return a value if the pull request is merged, or if the test merge commit is still being generated. See the `mergeable` field for more details on the mergeability of the pull request. */
+    potentialMergeCommit?: Maybe<Commit>;
+    /** List of project cards associated with this pull request. */
+    projectCards: ProjectCardConnection;
+    /** List of project items associated with this pull request. */
+    projectItems: ProjectV2ItemConnection;
+    /**
+     * Find a project by project (beta) number.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectNext?: Maybe<ProjectNext>;
+    /**
+     * List of project (beta) items associated with this pull request.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectNextItems: ProjectNextItemConnection;
+    /** Find a project by number. */
+    projectV2?: Maybe<ProjectV2>;
+    /**
+     * A list of projects (beta) under the owner.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectsNext: ProjectNextConnection;
+    /** A list of projects under the owner. */
+    projectsV2: ProjectV2Connection;
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** The repository associated with this node. */
+    repository: Repository;
+    /** The HTTP path for this pull request. */
+    resourcePath: Scalars['URI'];
+    /** The HTTP path for reverting this pull request. */
+    revertResourcePath: Scalars['URI'];
+    /** The HTTP URL for reverting this pull request. */
+    revertUrl: Scalars['URI'];
+    /** The current status of this pull request with respect to code review. */
+    reviewDecision?: Maybe<PullRequestReviewDecision>;
+    /** A list of review requests associated with the pull request. */
+    reviewRequests?: Maybe<ReviewRequestConnection>;
+    /** The list of all review threads for this pull request. */
+    reviewThreads: PullRequestReviewThreadConnection;
+    /** A list of reviews associated with the pull request. */
+    reviews?: Maybe<PullRequestReviewConnection>;
+    /** Identifies the state of the pull request. */
+    state: PullRequestState;
+    /** A list of reviewer suggestions based on commit history and past review comments. */
+    suggestedReviewers: Array<Maybe<SuggestedReviewer>>;
+    /**
+     * A list of events, comments, commits, etc. associated with the pull request.
+     * @deprecated `timeline` will be removed Use PullRequest.timelineItems instead. Removal on 2020-10-01 UTC.
+     */
+    timeline: PullRequestTimelineConnection;
+    /** A list of events, comments, commits, etc. associated with the pull request. */
+    timelineItems: PullRequestTimelineItemsConnection;
+    /** Identifies the pull request title. */
+    title: Scalars['String'];
+    /** Identifies the pull request title rendered to HTML. */
+    titleHTML: Scalars['HTML'];
+    /** Returns a count of how many comments this pull request has received. */
+    totalCommentsCount?: Maybe<Scalars['Int']>;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this pull request. */
+    url: Scalars['URI'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Whether or not the viewer can apply suggestion. */
+    viewerCanApplySuggestion: Scalars['Boolean'];
+    /** Check if the viewer can restore the deleted head ref. */
+    viewerCanDeleteHeadRef: Scalars['Boolean'];
+    /** Whether or not the viewer can disable auto-merge */
+    viewerCanDisableAutoMerge: Scalars['Boolean'];
+    /** Can the viewer edit files within this pull request. */
+    viewerCanEditFiles: Scalars['Boolean'];
+    /** Whether or not the viewer can enable auto-merge */
+    viewerCanEnableAutoMerge: Scalars['Boolean'];
+    /** Indicates whether the viewer can bypass branch protections and merge the pull request immediately */
+    viewerCanMergeAsAdmin: Scalars['Boolean'];
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+    /** Check if the viewer is able to change their subscription status for the repository. */
+    viewerCanSubscribe: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Reasons why the current viewer can not update this comment. */
+    viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+    /** The latest review given from the viewer. */
+    viewerLatestReview?: Maybe<PullRequestReview>;
+    /** The person who has requested the viewer for review on this pull request. */
+    viewerLatestReviewRequest?: Maybe<ReviewRequest>;
+    /** The merge body text for the viewer and method. */
+    viewerMergeBodyText: Scalars['String'];
+    /** The merge headline text for the viewer and method. */
+    viewerMergeHeadlineText: Scalars['String'];
+    /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
+    viewerSubscription?: Maybe<SubscriptionState>;
+  };
 
 /** A repository pull request. */
 export type PullRequestAssigneesArgs = {
@@ -16457,7 +16386,6 @@ export type PullRequestAssigneesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A repository pull request. */
 export type PullRequestClosingIssuesReferencesArgs = {
@@ -16469,7 +16397,6 @@ export type PullRequestClosingIssuesReferencesArgs = {
   userLinkedOnly?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestCommentsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16479,7 +16406,6 @@ export type PullRequestCommentsArgs = {
   orderBy?: InputMaybe<IssueCommentOrder>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestCommitsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16487,7 +16413,6 @@ export type PullRequestCommitsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A repository pull request. */
 export type PullRequestFilesArgs = {
@@ -16497,12 +16422,10 @@ export type PullRequestFilesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestHovercardArgs = {
   includeNotificationContexts?: InputMaybe<Scalars['Boolean']>;
 };
-
 
 /** A repository pull request. */
 export type PullRequestLabelsArgs = {
@@ -16513,7 +16436,6 @@ export type PullRequestLabelsArgs = {
   orderBy?: InputMaybe<LabelOrder>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestLatestOpinionatedReviewsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16523,7 +16445,6 @@ export type PullRequestLatestOpinionatedReviewsArgs = {
   writersOnly?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestLatestReviewsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16532,7 +16453,6 @@ export type PullRequestLatestReviewsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestParticipantsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16540,7 +16460,6 @@ export type PullRequestParticipantsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A repository pull request. */
 export type PullRequestProjectCardsArgs = {
@@ -16551,7 +16470,6 @@ export type PullRequestProjectCardsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestProjectItemsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16561,12 +16479,10 @@ export type PullRequestProjectItemsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestProjectNextArgs = {
   number: Scalars['Int'];
 };
-
 
 /** A repository pull request. */
 export type PullRequestProjectNextItemsArgs = {
@@ -16577,12 +16493,10 @@ export type PullRequestProjectNextItemsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestProjectV2Args = {
   number: Scalars['Int'];
 };
-
 
 /** A repository pull request. */
 export type PullRequestProjectsNextArgs = {
@@ -16594,7 +16508,6 @@ export type PullRequestProjectsNextArgs = {
   sortBy?: InputMaybe<ProjectNextOrderField>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestProjectsV2Args = {
   after?: InputMaybe<Scalars['String']>;
@@ -16604,7 +16517,6 @@ export type PullRequestProjectsV2Args = {
   orderBy?: InputMaybe<ProjectV2Order>;
   query?: InputMaybe<Scalars['String']>;
 };
-
 
 /** A repository pull request. */
 export type PullRequestReactionsArgs = {
@@ -16616,7 +16528,6 @@ export type PullRequestReactionsArgs = {
   orderBy?: InputMaybe<ReactionOrder>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestReviewRequestsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16625,7 +16536,6 @@ export type PullRequestReviewRequestsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestReviewThreadsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16633,7 +16543,6 @@ export type PullRequestReviewThreadsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A repository pull request. */
 export type PullRequestReviewsArgs = {
@@ -16645,7 +16554,6 @@ export type PullRequestReviewsArgs = {
   states?: InputMaybe<Array<PullRequestReviewState>>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestTimelineArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16654,7 +16562,6 @@ export type PullRequestTimelineArgs = {
   last?: InputMaybe<Scalars['Int']>;
   since?: InputMaybe<Scalars['DateTime']>;
 };
-
 
 /** A repository pull request. */
 export type PullRequestTimelineItemsArgs = {
@@ -16667,7 +16574,6 @@ export type PullRequestTimelineItemsArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestUserContentEditsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16676,12 +16582,10 @@ export type PullRequestUserContentEditsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository pull request. */
 export type PullRequestViewerMergeBodyTextArgs = {
   mergeType?: InputMaybe<PullRequestMergeMethod>;
 };
-
 
 /** A repository pull request. */
 export type PullRequestViewerMergeHeadlineTextArgs = {
@@ -16726,37 +16630,38 @@ export type PullRequestChangedFileEdge = {
 };
 
 /** Represents a Git commit part of a pull request. */
-export type PullRequestCommit = Node & UniformResourceLocatable & {
-  __typename?: 'PullRequestCommit';
-  /** The Git commit object */
-  commit: Commit;
-  id: Scalars['ID'];
-  /** The pull request this commit belongs to */
-  pullRequest: PullRequest;
-  /** The HTTP path for this pull request commit */
-  resourcePath: Scalars['URI'];
-  /** The HTTP URL for this pull request commit */
-  url: Scalars['URI'];
-};
+export type PullRequestCommit = Node &
+  UniformResourceLocatable & {
+    __typename?: 'PullRequestCommit';
+    /** The Git commit object */
+    commit: Commit;
+    id: Scalars['ID'];
+    /** The pull request this commit belongs to */
+    pullRequest: PullRequest;
+    /** The HTTP path for this pull request commit */
+    resourcePath: Scalars['URI'];
+    /** The HTTP URL for this pull request commit */
+    url: Scalars['URI'];
+  };
 
 /** Represents a commit comment thread part of a pull request. */
-export type PullRequestCommitCommentThread = Node & RepositoryNode & {
-  __typename?: 'PullRequestCommitCommentThread';
-  /** The comments that exist in this thread. */
-  comments: CommitCommentConnection;
-  /** The commit the comments were made on. */
-  commit: Commit;
-  id: Scalars['ID'];
-  /** The file the comments were made on. */
-  path?: Maybe<Scalars['String']>;
-  /** The position in the diff for the commit that the comment was made on. */
-  position?: Maybe<Scalars['Int']>;
-  /** The pull request this commit comment thread belongs to */
-  pullRequest: PullRequest;
-  /** The repository associated with this node. */
-  repository: Repository;
-};
-
+export type PullRequestCommitCommentThread = Node &
+  RepositoryNode & {
+    __typename?: 'PullRequestCommitCommentThread';
+    /** The comments that exist in this thread. */
+    comments: CommitCommentConnection;
+    /** The commit the comments were made on. */
+    commit: Commit;
+    id: Scalars['ID'];
+    /** The file the comments were made on. */
+    path?: Maybe<Scalars['String']>;
+    /** The position in the diff for the commit that the comment was made on. */
+    position?: Maybe<Scalars['Int']>;
+    /** The pull request this commit comment thread belongs to */
+    pullRequest: PullRequest;
+    /** The repository associated with this node. */
+    repository: Repository;
+  };
 
 /** Represents a commit comment thread part of a pull request. */
 export type PullRequestCommitCommentThreadCommentsArgs = {
@@ -16810,7 +16715,6 @@ export type PullRequestContributionsByRepository = {
   repository: Repository;
 };
 
-
 /** This aggregates pull requests opened by a user within one repository. */
 export type PullRequestContributionsByRepositoryContributionsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16856,73 +16760,78 @@ export enum PullRequestOrderField {
 }
 
 /** A review object for a given pull request. */
-export type PullRequestReview = Comment & Deletable & Node & Reactable & RepositoryNode & Updatable & UpdatableComment & {
-  __typename?: 'PullRequestReview';
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the subject of the comment. */
-  authorAssociation: CommentAuthorAssociation;
-  /** Indicates whether the author of this review has push access to the repository. */
-  authorCanPushToRepository: Scalars['Boolean'];
-  /** Identifies the pull request review body. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The body of this review rendered as plain text. */
-  bodyText: Scalars['String'];
-  /** A list of review comments for the current pull request review. */
-  comments: PullRequestReviewCommentConnection;
-  /** Identifies the commit associated with this pull request review. */
-  commit?: Maybe<Commit>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The actor who edited the comment. */
-  editor?: Maybe<Actor>;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of teams that this review was made on behalf of. */
-  onBehalfOf: TeamConnection;
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** Identifies the pull request associated with this pull request review. */
-  pullRequest: PullRequest;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** The repository associated with this node. */
-  repository: Repository;
-  /** The HTTP path permalink for this PullRequestReview. */
-  resourcePath: Scalars['URI'];
-  /** Identifies the current state of the pull request review. */
-  state: PullRequestReviewState;
-  /** Identifies when the Pull Request Review was submitted */
-  submittedAt?: Maybe<Scalars['DateTime']>;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL permalink for this PullRequestReview. */
-  url: Scalars['URI'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Check if the current viewer can delete this object. */
-  viewerCanDelete: Scalars['Boolean'];
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Reasons why the current viewer can not update this comment. */
-  viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-};
-
+export type PullRequestReview = Comment &
+  Deletable &
+  Node &
+  Reactable &
+  RepositoryNode &
+  Updatable &
+  UpdatableComment & {
+    __typename?: 'PullRequestReview';
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the subject of the comment. */
+    authorAssociation: CommentAuthorAssociation;
+    /** Indicates whether the author of this review has push access to the repository. */
+    authorCanPushToRepository: Scalars['Boolean'];
+    /** Identifies the pull request review body. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The body of this review rendered as plain text. */
+    bodyText: Scalars['String'];
+    /** A list of review comments for the current pull request review. */
+    comments: PullRequestReviewCommentConnection;
+    /** Identifies the commit associated with this pull request review. */
+    commit?: Maybe<Commit>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The actor who edited the comment. */
+    editor?: Maybe<Actor>;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of teams that this review was made on behalf of. */
+    onBehalfOf: TeamConnection;
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** Identifies the pull request associated with this pull request review. */
+    pullRequest: PullRequest;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** The repository associated with this node. */
+    repository: Repository;
+    /** The HTTP path permalink for this PullRequestReview. */
+    resourcePath: Scalars['URI'];
+    /** Identifies the current state of the pull request review. */
+    state: PullRequestReviewState;
+    /** Identifies when the Pull Request Review was submitted */
+    submittedAt?: Maybe<Scalars['DateTime']>;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL permalink for this PullRequestReview. */
+    url: Scalars['URI'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Check if the current viewer can delete this object. */
+    viewerCanDelete: Scalars['Boolean'];
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Reasons why the current viewer can not update this comment. */
+    viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+  };
 
 /** A review object for a given pull request. */
 export type PullRequestReviewCommentsArgs = {
@@ -16932,7 +16841,6 @@ export type PullRequestReviewCommentsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A review object for a given pull request. */
 export type PullRequestReviewOnBehalfOfArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16940,7 +16848,6 @@ export type PullRequestReviewOnBehalfOfArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A review object for a given pull request. */
 export type PullRequestReviewReactionsArgs = {
@@ -16952,7 +16859,6 @@ export type PullRequestReviewReactionsArgs = {
   orderBy?: InputMaybe<ReactionOrder>;
 };
 
-
 /** A review object for a given pull request. */
 export type PullRequestReviewUserContentEditsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -16962,89 +16868,95 @@ export type PullRequestReviewUserContentEditsArgs = {
 };
 
 /** A review comment associated with a given repository pull request. */
-export type PullRequestReviewComment = Comment & Deletable & Minimizable & Node & Reactable & RepositoryNode & Updatable & UpdatableComment & {
-  __typename?: 'PullRequestReviewComment';
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the subject of the comment. */
-  authorAssociation: CommentAuthorAssociation;
-  /** The comment body of this review comment. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The comment body of this review comment rendered as plain text. */
-  bodyText: Scalars['String'];
-  /** Identifies the commit associated with the comment. */
-  commit?: Maybe<Commit>;
-  /** Identifies when the comment was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The diff hunk to which the comment applies. */
-  diffHunk: Scalars['String'];
-  /** Identifies when the comment was created in a draft state. */
-  draftedAt: Scalars['DateTime'];
-  /** The actor who edited the comment. */
-  editor?: Maybe<Actor>;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** Returns whether or not a comment has been minimized. */
-  isMinimized: Scalars['Boolean'];
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
-  minimizedReason?: Maybe<Scalars['String']>;
-  /** Identifies the original commit associated with the comment. */
-  originalCommit?: Maybe<Commit>;
-  /** The original line index in the diff to which the comment applies. */
-  originalPosition: Scalars['Int'];
-  /** Identifies when the comment body is outdated */
-  outdated: Scalars['Boolean'];
-  /** The path to which the comment applies. */
-  path: Scalars['String'];
-  /** The line index in the diff to which the comment applies. */
-  position?: Maybe<Scalars['Int']>;
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** The pull request associated with this review comment. */
-  pullRequest: PullRequest;
-  /** The pull request review associated with this review comment. */
-  pullRequestReview?: Maybe<PullRequestReview>;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** The comment this is a reply to. */
-  replyTo?: Maybe<PullRequestReviewComment>;
-  /** The repository associated with this node. */
-  repository: Repository;
-  /** The HTTP path permalink for this review comment. */
-  resourcePath: Scalars['URI'];
-  /** Identifies the state of the comment. */
-  state: PullRequestReviewCommentState;
-  /** Identifies when the comment was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL permalink for this review comment. */
-  url: Scalars['URI'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Check if the current viewer can delete this object. */
-  viewerCanDelete: Scalars['Boolean'];
-  /** Check if the current viewer can minimize this object. */
-  viewerCanMinimize: Scalars['Boolean'];
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Reasons why the current viewer can not update this comment. */
-  viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-};
-
+export type PullRequestReviewComment = Comment &
+  Deletable &
+  Minimizable &
+  Node &
+  Reactable &
+  RepositoryNode &
+  Updatable &
+  UpdatableComment & {
+    __typename?: 'PullRequestReviewComment';
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the subject of the comment. */
+    authorAssociation: CommentAuthorAssociation;
+    /** The comment body of this review comment. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The comment body of this review comment rendered as plain text. */
+    bodyText: Scalars['String'];
+    /** Identifies the commit associated with the comment. */
+    commit?: Maybe<Commit>;
+    /** Identifies when the comment was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The diff hunk to which the comment applies. */
+    diffHunk: Scalars['String'];
+    /** Identifies when the comment was created in a draft state. */
+    draftedAt: Scalars['DateTime'];
+    /** The actor who edited the comment. */
+    editor?: Maybe<Actor>;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** Returns whether or not a comment has been minimized. */
+    isMinimized: Scalars['Boolean'];
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation. */
+    minimizedReason?: Maybe<Scalars['String']>;
+    /** Identifies the original commit associated with the comment. */
+    originalCommit?: Maybe<Commit>;
+    /** The original line index in the diff to which the comment applies. */
+    originalPosition: Scalars['Int'];
+    /** Identifies when the comment body is outdated */
+    outdated: Scalars['Boolean'];
+    /** The path to which the comment applies. */
+    path: Scalars['String'];
+    /** The line index in the diff to which the comment applies. */
+    position?: Maybe<Scalars['Int']>;
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** The pull request associated with this review comment. */
+    pullRequest: PullRequest;
+    /** The pull request review associated with this review comment. */
+    pullRequestReview?: Maybe<PullRequestReview>;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** The comment this is a reply to. */
+    replyTo?: Maybe<PullRequestReviewComment>;
+    /** The repository associated with this node. */
+    repository: Repository;
+    /** The HTTP path permalink for this review comment. */
+    resourcePath: Scalars['URI'];
+    /** Identifies the state of the comment. */
+    state: PullRequestReviewCommentState;
+    /** Identifies when the comment was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL permalink for this review comment. */
+    url: Scalars['URI'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Check if the current viewer can delete this object. */
+    viewerCanDelete: Scalars['Boolean'];
+    /** Check if the current viewer can minimize this object. */
+    viewerCanMinimize: Scalars['Boolean'];
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Reasons why the current viewer can not update this comment. */
+    viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+  };
 
 /** A review comment associated with a given repository pull request. */
 export type PullRequestReviewCommentReactionsArgs = {
@@ -17055,7 +16967,6 @@ export type PullRequestReviewCommentReactionsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ReactionOrder>;
 };
-
 
 /** A review comment associated with a given repository pull request. */
 export type PullRequestReviewCommentUserContentEditsArgs = {
@@ -17116,7 +17027,6 @@ export type PullRequestReviewContributionsByRepository = {
   /** The repository in which the pull request reviews were made. */
   repository: Repository;
 };
-
 
 /** This aggregates pull request reviews made by a user within one repository. */
 export type PullRequestReviewContributionsByRepositoryContributionsArgs = {
@@ -17211,7 +17121,6 @@ export type PullRequestReviewThread = Node & {
   /** Whether or not the viewer can unresolve this thread */
   viewerCanUnresolve: Scalars['Boolean'];
 };
-
 
 /** A threaded list of comments for a given pull request. */
 export type PullRequestReviewThreadCommentsArgs = {
@@ -17310,7 +17219,6 @@ export type PullRequestThread = Node & {
   viewerCanUnresolve: Scalars['Boolean'];
 };
 
-
 /** A threaded list of comments for a given pull request. */
 export type PullRequestThreadCommentsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -17334,7 +17242,40 @@ export type PullRequestTimelineConnection = {
 };
 
 /** An item in a pull request timeline */
-export type PullRequestTimelineItem = AssignedEvent | BaseRefDeletedEvent | BaseRefForcePushedEvent | ClosedEvent | Commit | CommitCommentThread | CrossReferencedEvent | DemilestonedEvent | DeployedEvent | DeploymentEnvironmentChangedEvent | HeadRefDeletedEvent | HeadRefForcePushedEvent | HeadRefRestoredEvent | IssueComment | LabeledEvent | LockedEvent | MergedEvent | MilestonedEvent | PullRequestReview | PullRequestReviewComment | PullRequestReviewThread | ReferencedEvent | RenamedTitleEvent | ReopenedEvent | ReviewDismissedEvent | ReviewRequestRemovedEvent | ReviewRequestedEvent | SubscribedEvent | UnassignedEvent | UnlabeledEvent | UnlockedEvent | UnsubscribedEvent | UserBlockedEvent;
+export type PullRequestTimelineItem =
+  | AssignedEvent
+  | BaseRefDeletedEvent
+  | BaseRefForcePushedEvent
+  | ClosedEvent
+  | Commit
+  | CommitCommentThread
+  | CrossReferencedEvent
+  | DemilestonedEvent
+  | DeployedEvent
+  | DeploymentEnvironmentChangedEvent
+  | HeadRefDeletedEvent
+  | HeadRefForcePushedEvent
+  | HeadRefRestoredEvent
+  | IssueComment
+  | LabeledEvent
+  | LockedEvent
+  | MergedEvent
+  | MilestonedEvent
+  | PullRequestReview
+  | PullRequestReviewComment
+  | PullRequestReviewThread
+  | ReferencedEvent
+  | RenamedTitleEvent
+  | ReopenedEvent
+  | ReviewDismissedEvent
+  | ReviewRequestRemovedEvent
+  | ReviewRequestedEvent
+  | SubscribedEvent
+  | UnassignedEvent
+  | UnlabeledEvent
+  | UnlockedEvent
+  | UnsubscribedEvent
+  | UserBlockedEvent;
 
 /** An edge in a connection. */
 export type PullRequestTimelineItemEdge = {
@@ -17346,7 +17287,63 @@ export type PullRequestTimelineItemEdge = {
 };
 
 /** An item in a pull request timeline */
-export type PullRequestTimelineItems = AddedToProjectEvent | AssignedEvent | AutoMergeDisabledEvent | AutoMergeEnabledEvent | AutoRebaseEnabledEvent | AutoSquashEnabledEvent | AutomaticBaseChangeFailedEvent | AutomaticBaseChangeSucceededEvent | BaseRefChangedEvent | BaseRefDeletedEvent | BaseRefForcePushedEvent | ClosedEvent | CommentDeletedEvent | ConnectedEvent | ConvertToDraftEvent | ConvertedNoteToIssueEvent | ConvertedToDiscussionEvent | CrossReferencedEvent | DemilestonedEvent | DeployedEvent | DeploymentEnvironmentChangedEvent | DisconnectedEvent | HeadRefDeletedEvent | HeadRefForcePushedEvent | HeadRefRestoredEvent | IssueComment | LabeledEvent | LockedEvent | MarkedAsDuplicateEvent | MentionedEvent | MergedEvent | MilestonedEvent | MovedColumnsInProjectEvent | PinnedEvent | PullRequestCommit | PullRequestCommitCommentThread | PullRequestReview | PullRequestReviewThread | PullRequestRevisionMarker | ReadyForReviewEvent | ReferencedEvent | RemovedFromProjectEvent | RenamedTitleEvent | ReopenedEvent | ReviewDismissedEvent | ReviewRequestRemovedEvent | ReviewRequestedEvent | SubscribedEvent | TransferredEvent | UnassignedEvent | UnlabeledEvent | UnlockedEvent | UnmarkedAsDuplicateEvent | UnpinnedEvent | UnsubscribedEvent | UserBlockedEvent;
+export type PullRequestTimelineItems =
+  | AddedToProjectEvent
+  | AssignedEvent
+  | AutoMergeDisabledEvent
+  | AutoMergeEnabledEvent
+  | AutoRebaseEnabledEvent
+  | AutoSquashEnabledEvent
+  | AutomaticBaseChangeFailedEvent
+  | AutomaticBaseChangeSucceededEvent
+  | BaseRefChangedEvent
+  | BaseRefDeletedEvent
+  | BaseRefForcePushedEvent
+  | ClosedEvent
+  | CommentDeletedEvent
+  | ConnectedEvent
+  | ConvertToDraftEvent
+  | ConvertedNoteToIssueEvent
+  | ConvertedToDiscussionEvent
+  | CrossReferencedEvent
+  | DemilestonedEvent
+  | DeployedEvent
+  | DeploymentEnvironmentChangedEvent
+  | DisconnectedEvent
+  | HeadRefDeletedEvent
+  | HeadRefForcePushedEvent
+  | HeadRefRestoredEvent
+  | IssueComment
+  | LabeledEvent
+  | LockedEvent
+  | MarkedAsDuplicateEvent
+  | MentionedEvent
+  | MergedEvent
+  | MilestonedEvent
+  | MovedColumnsInProjectEvent
+  | PinnedEvent
+  | PullRequestCommit
+  | PullRequestCommitCommentThread
+  | PullRequestReview
+  | PullRequestReviewThread
+  | PullRequestRevisionMarker
+  | ReadyForReviewEvent
+  | ReferencedEvent
+  | RemovedFromProjectEvent
+  | RenamedTitleEvent
+  | ReopenedEvent
+  | ReviewDismissedEvent
+  | ReviewRequestRemovedEvent
+  | ReviewRequestedEvent
+  | SubscribedEvent
+  | TransferredEvent
+  | UnassignedEvent
+  | UnlabeledEvent
+  | UnlockedEvent
+  | UnmarkedAsDuplicateEvent
+  | UnpinnedEvent
+  | UnsubscribedEvent
+  | UserBlockedEvent;
 
 /** The connection type for PullRequestTimelineItems. */
 export type PullRequestTimelineItemsConnection = {
@@ -17616,19 +17613,16 @@ export type Query = {
   viewer: User;
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryCodeOfConductArgs = {
   key: Scalars['String'];
 };
-
 
 /** The query root of GitHub's GraphQL interface. */
 export type QueryEnterpriseArgs = {
   invitationToken?: InputMaybe<Scalars['String']>;
   slug: Scalars['String'];
 };
-
 
 /** The query root of GitHub's GraphQL interface. */
 export type QueryEnterpriseAdministratorInvitationArgs = {
@@ -17637,18 +17631,15 @@ export type QueryEnterpriseAdministratorInvitationArgs = {
   userLogin: Scalars['String'];
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryEnterpriseAdministratorInvitationByTokenArgs = {
   invitationToken: Scalars['String'];
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryLicenseArgs = {
   key: Scalars['String'];
 };
-
 
 /** The query root of GitHub's GraphQL interface. */
 export type QueryMarketplaceCategoriesArgs = {
@@ -17657,19 +17648,16 @@ export type QueryMarketplaceCategoriesArgs = {
   includeCategories?: InputMaybe<Array<Scalars['String']>>;
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryMarketplaceCategoryArgs = {
   slug: Scalars['String'];
   useTopicAliases?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryMarketplaceListingArgs = {
   slug: Scalars['String'];
 };
-
 
 /** The query root of GitHub's GraphQL interface. */
 export type QueryMarketplaceListingsArgs = {
@@ -17688,30 +17676,25 @@ export type QueryMarketplaceListingsArgs = {
   withFreeTrialsOnly?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryNodeArgs = {
   id: Scalars['ID'];
 };
-
 
 /** The query root of GitHub's GraphQL interface. */
 export type QueryNodesArgs = {
   ids: Array<Scalars['ID']>;
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryOrganizationArgs = {
   login: Scalars['String'];
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryRateLimitArgs = {
   dryRun?: InputMaybe<Scalars['Boolean']>;
 };
-
 
 /** The query root of GitHub's GraphQL interface. */
 export type QueryRepositoryArgs = {
@@ -17720,18 +17703,15 @@ export type QueryRepositoryArgs = {
   owner: Scalars['String'];
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryRepositoryOwnerArgs = {
   login: Scalars['String'];
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryResourceArgs = {
   url: Scalars['URI'];
 };
-
 
 /** The query root of GitHub's GraphQL interface. */
 export type QuerySearchArgs = {
@@ -17742,7 +17722,6 @@ export type QuerySearchArgs = {
   query: Scalars['String'];
   type: SearchType;
 };
-
 
 /** The query root of GitHub's GraphQL interface. */
 export type QuerySecurityAdvisoriesArgs = {
@@ -17757,12 +17736,10 @@ export type QuerySecurityAdvisoriesArgs = {
   updatedSince?: InputMaybe<Scalars['DateTime']>;
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QuerySecurityAdvisoryArgs = {
   ghsaId: Scalars['String'];
 };
-
 
 /** The query root of GitHub's GraphQL interface. */
 export type QuerySecurityVulnerabilitiesArgs = {
@@ -17777,7 +17754,6 @@ export type QuerySecurityVulnerabilitiesArgs = {
   severities?: InputMaybe<Array<SecurityAdvisorySeverity>>;
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QuerySponsorablesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -17791,12 +17767,10 @@ export type QuerySponsorablesArgs = {
   orgLoginForDependencies?: InputMaybe<Scalars['String']>;
 };
 
-
 /** The query root of GitHub's GraphQL interface. */
 export type QueryTopicArgs = {
   name: Scalars['String'];
 };
-
 
 /** The query root of GitHub's GraphQL interface. */
 export type QueryUserArgs = {
@@ -17832,7 +17806,6 @@ export type Reactable = {
   /** Can user react to this subject */
   viewerCanReact: Scalars['Boolean'];
 };
-
 
 /** Represents a subject that can be reacted on. */
 export type ReactableReactionsArgs = {
@@ -17947,7 +17920,6 @@ export type ReactionGroup = {
   viewerHasReacted: Scalars['Boolean'];
 };
 
-
 /** A group of emoji reactions to a particular piece of content. */
 export type ReactionGroupReactorsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -17955,7 +17927,6 @@ export type ReactionGroupReactorsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A group of emoji reactions to a particular piece of content. */
 export type ReactionGroupUsersArgs = {
@@ -18007,20 +17978,21 @@ export type ReactorEdge = {
 };
 
 /** Represents a 'ready_for_review' event on a given pull request. */
-export type ReadyForReviewEvent = Node & UniformResourceLocatable & {
-  __typename?: 'ReadyForReviewEvent';
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  id: Scalars['ID'];
-  /** PullRequest referenced by event. */
-  pullRequest: PullRequest;
-  /** The HTTP path for this ready for review event. */
-  resourcePath: Scalars['URI'];
-  /** The HTTP URL for this ready for review event. */
-  url: Scalars['URI'];
-};
+export type ReadyForReviewEvent = Node &
+  UniformResourceLocatable & {
+    __typename?: 'ReadyForReviewEvent';
+    /** Identifies the actor who performed the event. */
+    actor?: Maybe<Actor>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    id: Scalars['ID'];
+    /** PullRequest referenced by event. */
+    pullRequest: PullRequest;
+    /** The HTTP path for this ready for review event. */
+    resourcePath: Scalars['URI'];
+    /** The HTTP URL for this ready for review event. */
+    url: Scalars['URI'];
+  };
 
 /** Represents a Git reference. */
 export type Ref = Node & {
@@ -18044,7 +18016,6 @@ export type Ref = Node & {
   target?: Maybe<GitObject>;
 };
 
-
 /** Represents a Git reference. */
 export type RefAssociatedPullRequestsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -18057,7 +18028,6 @@ export type RefAssociatedPullRequestsArgs = {
   orderBy?: InputMaybe<IssueOrder>;
   states?: InputMaybe<Array<PullRequestState>>;
 };
-
 
 /** Represents a Git reference. */
 export type RefCompareArgs = {
@@ -18210,57 +18180,58 @@ export type RejectDeploymentsPayload = {
 };
 
 /** A release contains the content for a release. */
-export type Release = Node & Reactable & UniformResourceLocatable & {
-  __typename?: 'Release';
-  /** The author of the release */
-  author?: Maybe<User>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The description of the release. */
-  description?: Maybe<Scalars['String']>;
-  /** The description of this release rendered to HTML. */
-  descriptionHTML?: Maybe<Scalars['HTML']>;
-  id: Scalars['ID'];
-  /** Whether or not the release is a draft */
-  isDraft: Scalars['Boolean'];
-  /** Whether or not the release is the latest releast */
-  isLatest: Scalars['Boolean'];
-  /** Whether or not the release is a prerelease */
-  isPrerelease: Scalars['Boolean'];
-  /** A list of users mentioned in the release description */
-  mentions?: Maybe<UserConnection>;
-  /** The title of the release. */
-  name?: Maybe<Scalars['String']>;
-  /** Identifies the date and time when the release was created. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** List of releases assets which are dependent on this release. */
-  releaseAssets: ReleaseAssetConnection;
-  /** The repository that the release belongs to. */
-  repository: Repository;
-  /** The HTTP path for this issue */
-  resourcePath: Scalars['URI'];
-  /** A description of the release, rendered to HTML without any links in it. */
-  shortDescriptionHTML?: Maybe<Scalars['HTML']>;
-  /** The Git tag the release points to */
-  tag?: Maybe<Ref>;
-  /** The tag commit for this release. */
-  tagCommit?: Maybe<Commit>;
-  /** The name of the release's Git tag */
-  tagName: Scalars['String'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this issue */
-  url: Scalars['URI'];
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-};
-
+export type Release = Node &
+  Reactable &
+  UniformResourceLocatable & {
+    __typename?: 'Release';
+    /** The author of the release */
+    author?: Maybe<User>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The description of the release. */
+    description?: Maybe<Scalars['String']>;
+    /** The description of this release rendered to HTML. */
+    descriptionHTML?: Maybe<Scalars['HTML']>;
+    id: Scalars['ID'];
+    /** Whether or not the release is a draft */
+    isDraft: Scalars['Boolean'];
+    /** Whether or not the release is the latest releast */
+    isLatest: Scalars['Boolean'];
+    /** Whether or not the release is a prerelease */
+    isPrerelease: Scalars['Boolean'];
+    /** A list of users mentioned in the release description */
+    mentions?: Maybe<UserConnection>;
+    /** The title of the release. */
+    name?: Maybe<Scalars['String']>;
+    /** Identifies the date and time when the release was created. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** List of releases assets which are dependent on this release. */
+    releaseAssets: ReleaseAssetConnection;
+    /** The repository that the release belongs to. */
+    repository: Repository;
+    /** The HTTP path for this issue */
+    resourcePath: Scalars['URI'];
+    /** A description of the release, rendered to HTML without any links in it. */
+    shortDescriptionHTML?: Maybe<Scalars['HTML']>;
+    /** The Git tag the release points to */
+    tag?: Maybe<Ref>;
+    /** The tag commit for this release. */
+    tagCommit?: Maybe<Commit>;
+    /** The name of the release's Git tag */
+    tagName: Scalars['String'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this issue */
+    url: Scalars['URI'];
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+  };
 
 /** A release contains the content for a release. */
 export type ReleaseMentionsArgs = {
@@ -18269,7 +18240,6 @@ export type ReleaseMentionsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A release contains the content for a release. */
 export type ReleaseReactionsArgs = {
@@ -18281,7 +18251,6 @@ export type ReleaseReactionsArgs = {
   orderBy?: InputMaybe<ReactionOrder>;
 };
 
-
 /** A release contains the content for a release. */
 export type ReleaseReleaseAssetsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -18290,7 +18259,6 @@ export type ReleaseReleaseAssetsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
 };
-
 
 /** A release contains the content for a release. */
 export type ReleaseShortDescriptionHtmlArgs = {
@@ -18659,54 +18627,57 @@ export type ReopenedEvent = Node & {
 };
 
 /** Audit log entry for a repo.access event. */
-export type RepoAccessAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoAccessAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-  /** The visibility of the repository */
-  visibility?: Maybe<RepoAccessAuditEntryVisibility>;
-};
+export type RepoAccessAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoAccessAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+    /** The visibility of the repository */
+    visibility?: Maybe<RepoAccessAuditEntryVisibility>;
+  };
 
 /** The privacy of a repository */
 export enum RepoAccessAuditEntryVisibility {
@@ -18719,54 +18690,57 @@ export enum RepoAccessAuditEntryVisibility {
 }
 
 /** Audit log entry for a repo.add_member event. */
-export type RepoAddMemberAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoAddMemberAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-  /** The visibility of the repository */
-  visibility?: Maybe<RepoAddMemberAuditEntryVisibility>;
-};
+export type RepoAddMemberAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoAddMemberAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+    /** The visibility of the repository */
+    visibility?: Maybe<RepoAddMemberAuditEntryVisibility>;
+  };
 
 /** The privacy of a repository */
 export enum RepoAddMemberAuditEntryVisibility {
@@ -18779,106 +18753,113 @@ export enum RepoAddMemberAuditEntryVisibility {
 }
 
 /** Audit log entry for a repo.add_topic event. */
-export type RepoAddTopicAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & TopicAuditEntryData & {
-  __typename?: 'RepoAddTopicAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The name of the topic added to the repository */
-  topic?: Maybe<Topic>;
-  /** The name of the topic added to the repository */
-  topicName?: Maybe<Scalars['String']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoAddTopicAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData &
+  TopicAuditEntryData & {
+    __typename?: 'RepoAddTopicAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The name of the topic added to the repository */
+    topic?: Maybe<Topic>;
+    /** The name of the topic added to the repository */
+    topicName?: Maybe<Scalars['String']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.archived event. */
-export type RepoArchivedAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoArchivedAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-  /** The visibility of the repository */
-  visibility?: Maybe<RepoArchivedAuditEntryVisibility>;
-};
+export type RepoArchivedAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoArchivedAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+    /** The visibility of the repository */
+    visibility?: Maybe<RepoArchivedAuditEntryVisibility>;
+  };
 
 /** The privacy of a repository */
 export enum RepoArchivedAuditEntryVisibility {
@@ -18891,56 +18872,59 @@ export enum RepoArchivedAuditEntryVisibility {
 }
 
 /** Audit log entry for a repo.change_merge_setting event. */
-export type RepoChangeMergeSettingAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoChangeMergeSettingAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** Whether the change was to enable (true) or disable (false) the merge type */
-  isEnabled?: Maybe<Scalars['Boolean']>;
-  /** The merge method affected by the change */
-  mergeType?: Maybe<RepoChangeMergeSettingAuditEntryMergeType>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoChangeMergeSettingAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoChangeMergeSettingAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** Whether the change was to enable (true) or disable (false) the merge type */
+    isEnabled?: Maybe<Scalars['Boolean']>;
+    /** The merge method affected by the change */
+    mergeType?: Maybe<RepoChangeMergeSettingAuditEntryMergeType>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The merge options available for pull requests to this repository. */
 export enum RepoChangeMergeSettingAuditEntryMergeType {
@@ -18953,538 +18937,571 @@ export enum RepoChangeMergeSettingAuditEntryMergeType {
 }
 
 /** Audit log entry for a repo.config.disable_anonymous_git_access event. */
-export type RepoConfigDisableAnonymousGitAccessAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoConfigDisableAnonymousGitAccessAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoConfigDisableAnonymousGitAccessAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoConfigDisableAnonymousGitAccessAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.config.disable_collaborators_only event. */
-export type RepoConfigDisableCollaboratorsOnlyAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoConfigDisableCollaboratorsOnlyAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoConfigDisableCollaboratorsOnlyAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoConfigDisableCollaboratorsOnlyAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.config.disable_contributors_only event. */
-export type RepoConfigDisableContributorsOnlyAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoConfigDisableContributorsOnlyAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoConfigDisableContributorsOnlyAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoConfigDisableContributorsOnlyAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.config.disable_sockpuppet_disallowed event. */
-export type RepoConfigDisableSockpuppetDisallowedAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoConfigDisableSockpuppetDisallowedAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoConfigDisableSockpuppetDisallowedAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoConfigDisableSockpuppetDisallowedAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.config.enable_anonymous_git_access event. */
-export type RepoConfigEnableAnonymousGitAccessAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoConfigEnableAnonymousGitAccessAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoConfigEnableAnonymousGitAccessAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoConfigEnableAnonymousGitAccessAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.config.enable_collaborators_only event. */
-export type RepoConfigEnableCollaboratorsOnlyAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoConfigEnableCollaboratorsOnlyAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoConfigEnableCollaboratorsOnlyAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoConfigEnableCollaboratorsOnlyAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.config.enable_contributors_only event. */
-export type RepoConfigEnableContributorsOnlyAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoConfigEnableContributorsOnlyAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoConfigEnableContributorsOnlyAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoConfigEnableContributorsOnlyAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.config.enable_sockpuppet_disallowed event. */
-export type RepoConfigEnableSockpuppetDisallowedAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoConfigEnableSockpuppetDisallowedAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoConfigEnableSockpuppetDisallowedAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoConfigEnableSockpuppetDisallowedAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.config.lock_anonymous_git_access event. */
-export type RepoConfigLockAnonymousGitAccessAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoConfigLockAnonymousGitAccessAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoConfigLockAnonymousGitAccessAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoConfigLockAnonymousGitAccessAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.config.unlock_anonymous_git_access event. */
-export type RepoConfigUnlockAnonymousGitAccessAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoConfigUnlockAnonymousGitAccessAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoConfigUnlockAnonymousGitAccessAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoConfigUnlockAnonymousGitAccessAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repo.create event. */
-export type RepoCreateAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoCreateAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The name of the parent repository for this forked repository. */
-  forkParentName?: Maybe<Scalars['String']>;
-  /** The name of the root repository for this network. */
-  forkSourceName?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-  /** The visibility of the repository */
-  visibility?: Maybe<RepoCreateAuditEntryVisibility>;
-};
+export type RepoCreateAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoCreateAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The name of the parent repository for this forked repository. */
+    forkParentName?: Maybe<Scalars['String']>;
+    /** The name of the root repository for this network. */
+    forkSourceName?: Maybe<Scalars['String']>;
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+    /** The visibility of the repository */
+    visibility?: Maybe<RepoCreateAuditEntryVisibility>;
+  };
 
 /** The privacy of a repository */
 export enum RepoCreateAuditEntryVisibility {
@@ -19497,54 +19514,57 @@ export enum RepoCreateAuditEntryVisibility {
 }
 
 /** Audit log entry for a repo.destroy event. */
-export type RepoDestroyAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoDestroyAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-  /** The visibility of the repository */
-  visibility?: Maybe<RepoDestroyAuditEntryVisibility>;
-};
+export type RepoDestroyAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoDestroyAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+    /** The visibility of the repository */
+    visibility?: Maybe<RepoDestroyAuditEntryVisibility>;
+  };
 
 /** The privacy of a repository */
 export enum RepoDestroyAuditEntryVisibility {
@@ -19557,54 +19577,57 @@ export enum RepoDestroyAuditEntryVisibility {
 }
 
 /** Audit log entry for a repo.remove_member event. */
-export type RepoRemoveMemberAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & {
-  __typename?: 'RepoRemoveMemberAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-  /** The visibility of the repository */
-  visibility?: Maybe<RepoRemoveMemberAuditEntryVisibility>;
-};
+export type RepoRemoveMemberAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData & {
+    __typename?: 'RepoRemoveMemberAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+    /** The visibility of the repository */
+    visibility?: Maybe<RepoRemoveMemberAuditEntryVisibility>;
+  };
 
 /** The privacy of a repository */
 export enum RepoRemoveMemberAuditEntryVisibility {
@@ -19617,56 +19640,60 @@ export enum RepoRemoveMemberAuditEntryVisibility {
 }
 
 /** Audit log entry for a repo.remove_topic event. */
-export type RepoRemoveTopicAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & TopicAuditEntryData & {
-  __typename?: 'RepoRemoveTopicAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The name of the topic added to the repository */
-  topic?: Maybe<Topic>;
-  /** The name of the topic added to the repository */
-  topicName?: Maybe<Scalars['String']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepoRemoveTopicAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData &
+  TopicAuditEntryData & {
+    __typename?: 'RepoRemoveTopicAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The name of the topic added to the repository */
+    topic?: Maybe<Topic>;
+    /** The name of the topic added to the repository */
+    topicName?: Maybe<Scalars['String']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The reasons a piece of content can be reported or minimized. */
 export enum ReportedContentClassifiers {
@@ -19685,269 +19712,275 @@ export enum ReportedContentClassifiers {
 }
 
 /** A repository contains the content for a project. */
-export type Repository = Node & PackageOwner & ProjectOwner & ProjectV2Recent & RepositoryInfo & Starrable & Subscribable & UniformResourceLocatable & {
-  __typename?: 'Repository';
-  /** Whether or not a pull request head branch that is behind its base branch can always be updated even if it is not required to be up to date before merging. */
-  allowUpdateBranch: Scalars['Boolean'];
-  /** A list of users that can be assigned to issues in this repository. */
-  assignableUsers: UserConnection;
-  /** Whether or not Auto-merge can be enabled on pull requests in this repository. */
-  autoMergeAllowed: Scalars['Boolean'];
-  /** A list of branch protection rules for this repository. */
-  branchProtectionRules: BranchProtectionRuleConnection;
-  /** Returns the code of conduct for this repository */
-  codeOfConduct?: Maybe<CodeOfConduct>;
-  /** Information extracted from the repository's `CODEOWNERS` file. */
-  codeowners?: Maybe<RepositoryCodeowners>;
-  /** A list of collaborators associated with the repository. */
-  collaborators?: Maybe<RepositoryCollaboratorConnection>;
-  /** A list of commit comments associated with the repository. */
-  commitComments: CommitCommentConnection;
-  /** Returns a list of contact links associated to the repository */
-  contactLinks?: Maybe<Array<RepositoryContactLink>>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The Ref associated with the repository's default branch. */
-  defaultBranchRef?: Maybe<Ref>;
-  /** Whether or not branches are automatically deleted when merged in this repository. */
-  deleteBranchOnMerge: Scalars['Boolean'];
-  /** A list of deploy keys that are on this repository. */
-  deployKeys: DeployKeyConnection;
-  /** Deployments associated with the repository */
-  deployments: DeploymentConnection;
-  /** The description of the repository. */
-  description?: Maybe<Scalars['String']>;
-  /** The description of the repository rendered to HTML. */
-  descriptionHTML: Scalars['HTML'];
-  /** Returns a single discussion from the current repository by number. */
-  discussion?: Maybe<Discussion>;
-  /** A list of discussion categories that are available in the repository. */
-  discussionCategories: DiscussionCategoryConnection;
-  /** A discussion category by slug. */
-  discussionCategory?: Maybe<DiscussionCategory>;
-  /** A list of discussions that have been opened in the repository. */
-  discussions: DiscussionConnection;
-  /** The number of kilobytes this repository occupies on disk. */
-  diskUsage?: Maybe<Scalars['Int']>;
-  /** Returns a single active environment from the current repository by name. */
-  environment?: Maybe<Environment>;
-  /** A list of environments that are in this repository. */
-  environments: EnvironmentConnection;
-  /** Returns how many forks there are of this repository in the whole network. */
-  forkCount: Scalars['Int'];
-  /** Whether this repository allows forks. */
-  forkingAllowed: Scalars['Boolean'];
-  /** A list of direct forked repositories. */
-  forks: RepositoryConnection;
-  /** The funding links for this repository */
-  fundingLinks: Array<FundingLink>;
-  /** Indicates if the repository has the Discussions feature enabled. */
-  hasDiscussionsEnabled: Scalars['Boolean'];
-  /** Indicates if the repository has issues feature enabled. */
-  hasIssuesEnabled: Scalars['Boolean'];
-  /** Indicates if the repository has the Projects feature enabled. */
-  hasProjectsEnabled: Scalars['Boolean'];
-  /** Whether vulnerability alerts are enabled for the repository. */
-  hasVulnerabilityAlertsEnabled: Scalars['Boolean'];
-  /** Indicates if the repository has wiki feature enabled. */
-  hasWikiEnabled: Scalars['Boolean'];
-  /** The repository's URL. */
-  homepageUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The interaction ability settings for this repository. */
-  interactionAbility?: Maybe<RepositoryInteractionAbility>;
-  /** Indicates if the repository is unmaintained. */
-  isArchived: Scalars['Boolean'];
-  /** Returns true if blank issue creation is allowed */
-  isBlankIssuesEnabled: Scalars['Boolean'];
-  /** Returns whether or not this repository disabled. */
-  isDisabled: Scalars['Boolean'];
-  /** Returns whether or not this repository is empty. */
-  isEmpty: Scalars['Boolean'];
-  /** Identifies if the repository is a fork. */
-  isFork: Scalars['Boolean'];
-  /** Indicates if a repository is either owned by an organization, or is a private fork of an organization repository. */
-  isInOrganization: Scalars['Boolean'];
-  /** Indicates if the repository has been locked or not. */
-  isLocked: Scalars['Boolean'];
-  /** Identifies if the repository is a mirror. */
-  isMirror: Scalars['Boolean'];
-  /** Identifies if the repository is private or internal. */
-  isPrivate: Scalars['Boolean'];
-  /** Returns true if this repository has a security policy */
-  isSecurityPolicyEnabled?: Maybe<Scalars['Boolean']>;
-  /** Identifies if the repository is a template that can be used to generate new repositories. */
-  isTemplate: Scalars['Boolean'];
-  /** Is this repository a user configuration repository? */
-  isUserConfigurationRepository: Scalars['Boolean'];
-  /** Returns a single issue from the current repository by number. */
-  issue?: Maybe<Issue>;
-  /** Returns a single issue-like object from the current repository by number. */
-  issueOrPullRequest?: Maybe<IssueOrPullRequest>;
-  /** Returns a list of issue templates associated to the repository */
-  issueTemplates?: Maybe<Array<IssueTemplate>>;
-  /** A list of issues that have been opened in the repository. */
-  issues: IssueConnection;
-  /** Returns a single label by name */
-  label?: Maybe<Label>;
-  /** A list of labels associated with the repository. */
-  labels?: Maybe<LabelConnection>;
-  /** A list containing a breakdown of the language composition of the repository. */
-  languages?: Maybe<LanguageConnection>;
-  /** Get the latest release for the repository if one exists. */
-  latestRelease?: Maybe<Release>;
-  /** The license associated with the repository */
-  licenseInfo?: Maybe<License>;
-  /** The reason the repository has been locked. */
-  lockReason?: Maybe<RepositoryLockReason>;
-  /** A list of Users that can be mentioned in the context of the repository. */
-  mentionableUsers: UserConnection;
-  /** Whether or not PRs are merged with a merge commit on this repository. */
-  mergeCommitAllowed: Scalars['Boolean'];
-  /** How the default commit message will be generated when merging a pull request. */
-  mergeCommitMessage: MergeCommitMessage;
-  /** How the default commit title will be generated when merging a pull request. */
-  mergeCommitTitle: MergeCommitTitle;
-  /** Returns a single milestone from the current repository by number. */
-  milestone?: Maybe<Milestone>;
-  /** A list of milestones associated with the repository. */
-  milestones?: Maybe<MilestoneConnection>;
-  /** The repository's original mirror URL. */
-  mirrorUrl?: Maybe<Scalars['URI']>;
-  /** The name of the repository. */
-  name: Scalars['String'];
-  /** The repository's name with owner. */
-  nameWithOwner: Scalars['String'];
-  /** A Git object in the repository */
-  object?: Maybe<GitObject>;
-  /** The image used to represent this repository in Open Graph data. */
-  openGraphImageUrl: Scalars['URI'];
-  /** The User owner of the repository. */
-  owner: RepositoryOwner;
-  /** A list of packages under the owner. */
-  packages: PackageConnection;
-  /** The repository parent, if this is a fork. */
-  parent?: Maybe<Repository>;
-  /** A list of discussions that have been pinned in this repository. */
-  pinnedDiscussions: PinnedDiscussionConnection;
-  /** A list of pinned issues for this repository. */
-  pinnedIssues?: Maybe<PinnedIssueConnection>;
-  /** The primary language of the repository's code. */
-  primaryLanguage?: Maybe<Language>;
-  /** Find project by number. */
-  project?: Maybe<Project>;
-  /**
-   * Finds and returns the Project (beta) according to the provided Project (beta) number.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectNext?: Maybe<ProjectNext>;
-  /** Finds and returns the Project according to the provided Project number. */
-  projectV2?: Maybe<ProjectV2>;
-  /** A list of projects under the owner. */
-  projects: ProjectConnection;
-  /**
-   * List of projects (beta) linked to this repository.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectsNext: ProjectNextConnection;
-  /** The HTTP path listing the repository's projects */
-  projectsResourcePath: Scalars['URI'];
-  /** The HTTP URL listing the repository's projects */
-  projectsUrl: Scalars['URI'];
-  /** List of projects linked to this repository. */
-  projectsV2: ProjectV2Connection;
-  /** Returns a single pull request from the current repository by number. */
-  pullRequest?: Maybe<PullRequest>;
-  /** Returns a list of pull request templates associated to the repository */
-  pullRequestTemplates?: Maybe<Array<PullRequestTemplate>>;
-  /** A list of pull requests that have been opened in the repository. */
-  pullRequests: PullRequestConnection;
-  /** Identifies when the repository was last pushed to. */
-  pushedAt?: Maybe<Scalars['DateTime']>;
-  /** Whether or not rebase-merging is enabled on this repository. */
-  rebaseMergeAllowed: Scalars['Boolean'];
-  /** Recent projects that this user has modified in the context of the owner. */
-  recentProjects: ProjectV2Connection;
-  /** Fetch a given ref from the repository */
-  ref?: Maybe<Ref>;
-  /** Fetch a list of refs from the repository */
-  refs?: Maybe<RefConnection>;
-  /** Lookup a single release given various criteria. */
-  release?: Maybe<Release>;
-  /** List of releases which are dependent on this repository. */
-  releases: ReleaseConnection;
-  /** A list of applied repository-topic associations for this repository. */
-  repositoryTopics: RepositoryTopicConnection;
-  /** The HTTP path for this repository */
-  resourcePath: Scalars['URI'];
-  /** The security policy URL. */
-  securityPolicyUrl?: Maybe<Scalars['URI']>;
-  /** A description of the repository, rendered to HTML without any links in it. */
-  shortDescriptionHTML: Scalars['HTML'];
-  /** Whether or not squash-merging is enabled on this repository. */
-  squashMergeAllowed: Scalars['Boolean'];
-  /** How the default commit message will be generated when squash merging a pull request. */
-  squashMergeCommitMessage: SquashMergeCommitMessage;
-  /** How the default commit title will be generated when squash merging a pull request. */
-  squashMergeCommitTitle: SquashMergeCommitTitle;
-  /**
-   * Whether a squash merge commit can use the pull request title as default.
-   * @deprecated `squashPrTitleUsedAsDefault` will be removed. Use `Repository.squashMergeCommitTitle` instead. Removal on 2023-04-01 UTC.
-   */
-  squashPrTitleUsedAsDefault: Scalars['Boolean'];
-  /** The SSH URL to clone this repository */
-  sshUrl: Scalars['GitSSHRemote'];
-  /**
-   * Returns a count of how many stargazers there are on this object
-   *
-   */
-  stargazerCount: Scalars['Int'];
-  /** A list of users who have starred this starrable. */
-  stargazers: StargazerConnection;
-  /** Returns a list of all submodules in this repository parsed from the .gitmodules file as of the default branch's HEAD commit. */
-  submodules: SubmoduleConnection;
-  /** Temporary authentication token for cloning this repository. */
-  tempCloneToken?: Maybe<Scalars['String']>;
-  /** The repository from which this repository was generated, if any. */
-  templateRepository?: Maybe<Repository>;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this repository */
-  url: Scalars['URI'];
-  /** Whether this repository has a custom image to use with Open Graph as opposed to being represented by the owner's avatar. */
-  usesCustomOpenGraphImage: Scalars['Boolean'];
-  /** Indicates whether the viewer has admin permissions on this repository. */
-  viewerCanAdminister: Scalars['Boolean'];
-  /** Can the current viewer create new projects on this owner. */
-  viewerCanCreateProjects: Scalars['Boolean'];
-  /** Check if the viewer is able to change their subscription status for the repository. */
-  viewerCanSubscribe: Scalars['Boolean'];
-  /** Indicates whether the viewer can update the topics of this repository. */
-  viewerCanUpdateTopics: Scalars['Boolean'];
-  /** The last commit email for the viewer. */
-  viewerDefaultCommitEmail?: Maybe<Scalars['String']>;
-  /** The last used merge method by the viewer or the default for the repository. */
-  viewerDefaultMergeMethod: PullRequestMergeMethod;
-  /** Returns a boolean indicating whether the viewing user has starred this starrable. */
-  viewerHasStarred: Scalars['Boolean'];
-  /** The users permission level on the repository. Will return null if authenticated as an GitHub App. */
-  viewerPermission?: Maybe<RepositoryPermission>;
-  /** A list of emails this viewer can commit with. */
-  viewerPossibleCommitEmails?: Maybe<Array<Scalars['String']>>;
-  /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
-  viewerSubscription?: Maybe<SubscriptionState>;
-  /** Indicates the repository's visibility level. */
-  visibility: RepositoryVisibility;
-  /** A list of vulnerability alerts that are on this repository. */
-  vulnerabilityAlerts?: Maybe<RepositoryVulnerabilityAlertConnection>;
-  /** A list of users watching the repository. */
-  watchers: UserConnection;
-  /** Whether contributors are required to sign off on web-based commits in this repository. */
-  webCommitSignoffRequired: Scalars['Boolean'];
-};
-
+export type Repository = Node &
+  PackageOwner &
+  ProjectOwner &
+  ProjectV2Recent &
+  RepositoryInfo &
+  Starrable &
+  Subscribable &
+  UniformResourceLocatable & {
+    __typename?: 'Repository';
+    /** Whether or not a pull request head branch that is behind its base branch can always be updated even if it is not required to be up to date before merging. */
+    allowUpdateBranch: Scalars['Boolean'];
+    /** A list of users that can be assigned to issues in this repository. */
+    assignableUsers: UserConnection;
+    /** Whether or not Auto-merge can be enabled on pull requests in this repository. */
+    autoMergeAllowed: Scalars['Boolean'];
+    /** A list of branch protection rules for this repository. */
+    branchProtectionRules: BranchProtectionRuleConnection;
+    /** Returns the code of conduct for this repository */
+    codeOfConduct?: Maybe<CodeOfConduct>;
+    /** Information extracted from the repository's `CODEOWNERS` file. */
+    codeowners?: Maybe<RepositoryCodeowners>;
+    /** A list of collaborators associated with the repository. */
+    collaborators?: Maybe<RepositoryCollaboratorConnection>;
+    /** A list of commit comments associated with the repository. */
+    commitComments: CommitCommentConnection;
+    /** Returns a list of contact links associated to the repository */
+    contactLinks?: Maybe<Array<RepositoryContactLink>>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The Ref associated with the repository's default branch. */
+    defaultBranchRef?: Maybe<Ref>;
+    /** Whether or not branches are automatically deleted when merged in this repository. */
+    deleteBranchOnMerge: Scalars['Boolean'];
+    /** A list of deploy keys that are on this repository. */
+    deployKeys: DeployKeyConnection;
+    /** Deployments associated with the repository */
+    deployments: DeploymentConnection;
+    /** The description of the repository. */
+    description?: Maybe<Scalars['String']>;
+    /** The description of the repository rendered to HTML. */
+    descriptionHTML: Scalars['HTML'];
+    /** Returns a single discussion from the current repository by number. */
+    discussion?: Maybe<Discussion>;
+    /** A list of discussion categories that are available in the repository. */
+    discussionCategories: DiscussionCategoryConnection;
+    /** A discussion category by slug. */
+    discussionCategory?: Maybe<DiscussionCategory>;
+    /** A list of discussions that have been opened in the repository. */
+    discussions: DiscussionConnection;
+    /** The number of kilobytes this repository occupies on disk. */
+    diskUsage?: Maybe<Scalars['Int']>;
+    /** Returns a single active environment from the current repository by name. */
+    environment?: Maybe<Environment>;
+    /** A list of environments that are in this repository. */
+    environments: EnvironmentConnection;
+    /** Returns how many forks there are of this repository in the whole network. */
+    forkCount: Scalars['Int'];
+    /** Whether this repository allows forks. */
+    forkingAllowed: Scalars['Boolean'];
+    /** A list of direct forked repositories. */
+    forks: RepositoryConnection;
+    /** The funding links for this repository */
+    fundingLinks: Array<FundingLink>;
+    /** Indicates if the repository has the Discussions feature enabled. */
+    hasDiscussionsEnabled: Scalars['Boolean'];
+    /** Indicates if the repository has issues feature enabled. */
+    hasIssuesEnabled: Scalars['Boolean'];
+    /** Indicates if the repository has the Projects feature enabled. */
+    hasProjectsEnabled: Scalars['Boolean'];
+    /** Whether vulnerability alerts are enabled for the repository. */
+    hasVulnerabilityAlertsEnabled: Scalars['Boolean'];
+    /** Indicates if the repository has wiki feature enabled. */
+    hasWikiEnabled: Scalars['Boolean'];
+    /** The repository's URL. */
+    homepageUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The interaction ability settings for this repository. */
+    interactionAbility?: Maybe<RepositoryInteractionAbility>;
+    /** Indicates if the repository is unmaintained. */
+    isArchived: Scalars['Boolean'];
+    /** Returns true if blank issue creation is allowed */
+    isBlankIssuesEnabled: Scalars['Boolean'];
+    /** Returns whether or not this repository disabled. */
+    isDisabled: Scalars['Boolean'];
+    /** Returns whether or not this repository is empty. */
+    isEmpty: Scalars['Boolean'];
+    /** Identifies if the repository is a fork. */
+    isFork: Scalars['Boolean'];
+    /** Indicates if a repository is either owned by an organization, or is a private fork of an organization repository. */
+    isInOrganization: Scalars['Boolean'];
+    /** Indicates if the repository has been locked or not. */
+    isLocked: Scalars['Boolean'];
+    /** Identifies if the repository is a mirror. */
+    isMirror: Scalars['Boolean'];
+    /** Identifies if the repository is private or internal. */
+    isPrivate: Scalars['Boolean'];
+    /** Returns true if this repository has a security policy */
+    isSecurityPolicyEnabled?: Maybe<Scalars['Boolean']>;
+    /** Identifies if the repository is a template that can be used to generate new repositories. */
+    isTemplate: Scalars['Boolean'];
+    /** Is this repository a user configuration repository? */
+    isUserConfigurationRepository: Scalars['Boolean'];
+    /** Returns a single issue from the current repository by number. */
+    issue?: Maybe<Issue>;
+    /** Returns a single issue-like object from the current repository by number. */
+    issueOrPullRequest?: Maybe<IssueOrPullRequest>;
+    /** Returns a list of issue templates associated to the repository */
+    issueTemplates?: Maybe<Array<IssueTemplate>>;
+    /** A list of issues that have been opened in the repository. */
+    issues: IssueConnection;
+    /** Returns a single label by name */
+    label?: Maybe<Label>;
+    /** A list of labels associated with the repository. */
+    labels?: Maybe<LabelConnection>;
+    /** A list containing a breakdown of the language composition of the repository. */
+    languages?: Maybe<LanguageConnection>;
+    /** Get the latest release for the repository if one exists. */
+    latestRelease?: Maybe<Release>;
+    /** The license associated with the repository */
+    licenseInfo?: Maybe<License>;
+    /** The reason the repository has been locked. */
+    lockReason?: Maybe<RepositoryLockReason>;
+    /** A list of Users that can be mentioned in the context of the repository. */
+    mentionableUsers: UserConnection;
+    /** Whether or not PRs are merged with a merge commit on this repository. */
+    mergeCommitAllowed: Scalars['Boolean'];
+    /** How the default commit message will be generated when merging a pull request. */
+    mergeCommitMessage: MergeCommitMessage;
+    /** How the default commit title will be generated when merging a pull request. */
+    mergeCommitTitle: MergeCommitTitle;
+    /** Returns a single milestone from the current repository by number. */
+    milestone?: Maybe<Milestone>;
+    /** A list of milestones associated with the repository. */
+    milestones?: Maybe<MilestoneConnection>;
+    /** The repository's original mirror URL. */
+    mirrorUrl?: Maybe<Scalars['URI']>;
+    /** The name of the repository. */
+    name: Scalars['String'];
+    /** The repository's name with owner. */
+    nameWithOwner: Scalars['String'];
+    /** A Git object in the repository */
+    object?: Maybe<GitObject>;
+    /** The image used to represent this repository in Open Graph data. */
+    openGraphImageUrl: Scalars['URI'];
+    /** The User owner of the repository. */
+    owner: RepositoryOwner;
+    /** A list of packages under the owner. */
+    packages: PackageConnection;
+    /** The repository parent, if this is a fork. */
+    parent?: Maybe<Repository>;
+    /** A list of discussions that have been pinned in this repository. */
+    pinnedDiscussions: PinnedDiscussionConnection;
+    /** A list of pinned issues for this repository. */
+    pinnedIssues?: Maybe<PinnedIssueConnection>;
+    /** The primary language of the repository's code. */
+    primaryLanguage?: Maybe<Language>;
+    /** Find project by number. */
+    project?: Maybe<Project>;
+    /**
+     * Finds and returns the Project (beta) according to the provided Project (beta) number.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectNext?: Maybe<ProjectNext>;
+    /** Finds and returns the Project according to the provided Project number. */
+    projectV2?: Maybe<ProjectV2>;
+    /** A list of projects under the owner. */
+    projects: ProjectConnection;
+    /**
+     * List of projects (beta) linked to this repository.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectsNext: ProjectNextConnection;
+    /** The HTTP path listing the repository's projects */
+    projectsResourcePath: Scalars['URI'];
+    /** The HTTP URL listing the repository's projects */
+    projectsUrl: Scalars['URI'];
+    /** List of projects linked to this repository. */
+    projectsV2: ProjectV2Connection;
+    /** Returns a single pull request from the current repository by number. */
+    pullRequest?: Maybe<PullRequest>;
+    /** Returns a list of pull request templates associated to the repository */
+    pullRequestTemplates?: Maybe<Array<PullRequestTemplate>>;
+    /** A list of pull requests that have been opened in the repository. */
+    pullRequests: PullRequestConnection;
+    /** Identifies when the repository was last pushed to. */
+    pushedAt?: Maybe<Scalars['DateTime']>;
+    /** Whether or not rebase-merging is enabled on this repository. */
+    rebaseMergeAllowed: Scalars['Boolean'];
+    /** Recent projects that this user has modified in the context of the owner. */
+    recentProjects: ProjectV2Connection;
+    /** Fetch a given ref from the repository */
+    ref?: Maybe<Ref>;
+    /** Fetch a list of refs from the repository */
+    refs?: Maybe<RefConnection>;
+    /** Lookup a single release given various criteria. */
+    release?: Maybe<Release>;
+    /** List of releases which are dependent on this repository. */
+    releases: ReleaseConnection;
+    /** A list of applied repository-topic associations for this repository. */
+    repositoryTopics: RepositoryTopicConnection;
+    /** The HTTP path for this repository */
+    resourcePath: Scalars['URI'];
+    /** The security policy URL. */
+    securityPolicyUrl?: Maybe<Scalars['URI']>;
+    /** A description of the repository, rendered to HTML without any links in it. */
+    shortDescriptionHTML: Scalars['HTML'];
+    /** Whether or not squash-merging is enabled on this repository. */
+    squashMergeAllowed: Scalars['Boolean'];
+    /** How the default commit message will be generated when squash merging a pull request. */
+    squashMergeCommitMessage: SquashMergeCommitMessage;
+    /** How the default commit title will be generated when squash merging a pull request. */
+    squashMergeCommitTitle: SquashMergeCommitTitle;
+    /**
+     * Whether a squash merge commit can use the pull request title as default.
+     * @deprecated `squashPrTitleUsedAsDefault` will be removed. Use `Repository.squashMergeCommitTitle` instead. Removal on 2023-04-01 UTC.
+     */
+    squashPrTitleUsedAsDefault: Scalars['Boolean'];
+    /** The SSH URL to clone this repository */
+    sshUrl: Scalars['GitSSHRemote'];
+    /**
+     * Returns a count of how many stargazers there are on this object
+     *
+     */
+    stargazerCount: Scalars['Int'];
+    /** A list of users who have starred this starrable. */
+    stargazers: StargazerConnection;
+    /** Returns a list of all submodules in this repository parsed from the .gitmodules file as of the default branch's HEAD commit. */
+    submodules: SubmoduleConnection;
+    /** Temporary authentication token for cloning this repository. */
+    tempCloneToken?: Maybe<Scalars['String']>;
+    /** The repository from which this repository was generated, if any. */
+    templateRepository?: Maybe<Repository>;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this repository */
+    url: Scalars['URI'];
+    /** Whether this repository has a custom image to use with Open Graph as opposed to being represented by the owner's avatar. */
+    usesCustomOpenGraphImage: Scalars['Boolean'];
+    /** Indicates whether the viewer has admin permissions on this repository. */
+    viewerCanAdminister: Scalars['Boolean'];
+    /** Can the current viewer create new projects on this owner. */
+    viewerCanCreateProjects: Scalars['Boolean'];
+    /** Check if the viewer is able to change their subscription status for the repository. */
+    viewerCanSubscribe: Scalars['Boolean'];
+    /** Indicates whether the viewer can update the topics of this repository. */
+    viewerCanUpdateTopics: Scalars['Boolean'];
+    /** The last commit email for the viewer. */
+    viewerDefaultCommitEmail?: Maybe<Scalars['String']>;
+    /** The last used merge method by the viewer or the default for the repository. */
+    viewerDefaultMergeMethod: PullRequestMergeMethod;
+    /** Returns a boolean indicating whether the viewing user has starred this starrable. */
+    viewerHasStarred: Scalars['Boolean'];
+    /** The users permission level on the repository. Will return null if authenticated as an GitHub App. */
+    viewerPermission?: Maybe<RepositoryPermission>;
+    /** A list of emails this viewer can commit with. */
+    viewerPossibleCommitEmails?: Maybe<Array<Scalars['String']>>;
+    /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
+    viewerSubscription?: Maybe<SubscriptionState>;
+    /** Indicates the repository's visibility level. */
+    visibility: RepositoryVisibility;
+    /** A list of vulnerability alerts that are on this repository. */
+    vulnerabilityAlerts?: Maybe<RepositoryVulnerabilityAlertConnection>;
+    /** A list of users watching the repository. */
+    watchers: UserConnection;
+    /** Whether contributors are required to sign off on web-based commits in this repository. */
+    webCommitSignoffRequired: Scalars['Boolean'];
+  };
 
 /** A repository contains the content for a project. */
 export type RepositoryAssignableUsersArgs = {
@@ -19958,7 +19991,6 @@ export type RepositoryAssignableUsersArgs = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryBranchProtectionRulesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -19967,12 +19999,10 @@ export type RepositoryBranchProtectionRulesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryCodeownersArgs = {
   refName?: InputMaybe<Scalars['String']>;
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryCollaboratorsArgs = {
@@ -19984,7 +20014,6 @@ export type RepositoryCollaboratorsArgs = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryCommitCommentsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -19993,7 +20022,6 @@ export type RepositoryCommitCommentsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryDeployKeysArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -20001,7 +20029,6 @@ export type RepositoryDeployKeysArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryDeploymentsArgs = {
@@ -20013,12 +20040,10 @@ export type RepositoryDeploymentsArgs = {
   orderBy?: InputMaybe<DeploymentOrder>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryDiscussionArgs = {
   number: Scalars['Int'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryDiscussionCategoriesArgs = {
@@ -20029,12 +20054,10 @@ export type RepositoryDiscussionCategoriesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryDiscussionCategoryArgs = {
   slug: Scalars['String'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryDiscussionsArgs = {
@@ -20046,12 +20069,10 @@ export type RepositoryDiscussionsArgs = {
   orderBy?: InputMaybe<DiscussionOrder>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryEnvironmentArgs = {
   name: Scalars['String'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryEnvironmentsArgs = {
@@ -20060,7 +20081,6 @@ export type RepositoryEnvironmentsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryForksArgs = {
@@ -20075,18 +20095,15 @@ export type RepositoryForksArgs = {
   privacy?: InputMaybe<RepositoryPrivacy>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryIssueArgs = {
   number: Scalars['Int'];
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryIssueOrPullRequestArgs = {
   number: Scalars['Int'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryIssuesArgs = {
@@ -20100,12 +20117,10 @@ export type RepositoryIssuesArgs = {
   states?: InputMaybe<Array<IssueState>>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryLabelArgs = {
   name: Scalars['String'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryLabelsArgs = {
@@ -20117,7 +20132,6 @@ export type RepositoryLabelsArgs = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryLanguagesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -20126,7 +20140,6 @@ export type RepositoryLanguagesArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<LanguageOrder>;
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryMentionableUsersArgs = {
@@ -20137,12 +20150,10 @@ export type RepositoryMentionableUsersArgs = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryMilestoneArgs = {
   number: Scalars['Int'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryMilestonesArgs = {
@@ -20155,13 +20166,11 @@ export type RepositoryMilestonesArgs = {
   states?: InputMaybe<Array<MilestoneState>>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryObjectArgs = {
   expression?: InputMaybe<Scalars['String']>;
   oid?: InputMaybe<Scalars['GitObjectID']>;
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryPackagesArgs = {
@@ -20175,7 +20184,6 @@ export type RepositoryPackagesArgs = {
   repositoryId?: InputMaybe<Scalars['ID']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryPinnedDiscussionsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -20183,7 +20191,6 @@ export type RepositoryPinnedDiscussionsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryPinnedIssuesArgs = {
@@ -20193,24 +20200,20 @@ export type RepositoryPinnedIssuesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryProjectArgs = {
   number: Scalars['Int'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryProjectNextArgs = {
   number: Scalars['Int'];
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryProjectV2Args = {
   number: Scalars['Int'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryProjectsArgs = {
@@ -20223,7 +20226,6 @@ export type RepositoryProjectsArgs = {
   states?: InputMaybe<Array<ProjectState>>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryProjectsNextArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -20233,7 +20235,6 @@ export type RepositoryProjectsNextArgs = {
   query?: InputMaybe<Scalars['String']>;
   sortBy?: InputMaybe<ProjectNextOrderField>;
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryProjectsV2Args = {
@@ -20245,12 +20246,10 @@ export type RepositoryProjectsV2Args = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryPullRequestArgs = {
   number: Scalars['Int'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryPullRequestsArgs = {
@@ -20265,7 +20264,6 @@ export type RepositoryPullRequestsArgs = {
   states?: InputMaybe<Array<PullRequestState>>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryRecentProjectsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -20274,12 +20272,10 @@ export type RepositoryRecentProjectsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryRefArgs = {
   qualifiedName: Scalars['String'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryRefsArgs = {
@@ -20293,12 +20289,10 @@ export type RepositoryRefsArgs = {
   refPrefix: Scalars['String'];
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryReleaseArgs = {
   tagName: Scalars['String'];
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryReleasesArgs = {
@@ -20309,7 +20303,6 @@ export type RepositoryReleasesArgs = {
   orderBy?: InputMaybe<ReleaseOrder>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryRepositoryTopicsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -20318,12 +20311,10 @@ export type RepositoryRepositoryTopicsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryShortDescriptionHtmlArgs = {
   limit?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryStargazersArgs = {
@@ -20334,7 +20325,6 @@ export type RepositoryStargazersArgs = {
   orderBy?: InputMaybe<StarOrder>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositorySubmodulesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -20343,17 +20333,17 @@ export type RepositorySubmodulesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A repository contains the content for a project. */
 export type RepositoryVulnerabilityAlertsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
-  dependencyScopes?: InputMaybe<Array<RepositoryVulnerabilityAlertDependencyScope>>;
+  dependencyScopes?: InputMaybe<
+    Array<RepositoryVulnerabilityAlertDependencyScope>
+  >;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   states?: InputMaybe<Array<RepositoryVulnerabilityAlertState>>;
 };
-
 
 /** A repository contains the content for a project. */
 export type RepositoryWatchersArgs = {
@@ -20482,7 +20472,6 @@ export type RepositoryDiscussionAuthor = {
   repositoryDiscussions: DiscussionConnection;
 };
 
-
 /** Represents an author of discussions in repositories. */
 export type RepositoryDiscussionAuthorRepositoryDiscussionsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -20500,16 +20489,16 @@ export type RepositoryDiscussionCommentAuthor = {
   repositoryDiscussionComments: DiscussionCommentConnection;
 };
 
-
 /** Represents an author of discussion comments in repositories. */
-export type RepositoryDiscussionCommentAuthorRepositoryDiscussionCommentsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  onlyAnswers?: InputMaybe<Scalars['Boolean']>;
-  repositoryId?: InputMaybe<Scalars['ID']>;
-};
+export type RepositoryDiscussionCommentAuthorRepositoryDiscussionCommentsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+    onlyAnswers?: InputMaybe<Scalars['Boolean']>;
+    repositoryId?: InputMaybe<Scalars['ID']>;
+  };
 
 /** An edge in a connection. */
 export type RepositoryEdge = {
@@ -20583,7 +20572,6 @@ export type RepositoryInfo = {
   /** Indicates the repository's visibility level. */
   visibility: RepositoryVisibility;
 };
-
 
 /** A subset of repository info. */
 export type RepositoryInfoShortDescriptionHtmlArgs = {
@@ -20706,28 +20694,29 @@ export enum RepositoryLockReason {
 }
 
 /** A GitHub Enterprise Importer (GEI) repository migration. */
-export type RepositoryMigration = Migration & Node & {
-  __typename?: 'RepositoryMigration';
-  /** The migration flag to continue on error. */
-  continueOnError: Scalars['Boolean'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['String']>;
-  /** The reason the migration failed. */
-  failureReason?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  /** The URL for the migration log (expires 1 day after migration completes). */
-  migrationLogUrl?: Maybe<Scalars['URI']>;
-  /** The migration source. */
-  migrationSource: MigrationSource;
-  /** The target repository name. */
-  repositoryName: Scalars['String'];
-  /** The migration source URL. */
-  sourceUrl: Scalars['URI'];
-  /** The migration state. */
-  state: MigrationState;
-};
+export type RepositoryMigration = Migration &
+  Node & {
+    __typename?: 'RepositoryMigration';
+    /** The migration flag to continue on error. */
+    continueOnError: Scalars['Boolean'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['String']>;
+    /** The reason the migration failed. */
+    failureReason?: Maybe<Scalars['String']>;
+    id: Scalars['ID'];
+    /** The URL for the migration log (expires 1 day after migration completes). */
+    migrationLogUrl?: Maybe<Scalars['URI']>;
+    /** The migration source. */
+    migrationSource: MigrationSource;
+    /** The target repository name. */
+    repositoryName: Scalars['String'];
+    /** The migration source URL. */
+    sourceUrl: Scalars['URI'];
+    /** The migration state. */
+    state: MigrationState;
+  };
 
 /** The connection type for RepositoryMigration. */
 export type RepositoryMigrationConnection = {
@@ -20818,12 +20807,10 @@ export type RepositoryOwner = {
   url: Scalars['URI'];
 };
 
-
 /** Represents an owner of a Repository. */
 export type RepositoryOwnerAvatarUrlArgs = {
   size?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** Represents an owner of a Repository. */
 export type RepositoryOwnerRepositoriesArgs = {
@@ -20838,7 +20825,6 @@ export type RepositoryOwnerRepositoriesArgs = {
   ownerAffiliations?: InputMaybe<Array<InputMaybe<RepositoryAffiliation>>>;
   privacy?: InputMaybe<RepositoryPrivacy>;
 };
-
 
 /** Represents an owner of a Repository. */
 export type RepositoryOwnerRepositoryArgs = {
@@ -20869,16 +20855,17 @@ export enum RepositoryPrivacy {
 }
 
 /** A repository-topic connects a repository to a topic. */
-export type RepositoryTopic = Node & UniformResourceLocatable & {
-  __typename?: 'RepositoryTopic';
-  id: Scalars['ID'];
-  /** The HTTP path for this repository-topic. */
-  resourcePath: Scalars['URI'];
-  /** The topic. */
-  topic: Topic;
-  /** The HTTP URL for this repository-topic. */
-  url: Scalars['URI'];
-};
+export type RepositoryTopic = Node &
+  UniformResourceLocatable & {
+    __typename?: 'RepositoryTopic';
+    id: Scalars['ID'];
+    /** The HTTP path for this repository-topic. */
+    resourcePath: Scalars['URI'];
+    /** The topic. */
+    topic: Topic;
+    /** The HTTP URL for this repository-topic. */
+    url: Scalars['URI'];
+  };
 
 /** The connection type for RepositoryTopic. */
 export type RepositoryTopicConnection = {
@@ -20913,139 +20900,146 @@ export enum RepositoryVisibility {
 }
 
 /** Audit log entry for a repository_visibility_change.disable event. */
-export type RepositoryVisibilityChangeDisableAuditEntry = AuditEntry & EnterpriseAuditEntryData & Node & OrganizationAuditEntryData & {
-  __typename?: 'RepositoryVisibilityChangeDisableAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The HTTP path for this enterprise. */
-  enterpriseResourcePath?: Maybe<Scalars['URI']>;
-  /** The slug of the enterprise. */
-  enterpriseSlug?: Maybe<Scalars['String']>;
-  /** The HTTP URL for this enterprise. */
-  enterpriseUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepositoryVisibilityChangeDisableAuditEntry = AuditEntry &
+  EnterpriseAuditEntryData &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'RepositoryVisibilityChangeDisableAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The HTTP path for this enterprise. */
+    enterpriseResourcePath?: Maybe<Scalars['URI']>;
+    /** The slug of the enterprise. */
+    enterpriseSlug?: Maybe<Scalars['String']>;
+    /** The HTTP URL for this enterprise. */
+    enterpriseUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a repository_visibility_change.enable event. */
-export type RepositoryVisibilityChangeEnableAuditEntry = AuditEntry & EnterpriseAuditEntryData & Node & OrganizationAuditEntryData & {
-  __typename?: 'RepositoryVisibilityChangeEnableAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  /** The HTTP path for this enterprise. */
-  enterpriseResourcePath?: Maybe<Scalars['URI']>;
-  /** The slug of the enterprise. */
-  enterpriseSlug?: Maybe<Scalars['String']>;
-  /** The HTTP URL for this enterprise. */
-  enterpriseUrl?: Maybe<Scalars['URI']>;
-  id: Scalars['ID'];
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type RepositoryVisibilityChangeEnableAuditEntry = AuditEntry &
+  EnterpriseAuditEntryData &
+  Node &
+  OrganizationAuditEntryData & {
+    __typename?: 'RepositoryVisibilityChangeEnableAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    /** The HTTP path for this enterprise. */
+    enterpriseResourcePath?: Maybe<Scalars['URI']>;
+    /** The slug of the enterprise. */
+    enterpriseSlug?: Maybe<Scalars['String']>;
+    /** The HTTP URL for this enterprise. */
+    enterpriseUrl?: Maybe<Scalars['URI']>;
+    id: Scalars['ID'];
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** A Dependabot alert for a repository with a dependency affected by a security vulnerability. */
-export type RepositoryVulnerabilityAlert = Node & RepositoryNode & {
-  __typename?: 'RepositoryVulnerabilityAlert';
-  /** When was the alert created? */
-  createdAt: Scalars['DateTime'];
-  /** The associated Dependabot update */
-  dependabotUpdate?: Maybe<DependabotUpdate>;
-  /** The scope of an alert's dependency */
-  dependencyScope?: Maybe<RepositoryVulnerabilityAlertDependencyScope>;
-  /** Comment explaining the reason the alert was dismissed */
-  dismissComment?: Maybe<Scalars['String']>;
-  /** The reason the alert was dismissed */
-  dismissReason?: Maybe<Scalars['String']>;
-  /** When was the alert dismissed? */
-  dismissedAt?: Maybe<Scalars['DateTime']>;
-  /** The user who dismissed the alert */
-  dismisser?: Maybe<User>;
-  /**
-   * The reason the alert was marked as fixed.
-   * @deprecated The `fixReason` field is being removed. You can still use `fixedAt` and `dismissReason`. Removal on 2023-04-01 UTC.
-   */
-  fixReason?: Maybe<Scalars['String']>;
-  /** When was the alert fixed? */
-  fixedAt?: Maybe<Scalars['DateTime']>;
-  id: Scalars['ID'];
-  /** Identifies the alert number. */
-  number: Scalars['Int'];
-  /** The associated repository */
-  repository: Repository;
-  /** The associated security advisory */
-  securityAdvisory?: Maybe<SecurityAdvisory>;
-  /** The associated security vulnerability */
-  securityVulnerability?: Maybe<SecurityVulnerability>;
-  /** Identifies the state of the alert. */
-  state: RepositoryVulnerabilityAlertState;
-  /** The vulnerable manifest filename */
-  vulnerableManifestFilename: Scalars['String'];
-  /** The vulnerable manifest path */
-  vulnerableManifestPath: Scalars['String'];
-  /** The vulnerable requirements */
-  vulnerableRequirements?: Maybe<Scalars['String']>;
-};
+export type RepositoryVulnerabilityAlert = Node &
+  RepositoryNode & {
+    __typename?: 'RepositoryVulnerabilityAlert';
+    /** When was the alert created? */
+    createdAt: Scalars['DateTime'];
+    /** The associated Dependabot update */
+    dependabotUpdate?: Maybe<DependabotUpdate>;
+    /** The scope of an alert's dependency */
+    dependencyScope?: Maybe<RepositoryVulnerabilityAlertDependencyScope>;
+    /** Comment explaining the reason the alert was dismissed */
+    dismissComment?: Maybe<Scalars['String']>;
+    /** The reason the alert was dismissed */
+    dismissReason?: Maybe<Scalars['String']>;
+    /** When was the alert dismissed? */
+    dismissedAt?: Maybe<Scalars['DateTime']>;
+    /** The user who dismissed the alert */
+    dismisser?: Maybe<User>;
+    /**
+     * The reason the alert was marked as fixed.
+     * @deprecated The `fixReason` field is being removed. You can still use `fixedAt` and `dismissReason`. Removal on 2023-04-01 UTC.
+     */
+    fixReason?: Maybe<Scalars['String']>;
+    /** When was the alert fixed? */
+    fixedAt?: Maybe<Scalars['DateTime']>;
+    id: Scalars['ID'];
+    /** Identifies the alert number. */
+    number: Scalars['Int'];
+    /** The associated repository */
+    repository: Repository;
+    /** The associated security advisory */
+    securityAdvisory?: Maybe<SecurityAdvisory>;
+    /** The associated security vulnerability */
+    securityVulnerability?: Maybe<SecurityVulnerability>;
+    /** Identifies the state of the alert. */
+    state: RepositoryVulnerabilityAlertState;
+    /** The vulnerable manifest filename */
+    vulnerableManifestFilename: Scalars['String'];
+    /** The vulnerable manifest path */
+    vulnerableManifestPath: Scalars['String'];
+    /** The vulnerable requirements */
+    vulnerableRequirements?: Maybe<Scalars['String']>;
+  };
 
 /** The connection type for RepositoryVulnerabilityAlert. */
 export type RepositoryVulnerabilityAlertConnection = {
@@ -21158,7 +21152,6 @@ export type RequirableByPullRequest = {
   /** Whether this is required to pass before merging for a specific pull request. */
   isRequired: Scalars['Boolean'];
 };
-
 
 /** Represents a type that can be required by a pull request for merging. */
 export type RequirableByPullRequestIsRequiredArgs = {
@@ -21278,32 +21271,33 @@ export type ReviewDismissalAllowanceEdge = {
 };
 
 /** Represents a 'review_dismissed' event on a given issue or pull request. */
-export type ReviewDismissedEvent = Node & UniformResourceLocatable & {
-  __typename?: 'ReviewDismissedEvent';
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** Identifies the optional message associated with the 'review_dismissed' event. */
-  dismissalMessage?: Maybe<Scalars['String']>;
-  /** Identifies the optional message associated with the event, rendered to HTML. */
-  dismissalMessageHTML?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  /** Identifies the previous state of the review with the 'review_dismissed' event. */
-  previousReviewState: PullRequestReviewState;
-  /** PullRequest referenced by event. */
-  pullRequest: PullRequest;
-  /** Identifies the commit which caused the review to become stale. */
-  pullRequestCommit?: Maybe<PullRequestCommit>;
-  /** The HTTP path for this review dismissed event. */
-  resourcePath: Scalars['URI'];
-  /** Identifies the review associated with the 'review_dismissed' event. */
-  review?: Maybe<PullRequestReview>;
-  /** The HTTP URL for this review dismissed event. */
-  url: Scalars['URI'];
-};
+export type ReviewDismissedEvent = Node &
+  UniformResourceLocatable & {
+    __typename?: 'ReviewDismissedEvent';
+    /** Identifies the actor who performed the event. */
+    actor?: Maybe<Actor>;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** Identifies the optional message associated with the 'review_dismissed' event. */
+    dismissalMessage?: Maybe<Scalars['String']>;
+    /** Identifies the optional message associated with the event, rendered to HTML. */
+    dismissalMessageHTML?: Maybe<Scalars['String']>;
+    id: Scalars['ID'];
+    /** Identifies the previous state of the review with the 'review_dismissed' event. */
+    previousReviewState: PullRequestReviewState;
+    /** PullRequest referenced by event. */
+    pullRequest: PullRequest;
+    /** Identifies the commit which caused the review to become stale. */
+    pullRequestCommit?: Maybe<PullRequestCommit>;
+    /** The HTTP path for this review dismissed event. */
+    resourcePath: Scalars['URI'];
+    /** Identifies the review associated with the 'review_dismissed' event. */
+    review?: Maybe<PullRequestReview>;
+    /** The HTTP URL for this review dismissed event. */
+    url: Scalars['URI'];
+  };
 
 /** A request for a user to review a pull request. */
 export type ReviewRequest = Node & {
@@ -21403,14 +21397,14 @@ export type RevokeEnterpriseOrganizationsMigratorRolePayload = {
   organizations?: Maybe<OrganizationConnection>;
 };
 
-
 /** Autogenerated return type of RevokeEnterpriseOrganizationsMigratorRole */
-export type RevokeEnterpriseOrganizationsMigratorRolePayloadOrganizationsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
+export type RevokeEnterpriseOrganizationsMigratorRolePayloadOrganizationsArgs =
+  {
+    after?: InputMaybe<Scalars['String']>;
+    before?: InputMaybe<Scalars['String']>;
+    first?: InputMaybe<Scalars['Int']>;
+    last?: InputMaybe<Scalars['Int']>;
+  };
 
 /** Autogenerated input type of RevokeMigratorRole */
 export type RevokeMigratorRoleInput = {
@@ -21520,7 +21514,15 @@ export enum SavedReplyOrderField {
 }
 
 /** The results of a search. */
-export type SearchResultItem = App | Discussion | Issue | MarketplaceListing | Organization | PullRequest | Repository | User;
+export type SearchResultItem =
+  | App
+  | Discussion
+  | Issue
+  | MarketplaceListing
+  | Organization
+  | PullRequest
+  | Repository
+  | User;
 
 /** A list of results that matched against a search query. Regardless of the number of matches, a maximum of 1,000 results will be available across all types, potentially split across many pages. */
 export type SearchResultItemConnection = {
@@ -21608,7 +21610,6 @@ export type SecurityAdvisory = Node & {
   withdrawnAt?: Maybe<Scalars['DateTime']>;
 };
 
-
 /** A GitHub Security Advisory */
 export type SecurityAdvisoryCwesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -21616,7 +21617,6 @@ export type SecurityAdvisoryCwesArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A GitHub Security Advisory */
 export type SecurityAdvisoryVulnerabilitiesArgs = {
@@ -22020,12 +22020,10 @@ export type Sponsorable = {
   viewerIsSponsoring: Scalars['Boolean'];
 };
 
-
 /** Entities that can sponsor or be sponsored through GitHub Sponsors. */
 export type SponsorableIsSponsoredByArgs = {
   accountLogin: Scalars['String'];
 };
-
 
 /** Entities that can sponsor or be sponsored through GitHub Sponsors. */
 export type SponsorableSponsoringArgs = {
@@ -22036,7 +22034,6 @@ export type SponsorableSponsoringArgs = {
   orderBy?: InputMaybe<SponsorOrder>;
 };
 
-
 /** Entities that can sponsor or be sponsored through GitHub Sponsors. */
 export type SponsorableSponsorsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -22046,7 +22043,6 @@ export type SponsorableSponsorsArgs = {
   orderBy?: InputMaybe<SponsorOrder>;
   tierId?: InputMaybe<Scalars['ID']>;
 };
-
 
 /** Entities that can sponsor or be sponsored through GitHub Sponsors. */
 export type SponsorableSponsorsActivitiesArgs = {
@@ -22062,7 +22058,6 @@ export type SponsorableSponsorsActivitiesArgs = {
   until?: InputMaybe<Scalars['DateTime']>;
 };
 
-
 /** Entities that can sponsor or be sponsored through GitHub Sponsors. */
 export type SponsorableSponsorshipNewslettersArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -22071,7 +22066,6 @@ export type SponsorableSponsorshipNewslettersArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<SponsorshipNewsletterOrder>;
 };
-
 
 /** Entities that can sponsor or be sponsored through GitHub Sponsors. */
 export type SponsorableSponsorshipsAsMaintainerArgs = {
@@ -22082,7 +22076,6 @@ export type SponsorableSponsorshipsAsMaintainerArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<SponsorshipOrder>;
 };
-
 
 /** Entities that can sponsor or be sponsored through GitHub Sponsors. */
 export type SponsorableSponsorshipsAsSponsorArgs = {
@@ -22780,12 +22773,12 @@ export type SponsorsListing = Node & {
   url: Scalars['URI'];
 };
 
-
 /** A GitHub Sponsors listing. */
 export type SponsorsListingFeaturedItemsArgs = {
-  featureableTypes?: InputMaybe<Array<SponsorsListingFeaturedItemFeatureableType>>;
+  featureableTypes?: InputMaybe<
+    Array<SponsorsListingFeaturedItemFeatureableType>
+  >;
 };
-
 
 /** A GitHub Sponsors listing. */
 export type SponsorsListingTiersArgs = {
@@ -22867,7 +22860,6 @@ export type SponsorsTierAdminInfo = {
   /** The sponsorships using this tier. */
   sponsorships: SponsorshipConnection;
 };
-
 
 /** SponsorsTier information only visible to users that can administer the associated Sponsors listing. */
 export type SponsorsTierAdminInfoSponsorshipsArgs = {
@@ -23141,7 +23133,6 @@ export type Starrable = {
   viewerHasStarred: Scalars['Boolean'];
 };
 
-
 /** Things that can be starred. */
 export type StarrableStargazersArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -23231,7 +23222,6 @@ export type Status = Node & {
   state: StatusState;
 };
 
-
 /** Represents a commit status. */
 export type StatusCombinedContextsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -23239,7 +23229,6 @@ export type StatusCombinedContextsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** Represents a commit status. */
 export type StatusContextArgs = {
@@ -23257,7 +23246,6 @@ export type StatusCheckRollup = Node & {
   /** The combined status for the commit. */
   state: StatusState;
 };
-
 
 /** Represents the rollup for both the check runs and status for a commit. */
 export type StatusCheckRollupContextsArgs = {
@@ -23301,35 +23289,34 @@ export type StatusCheckRollupContextEdge = {
 };
 
 /** Represents an individual commit status context */
-export type StatusContext = Node & RequirableByPullRequest & {
-  __typename?: 'StatusContext';
-  /** The avatar of the OAuth application or the user that created the status */
-  avatarUrl?: Maybe<Scalars['URI']>;
-  /** This commit this status context is attached to. */
-  commit?: Maybe<Commit>;
-  /** The name of this status context. */
-  context: Scalars['String'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** The actor who created this status context. */
-  creator?: Maybe<Actor>;
-  /** The description for this status context. */
-  description?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  /** Whether this is required to pass before merging for a specific pull request. */
-  isRequired: Scalars['Boolean'];
-  /** The state of this status context. */
-  state: StatusState;
-  /** The URL for this status context. */
-  targetUrl?: Maybe<Scalars['URI']>;
-};
-
+export type StatusContext = Node &
+  RequirableByPullRequest & {
+    __typename?: 'StatusContext';
+    /** The avatar of the OAuth application or the user that created the status */
+    avatarUrl?: Maybe<Scalars['URI']>;
+    /** This commit this status context is attached to. */
+    commit?: Maybe<Commit>;
+    /** The name of this status context. */
+    context: Scalars['String'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** The actor who created this status context. */
+    creator?: Maybe<Actor>;
+    /** The description for this status context. */
+    description?: Maybe<Scalars['String']>;
+    id: Scalars['ID'];
+    /** Whether this is required to pass before merging for a specific pull request. */
+    isRequired: Scalars['Boolean'];
+    /** The state of this status context. */
+    state: StatusState;
+    /** The URL for this status context. */
+    targetUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Represents an individual commit status context */
 export type StatusContextAvatarUrlArgs = {
   size?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** Represents an individual commit status context */
 export type StatusContextIsRequiredArgs = {
@@ -23467,111 +23454,113 @@ export type SuggestedReviewer = {
 };
 
 /** Represents a Git tag. */
-export type Tag = GitObject & Node & {
-  __typename?: 'Tag';
-  /** An abbreviated version of the Git object ID */
-  abbreviatedOid: Scalars['String'];
-  /** The HTTP path for this Git object */
-  commitResourcePath: Scalars['URI'];
-  /** The HTTP URL for this Git object */
-  commitUrl: Scalars['URI'];
-  id: Scalars['ID'];
-  /** The Git tag message. */
-  message?: Maybe<Scalars['String']>;
-  /** The Git tag name. */
-  name: Scalars['String'];
-  /** The Git object ID */
-  oid: Scalars['GitObjectID'];
-  /** The Repository the Git object belongs to */
-  repository: Repository;
-  /** Details about the tag author. */
-  tagger?: Maybe<GitActor>;
-  /** The Git object the tag points to. */
-  target: GitObject;
-};
+export type Tag = GitObject &
+  Node & {
+    __typename?: 'Tag';
+    /** An abbreviated version of the Git object ID */
+    abbreviatedOid: Scalars['String'];
+    /** The HTTP path for this Git object */
+    commitResourcePath: Scalars['URI'];
+    /** The HTTP URL for this Git object */
+    commitUrl: Scalars['URI'];
+    id: Scalars['ID'];
+    /** The Git tag message. */
+    message?: Maybe<Scalars['String']>;
+    /** The Git tag name. */
+    name: Scalars['String'];
+    /** The Git object ID */
+    oid: Scalars['GitObjectID'];
+    /** The Repository the Git object belongs to */
+    repository: Repository;
+    /** Details about the tag author. */
+    tagger?: Maybe<GitActor>;
+    /** The Git object the tag points to. */
+    target: GitObject;
+  };
 
 /** A team of users in an organization. */
-export type Team = MemberStatusable & Node & Subscribable & {
-  __typename?: 'Team';
-  /** A list of teams that are ancestors of this team. */
-  ancestors: TeamConnection;
-  /** A URL pointing to the team's avatar. */
-  avatarUrl?: Maybe<Scalars['URI']>;
-  /** List of child teams belonging to this team */
-  childTeams: TeamConnection;
-  /** The slug corresponding to the organization and team. */
-  combinedSlug: Scalars['String'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The description of the team. */
-  description?: Maybe<Scalars['String']>;
-  /** Find a team discussion by its number. */
-  discussion?: Maybe<TeamDiscussion>;
-  /** A list of team discussions. */
-  discussions: TeamDiscussionConnection;
-  /** The HTTP path for team discussions */
-  discussionsResourcePath: Scalars['URI'];
-  /** The HTTP URL for team discussions */
-  discussionsUrl: Scalars['URI'];
-  /** The HTTP path for editing this team */
-  editTeamResourcePath: Scalars['URI'];
-  /** The HTTP URL for editing this team */
-  editTeamUrl: Scalars['URI'];
-  id: Scalars['ID'];
-  /** A list of pending invitations for users to this team */
-  invitations?: Maybe<OrganizationInvitationConnection>;
-  /** Get the status messages members of this entity have set that are either public or visible only to the organization. */
-  memberStatuses: UserStatusConnection;
-  /** A list of users who are members of this team. */
-  members: TeamMemberConnection;
-  /** The HTTP path for the team' members */
-  membersResourcePath: Scalars['URI'];
-  /** The HTTP URL for the team' members */
-  membersUrl: Scalars['URI'];
-  /** The name of the team. */
-  name: Scalars['String'];
-  /** The HTTP path creating a new team */
-  newTeamResourcePath: Scalars['URI'];
-  /** The HTTP URL creating a new team */
-  newTeamUrl: Scalars['URI'];
-  /** The organization that owns this team. */
-  organization: Organization;
-  /** The parent team of the team. */
-  parentTeam?: Maybe<Team>;
-  /** The level of privacy the team has. */
-  privacy: TeamPrivacy;
-  /** Finds and returns the project according to the provided project number. */
-  projectV2?: Maybe<ProjectV2>;
-  /** List of projects this team has collaborator access to. */
-  projectsV2: ProjectV2Connection;
-  /** A list of repositories this team has access to. */
-  repositories: TeamRepositoryConnection;
-  /** The HTTP path for this team's repositories */
-  repositoriesResourcePath: Scalars['URI'];
-  /** The HTTP URL for this team's repositories */
-  repositoriesUrl: Scalars['URI'];
-  /** The HTTP path for this team */
-  resourcePath: Scalars['URI'];
-  /** The slug corresponding to the team. */
-  slug: Scalars['String'];
-  /** The HTTP path for this team's teams */
-  teamsResourcePath: Scalars['URI'];
-  /** The HTTP URL for this team's teams */
-  teamsUrl: Scalars['URI'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this team */
-  url: Scalars['URI'];
-  /** Team is adminable by the viewer. */
-  viewerCanAdminister: Scalars['Boolean'];
-  /** Check if the viewer is able to change their subscription status for the repository. */
-  viewerCanSubscribe: Scalars['Boolean'];
-  /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
-  viewerSubscription?: Maybe<SubscriptionState>;
-};
-
+export type Team = MemberStatusable &
+  Node &
+  Subscribable & {
+    __typename?: 'Team';
+    /** A list of teams that are ancestors of this team. */
+    ancestors: TeamConnection;
+    /** A URL pointing to the team's avatar. */
+    avatarUrl?: Maybe<Scalars['URI']>;
+    /** List of child teams belonging to this team */
+    childTeams: TeamConnection;
+    /** The slug corresponding to the organization and team. */
+    combinedSlug: Scalars['String'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The description of the team. */
+    description?: Maybe<Scalars['String']>;
+    /** Find a team discussion by its number. */
+    discussion?: Maybe<TeamDiscussion>;
+    /** A list of team discussions. */
+    discussions: TeamDiscussionConnection;
+    /** The HTTP path for team discussions */
+    discussionsResourcePath: Scalars['URI'];
+    /** The HTTP URL for team discussions */
+    discussionsUrl: Scalars['URI'];
+    /** The HTTP path for editing this team */
+    editTeamResourcePath: Scalars['URI'];
+    /** The HTTP URL for editing this team */
+    editTeamUrl: Scalars['URI'];
+    id: Scalars['ID'];
+    /** A list of pending invitations for users to this team */
+    invitations?: Maybe<OrganizationInvitationConnection>;
+    /** Get the status messages members of this entity have set that are either public or visible only to the organization. */
+    memberStatuses: UserStatusConnection;
+    /** A list of users who are members of this team. */
+    members: TeamMemberConnection;
+    /** The HTTP path for the team' members */
+    membersResourcePath: Scalars['URI'];
+    /** The HTTP URL for the team' members */
+    membersUrl: Scalars['URI'];
+    /** The name of the team. */
+    name: Scalars['String'];
+    /** The HTTP path creating a new team */
+    newTeamResourcePath: Scalars['URI'];
+    /** The HTTP URL creating a new team */
+    newTeamUrl: Scalars['URI'];
+    /** The organization that owns this team. */
+    organization: Organization;
+    /** The parent team of the team. */
+    parentTeam?: Maybe<Team>;
+    /** The level of privacy the team has. */
+    privacy: TeamPrivacy;
+    /** Finds and returns the project according to the provided project number. */
+    projectV2?: Maybe<ProjectV2>;
+    /** List of projects this team has collaborator access to. */
+    projectsV2: ProjectV2Connection;
+    /** A list of repositories this team has access to. */
+    repositories: TeamRepositoryConnection;
+    /** The HTTP path for this team's repositories */
+    repositoriesResourcePath: Scalars['URI'];
+    /** The HTTP URL for this team's repositories */
+    repositoriesUrl: Scalars['URI'];
+    /** The HTTP path for this team */
+    resourcePath: Scalars['URI'];
+    /** The slug corresponding to the team. */
+    slug: Scalars['String'];
+    /** The HTTP path for this team's teams */
+    teamsResourcePath: Scalars['URI'];
+    /** The HTTP URL for this team's teams */
+    teamsUrl: Scalars['URI'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this team */
+    url: Scalars['URI'];
+    /** Team is adminable by the viewer. */
+    viewerCanAdminister: Scalars['Boolean'];
+    /** Check if the viewer is able to change their subscription status for the repository. */
+    viewerCanSubscribe: Scalars['Boolean'];
+    /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
+    viewerSubscription?: Maybe<SubscriptionState>;
+  };
 
 /** A team of users in an organization. */
 export type TeamAncestorsArgs = {
@@ -23581,12 +23570,10 @@ export type TeamAncestorsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A team of users in an organization. */
 export type TeamAvatarUrlArgs = {
   size?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A team of users in an organization. */
 export type TeamChildTeamsArgs = {
@@ -23599,12 +23586,10 @@ export type TeamChildTeamsArgs = {
   userLogins?: InputMaybe<Array<Scalars['String']>>;
 };
 
-
 /** A team of users in an organization. */
 export type TeamDiscussionArgs = {
   number: Scalars['Int'];
 };
-
 
 /** A team of users in an organization. */
 export type TeamDiscussionsArgs = {
@@ -23616,7 +23601,6 @@ export type TeamDiscussionsArgs = {
   orderBy?: InputMaybe<TeamDiscussionOrder>;
 };
 
-
 /** A team of users in an organization. */
 export type TeamInvitationsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -23624,7 +23608,6 @@ export type TeamInvitationsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A team of users in an organization. */
 export type TeamMemberStatusesArgs = {
@@ -23634,7 +23617,6 @@ export type TeamMemberStatusesArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<UserStatusOrder>;
 };
-
 
 /** A team of users in an organization. */
 export type TeamMembersArgs = {
@@ -23648,12 +23630,10 @@ export type TeamMembersArgs = {
   role?: InputMaybe<TeamMemberRole>;
 };
 
-
 /** A team of users in an organization. */
 export type TeamProjectV2Args = {
   number: Scalars['Int'];
 };
-
 
 /** A team of users in an organization. */
 export type TeamProjectsV2Args = {
@@ -23666,7 +23646,6 @@ export type TeamProjectsV2Args = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** A team of users in an organization. */
 export type TeamRepositoriesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -23678,112 +23657,119 @@ export type TeamRepositoriesArgs = {
 };
 
 /** Audit log entry for a team.add_member event. */
-export type TeamAddMemberAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & TeamAuditEntryData & {
-  __typename?: 'TeamAddMemberAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** Whether the team was mapped to an LDAP Group. */
-  isLdapMapped?: Maybe<Scalars['Boolean']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The team associated with the action */
-  team?: Maybe<Team>;
-  /** The name of the team */
-  teamName?: Maybe<Scalars['String']>;
-  /** The HTTP path for this team */
-  teamResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for this team */
-  teamUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type TeamAddMemberAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  TeamAuditEntryData & {
+    __typename?: 'TeamAddMemberAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** Whether the team was mapped to an LDAP Group. */
+    isLdapMapped?: Maybe<Scalars['Boolean']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The team associated with the action */
+    team?: Maybe<Team>;
+    /** The name of the team */
+    teamName?: Maybe<Scalars['String']>;
+    /** The HTTP path for this team */
+    teamResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for this team */
+    teamUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a team.add_repository event. */
-export type TeamAddRepositoryAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & TeamAuditEntryData & {
-  __typename?: 'TeamAddRepositoryAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** Whether the team was mapped to an LDAP Group. */
-  isLdapMapped?: Maybe<Scalars['Boolean']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The team associated with the action */
-  team?: Maybe<Team>;
-  /** The name of the team */
-  teamName?: Maybe<Scalars['String']>;
-  /** The HTTP path for this team */
-  teamResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for this team */
-  teamUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type TeamAddRepositoryAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData &
+  TeamAuditEntryData & {
+    __typename?: 'TeamAddRepositoryAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** Whether the team was mapped to an LDAP Group. */
+    isLdapMapped?: Maybe<Scalars['Boolean']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The team associated with the action */
+    team?: Maybe<Team>;
+    /** The name of the team */
+    teamName?: Maybe<Scalars['String']>;
+    /** The HTTP path for this team */
+    teamResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for this team */
+    teamUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Metadata for an audit entry with action team.* */
 export type TeamAuditEntryData = {
@@ -23798,70 +23784,73 @@ export type TeamAuditEntryData = {
 };
 
 /** Audit log entry for a team.change_parent_team event. */
-export type TeamChangeParentTeamAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & TeamAuditEntryData & {
-  __typename?: 'TeamChangeParentTeamAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** Whether the team was mapped to an LDAP Group. */
-  isLdapMapped?: Maybe<Scalars['Boolean']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The new parent team. */
-  parentTeam?: Maybe<Team>;
-  /** The name of the new parent team */
-  parentTeamName?: Maybe<Scalars['String']>;
-  /** The name of the former parent team */
-  parentTeamNameWas?: Maybe<Scalars['String']>;
-  /** The HTTP path for the parent team */
-  parentTeamResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the parent team */
-  parentTeamUrl?: Maybe<Scalars['URI']>;
-  /** The former parent team. */
-  parentTeamWas?: Maybe<Team>;
-  /** The HTTP path for the previous parent team */
-  parentTeamWasResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the previous parent team */
-  parentTeamWasUrl?: Maybe<Scalars['URI']>;
-  /** The team associated with the action */
-  team?: Maybe<Team>;
-  /** The name of the team */
-  teamName?: Maybe<Scalars['String']>;
-  /** The HTTP path for this team */
-  teamResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for this team */
-  teamUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type TeamChangeParentTeamAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  TeamAuditEntryData & {
+    __typename?: 'TeamChangeParentTeamAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** Whether the team was mapped to an LDAP Group. */
+    isLdapMapped?: Maybe<Scalars['Boolean']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The new parent team. */
+    parentTeam?: Maybe<Team>;
+    /** The name of the new parent team */
+    parentTeamName?: Maybe<Scalars['String']>;
+    /** The name of the former parent team */
+    parentTeamNameWas?: Maybe<Scalars['String']>;
+    /** The HTTP path for the parent team */
+    parentTeamResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the parent team */
+    parentTeamUrl?: Maybe<Scalars['URI']>;
+    /** The former parent team. */
+    parentTeamWas?: Maybe<Team>;
+    /** The HTTP path for the previous parent team */
+    parentTeamWasResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the previous parent team */
+    parentTeamWasUrl?: Maybe<Scalars['URI']>;
+    /** The team associated with the action */
+    team?: Maybe<Team>;
+    /** The name of the team */
+    teamName?: Maybe<Scalars['String']>;
+    /** The HTTP path for this team */
+    teamResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for this team */
+    teamUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The connection type for Team. */
 export type TeamConnection = {
@@ -23877,81 +23866,87 @@ export type TeamConnection = {
 };
 
 /** A team discussion. */
-export type TeamDiscussion = Comment & Deletable & Node & Reactable & Subscribable & UniformResourceLocatable & Updatable & UpdatableComment & {
-  __typename?: 'TeamDiscussion';
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the discussion's team. */
-  authorAssociation: CommentAuthorAssociation;
-  /** The body as Markdown. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The body rendered to text. */
-  bodyText: Scalars['String'];
-  /** Identifies the discussion body hash. */
-  bodyVersion: Scalars['String'];
-  /** A list of comments on this discussion. */
-  comments: TeamDiscussionCommentConnection;
-  /** The HTTP path for discussion comments */
-  commentsResourcePath: Scalars['URI'];
-  /** The HTTP URL for discussion comments */
-  commentsUrl: Scalars['URI'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The actor who edited the comment. */
-  editor?: Maybe<Actor>;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** Whether or not the discussion is pinned. */
-  isPinned: Scalars['Boolean'];
-  /** Whether or not the discussion is only visible to team members and org admins. */
-  isPrivate: Scalars['Boolean'];
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** Identifies the discussion within its team. */
-  number: Scalars['Int'];
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** The HTTP path for this discussion */
-  resourcePath: Scalars['URI'];
-  /** The team that defines the context of this discussion. */
-  team: Team;
-  /** The title of the discussion */
-  title: Scalars['String'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this discussion */
-  url: Scalars['URI'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Check if the current viewer can delete this object. */
-  viewerCanDelete: Scalars['Boolean'];
-  /** Whether or not the current viewer can pin this discussion. */
-  viewerCanPin: Scalars['Boolean'];
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-  /** Check if the viewer is able to change their subscription status for the repository. */
-  viewerCanSubscribe: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Reasons why the current viewer can not update this comment. */
-  viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-  /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
-  viewerSubscription?: Maybe<SubscriptionState>;
-};
-
+export type TeamDiscussion = Comment &
+  Deletable &
+  Node &
+  Reactable &
+  Subscribable &
+  UniformResourceLocatable &
+  Updatable &
+  UpdatableComment & {
+    __typename?: 'TeamDiscussion';
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the discussion's team. */
+    authorAssociation: CommentAuthorAssociation;
+    /** The body as Markdown. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The body rendered to text. */
+    bodyText: Scalars['String'];
+    /** Identifies the discussion body hash. */
+    bodyVersion: Scalars['String'];
+    /** A list of comments on this discussion. */
+    comments: TeamDiscussionCommentConnection;
+    /** The HTTP path for discussion comments */
+    commentsResourcePath: Scalars['URI'];
+    /** The HTTP URL for discussion comments */
+    commentsUrl: Scalars['URI'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The actor who edited the comment. */
+    editor?: Maybe<Actor>;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** Whether or not the discussion is pinned. */
+    isPinned: Scalars['Boolean'];
+    /** Whether or not the discussion is only visible to team members and org admins. */
+    isPrivate: Scalars['Boolean'];
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** Identifies the discussion within its team. */
+    number: Scalars['Int'];
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** The HTTP path for this discussion */
+    resourcePath: Scalars['URI'];
+    /** The team that defines the context of this discussion. */
+    team: Team;
+    /** The title of the discussion */
+    title: Scalars['String'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this discussion */
+    url: Scalars['URI'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Check if the current viewer can delete this object. */
+    viewerCanDelete: Scalars['Boolean'];
+    /** Whether or not the current viewer can pin this discussion. */
+    viewerCanPin: Scalars['Boolean'];
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+    /** Check if the viewer is able to change their subscription status for the repository. */
+    viewerCanSubscribe: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Reasons why the current viewer can not update this comment. */
+    viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+    /** Identifies if the viewer is watching, not watching, or ignoring the subscribable entity. */
+    viewerSubscription?: Maybe<SubscriptionState>;
+  };
 
 /** A team discussion. */
 export type TeamDiscussionCommentsArgs = {
@@ -23963,7 +23958,6 @@ export type TeamDiscussionCommentsArgs = {
   orderBy?: InputMaybe<TeamDiscussionCommentOrder>;
 };
 
-
 /** A team discussion. */
 export type TeamDiscussionReactionsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -23974,7 +23968,6 @@ export type TeamDiscussionReactionsArgs = {
   orderBy?: InputMaybe<ReactionOrder>;
 };
 
-
 /** A team discussion. */
 export type TeamDiscussionUserContentEditsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -23984,63 +23977,68 @@ export type TeamDiscussionUserContentEditsArgs = {
 };
 
 /** A comment on a team discussion. */
-export type TeamDiscussionComment = Comment & Deletable & Node & Reactable & UniformResourceLocatable & Updatable & UpdatableComment & {
-  __typename?: 'TeamDiscussionComment';
-  /** The actor who authored the comment. */
-  author?: Maybe<Actor>;
-  /** Author's association with the comment's team. */
-  authorAssociation: CommentAuthorAssociation;
-  /** The body as Markdown. */
-  body: Scalars['String'];
-  /** The body rendered to HTML. */
-  bodyHTML: Scalars['HTML'];
-  /** The body rendered to text. */
-  bodyText: Scalars['String'];
-  /** The current version of the body content. */
-  bodyVersion: Scalars['String'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Check if this comment was created via an email reply. */
-  createdViaEmail: Scalars['Boolean'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The discussion this comment is about. */
-  discussion: TeamDiscussion;
-  /** The actor who edited the comment. */
-  editor?: Maybe<Actor>;
-  id: Scalars['ID'];
-  /** Check if this comment was edited and includes an edit with the creation data */
-  includesCreatedEdit: Scalars['Boolean'];
-  /** The moment the editor made the last edit */
-  lastEditedAt?: Maybe<Scalars['DateTime']>;
-  /** Identifies the comment number. */
-  number: Scalars['Int'];
-  /** Identifies when the comment was published at. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** A list of reactions grouped by content left on the subject. */
-  reactionGroups?: Maybe<Array<ReactionGroup>>;
-  /** A list of Reactions left on the Issue. */
-  reactions: ReactionConnection;
-  /** The HTTP path for this comment */
-  resourcePath: Scalars['URI'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this comment */
-  url: Scalars['URI'];
-  /** A list of edits to this content. */
-  userContentEdits?: Maybe<UserContentEditConnection>;
-  /** Check if the current viewer can delete this object. */
-  viewerCanDelete: Scalars['Boolean'];
-  /** Can user react to this subject */
-  viewerCanReact: Scalars['Boolean'];
-  /** Check if the current viewer can update this object. */
-  viewerCanUpdate: Scalars['Boolean'];
-  /** Reasons why the current viewer can not update this comment. */
-  viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
-  /** Did the viewer author this comment. */
-  viewerDidAuthor: Scalars['Boolean'];
-};
-
+export type TeamDiscussionComment = Comment &
+  Deletable &
+  Node &
+  Reactable &
+  UniformResourceLocatable &
+  Updatable &
+  UpdatableComment & {
+    __typename?: 'TeamDiscussionComment';
+    /** The actor who authored the comment. */
+    author?: Maybe<Actor>;
+    /** Author's association with the comment's team. */
+    authorAssociation: CommentAuthorAssociation;
+    /** The body as Markdown. */
+    body: Scalars['String'];
+    /** The body rendered to HTML. */
+    bodyHTML: Scalars['HTML'];
+    /** The body rendered to text. */
+    bodyText: Scalars['String'];
+    /** The current version of the body content. */
+    bodyVersion: Scalars['String'];
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Check if this comment was created via an email reply. */
+    createdViaEmail: Scalars['Boolean'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The discussion this comment is about. */
+    discussion: TeamDiscussion;
+    /** The actor who edited the comment. */
+    editor?: Maybe<Actor>;
+    id: Scalars['ID'];
+    /** Check if this comment was edited and includes an edit with the creation data */
+    includesCreatedEdit: Scalars['Boolean'];
+    /** The moment the editor made the last edit */
+    lastEditedAt?: Maybe<Scalars['DateTime']>;
+    /** Identifies the comment number. */
+    number: Scalars['Int'];
+    /** Identifies when the comment was published at. */
+    publishedAt?: Maybe<Scalars['DateTime']>;
+    /** A list of reactions grouped by content left on the subject. */
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    /** A list of Reactions left on the Issue. */
+    reactions: ReactionConnection;
+    /** The HTTP path for this comment */
+    resourcePath: Scalars['URI'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this comment */
+    url: Scalars['URI'];
+    /** A list of edits to this content. */
+    userContentEdits?: Maybe<UserContentEditConnection>;
+    /** Check if the current viewer can delete this object. */
+    viewerCanDelete: Scalars['Boolean'];
+    /** Can user react to this subject */
+    viewerCanReact: Scalars['Boolean'];
+    /** Check if the current viewer can update this object. */
+    viewerCanUpdate: Scalars['Boolean'];
+    /** Reasons why the current viewer can not update this comment. */
+    viewerCannotUpdateReasons: Array<CommentCannotUpdateReason>;
+    /** Did the viewer author this comment. */
+    viewerDidAuthor: Scalars['Boolean'];
+  };
 
 /** A comment on a team discussion. */
 export type TeamDiscussionCommentReactionsArgs = {
@@ -24051,7 +24049,6 @@ export type TeamDiscussionCommentReactionsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<ReactionOrder>;
 };
-
 
 /** A comment on a team discussion. */
 export type TeamDiscussionCommentUserContentEditsArgs = {
@@ -24226,112 +24223,119 @@ export enum TeamPrivacy {
 }
 
 /** Audit log entry for a team.remove_member event. */
-export type TeamRemoveMemberAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & TeamAuditEntryData & {
-  __typename?: 'TeamRemoveMemberAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** Whether the team was mapped to an LDAP Group. */
-  isLdapMapped?: Maybe<Scalars['Boolean']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The team associated with the action */
-  team?: Maybe<Team>;
-  /** The name of the team */
-  teamName?: Maybe<Scalars['String']>;
-  /** The HTTP path for this team */
-  teamResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for this team */
-  teamUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type TeamRemoveMemberAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  TeamAuditEntryData & {
+    __typename?: 'TeamRemoveMemberAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** Whether the team was mapped to an LDAP Group. */
+    isLdapMapped?: Maybe<Scalars['Boolean']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The team associated with the action */
+    team?: Maybe<Team>;
+    /** The name of the team */
+    teamName?: Maybe<Scalars['String']>;
+    /** The HTTP path for this team */
+    teamResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for this team */
+    teamUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** Audit log entry for a team.remove_repository event. */
-export type TeamRemoveRepositoryAuditEntry = AuditEntry & Node & OrganizationAuditEntryData & RepositoryAuditEntryData & TeamAuditEntryData & {
-  __typename?: 'TeamRemoveRepositoryAuditEntry';
-  /** The action name */
-  action: Scalars['String'];
-  /** The user who initiated the action */
-  actor?: Maybe<AuditEntryActor>;
-  /** The IP address of the actor */
-  actorIp?: Maybe<Scalars['String']>;
-  /** A readable representation of the actor's location */
-  actorLocation?: Maybe<ActorLocation>;
-  /** The username of the user who initiated the action */
-  actorLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the actor. */
-  actorResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the actor. */
-  actorUrl?: Maybe<Scalars['URI']>;
-  /** The time the action was initiated */
-  createdAt: Scalars['PreciseDateTime'];
-  id: Scalars['ID'];
-  /** Whether the team was mapped to an LDAP Group. */
-  isLdapMapped?: Maybe<Scalars['Boolean']>;
-  /** The corresponding operation type for the action */
-  operationType?: Maybe<OperationType>;
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['URI']>;
-  /** The repository associated with the action */
-  repository?: Maybe<Repository>;
-  /** The name of the repository */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the repository */
-  repositoryResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the repository */
-  repositoryUrl?: Maybe<Scalars['URI']>;
-  /** The team associated with the action */
-  team?: Maybe<Team>;
-  /** The name of the team */
-  teamName?: Maybe<Scalars['String']>;
-  /** The HTTP path for this team */
-  teamResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for this team */
-  teamUrl?: Maybe<Scalars['URI']>;
-  /** The user affected by the action */
-  user?: Maybe<User>;
-  /** For actions involving two users, the actor is the initiator and the user is the affected user. */
-  userLogin?: Maybe<Scalars['String']>;
-  /** The HTTP path for the user. */
-  userResourcePath?: Maybe<Scalars['URI']>;
-  /** The HTTP URL for the user. */
-  userUrl?: Maybe<Scalars['URI']>;
-};
+export type TeamRemoveRepositoryAuditEntry = AuditEntry &
+  Node &
+  OrganizationAuditEntryData &
+  RepositoryAuditEntryData &
+  TeamAuditEntryData & {
+    __typename?: 'TeamRemoveRepositoryAuditEntry';
+    /** The action name */
+    action: Scalars['String'];
+    /** The user who initiated the action */
+    actor?: Maybe<AuditEntryActor>;
+    /** The IP address of the actor */
+    actorIp?: Maybe<Scalars['String']>;
+    /** A readable representation of the actor's location */
+    actorLocation?: Maybe<ActorLocation>;
+    /** The username of the user who initiated the action */
+    actorLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the actor. */
+    actorResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the actor. */
+    actorUrl?: Maybe<Scalars['URI']>;
+    /** The time the action was initiated */
+    createdAt: Scalars['PreciseDateTime'];
+    id: Scalars['ID'];
+    /** Whether the team was mapped to an LDAP Group. */
+    isLdapMapped?: Maybe<Scalars['Boolean']>;
+    /** The corresponding operation type for the action */
+    operationType?: Maybe<OperationType>;
+    /** The Organization associated with the Audit Entry. */
+    organization?: Maybe<Organization>;
+    /** The name of the Organization. */
+    organizationName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the organization */
+    organizationResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the organization */
+    organizationUrl?: Maybe<Scalars['URI']>;
+    /** The repository associated with the action */
+    repository?: Maybe<Repository>;
+    /** The name of the repository */
+    repositoryName?: Maybe<Scalars['String']>;
+    /** The HTTP path for the repository */
+    repositoryResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the repository */
+    repositoryUrl?: Maybe<Scalars['URI']>;
+    /** The team associated with the action */
+    team?: Maybe<Team>;
+    /** The name of the team */
+    teamName?: Maybe<Scalars['String']>;
+    /** The HTTP path for this team */
+    teamResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for this team */
+    teamUrl?: Maybe<Scalars['URI']>;
+    /** The user affected by the action */
+    user?: Maybe<User>;
+    /** For actions involving two users, the actor is the initiator and the user is the affected user. */
+    userLogin?: Maybe<Scalars['String']>;
+    /** The HTTP path for the user. */
+    userResourcePath?: Maybe<Scalars['URI']>;
+    /** The HTTP URL for the user. */
+    userUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** The connection type for Repository. */
 export type TeamRepositoryConnection = {
@@ -24411,36 +24415,35 @@ export type TextMatchHighlight = {
 };
 
 /** A topic aggregates entities that are related to a subject. */
-export type Topic = Node & Starrable & {
-  __typename?: 'Topic';
-  id: Scalars['ID'];
-  /** The topic's name. */
-  name: Scalars['String'];
-  /**
-   * A list of related topics, including aliases of this topic, sorted with the most relevant
-   * first. Returns up to 10 Topics.
-   *
-   */
-  relatedTopics: Array<Topic>;
-  /** A list of repositories. */
-  repositories: RepositoryConnection;
-  /**
-   * Returns a count of how many stargazers there are on this object
-   *
-   */
-  stargazerCount: Scalars['Int'];
-  /** A list of users who have starred this starrable. */
-  stargazers: StargazerConnection;
-  /** Returns a boolean indicating whether the viewing user has starred this starrable. */
-  viewerHasStarred: Scalars['Boolean'];
-};
-
+export type Topic = Node &
+  Starrable & {
+    __typename?: 'Topic';
+    id: Scalars['ID'];
+    /** The topic's name. */
+    name: Scalars['String'];
+    /**
+     * A list of related topics, including aliases of this topic, sorted with the most relevant
+     * first. Returns up to 10 Topics.
+     *
+     */
+    relatedTopics: Array<Topic>;
+    /** A list of repositories. */
+    repositories: RepositoryConnection;
+    /**
+     * Returns a count of how many stargazers there are on this object
+     *
+     */
+    stargazerCount: Scalars['Int'];
+    /** A list of users who have starred this starrable. */
+    stargazers: StargazerConnection;
+    /** Returns a boolean indicating whether the viewing user has starred this starrable. */
+    viewerHasStarred: Scalars['Boolean'];
+  };
 
 /** A topic aggregates entities that are related to a subject. */
 export type TopicRelatedTopicsArgs = {
   first?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A topic aggregates entities that are related to a subject. */
 export type TopicRepositoriesArgs = {
@@ -24455,7 +24458,6 @@ export type TopicRepositoriesArgs = {
   privacy?: InputMaybe<RepositoryPrivacy>;
   sponsorableOnly?: InputMaybe<Scalars['Boolean']>;
 };
-
 
 /** A topic aggregates entities that are related to a subject. */
 export type TopicStargazersArgs = {
@@ -24549,22 +24551,23 @@ export type TransferredEvent = Node & {
 };
 
 /** Represents a Git tree. */
-export type Tree = GitObject & Node & {
-  __typename?: 'Tree';
-  /** An abbreviated version of the Git object ID */
-  abbreviatedOid: Scalars['String'];
-  /** The HTTP path for this Git object */
-  commitResourcePath: Scalars['URI'];
-  /** The HTTP URL for this Git object */
-  commitUrl: Scalars['URI'];
-  /** A list of tree entries. */
-  entries?: Maybe<Array<TreeEntry>>;
-  id: Scalars['ID'];
-  /** The Git object ID */
-  oid: Scalars['GitObjectID'];
-  /** The Repository the Git object belongs to */
-  repository: Repository;
-};
+export type Tree = GitObject &
+  Node & {
+    __typename?: 'Tree';
+    /** An abbreviated version of the Git object ID */
+    abbreviatedOid: Scalars['String'];
+    /** The HTTP path for this Git object */
+    commitResourcePath: Scalars['URI'];
+    /** The HTTP URL for this Git object */
+    commitUrl: Scalars['URI'];
+    /** A list of tree entries. */
+    entries?: Maybe<Array<TreeEntry>>;
+    id: Scalars['ID'];
+    /** The Git object ID */
+    oid: Scalars['GitObjectID'];
+    /** The Repository the Git object belongs to */
+    repository: Repository;
+  };
 
 /** Represents a Git tree entry. */
 export type TreeEntry = {
@@ -25220,15 +25223,16 @@ export type UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput = {
 };
 
 /** Autogenerated return type of UpdateEnterpriseMembersCanChangeRepositoryVisibilitySetting */
-export type UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingPayload = {
-  __typename?: 'UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingPayload';
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The enterprise with the updated members can change repository visibility setting. */
-  enterprise?: Maybe<Enterprise>;
-  /** A message confirming the result of updating the members can change repository visibility setting. */
-  message?: Maybe<Scalars['String']>;
-};
+export type UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingPayload =
+  {
+    __typename?: 'UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingPayload';
+    /** A unique identifier for the client performing the mutation. */
+    clientMutationId?: Maybe<Scalars['String']>;
+    /** The enterprise with the updated members can change repository visibility setting. */
+    enterprise?: Maybe<Enterprise>;
+    /** A message confirming the result of updating the members can change repository visibility setting. */
+    message?: Maybe<Scalars['String']>;
+  };
 
 /** Autogenerated input type of UpdateEnterpriseMembersCanCreateRepositoriesSetting */
 export type UpdateEnterpriseMembersCanCreateRepositoriesSettingInput = {
@@ -26002,7 +26006,6 @@ export type UpdateProjectV2ItemPositionPayload = {
   items?: Maybe<ProjectV2ItemConnection>;
 };
 
-
 /** Autogenerated return type of UpdateProjectV2ItemPosition */
 export type UpdateProjectV2ItemPositionPayloadItemsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26330,212 +26333,220 @@ export type UpdateTopicsPayload = {
 };
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
-export type User = Actor & Node & PackageOwner & ProfileOwner & ProjectNextOwner & ProjectOwner & ProjectV2Owner & ProjectV2Recent & RepositoryDiscussionAuthor & RepositoryDiscussionCommentAuthor & RepositoryOwner & Sponsorable & UniformResourceLocatable & {
-  __typename?: 'User';
-  /** Determine if this repository owner has any items that can be pinned to their profile. */
-  anyPinnableItems: Scalars['Boolean'];
-  /** A URL pointing to the user's public avatar. */
-  avatarUrl: Scalars['URI'];
-  /** The user's public profile bio. */
-  bio?: Maybe<Scalars['String']>;
-  /** The user's public profile bio as HTML. */
-  bioHTML: Scalars['HTML'];
-  /** Could this user receive email notifications, if the organization had notification restrictions enabled? */
-  canReceiveOrganizationEmailsWhenNotificationsRestricted: Scalars['Boolean'];
-  /** A list of commit comments made by this user. */
-  commitComments: CommitCommentConnection;
-  /** The user's public profile company. */
-  company?: Maybe<Scalars['String']>;
-  /** The user's public profile company as HTML. */
-  companyHTML: Scalars['HTML'];
-  /** The collection of contributions this user has made to different repositories. */
-  contributionsCollection: ContributionsCollection;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The user's publicly visible profile email. */
-  email: Scalars['String'];
-  /** The estimated next GitHub Sponsors payout for this user/organization in cents (USD). */
-  estimatedNextSponsorsPayoutInCents: Scalars['Int'];
-  /** A list of users the given user is followed by. */
-  followers: FollowerConnection;
-  /** A list of users the given user is following. */
-  following: FollowingConnection;
-  /** Find gist by repo name. */
-  gist?: Maybe<Gist>;
-  /** A list of gist comments made by this user. */
-  gistComments: GistCommentConnection;
-  /** A list of the Gists the user has created. */
-  gists: GistConnection;
-  /** True if this user/organization has a GitHub Sponsors listing. */
-  hasSponsorsListing: Scalars['Boolean'];
-  /** The hovercard information for this user in a given context */
-  hovercard: Hovercard;
-  id: Scalars['ID'];
-  /** The interaction ability settings for this user. */
-  interactionAbility?: Maybe<RepositoryInteractionAbility>;
-  /** Whether or not this user is a participant in the GitHub Security Bug Bounty. */
-  isBountyHunter: Scalars['Boolean'];
-  /** Whether or not this user is a participant in the GitHub Campus Experts Program. */
-  isCampusExpert: Scalars['Boolean'];
-  /** Whether or not this user is a GitHub Developer Program member. */
-  isDeveloperProgramMember: Scalars['Boolean'];
-  /** Whether or not this user is a GitHub employee. */
-  isEmployee: Scalars['Boolean'];
-  /** Whether or not this user is following the viewer. Inverse of viewer_is_following */
-  isFollowingViewer: Scalars['Boolean'];
-  /** Whether or not this user is a member of the GitHub Stars Program. */
-  isGitHubStar: Scalars['Boolean'];
-  /** Whether or not the user has marked themselves as for hire. */
-  isHireable: Scalars['Boolean'];
-  /** Whether or not this user is a site administrator. */
-  isSiteAdmin: Scalars['Boolean'];
-  /** Check if the given account is sponsoring this user/organization. */
-  isSponsoredBy: Scalars['Boolean'];
-  /** True if the viewer is sponsored by this user/organization. */
-  isSponsoringViewer: Scalars['Boolean'];
-  /** Whether or not this user is the viewing user. */
-  isViewer: Scalars['Boolean'];
-  /** A list of issue comments made by this user. */
-  issueComments: IssueCommentConnection;
-  /** A list of issues associated with this user. */
-  issues: IssueConnection;
-  /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
-  itemShowcase: ProfileItemShowcase;
-  /** The user's public profile location. */
-  location?: Maybe<Scalars['String']>;
-  /** The username used to login. */
-  login: Scalars['String'];
-  /** The estimated monthly GitHub Sponsors income for this user/organization in cents (USD). */
-  monthlyEstimatedSponsorsIncomeInCents: Scalars['Int'];
-  /** The user's public profile name. */
-  name?: Maybe<Scalars['String']>;
-  /** Find an organization by its login that the user belongs to. */
-  organization?: Maybe<Organization>;
-  /** Verified email addresses that match verified domains for a specified organization the user is a member of. */
-  organizationVerifiedDomainEmails: Array<Scalars['String']>;
-  /** A list of organizations the user belongs to. */
-  organizations: OrganizationConnection;
-  /** A list of packages under the owner. */
-  packages: PackageConnection;
-  /** A list of repositories and gists this profile owner can pin to their profile. */
-  pinnableItems: PinnableItemConnection;
-  /** A list of repositories and gists this profile owner has pinned to their profile */
-  pinnedItems: PinnableItemConnection;
-  /** Returns how many more items this profile owner can pin to their profile. */
-  pinnedItemsRemaining: Scalars['Int'];
-  /** Find project by number. */
-  project?: Maybe<Project>;
-  /**
-   * Find a project by project (beta) number.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectNext?: Maybe<ProjectNext>;
-  /** Find a project by number. */
-  projectV2?: Maybe<ProjectV2>;
-  /** A list of projects under the owner. */
-  projects: ProjectConnection;
-  /**
-   * A list of projects (beta) under the owner.
-   * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
-   */
-  projectsNext: ProjectNextConnection;
-  /** The HTTP path listing user's projects */
-  projectsResourcePath: Scalars['URI'];
-  /** The HTTP URL listing user's projects */
-  projectsUrl: Scalars['URI'];
-  /** A list of projects under the owner. */
-  projectsV2: ProjectV2Connection;
-  /** A list of public keys associated with this user. */
-  publicKeys: PublicKeyConnection;
-  /** A list of pull requests associated with this user. */
-  pullRequests: PullRequestConnection;
-  /** Recent projects that this user has modified in the context of the owner. */
-  recentProjects: ProjectV2Connection;
-  /** A list of repositories that the user owns. */
-  repositories: RepositoryConnection;
-  /** A list of repositories that the user recently contributed to. */
-  repositoriesContributedTo: RepositoryConnection;
-  /** Find Repository. */
-  repository?: Maybe<Repository>;
-  /** Discussion comments this user has authored. */
-  repositoryDiscussionComments: DiscussionCommentConnection;
-  /** Discussions this user has started. */
-  repositoryDiscussions: DiscussionConnection;
-  /** The HTTP path for this user */
-  resourcePath: Scalars['URI'];
-  /** Replies this user has saved */
-  savedReplies?: Maybe<SavedReplyConnection>;
-  /** List of users and organizations this entity is sponsoring. */
-  sponsoring: SponsorConnection;
-  /** List of sponsors for this user or organization. */
-  sponsors: SponsorConnection;
-  /** Events involving this sponsorable, such as new sponsorships. */
-  sponsorsActivities: SponsorsActivityConnection;
-  /** The GitHub Sponsors listing for this user or organization. */
-  sponsorsListing?: Maybe<SponsorsListing>;
-  /** The sponsorship from the viewer to this user/organization; that is, the sponsorship where you're the sponsor. Only returns a sponsorship if it is active. */
-  sponsorshipForViewerAsSponsor?: Maybe<Sponsorship>;
-  /** The sponsorship from this user/organization to the viewer; that is, the sponsorship you're receiving. Only returns a sponsorship if it is active. */
-  sponsorshipForViewerAsSponsorable?: Maybe<Sponsorship>;
-  /** List of sponsorship updates sent from this sponsorable to sponsors. */
-  sponsorshipNewsletters: SponsorshipNewsletterConnection;
-  /** This object's sponsorships as the maintainer. */
-  sponsorshipsAsMaintainer: SponsorshipConnection;
-  /** This object's sponsorships as the sponsor. */
-  sponsorshipsAsSponsor: SponsorshipConnection;
-  /** Repositories the user has starred. */
-  starredRepositories: StarredRepositoryConnection;
-  /** The user's description of what they're currently doing. */
-  status?: Maybe<UserStatus>;
-  /**
-   * Repositories the user has contributed to, ordered by contribution rank, plus repositories the user has created
-   *
-   */
-  topRepositories: RepositoryConnection;
-  /** The user's Twitter username. */
-  twitterUsername?: Maybe<Scalars['String']>;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this user */
-  url: Scalars['URI'];
-  /** Can the viewer pin repositories and gists to the profile? */
-  viewerCanChangePinnedItems: Scalars['Boolean'];
-  /** Can the current viewer create new projects on this owner. */
-  viewerCanCreateProjects: Scalars['Boolean'];
-  /** Whether or not the viewer is able to follow the user. */
-  viewerCanFollow: Scalars['Boolean'];
-  /** Whether or not the viewer is able to sponsor this user/organization. */
-  viewerCanSponsor: Scalars['Boolean'];
-  /** Whether or not this user is followed by the viewer. Inverse of is_following_viewer. */
-  viewerIsFollowing: Scalars['Boolean'];
-  /** True if the viewer is sponsoring this user/organization. */
-  viewerIsSponsoring: Scalars['Boolean'];
-  /** A list of repositories the given user is watching. */
-  watching: RepositoryConnection;
-  /** A URL pointing to the user's public website/blog. */
-  websiteUrl?: Maybe<Scalars['URI']>;
-};
-
+export type User = Actor &
+  Node &
+  PackageOwner &
+  ProfileOwner &
+  ProjectNextOwner &
+  ProjectOwner &
+  ProjectV2Owner &
+  ProjectV2Recent &
+  RepositoryDiscussionAuthor &
+  RepositoryDiscussionCommentAuthor &
+  RepositoryOwner &
+  Sponsorable &
+  UniformResourceLocatable & {
+    __typename?: 'User';
+    /** Determine if this repository owner has any items that can be pinned to their profile. */
+    anyPinnableItems: Scalars['Boolean'];
+    /** A URL pointing to the user's public avatar. */
+    avatarUrl: Scalars['URI'];
+    /** The user's public profile bio. */
+    bio?: Maybe<Scalars['String']>;
+    /** The user's public profile bio as HTML. */
+    bioHTML: Scalars['HTML'];
+    /** Could this user receive email notifications, if the organization had notification restrictions enabled? */
+    canReceiveOrganizationEmailsWhenNotificationsRestricted: Scalars['Boolean'];
+    /** A list of commit comments made by this user. */
+    commitComments: CommitCommentConnection;
+    /** The user's public profile company. */
+    company?: Maybe<Scalars['String']>;
+    /** The user's public profile company as HTML. */
+    companyHTML: Scalars['HTML'];
+    /** The collection of contributions this user has made to different repositories. */
+    contributionsCollection: ContributionsCollection;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The user's publicly visible profile email. */
+    email: Scalars['String'];
+    /** The estimated next GitHub Sponsors payout for this user/organization in cents (USD). */
+    estimatedNextSponsorsPayoutInCents: Scalars['Int'];
+    /** A list of users the given user is followed by. */
+    followers: FollowerConnection;
+    /** A list of users the given user is following. */
+    following: FollowingConnection;
+    /** Find gist by repo name. */
+    gist?: Maybe<Gist>;
+    /** A list of gist comments made by this user. */
+    gistComments: GistCommentConnection;
+    /** A list of the Gists the user has created. */
+    gists: GistConnection;
+    /** True if this user/organization has a GitHub Sponsors listing. */
+    hasSponsorsListing: Scalars['Boolean'];
+    /** The hovercard information for this user in a given context */
+    hovercard: Hovercard;
+    id: Scalars['ID'];
+    /** The interaction ability settings for this user. */
+    interactionAbility?: Maybe<RepositoryInteractionAbility>;
+    /** Whether or not this user is a participant in the GitHub Security Bug Bounty. */
+    isBountyHunter: Scalars['Boolean'];
+    /** Whether or not this user is a participant in the GitHub Campus Experts Program. */
+    isCampusExpert: Scalars['Boolean'];
+    /** Whether or not this user is a GitHub Developer Program member. */
+    isDeveloperProgramMember: Scalars['Boolean'];
+    /** Whether or not this user is a GitHub employee. */
+    isEmployee: Scalars['Boolean'];
+    /** Whether or not this user is following the viewer. Inverse of viewer_is_following */
+    isFollowingViewer: Scalars['Boolean'];
+    /** Whether or not this user is a member of the GitHub Stars Program. */
+    isGitHubStar: Scalars['Boolean'];
+    /** Whether or not the user has marked themselves as for hire. */
+    isHireable: Scalars['Boolean'];
+    /** Whether or not this user is a site administrator. */
+    isSiteAdmin: Scalars['Boolean'];
+    /** Check if the given account is sponsoring this user/organization. */
+    isSponsoredBy: Scalars['Boolean'];
+    /** True if the viewer is sponsored by this user/organization. */
+    isSponsoringViewer: Scalars['Boolean'];
+    /** Whether or not this user is the viewing user. */
+    isViewer: Scalars['Boolean'];
+    /** A list of issue comments made by this user. */
+    issueComments: IssueCommentConnection;
+    /** A list of issues associated with this user. */
+    issues: IssueConnection;
+    /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
+    itemShowcase: ProfileItemShowcase;
+    /** The user's public profile location. */
+    location?: Maybe<Scalars['String']>;
+    /** The username used to login. */
+    login: Scalars['String'];
+    /** The estimated monthly GitHub Sponsors income for this user/organization in cents (USD). */
+    monthlyEstimatedSponsorsIncomeInCents: Scalars['Int'];
+    /** The user's public profile name. */
+    name?: Maybe<Scalars['String']>;
+    /** Find an organization by its login that the user belongs to. */
+    organization?: Maybe<Organization>;
+    /** Verified email addresses that match verified domains for a specified organization the user is a member of. */
+    organizationVerifiedDomainEmails: Array<Scalars['String']>;
+    /** A list of organizations the user belongs to. */
+    organizations: OrganizationConnection;
+    /** A list of packages under the owner. */
+    packages: PackageConnection;
+    /** A list of repositories and gists this profile owner can pin to their profile. */
+    pinnableItems: PinnableItemConnection;
+    /** A list of repositories and gists this profile owner has pinned to their profile */
+    pinnedItems: PinnableItemConnection;
+    /** Returns how many more items this profile owner can pin to their profile. */
+    pinnedItemsRemaining: Scalars['Int'];
+    /** Find project by number. */
+    project?: Maybe<Project>;
+    /**
+     * Find a project by project (beta) number.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectNext?: Maybe<ProjectNext>;
+    /** Find a project by number. */
+    projectV2?: Maybe<ProjectV2>;
+    /** A list of projects under the owner. */
+    projects: ProjectConnection;
+    /**
+     * A list of projects (beta) under the owner.
+     * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2023-01-01 UTC.
+     */
+    projectsNext: ProjectNextConnection;
+    /** The HTTP path listing user's projects */
+    projectsResourcePath: Scalars['URI'];
+    /** The HTTP URL listing user's projects */
+    projectsUrl: Scalars['URI'];
+    /** A list of projects under the owner. */
+    projectsV2: ProjectV2Connection;
+    /** A list of public keys associated with this user. */
+    publicKeys: PublicKeyConnection;
+    /** A list of pull requests associated with this user. */
+    pullRequests: PullRequestConnection;
+    /** Recent projects that this user has modified in the context of the owner. */
+    recentProjects: ProjectV2Connection;
+    /** A list of repositories that the user owns. */
+    repositories: RepositoryConnection;
+    /** A list of repositories that the user recently contributed to. */
+    repositoriesContributedTo: RepositoryConnection;
+    /** Find Repository. */
+    repository?: Maybe<Repository>;
+    /** Discussion comments this user has authored. */
+    repositoryDiscussionComments: DiscussionCommentConnection;
+    /** Discussions this user has started. */
+    repositoryDiscussions: DiscussionConnection;
+    /** The HTTP path for this user */
+    resourcePath: Scalars['URI'];
+    /** Replies this user has saved */
+    savedReplies?: Maybe<SavedReplyConnection>;
+    /** List of users and organizations this entity is sponsoring. */
+    sponsoring: SponsorConnection;
+    /** List of sponsors for this user or organization. */
+    sponsors: SponsorConnection;
+    /** Events involving this sponsorable, such as new sponsorships. */
+    sponsorsActivities: SponsorsActivityConnection;
+    /** The GitHub Sponsors listing for this user or organization. */
+    sponsorsListing?: Maybe<SponsorsListing>;
+    /** The sponsorship from the viewer to this user/organization; that is, the sponsorship where you're the sponsor. Only returns a sponsorship if it is active. */
+    sponsorshipForViewerAsSponsor?: Maybe<Sponsorship>;
+    /** The sponsorship from this user/organization to the viewer; that is, the sponsorship you're receiving. Only returns a sponsorship if it is active. */
+    sponsorshipForViewerAsSponsorable?: Maybe<Sponsorship>;
+    /** List of sponsorship updates sent from this sponsorable to sponsors. */
+    sponsorshipNewsletters: SponsorshipNewsletterConnection;
+    /** This object's sponsorships as the maintainer. */
+    sponsorshipsAsMaintainer: SponsorshipConnection;
+    /** This object's sponsorships as the sponsor. */
+    sponsorshipsAsSponsor: SponsorshipConnection;
+    /** Repositories the user has starred. */
+    starredRepositories: StarredRepositoryConnection;
+    /** The user's description of what they're currently doing. */
+    status?: Maybe<UserStatus>;
+    /**
+     * Repositories the user has contributed to, ordered by contribution rank, plus repositories the user has created
+     *
+     */
+    topRepositories: RepositoryConnection;
+    /** The user's Twitter username. */
+    twitterUsername?: Maybe<Scalars['String']>;
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this user */
+    url: Scalars['URI'];
+    /** Can the viewer pin repositories and gists to the profile? */
+    viewerCanChangePinnedItems: Scalars['Boolean'];
+    /** Can the current viewer create new projects on this owner. */
+    viewerCanCreateProjects: Scalars['Boolean'];
+    /** Whether or not the viewer is able to follow the user. */
+    viewerCanFollow: Scalars['Boolean'];
+    /** Whether or not the viewer is able to sponsor this user/organization. */
+    viewerCanSponsor: Scalars['Boolean'];
+    /** Whether or not this user is followed by the viewer. Inverse of is_following_viewer. */
+    viewerIsFollowing: Scalars['Boolean'];
+    /** True if the viewer is sponsoring this user/organization. */
+    viewerIsSponsoring: Scalars['Boolean'];
+    /** A list of repositories the given user is watching. */
+    watching: RepositoryConnection;
+    /** A URL pointing to the user's public website/blog. */
+    websiteUrl?: Maybe<Scalars['URI']>;
+  };
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserAnyPinnableItemsArgs = {
   type?: InputMaybe<PinnableItemType>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserAvatarUrlArgs = {
   size?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserCanReceiveOrganizationEmailsWhenNotificationsRestrictedArgs = {
   login: Scalars['String'];
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserCommitCommentsArgs = {
@@ -26545,14 +26556,12 @@ export type UserCommitCommentsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserContributionsCollectionArgs = {
   from?: InputMaybe<Scalars['DateTime']>;
   organizationID?: InputMaybe<Scalars['ID']>;
   to?: InputMaybe<Scalars['DateTime']>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserFollowersArgs = {
@@ -26562,7 +26571,6 @@ export type UserFollowersArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserFollowingArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26571,12 +26579,10 @@ export type UserFollowingArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserGistArgs = {
   name: Scalars['String'];
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserGistCommentsArgs = {
@@ -26585,7 +26591,6 @@ export type UserGistCommentsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserGistsArgs = {
@@ -26597,18 +26602,15 @@ export type UserGistsArgs = {
   privacy?: InputMaybe<GistPrivacy>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserHovercardArgs = {
   primarySubjectId?: InputMaybe<Scalars['ID']>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserIsSponsoredByArgs = {
   accountLogin: Scalars['String'];
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserIssueCommentsArgs = {
@@ -26618,7 +26620,6 @@ export type UserIssueCommentsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<IssueCommentOrder>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserIssuesArgs = {
@@ -26632,18 +26633,15 @@ export type UserIssuesArgs = {
   states?: InputMaybe<Array<IssueState>>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserOrganizationArgs = {
   login: Scalars['String'];
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserOrganizationVerifiedDomainEmailsArgs = {
   login: Scalars['String'];
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserOrganizationsArgs = {
@@ -26652,7 +26650,6 @@ export type UserOrganizationsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserPackagesArgs = {
@@ -26666,7 +26663,6 @@ export type UserPackagesArgs = {
   repositoryId?: InputMaybe<Scalars['ID']>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserPinnableItemsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26675,7 +26671,6 @@ export type UserPinnableItemsArgs = {
   last?: InputMaybe<Scalars['Int']>;
   types?: InputMaybe<Array<PinnableItemType>>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserPinnedItemsArgs = {
@@ -26686,24 +26681,20 @@ export type UserPinnedItemsArgs = {
   types?: InputMaybe<Array<PinnableItemType>>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserProjectArgs = {
   number: Scalars['Int'];
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserProjectNextArgs = {
   number: Scalars['Int'];
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserProjectV2Args = {
   number: Scalars['Int'];
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserProjectsArgs = {
@@ -26716,7 +26707,6 @@ export type UserProjectsArgs = {
   states?: InputMaybe<Array<ProjectState>>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserProjectsNextArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26726,7 +26716,6 @@ export type UserProjectsNextArgs = {
   query?: InputMaybe<Scalars['String']>;
   sortBy?: InputMaybe<ProjectNextOrderField>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserProjectsV2Args = {
@@ -26738,7 +26727,6 @@ export type UserProjectsV2Args = {
   query?: InputMaybe<Scalars['String']>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserPublicKeysArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26746,7 +26734,6 @@ export type UserPublicKeysArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserPullRequestsArgs = {
@@ -26761,7 +26748,6 @@ export type UserPullRequestsArgs = {
   states?: InputMaybe<Array<PullRequestState>>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserRecentProjectsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26769,7 +26755,6 @@ export type UserRecentProjectsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserRepositoriesArgs = {
@@ -26785,7 +26770,6 @@ export type UserRepositoriesArgs = {
   privacy?: InputMaybe<RepositoryPrivacy>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserRepositoriesContributedToArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26799,13 +26783,11 @@ export type UserRepositoriesContributedToArgs = {
   privacy?: InputMaybe<RepositoryPrivacy>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserRepositoryArgs = {
   followRenames?: InputMaybe<Scalars['Boolean']>;
   name: Scalars['String'];
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserRepositoryDiscussionCommentsArgs = {
@@ -26816,7 +26798,6 @@ export type UserRepositoryDiscussionCommentsArgs = {
   onlyAnswers?: InputMaybe<Scalars['Boolean']>;
   repositoryId?: InputMaybe<Scalars['ID']>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserRepositoryDiscussionsArgs = {
@@ -26829,7 +26810,6 @@ export type UserRepositoryDiscussionsArgs = {
   repositoryId?: InputMaybe<Scalars['ID']>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserSavedRepliesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26838,7 +26818,6 @@ export type UserSavedRepliesArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<SavedReplyOrder>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserSponsoringArgs = {
@@ -26849,7 +26828,6 @@ export type UserSponsoringArgs = {
   orderBy?: InputMaybe<SponsorOrder>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserSponsorsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26859,7 +26837,6 @@ export type UserSponsorsArgs = {
   orderBy?: InputMaybe<SponsorOrder>;
   tierId?: InputMaybe<Scalars['ID']>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserSponsorsActivitiesArgs = {
@@ -26875,7 +26852,6 @@ export type UserSponsorsActivitiesArgs = {
   until?: InputMaybe<Scalars['DateTime']>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserSponsorshipNewslettersArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26884,7 +26860,6 @@ export type UserSponsorshipNewslettersArgs = {
   last?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<SponsorshipNewsletterOrder>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserSponsorshipsAsMaintainerArgs = {
@@ -26896,7 +26871,6 @@ export type UserSponsorshipsAsMaintainerArgs = {
   orderBy?: InputMaybe<SponsorshipOrder>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserSponsorshipsAsSponsorArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26906,7 +26880,6 @@ export type UserSponsorshipsAsSponsorArgs = {
   maintainerLogins?: InputMaybe<Array<Scalars['String']>>;
   orderBy?: InputMaybe<SponsorshipOrder>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserStarredRepositoriesArgs = {
@@ -26918,7 +26891,6 @@ export type UserStarredRepositoriesArgs = {
   ownedByViewer?: InputMaybe<Scalars['Boolean']>;
 };
 
-
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserTopRepositoriesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -26928,7 +26900,6 @@ export type UserTopRepositoriesArgs = {
   orderBy: RepositoryOrder;
   since?: InputMaybe<Scalars['DateTime']>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserWatchingArgs = {
@@ -27235,7 +27206,6 @@ export type Workflow = Node & {
   updatedAt: Scalars['DateTime'];
 };
 
-
 /** A workflow contains meta information about an Actions workflow file. */
 export type WorkflowRunsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -27246,31 +27216,31 @@ export type WorkflowRunsArgs = {
 };
 
 /** A workflow run. */
-export type WorkflowRun = Node & UniformResourceLocatable & {
-  __typename?: 'WorkflowRun';
-  /** The check suite this workflow run belongs to. */
-  checkSuite: CheckSuite;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The log of deployment reviews */
-  deploymentReviews: DeploymentReviewConnection;
-  id: Scalars['ID'];
-  /** The pending deployment requests of all check runs in this workflow run */
-  pendingDeploymentRequests: DeploymentRequestConnection;
-  /** The HTTP path for this workflow run */
-  resourcePath: Scalars['URI'];
-  /** A number that uniquely identifies this workflow run in its parent workflow. */
-  runNumber: Scalars['Int'];
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['DateTime'];
-  /** The HTTP URL for this workflow run */
-  url: Scalars['URI'];
-  /** The workflow executed in this workflow run. */
-  workflow: Workflow;
-};
-
+export type WorkflowRun = Node &
+  UniformResourceLocatable & {
+    __typename?: 'WorkflowRun';
+    /** The check suite this workflow run belongs to. */
+    checkSuite: CheckSuite;
+    /** Identifies the date and time when the object was created. */
+    createdAt: Scalars['DateTime'];
+    /** Identifies the primary key from the database. */
+    databaseId?: Maybe<Scalars['Int']>;
+    /** The log of deployment reviews */
+    deploymentReviews: DeploymentReviewConnection;
+    id: Scalars['ID'];
+    /** The pending deployment requests of all check runs in this workflow run */
+    pendingDeploymentRequests: DeploymentRequestConnection;
+    /** The HTTP path for this workflow run */
+    resourcePath: Scalars['URI'];
+    /** A number that uniquely identifies this workflow run in its parent workflow. */
+    runNumber: Scalars['Int'];
+    /** Identifies the date and time when the object was last updated. */
+    updatedAt: Scalars['DateTime'];
+    /** The HTTP URL for this workflow run */
+    url: Scalars['URI'];
+    /** The workflow executed in this workflow run. */
+    workflow: Workflow;
+  };
 
 /** A workflow run. */
 export type WorkflowRunDeploymentReviewsArgs = {
@@ -27279,7 +27249,6 @@ export type WorkflowRunDeploymentReviewsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A workflow run. */
 export type WorkflowRunPendingDeploymentRequestsArgs = {
@@ -27330,28 +27299,450 @@ export type ReposQueryVariables = Exact<{
   to: Scalars['DateTime'];
 }>;
 
+export type ReposQuery = {
+  __typename?: 'Query';
+  reviz?:
+    | ({ __typename?: 'Repository' } & {
+        ' $fragmentRefs'?: { RepoInfoFragment: RepoInfoFragment };
+      })
+    | null;
+  cartokit?:
+    | ({ __typename?: 'Repository' } & {
+        ' $fragmentRefs'?: { RepoInfoFragment: RepoInfoFragment };
+      })
+    | null;
+  renature?:
+    | ({ __typename?: 'Repository' } & {
+        ' $fragmentRefs'?: { RepoInfoFragment: RepoInfoFragment };
+      })
+    | null;
+  rescriptUrql?:
+    | ({ __typename?: 'Repository' } & {
+        ' $fragmentRefs'?: { RepoInfoFragment: RepoInfoFragment };
+      })
+    | null;
+  urql?:
+    | ({ __typename?: 'Repository' } & {
+        ' $fragmentRefs'?: { RepoInfoFragment: RepoInfoFragment };
+      })
+    | null;
+  webpackDashboard?:
+    | ({ __typename?: 'Repository' } & {
+        ' $fragmentRefs'?: { RepoInfoFragment: RepoInfoFragment };
+      })
+    | null;
+  viewer: {
+    __typename?: 'User';
+    contributionsCollection: {
+      __typename?: 'ContributionsCollection';
+      totalCommitContributions: number;
+      totalIssueContributions: number;
+      totalPullRequestContributions: number;
+      totalPullRequestReviewContributions: number;
+    };
+  };
+};
 
-export type ReposQuery = { __typename?: 'Query', reviz?: (
-    { __typename?: 'Repository' }
-    & { ' $fragmentRefs'?: { 'RepoInfoFragment': RepoInfoFragment } }
-  ) | null, cartokit?: (
-    { __typename?: 'Repository' }
-    & { ' $fragmentRefs'?: { 'RepoInfoFragment': RepoInfoFragment } }
-  ) | null, renature?: (
-    { __typename?: 'Repository' }
-    & { ' $fragmentRefs'?: { 'RepoInfoFragment': RepoInfoFragment } }
-  ) | null, rescriptUrql?: (
-    { __typename?: 'Repository' }
-    & { ' $fragmentRefs'?: { 'RepoInfoFragment': RepoInfoFragment } }
-  ) | null, urql?: (
-    { __typename?: 'Repository' }
-    & { ' $fragmentRefs'?: { 'RepoInfoFragment': RepoInfoFragment } }
-  ) | null, webpackDashboard?: (
-    { __typename?: 'Repository' }
-    & { ' $fragmentRefs'?: { 'RepoInfoFragment': RepoInfoFragment } }
-  ) | null, viewer: { __typename?: 'User', contributionsCollection: { __typename?: 'ContributionsCollection', totalCommitContributions: number, totalIssueContributions: number, totalPullRequestContributions: number, totalPullRequestReviewContributions: number } } };
+export type RepoInfoFragment = {
+  __typename?: 'Repository';
+  name: string;
+  description?: string | null;
+  forkCount: number;
+  url: any;
+  primaryLanguage?: {
+    __typename?: 'Language';
+    name: string;
+    color?: string | null;
+  } | null;
+  stargazers: { __typename?: 'StargazerConnection'; totalCount: number };
+  repositoryTopics: {
+    __typename?: 'RepositoryTopicConnection';
+    edges?: Array<{
+      __typename?: 'RepositoryTopicEdge';
+      node?: {
+        __typename?: 'RepositoryTopic';
+        topic: { __typename?: 'Topic'; name: string };
+      } | null;
+    } | null> | null;
+  };
+} & { ' $fragmentName'?: 'RepoInfoFragment' };
 
-export type RepoInfoFragment = { __typename?: 'Repository', name: string, description?: string | null, forkCount: number, url: any, primaryLanguage?: { __typename?: 'Language', name: string, color?: string | null } | null, stargazers: { __typename?: 'StargazerConnection', totalCount: number }, repositoryTopics: { __typename?: 'RepositoryTopicConnection', edges?: Array<{ __typename?: 'RepositoryTopicEdge', node?: { __typename?: 'RepositoryTopic', topic: { __typename?: 'Topic', name: string } } | null } | null> | null } } & { ' $fragmentName'?: 'RepoInfoFragment' };
-
-export const RepoInfoFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"repoInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Repository"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"primaryLanguage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"color"}}]}},{"kind":"Field","name":{"kind":"Name","value":"stargazers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalCount"}}]}},{"kind":"Field","name":{"kind":"Name","value":"forkCount"}},{"kind":"Field","name":{"kind":"Name","value":"repositoryTopics"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"6"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"topic"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]} as unknown as DocumentNode<RepoInfoFragment, unknown>;
-export const ReposDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"repos"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"from"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"DateTime"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"to"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"DateTime"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"reviz"},"name":{"kind":"Name","value":"repository"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"StringValue","value":"reviz","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"owner"},"value":{"kind":"StringValue","value":"parkerziegler","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"repoInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"cartokit"},"name":{"kind":"Name","value":"repository"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"StringValue","value":"cartokit","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"owner"},"value":{"kind":"StringValue","value":"parkerziegler","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"repoInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"renature"},"name":{"kind":"Name","value":"repository"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"StringValue","value":"renature","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"owner"},"value":{"kind":"StringValue","value":"FormidableLabs","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"repoInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"rescriptUrql"},"name":{"kind":"Name","value":"repository"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"StringValue","value":"rescript-urql","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"owner"},"value":{"kind":"StringValue","value":"FormidableLabs","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"repoInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"urql"},"name":{"kind":"Name","value":"repository"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"StringValue","value":"urql","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"owner"},"value":{"kind":"StringValue","value":"FormidableLabs","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"repoInfo"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"webpackDashboard"},"name":{"kind":"Name","value":"repository"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"StringValue","value":"webpack-dashboard","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"owner"},"value":{"kind":"StringValue","value":"FormidableLabs","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"repoInfo"}}]}},{"kind":"Field","name":{"kind":"Name","value":"viewer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contributionsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"from"},"value":{"kind":"Variable","name":{"kind":"Name","value":"from"}}},{"kind":"Argument","name":{"kind":"Name","value":"to"},"value":{"kind":"Variable","name":{"kind":"Name","value":"to"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalCommitContributions"}},{"kind":"Field","name":{"kind":"Name","value":"totalIssueContributions"}},{"kind":"Field","name":{"kind":"Name","value":"totalPullRequestContributions"}},{"kind":"Field","name":{"kind":"Name","value":"totalPullRequestReviewContributions"}}]}}]}}]}},...RepoInfoFragmentDoc.definitions]} as unknown as DocumentNode<ReposQuery, ReposQueryVariables>;
+export const RepoInfoFragmentDoc = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'repoInfo' },
+      typeCondition: {
+        kind: 'NamedType',
+        name: { kind: 'Name', value: 'Repository' }
+      },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'primaryLanguage' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'color' } }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'stargazers' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'totalCount' } }
+              ]
+            }
+          },
+          { kind: 'Field', name: { kind: 'Name', value: 'forkCount' } },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'repositoryTopics' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'first' },
+                value: { kind: 'IntValue', value: '6' }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'edges' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'node' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'topic' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'name' }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          { kind: 'Field', name: { kind: 'Name', value: 'url' } }
+        ]
+      }
+    }
+  ]
+} as unknown as DocumentNode<RepoInfoFragment, unknown>;
+export const ReposDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'repos' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'from' } },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'DateTime' }
+            }
+          }
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'to' } },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'DateTime' }
+            }
+          }
+        }
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'reviz' },
+            name: { kind: 'Name', value: 'repository' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'name' },
+                value: { kind: 'StringValue', value: 'reviz', block: false }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'owner' },
+                value: {
+                  kind: 'StringValue',
+                  value: 'parkerziegler',
+                  block: false
+                }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'FragmentSpread',
+                  name: { kind: 'Name', value: 'repoInfo' }
+                }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'cartokit' },
+            name: { kind: 'Name', value: 'repository' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'name' },
+                value: { kind: 'StringValue', value: 'cartokit', block: false }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'owner' },
+                value: {
+                  kind: 'StringValue',
+                  value: 'parkerziegler',
+                  block: false
+                }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'FragmentSpread',
+                  name: { kind: 'Name', value: 'repoInfo' }
+                }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'renature' },
+            name: { kind: 'Name', value: 'repository' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'name' },
+                value: { kind: 'StringValue', value: 'renature', block: false }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'owner' },
+                value: {
+                  kind: 'StringValue',
+                  value: 'FormidableLabs',
+                  block: false
+                }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'FragmentSpread',
+                  name: { kind: 'Name', value: 'repoInfo' }
+                }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'rescriptUrql' },
+            name: { kind: 'Name', value: 'repository' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'name' },
+                value: {
+                  kind: 'StringValue',
+                  value: 'rescript-urql',
+                  block: false
+                }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'owner' },
+                value: {
+                  kind: 'StringValue',
+                  value: 'FormidableLabs',
+                  block: false
+                }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'FragmentSpread',
+                  name: { kind: 'Name', value: 'repoInfo' }
+                }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'urql' },
+            name: { kind: 'Name', value: 'repository' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'name' },
+                value: { kind: 'StringValue', value: 'urql', block: false }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'owner' },
+                value: {
+                  kind: 'StringValue',
+                  value: 'FormidableLabs',
+                  block: false
+                }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'FragmentSpread',
+                  name: { kind: 'Name', value: 'repoInfo' }
+                }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'webpackDashboard' },
+            name: { kind: 'Name', value: 'repository' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'name' },
+                value: {
+                  kind: 'StringValue',
+                  value: 'webpack-dashboard',
+                  block: false
+                }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'owner' },
+                value: {
+                  kind: 'StringValue',
+                  value: 'FormidableLabs',
+                  block: false
+                }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'FragmentSpread',
+                  name: { kind: 'Name', value: 'repoInfo' }
+                }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'viewer' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'contributionsCollection' },
+                  arguments: [
+                    {
+                      kind: 'Argument',
+                      name: { kind: 'Name', value: 'from' },
+                      value: {
+                        kind: 'Variable',
+                        name: { kind: 'Name', value: 'from' }
+                      }
+                    },
+                    {
+                      kind: 'Argument',
+                      name: { kind: 'Name', value: 'to' },
+                      value: {
+                        kind: 'Variable',
+                        name: { kind: 'Name', value: 'to' }
+                      }
+                    }
+                  ],
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: {
+                          kind: 'Name',
+                          value: 'totalCommitContributions'
+                        }
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'totalIssueContributions' }
+                      },
+                      {
+                        kind: 'Field',
+                        name: {
+                          kind: 'Name',
+                          value: 'totalPullRequestContributions'
+                        }
+                      },
+                      {
+                        kind: 'Field',
+                        name: {
+                          kind: 'Name',
+                          value: 'totalPullRequestReviewContributions'
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    ...RepoInfoFragmentDoc.definitions
+  ]
+} as unknown as DocumentNode<ReposQuery, ReposQueryVariables>;
