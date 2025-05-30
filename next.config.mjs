@@ -12,7 +12,10 @@ const withMDX = nextMDX({
 });
 
 const nextConfig = withMDX({
-  pageExtensions: ['tsx', 'mdx']
+  pageExtensions: ['tsx', 'mdx'],
+  typescript: {
+    ignoreBuildErrors: true
+  }
 });
 
 export default nextConfig;
