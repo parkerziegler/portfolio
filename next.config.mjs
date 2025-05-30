@@ -12,15 +12,7 @@ const withMDX = nextMDX({
 });
 
 const nextConfig = withMDX({
-  pageExtensions: ['tsx', 'mdx'],
-  experimental: {
-    fontLoaders: [
-      {
-        loader: '@next/font/google',
-        options: { subsets: ['latin'] }
-      }
-    ]
-  }
+  pageExtensions: ['tsx', 'mdx']
 });
 
 export default nextConfig;
