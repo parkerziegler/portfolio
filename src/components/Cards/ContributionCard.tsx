@@ -5,18 +5,19 @@ import { motion } from 'framer-motion';
 import {
   CONTRIBUTION_EVENT_TYPES,
   CONTRIBUTION_EVENT_ICONS,
-  LANGUAGES
+  LANGUAGES,
+  TOOLS
 } from '../../utils/constants';
 import { transitionDirect, translateDownLeft } from '../../utils/animation';
 
-type ContributionEvent = typeof CONTRIBUTION_EVENT_TYPES[number];
+type ContributionEvent = (typeof CONTRIBUTION_EVENT_TYPES)[number];
 type ContributionSansEvent = ContributionEvent extends `${infer Prefix}Event`
   ? Prefix
   : never;
 type NormalizedContribution = Exclude<ContributionSansEvent, 'Push'> | 'Commit';
 
 const normalizeContributionType = (
-  type: typeof CONTRIBUTION_EVENT_TYPES[number]
+  type: (typeof CONTRIBUTION_EVENT_TYPES)[number]
 ): NormalizedContribution => {
   const str = type
     .replace('Event', '')
@@ -79,8 +80,8 @@ const ContributionCard: React.FC<Props> = ({
             {language ? (
               <div className="flex items-end stack-sm-h bg-white px-4 py-2 rounded-sm">
                 <Image
-                  src={LANGUAGES[language]?.src}
-                  alt={LANGUAGES[language]?.alt}
+                  src={LANGUAGES[language]?.src || TOOLS[language]?.src}
+                  alt={LANGUAGES[language]?.alt || TOOLS[language]?.alt}
                   className="h-8"
                   width={20}
                   height={20}

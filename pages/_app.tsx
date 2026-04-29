@@ -12,6 +12,7 @@ import components from '../src/components/Blog/MDXComponents';
 import '../src/styles/tailwind.css';
 
 const sourceSerifPro = Source_Serif_4({
+  variable: '--font-source-serif-4',
   style: ['italic', 'normal'],
   weight: ['400', '600', '700'],
   subsets: ['latin']
@@ -23,15 +24,15 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Header />
+      <Header className={sourceSerifPro.variable} />
       <MDXProvider components={components}>
         <div
-          className={cs('w-full max-w-view mx-auto', sourceSerifPro.className)}
+          className={cs('w-full max-w-view mx-auto', sourceSerifPro.variable)}
         >
           <Component {...pageProps} />
         </div>
       </MDXProvider>
-      <Footer />
+      <Footer className={sourceSerifPro.variable} />
     </>
   );
 }

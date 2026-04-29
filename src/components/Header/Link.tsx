@@ -71,6 +71,7 @@ const Link: React.FC<React.PropsWithChildren<Props>> = ({
             'font-semibold': pathname.includes(href)
           }
         )}
+        style={{ fontFamily: 'var(--font-source-serif-4)' }}
       >
         {children}
       </NextLink>

@@ -155,12 +155,18 @@ const Index: NextPage<Props> = ({ contributions }) => (
 
 type GitHubPublicEvent =
   Endpoints['GET /users/{username}/events/public']['response']['data'][number] & {
-    type: typeof CONTRIBUTION_EVENT_TYPES[number];
+    type: (typeof CONTRIBUTION_EVENT_TYPES)[number];
   };
 type GitHubLanguage =
   Endpoints['GET /repos/{owner}/{repo}']['response']['data']['language'];
+type GitHubCommitData =
+  Endpoints['GET /repos/{owner}/{repo}/commits/{ref}']['response']['data'];
+type GitHubPRData =
+  Endpoints['GET /repos/{owner}/{repo}/pulls/{pull_number}']['response']['data'];
 type GitHubContribution = GitHubPublicEvent & {
   language: GitHubLanguage;
+  commitData?: GitHubCommitData;
+  pullRequestData?: GitHubPRData;
 };
 type Contribution = Pick<GitHubContribution, 'id' | 'language' | 'type'> & {
   repo: GitHubContribution['repo']['name'];
@@ -200,29 +206,23 @@ const normalizeContribution = (
       break;
     }
     case 'PushEvent': {
-      // @ts-expect-error – GitHub's OpenAPI types do not include `commits` on `payload` for `PushEvent`.
-      url = contribution.payload.commits[0].url
-        .replace('api.', '')
-        .replace('/repos', '')
-        .replace('commits', 'commit');
-      // @ts-expect-error – GitHub's OpenAPI types do not include `commits` on `payload` for `PushEvent`.
-      description = contribution.payload.commits[0].message;
+      if (!contribution.commitData) break;
+      url = contribution.commitData.html_url;
+      description = contribution.commitData.commit.message.split('\n')[0];
 
       break;
     }
     case 'PullRequestEvent': {
-      // @ts-expect-error - GitHub's OpenAPI types do not include `pull_request` on `payload` for `PullRequestEvent`.
-      url = contribution.payload.pull_request.html_url;
-      // @ts-expect-error - GitHub's OpenAPI types do not include `pull_request` on `payload` for `PullRequestEvent`.
-      description = `#${contribution.payload.pull_request.number}: ${contribution.payload.pull_request.title}`;
+      if (!contribution.pullRequestData) break;
+      url = contribution.pullRequestData.html_url;
+      description = `#${contribution.pullRequestData.number}: ${contribution.pullRequestData.title}`;
 
       break;
     }
     case 'PullRequestReviewEvent': {
-      // @ts-expect-error - GitHub's OpenAPI types do not include `pull_request` on `payload` for `PullRequestReviewEvent`.
-      url = contribution.payload.pull_request.html_url;
-      // @ts-expect-error - GitHub's OpenAPI types do not include `pull_request` on `payload` for `PullRequestReviewEvent`.
-      description = `Reviewed #${contribution.payload.pull_request.number}: ${contribution.payload.pull_request.title}`;
+      if (!contribution.pullRequestData) break;
+      url = contribution.pullRequestData.html_url;
+      description = `Reviewed #${contribution.pullRequestData.number}: ${contribution.pullRequestData.title}`;
 
       break;
     }
@@ -267,7 +267,7 @@ export async function getStaticProps() {
 
       if (
         CONTRIBUTION_EVENT_TYPES.includes(
-          event.type as typeof CONTRIBUTION_EVENT_TYPES[number]
+          event.type as (typeof CONTRIBUTION_EVENT_TYPES)[number]
         )
       ) {
         activity.push(event as GitHubPublicEvent);
@@ -286,9 +286,42 @@ export async function getStaticProps() {
           repo
         });
 
+        let commitData: GitHubCommitData | undefined;
+        if (event.type === 'PushEvent') {
+          const head = (event.payload as { head?: string }).head;
+          if (head) {
+            const { data } = await octokit.rest.repos.getCommit({
+              owner,
+              repo,
+              ref: head
+            });
+            commitData = data;
+          }
+        }
+
+        let pullRequestData: GitHubPRData | undefined;
+        if (
+          event.type === 'PullRequestEvent' ||
+          event.type === 'PullRequestReviewEvent'
+        ) {
+          const pullNumber = (
+            event.payload as { pull_request?: { number: number } }
+          ).pull_request?.number;
+          if (pullNumber) {
+            const { data } = await octokit.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: pullNumber
+            });
+            pullRequestData = data;
+          }
+        }
+
         const contribution = {
           ...event,
-          language: language || parent?.language
+          language: language || parent?.language,
+          ...(commitData !== undefined && { commitData }),
+          ...(pullRequestData !== undefined && { pullRequestData })
         };
 
         return normalizeContribution(contribution);
@@ -297,7 +330,7 @@ export async function getStaticProps() {
 
     return {
       props: {
-        contributions
+        contributions: contributions.filter((c) => c.url !== '')
       },
       revalidate: 1
     };

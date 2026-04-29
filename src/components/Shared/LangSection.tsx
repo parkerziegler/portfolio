@@ -13,7 +13,7 @@ interface Props {
 const LangSection: React.FC<Props> = ({ title, langs }) => {
   return (
     <div>
-      <h3 className="text-4xl text-center font-mono font-semibold mb-4">
+      <h3 className="text-4xl text-center font-sans font-semibold mb-4">
         {title}
       </h3>
       <div className="flex flex-wrap items-center justify-center">

@@ -15,7 +15,7 @@ module.exports = {
         'terminal-secondary': '#09cbcb'
       },
       fontFamily: {
-        serif: "'Source Serif Pro', serif"
+        serif: ['var(--font-source-serif-4)', 'serif']
       },
       fontSize: {
         '3xl': ['1.85rem', { lineHeight: '2.25rem' }]

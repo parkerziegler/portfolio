@@ -9,7 +9,7 @@ const SiteTitle: React.FC = () => (
       height="55"
       width="200"
       viewBox="0 0 200 55"
-      className="fill-current text-white -ml-4"
+      className="fill-current text-white -ml-4 font-serif"
     >
       <g>
         <path
@@ -29,7 +29,7 @@ const SiteTitle: React.FC = () => (
         x="10"
         y="36"
         fill={theme.extend.colors.white}
-        style={{ font: '2.8rem "Source Serif Pro", serif', fontWeight: 600 }}
+        style={{ font: '2.8rem "Source Serif 4", serif', fontWeight: 600 }}
       >
         Parker Ziegler
       </text>
